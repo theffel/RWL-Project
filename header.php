@@ -1,3 +1,8 @@
+<?
+// Include the database.php
+include('database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,9 +62,10 @@
                         <a href="contact.php">Contact</a>
                     </li>
                     <li>
-                        <a href="login.php">Login</a>
+                        <?php if ($_SESSION["loggedIn"] == false) { echo '<a href="login.php">Login</a>'; } ?>
+                        <?php if ($_SESSION["loggedIn"] == true) { echo '<a href="login.php?action=logout">Logout</a>'; } ?>
                     </li>
-                    <li class="dropdown">
+                    <?php if ($_SESSION["loggedIn"] == true) { echo '<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -78,7 +84,7 @@
                                 <a href="other/pricing.html">Pricing Table</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>'; } ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

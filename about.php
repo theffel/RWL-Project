@@ -1,4 +1,10 @@
-    <?php include 'header.php'; ?>
+<?php
+// Start the session
+session_start();
+
+// Include the header.php file
+include('header.php');
+?>
 
     <!-- Page Content -->
     <div class="container">
