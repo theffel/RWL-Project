@@ -61,30 +61,16 @@ include('database.php');
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-                    <li>
-                        <?php if ($_SESSION["loggedIn"] == false) { echo '<a href="login.php">Login</a>'; } ?>
-                        <?php if ($_SESSION["loggedIn"] == true) { echo '<a href="login.php?action=logout">Logout</a>'; } ?>
-                    </li>
+                    <?php if ($_SESSION["loggedIn"] == false) { echo '<li><a href="login.php">Login</a></li>'; } ?>
                     <?php if ($_SESSION["loggedIn"] == true) { echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="other/full-width.html">Full Width Page</a>
-                            </li>
-                            <li>
-                                <a href="other/sidebar.html">Sidebar Page</a>
-                            </li>
-                            <li>
-                                <a href="other/faq.html">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="other/404.html">404</a>
-                            </li>
-                            <li>
-                                <a href="other/pricing.html">Pricing Table</a>
+                                <a href="product-reception.php">Production Reception</a>
                             </li>
                         </ul>
                     </li>'; } ?>
+                    <?php if ($_SESSION["loggedIn"] == true) { echo '<li><a href="login.php?action=logout">Logout</a></li>'; } ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

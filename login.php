@@ -69,23 +69,37 @@ include('header.php');
     if ($_SESSION["loggedIn"] == false) {
     ?>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <form class="form-signin" name="loginForm" id="loginForm" method="post" action="login.php">
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Username" required data-validation-required-message="Please enter your username.">
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required data-validation-required-message="Please enter your password.">
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary" name="login" value="Login"/>
-                </form>
+        <form class="form-horizontal" name="loginForm" id="loginForm" method="post" action="login.php">
+        
+            <div class="form-group">
+                <label for="inputEmail" class="control-label col-xs-2">Username</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required data-validation-required-message="Please enter your username.">
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="inputPassword" class="control-label col-xs-2">Password</label>
+                <div class="col-xs-10">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required data-validation-required-message="Please enter your password.">
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <input type="submit" class="btn btn-primary" name="login" value="Login"/>
+                </div>
+            </div>
+            
+        </form>
 
     <?php
     }
