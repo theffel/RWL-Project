@@ -61,8 +61,14 @@ include('database.php');
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-                    <?php if ($_SESSION["loggedIn"] == false) { echo '<li><a href="login.php">Login</a></li>'; } ?>
-                    <?php if ($_SESSION["loggedIn"] == true) { echo '<li class="dropdown">
+
+                    <?php
+                    if ($_SESSION["loggedIn"]) {
+                        $loggedIn = $_SESSION["loggedIn"];
+                    }
+                    ?>
+                    <?php if ($loggedIn == false) { echo '<li><a href="login.php">Login</a></li>'; } ?>
+                    <?php if ($loggedIn == true) { echo '<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -72,7 +78,7 @@ include('database.php');
                             </li>
                         </ul>
                     </li>'; } ?>
-                    <?php if ($_SESSION["loggedIn"] == true) { echo '<li><a href="login.php?action=logout">Logout</a></li>'; } ?>
+                    <?php if ($loggedIn == true) { echo '<li><a href="login.php?action=logout">Logout</a></li>'; } ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

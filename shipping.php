@@ -22,8 +22,12 @@ include('header.php');
         <!-- /.row -->
 
         <?php
+        if ($_SESSION["loggedIn"]) {
+            $loggedIn = $_SESSION["loggedIn"];
+        }
+
         // If the user is logged in and the user is the author of the message
-        if ($_SESSION["loggedIn"] == true) {
+        if ($loggedIn == true) {
         ?>
 
         <h2 class="page-header">View Shipments</h2>
