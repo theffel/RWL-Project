@@ -77,14 +77,20 @@ include('header.php');
             <div class="form-group">
                 <label for="bulkOther" class="control-label col-xs-2">Bulk or Other</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="bulkOther" value="Bulk"> Bulk</input> &nbsp; <input type="radio" name="bulkOther" value="Other"> Other
+                    <ul class="list-inline">
+                        <li><input type="radio" name="bulkOther" value="Bulk"> Bulk</li>
+                        <li><input type="radio" name="bulkOther" value="Other"> Other</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="washed" class="control-label col-xs-2">Washed</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="washed" value="Yes"> Yes &nbsp; <input type="radio" name="washed" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="washed" value="Yes"> Yes</li>
+                        <li><input type="radio" name="washed" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
@@ -109,7 +115,10 @@ include('header.php');
             <div class="form-group">
                 <label for="CFIANotified" class="control-label col-xs-2">CFIA Notified</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="CFIANotified" value="Yes"> Yes &nbsp; <input type="radio" name="CFIANotified" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="CFIANotified" value="Yes"> Yes</li>
+                        <li><input type="radio" name="CFIANotified" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
@@ -123,14 +132,20 @@ include('header.php');
             <div class="form-group">
                 <label for="movementCert" class="control-label col-xs-2">Movement Certifcate</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="movementCert" value="Yes"> Yes &nbsp; <input type="radio" name="movementCert" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="movementCert" value="Yes"> Yes</li>
+                        <li><input type="radio" name="movementCert" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="accepted" class="control-label col-xs-2">Accepted</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="accepted" value="Yes"> Yes &nbsp; <input type="radio" name="accepted" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="accepted" value="Yes"> Yes</li>
+                        <li><input type="radio" name="accepted" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
@@ -168,13 +183,6 @@ include('header.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 

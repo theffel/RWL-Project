@@ -62,19 +62,15 @@ include('database.php');
                         <a href="contact.php">Contact</a>
                     </li>
 
-                    <?php
-                    if ($_SESSION["loggedIn"]) {
-                        $loggedIn = $_SESSION["loggedIn"];
-                    }
-                    ?>
+                    <?php if ($_SESSION["loggedIn"]) { $loggedIn = $_SESSION["loggedIn"]; } ?>
                     <?php if ($loggedIn == false) { echo '<li><a href="login.php">Login</a></li>'; } ?>
                     <?php if ($loggedIn == true) { echo '<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
+                                <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
                                 <a href="product-reception.php">Production Reception</a>
                                 <a href="shipping.php">Shipping</a>
-                                <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
                             </li>
                         </ul>
                     </li>'; } ?>

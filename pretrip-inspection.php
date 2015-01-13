@@ -42,17 +42,17 @@ include('header.php');
             <div class="form-group">
                 <label for="inside" class="control-label col-xs-2">Inside</label>
                 <div class="col-xs-10">
-                    <input type="checkbox" name="inside" value="Parking Brake"> Parking Brake (Apply)</input>
+                    <input type="checkbox" name="inside" value="Parking Brake (Apply)"> Parking Brake (Apply)</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="startEngine" class="control-label col-xs-2">Start Engine</label>
                 <div class="col-xs-10">
-                    <input type="checkbox" name="startEngine" value="Oil Pressure"> Oil Pressure (Light or Gauge)</input><br />
-                    <input type="checkbox" name="startEngine" value="Air Pressure or Vacuum"> Air Pressure or Vacuum (Gauge)</input><br />
-                    <input type="checkbox" name="startEngine" value="Low Air or Vacuum Warning Device"> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />
-                    <input type="checkbox" name="startEngine" value="Instrument Panel"> Instrument Panel (Telltale lights or buzzers)</input><br />
+                    <input type="checkbox" name="startEngine" value="Oil Pressure (Light or Gauge)"> Oil Pressure (Light or Gauge)</input><br />
+                    <input type="checkbox" name="startEngine" value="Air Pressure or Vacuum (Gauge)"> Air Pressure or Vacuum (Gauge)</input><br />
+                    <input type="checkbox" name="startEngine" value="Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works."> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />
+                    <input type="checkbox" name="startEngine" value="Instrument Panel (Telltale lights or buzzers)"> Instrument Panel (Telltale lights or buzzers)</input><br />
                     <input type="checkbox" name="startEngine" value="Horn"> Horn</input><br />
                     <input type="checkbox" name="startEngine" value="Windshield Wiper and Washer"> Windshield Wiper and Washer</input><br />
                     <input type="checkbox" name="startEngine" value="Heater - Defroster"> Heater - Defroster</input><br />
@@ -195,13 +195,6 @@ include('header.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 

@@ -40,34 +40,34 @@ include('header.php');
         </div>
         <!-- /.row -->
 
-    <?php
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $mysqli->real_escape_string($_POST['username']);
-        $password = $mysqli->real_escape_string($_POST['password']);
+        <?php
+        if (isset($_POST['username']) && isset($_POST['password'])) {
+            $username = $mysqli->real_escape_string($_POST['username']);
+            $password = $mysqli->real_escape_string($_POST['password']);
 
-        // Create query
-        $query = "SELECT COUNT(*) FROM Users WHERE Username='" .$username ."' AND Password=sha1('" .$password ."')";
-        $result = $mysqli->query($query);
+            // Create query
+            $query = "SELECT COUNT(*) FROM Users WHERE Username='" .$username ."' AND Password=sha1('" .$password ."')";
+            $result = $mysqli->query($query);
 
-        $row = $result->fetch_row();
+            $row = $result->fetch_row();
 
-        // If the login was successful
-        if ($row[0] == 1) {
-            $loggedIn = true;
+            // If the login was successful
+            if ($row[0] == 1) {
+                $loggedIn = true;
 
-            // Store the login boolean and the username of the logged in user in the session
-            $_SESSION['loggedIn'] = $loggedIn;
-            $_SESSION['username'] = $_POST['username'];
-            // Go to the index.php
-            echo '<script type="text/javascript">
-                    location.replace("index.php");
-                    </script>';
+                // Store the login boolean and the username of the logged in user in the session
+                $_SESSION['loggedIn'] = $loggedIn;
+                $_SESSION['username'] = $_POST['username'];
+                // Go to the index.php
+                echo '<script type="text/javascript">
+                            location.replace("index.php");
+                            </script>';
+            }
         }
-    }
 
-    // If the user is not logged in, display a login form
-    if ($_SESSION["loggedIn"] == false) {
-    ?>
+        // If the user is not logged in, display a login form
+        if ($_SESSION["loggedIn"] == false) {
+        ?>
 
         <form class="form-horizontal" name="loginForm" id="loginForm" method="post" action="login.php">
         
@@ -101,14 +101,16 @@ include('header.php');
             
         </form>
 
-    <?php
-    }
+        <?php
+        }
 
-    // If the user is logged in
-    else {
-        // Do something
-    }
-    ?>
+        // If the user is logged in, redirect them to index.php if they try to access this page
+        else {
+            echo '<script type="text/javascript">
+                        location.replace("index.php");
+                        </script>';
+        }
+        ?>
 
         <hr>
 
@@ -129,13 +131,6 @@ include('header.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 

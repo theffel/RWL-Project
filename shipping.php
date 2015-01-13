@@ -77,7 +77,10 @@ include('header.php');
             <div class="form-group">
                 <label for="washed" class="control-label col-xs-2">Washed</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="washed" value="Yes"> Yes &nbsp; <input type="radio" name="washed" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="washed" value="Yes"> Yes</li>
+                        <li><input type="radio" name="washed" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
@@ -96,14 +99,20 @@ include('header.php');
             <div class="form-group">
                 <label for="truckCleaned" class="control-label col-xs-2">Truck Cleaned Upon Return</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="truckCleaned" value="Yes"> Yes &nbsp; <input type="radio" name="truckCleaned" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="truckCleaned" value="Yes"> Yes</li>
+                        <li><input type="radio" name="truckCleaned" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="accepted" class="control-label col-xs-2">Accepted</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="accepted" value="Yes"> Yes &nbsp; <input type="radio" name="accepted" value="No"> No
+                    <ul class="list-inline">
+                        <li><input type="radio" name="accepted" value="Yes"> Yes</li>
+                        <li><input type="radio" name="accepted" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
@@ -141,13 +150,6 @@ include('header.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
 
 </body>
 
