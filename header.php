@@ -14,7 +14,7 @@ include('database.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>RWL Holdings</title>
+    <title>PEI Potato Solutions</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@ include('database.php');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">RWL Holdings</a>
+                <a class="navbar-brand" href="index.php">PEI Potato Solutions</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,6 +67,8 @@ include('database.php');
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="product-reception.php">Production Reception</a>
+                                <a href="shipping.php">Shipping</a>
+                                <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
                             </li>
                         </ul>
                     </li>'; } ?>
