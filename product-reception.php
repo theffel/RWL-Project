@@ -26,6 +26,13 @@ include('header.php');
         if ($_SESSION["loggedIn"] == true) {
         ?>
 
+        <h2 class="page-header">View Products</h2>
+        <p>There are currently no products to view.</p>
+        
+        <hr>
+
+        <h2 class="page-header">Add a Product</h2>
+
         <form class="form-horizontal">
 
             <div class="form-group">
@@ -36,37 +43,44 @@ include('header.php');
             </div>
 
             <div class="form-group">
+                <label for="potType" class="control-label col-xs-2">Type of Potato</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="potType" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="potProd" class="control-label col-xs-2">Potato Producer</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" id="potProd" placeholder="">
+                    <input type="text" class="form-control" name="potProd" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-xs-2">Load ID Info</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" id="loadIDInfo" placeholder="">
+                    <input type="text" class="form-control" name="loadIDInfo" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="quanRecieved" class="control-label col-xs-2">Quantity Recieved</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" id="quanRecieved" placeholder="">
+                    <input type="text" class="form-control" name="quanRecieved" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="blkOther" class="control-label col-xs-2">Bulk or Other</label>
+                <label for="bulkOther" class="control-label col-xs-2">Bulk or Other</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="optradio" value="Bulk"> Bulk</input> &nbsp; <input type="radio" name="optradio" value="Other"> Other
+                    <input type="radio" name="bulkOther" value="Bulk"> Bulk</input> &nbsp; <input type="radio" name="bulkOther" value="Other"> Other
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="washed" class="control-label col-xs-2">Washed</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="optradio" value="Yes"> Yes &nbsp; <input type="radio" name="optradio" value="No"> No
+                    <input type="radio" name="washed" value="Yes"> Yes &nbsp; <input type="radio" name="washed" value="No"> No
                 </div>
             </div>
 
@@ -91,28 +105,28 @@ include('header.php');
             <div class="form-group">
                 <label for="CFIANotified" class="control-label col-xs-2">CFIA Notified</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="optradio" value="Yes"> Yes &nbsp; <input type="radio" name="optradio" value="No"> No
+                    <input type="radio" name="CFIANotified" value="Yes"> Yes &nbsp; <input type="radio" name="CFIANotified" value="No"> No
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="CFIANotifiedBy" class="control-label col-xs-2">CFIA Notified By</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" id="CFIANotifiedBy" placeholder="">
+                    <input type="text" class="form-control" name="CFIANotifiedBy" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="movementCert" class="control-label col-xs-2">Movement Certifcate</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="optradio" value="Yes"> Yes &nbsp; <input type="radio" name="optradio" value="No"> No
+                    <input type="radio" name="movementCert" value="Yes"> Yes &nbsp; <input type="radio" name="movementCert" value="No"> No
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="accepted" class="control-label col-xs-2">Accepted</label>
                 <div class="col-xs-10">
-                    <input type="radio" name="optradio" value="Yes"> Yes &nbsp; <input type="radio" name="optradio" value="No"> No
+                    <input type="radio" name="accepted" value="Yes"> Yes &nbsp; <input type="radio" name="accepted" value="No"> No
                 </div>
             </div>
 
