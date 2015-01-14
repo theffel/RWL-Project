@@ -92,14 +92,6 @@ include('header.php');
     
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
                     <input type="submit" class="btn btn-primary" name="login" value="Login"/>
                 </div>
             </div>

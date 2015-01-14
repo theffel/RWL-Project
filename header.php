@@ -56,26 +56,25 @@
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
-
                     <?php
-                    $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
+                        $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
 
-                    if ($loggedIn == false) {
-                        echo '<li><a href="login.php">Login</a></li>';
-                    }
-                    if ($loggedIn == true) { echo '<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
-                                <a href="product-reception.php">Production Reception</a>
-                                <a href="shipping.php">Shipping</a>
-                            </li>
-                        </ul>
-                    </li>'; }
-                    if ($loggedIn == true) {
-                        echo '<li><a href="login.php?action=logout">Logout</a></li>';
-                    }
+                        if ($loggedIn == false) {
+                            echo '<li><a href="login.php">Login</a></li>';
+                        }
+                        if ($loggedIn == true) {
+                            echo '<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="product-reception.php">Production Reception</a>
+                                            <a href="shipping.php">Shipping</a>
+                                            <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
+                                        </li>
+                                    </ul>
+                                </li>';
+                            echo '<li><a href="login.php?action=logout">Logout</a></li>';
+                        }
                     ?>
                 </ul>
             </div>
