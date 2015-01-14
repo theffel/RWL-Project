@@ -1,8 +1,3 @@
-<?
-// Include the database.php
-include('database.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,9 +57,16 @@ include('database.php');
                         <a href="contact.php">Contact</a>
                     </li>
 
-                    <?php if ($_SESSION["loggedIn"]) { $loggedIn = $_SESSION["loggedIn"]; } ?>
-                    <?php if ($loggedIn == false) { echo '<li><a href="login.php">Login</a></li>'; } ?>
-                    <?php if ($loggedIn == true) { echo '<li class="dropdown">
+                    <?php
+                    $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
+
+                    if ($_SESSION["loggedIn"]) {
+                        $loggedIn = $_SESSION["loggedIn"];
+                    }
+                    if ($loggedIn == false) {
+                        echo '<li><a href="login.php">Login</a></li>';
+                    }
+                    if ($loggedIn == true) { echo '<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -73,8 +75,11 @@ include('database.php');
                                 <a href="shipping.php">Shipping</a>
                             </li>
                         </ul>
-                    </li>'; } ?>
-                    <?php if ($loggedIn == true) { echo '<li><a href="login.php?action=logout">Logout</a></li>'; } ?>
+                    </li>'; }
+                    if ($loggedIn == true) {
+                        echo '<li><a href="login.php?action=logout">Logout</a></li>';
+                    }
+                    ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

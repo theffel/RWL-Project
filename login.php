@@ -20,6 +20,9 @@ if (isset($_GET['action'])) {
     header('location:index.php');
 }
 
+// Include the database.php file
+include('database.php');
+
 // Include the header.php file
 include('header.php');
 ?>
