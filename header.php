@@ -67,9 +67,9 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employee Links <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="product-reception.php">Production Reception</a>
+                                            <a href="product_reception.php">Production Reception</a>
                                             <a href="shipping.php">Shipping</a>
-                                            <a href="pretrip-inspection.php">Pre-Trip Inspection</a>
+                                            <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
                                         </li>
                                     </ul>
                                 </li>';
