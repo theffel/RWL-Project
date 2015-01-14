@@ -68,8 +68,10 @@ include('header.php');
             }
         }
 
+        $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
+
         // If the user is not logged in, display a login form
-        if ($_SESSION["loggedIn"] == false) {
+        if ($loggedIn == false) {
         ?>
 
         <form class="form-horizontal" name="loginForm" id="loginForm" method="post" action="login.php">

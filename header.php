@@ -60,9 +60,6 @@
                     <?php
                     $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
 
-                    if ($_SESSION["loggedIn"]) {
-                        $loggedIn = $_SESSION["loggedIn"];
-                    }
                     if ($loggedIn == false) {
                         echo '<li><a href="login.php">Login</a></li>';
                     }

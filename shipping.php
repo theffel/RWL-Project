@@ -25,9 +25,7 @@ include('header.php');
         <!-- /.row -->
 
         <?php
-        if ($_SESSION["loggedIn"]) {
-            $loggedIn = $_SESSION["loggedIn"];
-        }
+        $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
 
         // If the user is logged in and the user is the author of the message
         if ($loggedIn == true) {
