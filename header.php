@@ -68,6 +68,14 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
+                                            <!-- Forms left to do:
+                                                    - Daily report
+                                                    - Delivery receipt
+                                                    - Manual motifcations (would probably just be an edit)
+                                                    - Training
+                                                    - Sample
+                                            -->
+
                                             <!-- Dispatcher -->
                                             <a href="product_reception.php">Production Reception</a>
                                             <a href="rejection.php">Rejection</a>
@@ -82,15 +90,20 @@
                                             <!-- Dispatcher and driver -->
                                             <a href="shipping.php">Shipping</a>
 
-                                            <!-- Waterboy -->
-                                            <a href="temperature_checks.php">Temperature Checks</a>
-
-                                            <!-- Maintainance -->
-                                            <a href="equipment_insepection.php">Equipment Insepection</a>
-
                                             <!-- Line worker -->
                                             <a href="wash_line_cleaning.php">Wash Line Cleaning</a>
                                             <a href="plant_cleaning.php">Plant Cleaning</a>
+
+                                            <!-- Maintainance -->
+                                            <a href="equipment_insepection.php">Equipment Insepection</a>
+                                            <a href="repairs_maintenance.php">Repairs and Maintenance</a>
+
+                                            <!-- Management -->
+
+                                            <!-- Sampler -->
+
+                                            <!-- Waterboy -->
+                                            <a href="temperature_checks.php">Temperature Checks</a>
                                         </li>
                                     </ul>
                                 </li>';
