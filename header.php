@@ -69,11 +69,20 @@
                                         <li>
                                             <!-- Dispatcher -->
                                             <a href="product_reception.php">Production Reception</a>
-                                            <a href="shipping.php">Shipping</a>
                                             <a href="rejection.php">Rejection</a>
 
                                             <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
+
+                                            <!-- Dispatcher and driver -->
+                                            <a href="shipping.php">Shipping</a>
+
+                                            <!-- Waterboy -->
+                                            <a href="temperature_checks.php">Temperature Checks</a>
+
+                                            <!-- Line worker -->
+                                            <a href="wash_line_cleaning.php">Wash Line Cleaning</a>
+                                            <a href="plant_cleaning.php">Plant Cleaning</a>
                                         </li>
                                     </ul>
                                 </li>';
