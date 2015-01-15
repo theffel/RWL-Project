@@ -64,19 +64,15 @@
                         }
                         if ($loggedIn == true) {
                             echo '<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dispatcher <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
+                                            <!-- Dispatcher -->
                                             <a href="product_reception.php">Production Reception</a>
                                             <a href="shipping.php">Shipping</a>
-                                        </li>
-                                    </ul>
-                                </li>';
+                                            <a href="rejection.php">Rejection</a>
 
-                            echo '<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Driver <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
+                                            <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
                                         </li>
                                     </ul>

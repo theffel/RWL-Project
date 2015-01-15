@@ -35,6 +35,7 @@ include('header.php');
 
         <form class="form-horizontal">
 
+            <!-- Pre-populated by the system date -->
             <div class="form-group">
                 <label for="date" class="control-label col-xs-2">Date</label>
                 <div class="col-xs-10">
@@ -42,6 +43,15 @@ include('header.php');
                 </div>
             </div>
 
+            <!-- Pre-populated by the system time -->
+            <div class="form-group">
+                <label for="time" class="control-label col-xs-2">Time</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="time" placeholder="">
+                </div>
+            </div>
+
+            <!-- Drop down populated by the database -->
             <div class="form-group">
                 <label for="potType" class="control-label col-xs-2">Type of Potato</label>
                 <div class="col-xs-10">
@@ -49,6 +59,7 @@ include('header.php');
                 </div>
             </div>
 
+            <!-- Drop down populated by the database -->
             <div class="form-group">
                 <label for="potProd" class="control-label col-xs-2">Potato Producer</label>
                 <div class="col-xs-10">
