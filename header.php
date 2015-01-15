@@ -58,13 +58,14 @@
                     </li>
                     <?php
                         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
+                        $username = (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
 
                         if ($loggedIn == false) {
                             echo '<li><a href="login.php">Login</a></li>';
                         }
                         else {
                             echo '<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <!-- Dispatcher -->
@@ -75,6 +76,8 @@
 
                                             <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
+                                            <a href="oil_fluids.php">Oil and Fluids</a>
+                                            <a href="delivery.php">Delivery</a>
 
                                             <!-- Dispatcher and driver -->
                                             <a href="shipping.php">Shipping</a>
