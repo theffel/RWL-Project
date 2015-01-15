@@ -68,19 +68,12 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <!-- Forms left to do:
-                                                    - Daily report
-                                                    - Delivery receipt
-                                                    - Manual motifcations (would probably just be an edit)
-                                                    - Training
-                                                    - Sample
-                                            -->
-
                                             <!-- Dispatcher -->
                                             <a href="product_reception.php">Production Reception</a>
                                             <a href="rejection.php">Rejection</a>
                                             <a href="byproduct_disposal.php">By-Product Disposal</a>
                                             <a href="waste_disposal.php">Waste Disposal</a>
+                                            <a href="daily_mileage.php">Daily Mileage</a>
 
                                             <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
@@ -98,9 +91,8 @@
                                             <a href="equipment_insepection.php">Equipment Insepection</a>
                                             <a href="repairs_maintenance.php">Repairs and Maintenance</a>
 
-                                            <!-- Management -->
-
                                             <!-- Sampler -->
+                                            <a href="sample.php">Sample</a>
 
                                             <!-- Waterboy -->
                                             <a href="temperature_checks.php">Temperature Checks</a>

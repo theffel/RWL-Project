@@ -43,9 +43,23 @@ include('header.php');
             </div>
 
             <div class="form-group">
+                <label for="trailer" class="control-label col-xs-2">Trailer #</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="trailer" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="date" class="control-label col-xs-2">Date</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" id="date" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dispatcher" class="control-label col-xs-2">Dispatcher</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="dispatcher" placeholder="">
                 </div>
             </div>
 
@@ -67,6 +81,27 @@ include('header.php');
                 <label for="arrivalTime" class="control-label col-xs-2">Arrival Time</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="arrivalTime" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loadTime" class="control-label col-xs-2">Load Time</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="loadTime" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="departureTime" class="control-label col-xs-2">Departure Time</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="departureTime" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="unloadTime" class="control-label col-xs-2">Unload Time</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="unloadTime" placeholder="">
                 </div>
             </div>
 
