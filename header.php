@@ -62,7 +62,7 @@
                         if ($loggedIn == false) {
                             echo '<li><a href="login.php">Login</a></li>';
                         }
-                        if ($loggedIn == true) {
+                        else {
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -70,6 +70,8 @@
                                             <!-- Dispatcher -->
                                             <a href="product_reception.php">Production Reception</a>
                                             <a href="rejection.php">Rejection</a>
+                                            <a href="byproduct_disposal.php">By-Product Disposal</a>
+                                            <a href="waste_disposal.php">Waste Disposal</a>
 
                                             <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
@@ -79,6 +81,9 @@
 
                                             <!-- Waterboy -->
                                             <a href="temperature_checks.php">Temperature Checks</a>
+
+                                            <!-- Maintainance -->
+                                            <a href="equipment_insepection.php">Equipment Insepection</a>
 
                                             <!-- Line worker -->
                                             <a href="wash_line_cleaning.php">Wash Line Cleaning</a>
