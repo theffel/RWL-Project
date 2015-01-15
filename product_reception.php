@@ -31,11 +31,6 @@ include('header.php');
         if ($loggedIn == true) {
         ?>
 
-        <h2 class="page-header">View Products</h2>
-        <p>There are currently no products to view.</p>
-        
-        <hr>
-
         <h2 class="page-header">Add a Product</h2>
 
         <form class="form-horizontal">
@@ -157,6 +152,11 @@ include('header.php');
             </div>
 
         </form>
+
+        <hr>
+
+        <h2 class="page-header">View Products</h2>
+        <p>There are currently no products to view.</p>
 
         <?php
         }

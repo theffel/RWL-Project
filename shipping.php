@@ -31,19 +31,21 @@ include('header.php');
         if ($loggedIn == true) {
         ?>
 
-        <h2 class="page-header">View Shipments</h2>
-        <p>There are currently no shipments to view.</p>
-        
-        <hr>
-
         <h2 class="page-header">Add a Shipment</h2>
 
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
+                <label for="date" class="control-label col-xs-2">Load Date</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" id="date" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time" class="control-label col-xs-2">Load Time</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="time" placeholder="">
                 </div>
             </div>
 
@@ -72,6 +74,13 @@ include('header.php');
                 <label for="quanShipped" class="control-label col-xs-2">Quantity Shipped</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="quanShipped" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="weight" class="control-label col-xs-2">Weight</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" name="weight" placeholder="">
                 </div>
             </div>
 
@@ -124,6 +133,11 @@ include('header.php');
             </div>
 
         </form>
+
+        <hr>
+
+        <h2 class="page-header">View Shipments</h2>
+        <p>There are currently no shipments to view.</p>
 
         <?php
         }

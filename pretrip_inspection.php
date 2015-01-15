@@ -31,14 +31,31 @@ include('header.php');
         if ($loggedIn == true) {
         ?>
 
-        <h2 class="page-header">View Inspections</h2>
-        <p>There are currently no inspection to view.</p>
-        
-        <hr>
-
         <h2 class="page-header">Add an Inspection</h2>
 
         <form class="form-horizontal">
+
+            <!-- Pre-populate driver's name from who is logged in -->
+            <div class="form-group">
+                <label for="driverName" class="control-label col-xs-2">Driver's Name</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="driverName" placeholder="">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="date" class="control-label col-xs-2">Date</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="date" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="unitNo" class="control-label col-xs-2">Tractor / Trailer Unit no.s</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="unitNo" placeholder="">
+                </div>
+            </div>
 
             <div class="form-group">
                 <label for="inside" class="control-label col-xs-2">Inside</label>
@@ -142,33 +159,17 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="driverName" class="control-label col-xs-2">Driver's Name</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="driverName" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="unitNo" class="control-label col-xs-2">Tractor / Trailer Unit no.s</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="unitNo" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
 
         </form>
+
+        <hr>
+
+        <h2 class="page-header">View Inspections</h2>
+        <p>There are currently no inspection to view.</p>
 
         <?php
         }
