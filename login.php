@@ -66,6 +66,9 @@ include('header.php');
                             location.replace("index.php");
                             </script>';
             }
+			else{
+				echo "failed login request <br />";
+			}
         }
 
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";

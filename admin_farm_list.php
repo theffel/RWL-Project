@@ -21,11 +21,11 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Farm Addition</h1>
+                <h1 class="page-header">List of Farms</h1>
                 <ol class="breadcrumb">
                     <li><a href="index.php">Home</a>
                     </li>
-                    <li class="active">Add Farm</li>
+                    <li class="active">Farms</li>
                 </ol>
             </div>
         </div>
@@ -34,25 +34,17 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == true) {
+			if ($loggedIn == false) {
 ////////////////////////////////////////////////////////////////////
 						
 				// Create query
-				$count = mysql_query("SELECT COUNT(farm_name) FROM FARM");
-				$i = 0;
-				while($count > $i){ 
-				$query = "select farm_name FROM FARM";
+				$query = "select * FROM FARM";
 				$farms = mysql_query($query);
 				
-				$farm = mysql_fetch_array($farms, MYSQL_NUM);
-					foreach ($farm as $name){
-						$id = "select farm_id FROM FARM WHERE '$name' == farm_name";
-						echo "fine to here <br>";
-						//echo "<input type='submit' name="'$name'" value="'$id'"/><br>";
-					}
-
+				while($row = mysql_fetch_array($farms)){
+					echo $row['farm_name'] . "<br />";
+				//	echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . "'>" . $row['farm_name'] . "</a><br />";
 				}
-				
 				$mysqli->close();
 			}
 
