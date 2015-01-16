@@ -137,27 +137,26 @@ include('header.php');
 							</script>';
 			}
         ?>
-			<hr>
-		</div>
+        <hr>
 
-			<!-- Footer -->
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<p>Copyright &copy; RWL Holdings 2015</p>
-					</div>
-				</div>
-			</footer>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; RWL Holdings 2015</p>
+                </div>
+            </div>
+        </footer>
 
-		
-		<!-- /.container -->
+    </div>
+    <!-- /.container -->
 
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-	</body>
+</body>
 
 </html>
