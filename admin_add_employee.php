@@ -34,7 +34,7 @@ include('header.php');
 			// If the user is logged in, display the add employee form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == false) {
+			if ($loggedIn == true) {
 ////////////////////////////////////////////////////////////////////
 				if (isset($_POST['employeeId']) && isset($_POST['employeeType']) && isset($_POST['employeeCivNum']) && isset($_POST['employeeAddress']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeContact']) && isset($_POST['employeeEmail'])) {
 					$employeeId = $mysqli->real_escape_string($_POST['employeeId']);

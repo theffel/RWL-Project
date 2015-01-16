@@ -99,6 +99,24 @@
                                         </li>
                                     </ul>
                                 </li>';
+
+
+                            echo '<li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Pages <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <!-- Add Farm -->
+                                            <a href="admin_add_farm.php">Add Farm</a>
+                                            
+                                            <!-- Add Employee -->
+                                            <a href="admin_add_employee.php">Add Employee</a>
+
+                                            <!--  View Pages -->
+                                            <a href="admin_farm_list.php">View Farm</a>
+             
+                                        </li>
+                                    </ul>
+                                </li>';
                             echo '<li><a href="login.php?action=logout">Logout</a></li>';
                         }
                     ?>

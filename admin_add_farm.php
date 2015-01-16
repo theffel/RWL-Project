@@ -34,7 +34,7 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == false) {
+			if ($loggedIn == TRUE) {
 ////////////////////////////////////////////////////////////////////
 				if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivNum']) && isset($_POST['farmAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
 					$farmId = $mysqli->real_escape_string($_POST['farmId']);

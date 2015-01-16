@@ -66,18 +66,30 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- Pre-populated by the system date -->
-            <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
+                        <!-- Pre-populated by the system date -->
+                        
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="date" class="control-label col-xs-2">Date</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="date" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="time" class="control-label col-xs-2">Time</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="time" placeholder="">
+                    </div>
                 </div>
             </div>
 
+            <hr>
+
             <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
+                <label for="totalWeight" class="control-label col-xs-2">Total Sample Weight</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
+                    <input type="text" class="form-control" name="totalWeight" placeholder="">
                 </div>
             </div>
 
@@ -193,12 +205,7 @@ include('header.php');
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="totalWeight" class="control-label col-xs-2">Total Sample Weight</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="totalWeight" placeholder="">
-                </div>
-            </div>
+ 
 
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
