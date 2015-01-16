@@ -35,40 +35,39 @@ include('header.php');
 
         <form class="form-horizontal">
 
-            <!-- Pre-populated by the system date -->
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="tank1" class="control-label col-xs-2">Tank #1</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank1" placeholder="">
+                    <input type="text" class="form-control" name="tank1">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="tank2" class="control-label col-xs-2">Tank #2</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank2" placeholder="">
+                    <input type="text" class="form-control" name="tank2">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="tank3" class="control-label col-xs-2">Tank #3</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank3" placeholder="">
+                    <input type="text" class="form-control" name="tank3">
                 </div>
             </div>
 

@@ -36,58 +36,64 @@ include('header.php');
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label for="truck" class="control-label col-xs-2">Truck #</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="truck" placeholder="">
+                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="truck">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="driver" class="control-label col-xs-2">Driver</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="driver" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system date -->
-            <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
+                <label for="driver" class="control-label col-md-2">Driver</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="driver">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="engineOilLiters" class="control-label col-xs-2">Engine Oil Liters</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="engineOilLiters" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="transFluidLiters" class="control-label col-xs-2">Transmission Fluid Liters</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="transFluidLiters" placeholder="">
+                <label for="engineOilLiters" class="control-label col-md-2">Engine Oil Liters</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="engineOilLiters">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="other" class="control-label col-xs-2">Other</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="other" placeholder="">
+                <label for="hydraulicOilLiters" class="control-label col-md-2">Hydraulic Oil Liters</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="hydraulicOilLiters">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <label for="transFluidLiters" class="control-label col-md-2">Transmission Fluid Liters</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="transFluidLiters">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="other" class="control-label col-md-2">Other</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="other">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

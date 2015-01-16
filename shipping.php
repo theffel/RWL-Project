@@ -36,57 +36,58 @@ include('header.php');
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Load Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
+                <label for="date" class="control-label col-md-2">Load Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Load Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Load Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
+                <label for="potType" class="control-label col-md-2">Type of Potato</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="potType">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="potType" class="control-label col-xs-2">Type of Potato</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="potType" placeholder="">
+                <label for="potProd" class="control-label col-md-2">Potato Producer</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="potProd">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="potProd" class="control-label col-xs-2">Potato Producer</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="potProd" placeholder="">
+                <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-xs-2">Load ID Info</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="loadIDInfo" placeholder="">
+                <label for="quanShipped" class="control-label col-md-2">Quantity Shipped</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="quanShipped">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="quanShipped" class="control-label col-xs-2">Quantity Shipped</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="quanShipped" placeholder="">
+                <label for="weight" class="control-label col-md-2">Weight</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="weight">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="weight" class="control-label col-xs-2">Weight</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="weight" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="washed" class="control-label col-xs-2">Washed</label>
-                <div class="col-xs-10">
+                <label for="washed" class="control-label col-md-2">Washed</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="washed" value="Yes"> Yes</li>
                         <li><input type="radio" name="washed" value="No"> No</li>
@@ -95,8 +96,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="destination" class="control-label col-xs-2">Destination</label>
-                <div class="col-xs-10">
+                <label for="destination" class="control-label col-md-2">Destination</label>
+                <div class="col-md-10">
                     <select class="form-control" id="destination">
                         <option value="cavendish1">Cavendish (Plant 1)</option>
                         <option value="cavendish2">Cavendish (Plant 2)</option>
@@ -107,8 +108,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="truckCleaned" class="control-label col-xs-2">Truck Cleaned Upon Return</label>
-                <div class="col-xs-10">
+                <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="truckCleaned" value="Yes"> Yes</li>
                         <li><input type="radio" name="truckCleaned" value="No"> No</li>
@@ -117,8 +118,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="accepted" class="control-label col-xs-2">Accepted</label>
-                <div class="col-xs-10">
+                <label for="accepted" class="control-label col-md-2">Accepted</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="accepted" value="Yes"> Yes</li>
                         <li><input type="radio" name="accepted" value="No"> No</li>
@@ -127,7 +128,7 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

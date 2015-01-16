@@ -34,56 +34,55 @@ include('header.php');
         <h2 class="page-header">Add a Product</h2>
 
         <form class="form-horizontal">
-
-            <!-- Pre-populated by the system date -->
+        
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
-                </div>
-            </div>
-
-            <!-- Drop down populated by the database -->
-            <div class="form-group">
-                <label for="potType" class="control-label col-xs-2">Type of Potato</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="potType" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Drop down populated by the database -->
             <div class="form-group">
-                <label for="potProd" class="control-label col-xs-2">Potato Producer</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="potProd" placeholder="">
+                <label for="potType" class="control-label col-md-2">Type of Potato</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="potType">
+                </div>
+            </div>
+
+            <!-- Drop down populated by the database -->
+            <div class="form-group">
+                <label for="potProd" class="control-label col-md-2">Potato Producer</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="potProd">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-xs-2">Load ID Info</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="loadIDInfo" placeholder="">
+                <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="quanRecieved" class="control-label col-xs-2">Quantity Recieved</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="quanRecieved" placeholder="">
+                <label for="quanRecieved" class="control-label col-md-2">Quantity Recieved</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="quanRecieved">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="bulkOther" class="control-label col-xs-2">Bulk or Other</label>
-                <div class="col-xs-10">
+                <label for="bulkOther" class="control-label col-md-2">Bulk or Other</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="bulkOther" value="Bulk"> Bulk</li>
                         <li><input type="radio" name="bulkOther" value="Other"> Other</li>
@@ -92,8 +91,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="washed" class="control-label col-xs-2">Washed</label>
-                <div class="col-xs-10">
+                <label for="washed" class="control-label col-md-2">Washed</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="washed" value="Yes"> Yes</li>
                         <li><input type="radio" name="washed" value="No"> No</li>
@@ -102,9 +101,9 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="cleanliness" class="control-label col-xs-2">Cleanliness of Trailer After Unloading</label>
-                <div class="col-xs-10">
-                    <select class="form-control" id="cleanliness">
+                <label for="cleanliness" class="control-label col-md-2">Cleanliness of Trailer After Unloading</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="cleanliness">
                         <option value="cleanliness1">1</option>
                         <option value="cleanliness2">2</option>
                         <option value="cleanliness3">3</option>
@@ -120,8 +119,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="CFIANotified" class="control-label col-xs-2">CFIA Notified</label>
-                <div class="col-xs-10">
+                <label for="CFIANotified" class="control-label col-md-2">CFIA Notified</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="CFIANotified" value="Yes"> Yes</li>
                         <li><input type="radio" name="CFIANotified" value="No"> No</li>
@@ -130,15 +129,15 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="CFIANotifiedBy" class="control-label col-xs-2">CFIA Notified By</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="CFIANotifiedBy" placeholder="">
+                <label for="CFIANotifiedBy" class="control-label col-md-2">CFIA Notified By</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="CFIANotifiedBy">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="movementCert" class="control-label col-xs-2">Movement Certifcate</label>
-                <div class="col-xs-10">
+                <label for="movementCert" class="control-label col-md-2">Movement Certifcate</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="movementCert" value="Yes"> Yes</li>
                         <li><input type="radio" name="movementCert" value="No"> No</li>
@@ -147,8 +146,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="accepted" class="control-label col-xs-2">Accepted</label>
-                <div class="col-xs-10">
+                <label for="accepted" class="control-label col-md-2">Accepted</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="accepted" value="Yes"> Yes</li>
                         <li><input type="radio" name="accepted" value="No"> No</li>
@@ -157,7 +156,7 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

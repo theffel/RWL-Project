@@ -35,40 +35,39 @@ include('header.php');
 
         <form class="form-horizontal">
 
-            <!-- Pre-populated by the system date -->
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Drop down populated by the database -->
             <div class="form-group">
-                <label for="producer" class="control-label col-xs-2">Producer</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="producer" placeholder="">
+                <label for="producer" class="control-label col-md-2">Producer</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="producer">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-xs-2">Load ID Info</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="loadIDInfo" placeholder="">
+                <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="rewashedRegraded" class="control-label col-xs-2">Was Product Re-Washed, Re-Graded</label>
-                <div class="col-xs-10">
+                <label for="rewashedRegraded" class="control-label col-md-2">Was Product Re-Washed, Re-Graded</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="radio" name="rewashedRegraded" value="Yes"> Yes</li>
                         <li><input type="radio" name="rewashedRegraded" value="No"> No</li>
@@ -77,8 +76,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="prodReturned" class="control-label col-xs-2">Product Returned</label>
-                <div class="col-xs-10">
+                <label for="prodReturned" class="control-label col-md-2">Product Returned</label>
+                <div class="col-md-10">
                     <ul class="list-inline">
                         <li><input type="checkbox" name="prodReturned" value="Processor"> Processor</input></li>
                         <li><input type="checkbox" name="prodReturned" value="Producer"> Producer</input></li>
@@ -86,14 +85,14 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="returnDate" class="control-label col-xs-2">Date of Return</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="returnDate" placeholder="">
+                <label for="returnDate" class="control-label col-md-2">Date of Return</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="returnDate" placeholder="MM-DD-YYYY">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

@@ -35,45 +35,44 @@ include('header.php');
 
         <form class="form-horizontal">
 
-            <!-- Pre-populated by the system date -->
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="equipWorked" class="control-label col-xs-2">Equipment Worked On</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="equipWorked" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="workDesc" class="control-label col-xs-2">Description of Work Done</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="workDesc" placeholder="">
+                <label for="equipWorked" class="control-label col-md-2">Equipment Worked On</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="equipWorked">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="technicianName" class="control-label col-xs-2">Name of Technician</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="technicianName" placeholder="">
+                <label for="workDesc" class="control-label col-md-2">Description of Work Done</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" name="workDesc" rows="5"></textarea>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <label for="technicianName" class="control-label col-md-2">Name of Technician</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="technicianName">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

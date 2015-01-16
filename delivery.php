@@ -36,98 +36,98 @@ include('header.php');
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label for="truck" class="control-label col-xs-2">Truck #</label>
-                <div class="col-xs-10">
+                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="truck" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="trailer" class="control-label col-xs-2">Trailer #</label>
-                <div class="col-xs-10">
+                <label for="trailer" class="control-label col-md-2">Trailer #</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="trailer" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" id="date" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="dispatcher" class="control-label col-xs-2">Dispatcher</label>
-                <div class="col-xs-10">
+                <label for="dispatcher" class="control-label col-md-2">Dispatcher</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" id="dispatcher" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="driver" class="control-label col-xs-2">Driver</label>
-                <div class="col-xs-10">
+                <label for="driver" class="control-label col-md-2">Driver</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="driver" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="farm" class="control-label col-xs-2">Farm</label>
-                <div class="col-xs-10">
+                <label for="farm" class="control-label col-md-2">Farm</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="farm" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="arrivalTime" class="control-label col-xs-2">Arrival Time</label>
-                <div class="col-xs-10">
+                <label for="arrivalTime" class="control-label col-md-2">Arrival Time</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="arrivalTime" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="loadTime" class="control-label col-xs-2">Load Time</label>
-                <div class="col-xs-10">
+                <label for="loadTime" class="control-label col-md-2">Load Time</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="loadTime" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="departureTime" class="control-label col-xs-2">Departure Time</label>
-                <div class="col-xs-10">
+                <label for="departureTime" class="control-label col-md-2">Departure Time</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="departureTime" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="unloadTime" class="control-label col-xs-2">Unload Time</label>
-                <div class="col-xs-10">
+                <label for="unloadTime" class="control-label col-md-2">Unload Time</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="unloadTime" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="ticketNumber" class="control-label col-xs-2">Ticket Number</label>
-                <div class="col-xs-10">
+                <label for="ticketNumber" class="control-label col-md-2">Ticket Number</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="ticketNumber" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="grossWeight" class="control-label col-xs-2">Gross Weight</label>
-                <div class="col-xs-10">
+                <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="grossWeight" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="tareWeight" class="control-label col-xs-2">Tare Weight</label>
-                <div class="col-xs-10">
+                <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="tareWeight" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

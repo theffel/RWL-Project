@@ -35,39 +35,38 @@ include('header.php');
 
         <form class="form-horizontal">
 
-            <!-- Pre-populated by the system date -->
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="desc" class="control-label col-xs-2">Description of Product</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="desc" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="sent" class="control-label col-xs-2">Where Product Was Sent</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="sent" placeholder="">
+                <label for="desc" class="control-label col-md-2">Description of Product</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="desc">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="disposed" class="control-label col-xs-2">How Product Was Disposed Of</label>
-                <div class="col-xs-10">
+                <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="sent">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
+                <div class="col-md-10">
                     <select class="form-control" id="disposed">
                         <option value="deepBurial">Deep Burial</option>
                         <option value="other">Other</option>
@@ -76,8 +75,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="transported" class="control-label col-xs-2">How Product Was Transported</label>
-                <div class="col-xs-10">
+                <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
+                <div class="col-md-10">
                     <select class="form-control" id="transported">
                         <option value="trailer">Trailer</option>
                         <option value="dumptruck">Dumptruck</option>
@@ -86,7 +85,7 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

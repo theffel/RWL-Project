@@ -36,63 +36,63 @@ include('header.php');
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label for="truck" class="control-label col-xs-2">Truck #</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="truck" placeholder="">
+                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="truck">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="startDate" class="control-label col-xs-2">Start Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="startDate" placeholder="">
+                <label for="startDate" class="control-label col-md-2">Start Date</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="startDate" placeholder="MM-DD-YYYY">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="startKmTruck" class="control-label col-xs-2">Start KM on Truck</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="startKmTruck" placeholder="">
+                <label for="startKmTruck" class="control-label col-md-2">Start KM on Truck</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="startKmTruck">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="peiKm" class="control-label col-xs-2">P.E.I. KM</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="peiKm" placeholder="">
+                <label for="peiKm" class="control-label col-md-2">PEI KM</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="peiKm">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="nbKM" class="control-label col-xs-2">N.B. KM</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="nbKM" placeholder="">
+                <label for="nbKM" class="control-label col-md-2">NB KM</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="nbKM">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="nsKm" class="control-label col-xs-2">N.S. KM</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="nsKm" placeholder="">
+                <label for="nsKm" class="control-label col-md-2">NS KM</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="nsKm">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="litresFuelTank" class="control-label col-xs-2">Litres of Fuel in the Tank</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="litresFuelTank" placeholder="">
+                <label for="litresFuelTank" class="control-label col-md-2">Litres of Fuel in the Tank</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="litresFuelTank">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="finishKm" class="control-label col-xs-2">Finish KM</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="finishKm" placeholder="">
+                <label for="finishKm" class="control-label col-md-2">Finish KM</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="finishKm">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

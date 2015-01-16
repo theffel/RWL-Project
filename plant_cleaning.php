@@ -35,45 +35,44 @@ include('header.php');
 
         <form class="form-horizontal">
 
-            <!-- Pre-populated by the system date -->
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="date" placeholder="">
-                </div>
-            </div>
-
-            <!-- Pre-populated by the system time -->
-            <div class="form-group">
-                <label for="time" class="control-label col-xs-2">Time</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="time" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="equipClean" class="control-label col-xs-2">Equipment Cleaned</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="equipClean" placeholder="">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
+                        </div>
+                        <label for="time" class="control-label col-md-2">Time</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="time">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="descClean" class="control-label col-xs-2">Description of Cleaning</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="descClean" placeholder="">
+                <label for="equipClean" class="control-label col-md-2">Equipment Cleaned</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="equipClean">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="nameClean" class="control-label col-xs-2">Name of Cleaner(s)</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" name="nameClean" placeholder="">
+                <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="descClean">
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="nameClean">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>

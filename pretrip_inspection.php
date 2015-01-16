@@ -37,36 +37,50 @@ include('header.php');
 
             <!-- Pre-populate driver's name from who is logged in -->
             <div class="form-group">
-                <label for="driverName" class="control-label col-xs-2">Driver's Name</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="driverName" placeholder="">
+                <label for="driverName" class="control-label col-md-2">Driver's Name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="driverName" disabled>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="date" class="control-label col-xs-2">Date</label>
-                <div class="col-xs-10">
+                <label for="date" class="control-label col-md-2">Date</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" id="date" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="unitNo" class="control-label col-xs-2">Tractor / Trailer Unit no.s</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="unitNo" placeholder="">
+                <label for="tractor" class="control-label col-md-2">Tractor #</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="tractor" placeholder="">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inside" class="control-label col-xs-2">Inside</label>
-                <div class="col-xs-10">
+                <label for="trailer" class="control-label col-md-2">Trailer #</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="trailer" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inside" class="control-label col-md-2">Inside</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="inside" value="Parking Brake (Apply)"> Parking Brake (Apply)</input>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="startEngine" class="control-label col-xs-2">Start Engine</label>
-                <div class="col-xs-10">
+                <label for="cleanliness" class="control-label col-md-2">Cleanliness</label>
+                <div class="col-md-10">
+                    <input type="checkbox" name="cleanliness" value="Cleanliness"> Cleanliness</input>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="startEngine" class="control-label col-md-2">Start Engine</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="startEngine" value="Oil Pressure (Light or Gauge)"> Oil Pressure (Light or Gauge)</input><br />
                     <input type="checkbox" name="startEngine" value="Air Pressure or Vacuum (Gauge)"> Air Pressure or Vacuum (Gauge)</input><br />
                     <input type="checkbox" name="startEngine" value="Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works."> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />
@@ -83,8 +97,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="front" class="control-label col-xs-2">Front</label>
-                <div class="col-xs-10">
+                <label for="front" class="control-label col-md-2">Front</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="front" value="Headlights"> Headlights</input><br />
                     <input type="checkbox" name="front" value="Clearance Lights"> Clearance Lights</input><br />
                     <input type="checkbox" name="front" value="Identification Lights"> Identification Lights</input><br />
@@ -94,8 +108,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="leftSide" class="control-label col-xs-2">Left Side</label>
-                <div class="col-xs-10">
+                <label for="leftSide" class="control-label col-md-2">Left Side</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="leftSide" value="Fuel Tank and Cap"> Fuel Tank and Cap</input><br />
                     <input type="checkbox" name="leftSide" value="Sidemarker Lights"> Sidemarker Lights</input><br />
                     <input type="checkbox" name="leftSide" value="Reflectors"> Reflectors</input><br />
@@ -105,8 +119,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="rear" class="control-label col-xs-2">Rear</label>
-                <div class="col-xs-10">
+                <label for="rear" class="control-label col-md-2">Rear</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="rear" value="Tail Lights"> Tail Lights</input><br />
                     <input type="checkbox" name="rear" value="Stop Lights"> Stop Lights</input><br />
                     <input type="checkbox" name="rear" value="Turn Signals and 4-way flasher"> Turn Signals and 4-way flasher</input><br />
@@ -120,8 +134,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="rightSide" class="control-label col-xs-2">Right Side</label>
-                <div class="col-xs-10">
+                <label for="rightSide" class="control-label col-md-2">Right Side</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="rightSide" value="Fuel Tank and Cap"> Fuel Tank and Cap</input><br />
                     <input type="checkbox" name="rightSide" value="Sidemarker Lights"> Sidemarker Lights</input><br />
                     <input type="checkbox" name="rightSide" value="Reflectors"> Reflectors</input><br />
@@ -131,8 +145,8 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="onCombinations" class="control-label col-xs-2">On Combinations</label>
-                <div class="col-xs-10">
+                <label for="onCombinations" class="control-label col-md-2">On Combinations</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="onCombinations" value="Hoses and Couplers"> Hoses and Couplers</input><br />
                     <input type="checkbox" name="onCombinations" value="Electrical Connector"> Electrical Connector</input><br />
                     <input type="checkbox" name="onCombinations" value="Couplings (Fifth wheel, tow bar, safety chains, locking devices)"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>
@@ -140,16 +154,16 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <label for="onHazMaterials" class="control-label col-xs-2">On Vehicles Transporting Hazardous Materials</label>
-                <div class="col-xs-10">
+                <label for="onHazMaterials" class="control-label col-md-2">On Vehicles Transporting Hazardous Materials</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="onHazMaterials" value="Marking or Placards"> Marking or Placards</input><br />
                     <input type="checkbox" name="onHazMaterials" value="Proper Shipping Papers"> Proper Shipping Papers</input>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="stopEngine" class="control-label col-xs-2">Stop Engine</label>
-                <div class="col-xs-10">
+                <label for="stopEngine" class="control-label col-md-2">Stop Engine</label>
+                <div class="col-md-10">
                     <input type="checkbox" name="stopEngine" value="Release Trailer Emergency Brakes"> Release Trailer Emergency Brakes</input><br />
                     <input type="checkbox" name="stopEngine" value="Apply service Brakes-Air loss should not exceed"> Apply service Brakes-Air loss should not exceed:<ul>
                         <li>3 psi per minute on single vehicles</li>
@@ -159,7 +173,7 @@ include('header.php');
             </div>
 
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
