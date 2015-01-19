@@ -74,11 +74,11 @@ if (isset($_POST['submit'])) {
             $_SESSION['loggedIn'] = $loggedIn;
             $_SESSION['username'] = $username;
             // Go to the index.php
-            echo '<script type="text/javascript">location.replace("../index.php");</script>';
+            header("location: ../index.php");
         }
         // If the login was not successful
         else {
-            // Do something
+            header("location: index.php");
         }
     }
 ?>
