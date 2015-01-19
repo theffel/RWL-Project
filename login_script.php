@@ -42,8 +42,8 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     // To protect MySQL injection for Security purposes
-    $username = $mysqli->real_escape_string($_POST['username']);
-    $password = $mysqli->real_escape_string($_POST['password']);
+    $username = $db->real_escape_string($_POST['username']);
+    $password = $db->real_escape_string($_POST['password']);
 
     // $username = stripslashes($username);
     // $password = stripslashes($password);
