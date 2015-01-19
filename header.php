@@ -77,6 +77,7 @@
 
                                             <!-- Driver -->
                                             <a href="pretrip_inspection.php">Pre-Trip Inspection</a>
+                                            <a href="fuel.php">Fuel</a>
                                             <a href="oil_fluids.php">Oil and Fluids</a>
                                             <a href="delivery.php">Delivery</a>
 

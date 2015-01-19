@@ -1,27 +1,6 @@
 <?php
-// Start the session
-session_start();
-
-// Destroy the session and clear the session cookie
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'logout') {
-        // Kill the server-side session
-        session_destroy();
-
-        // Kill the client-side cookie that stores the session ID
-        if (ini_get("session.use_cookies")) {
-            $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
-            );
-        }
-    }
-    header('location:index.php');
-}
-
 // Include the database.php file
-include('database.php');
+include('login_script.php');
 
 // Include the header.php file
 include('header.php');
@@ -66,9 +45,6 @@ include('header.php');
                             location.replace("index.php");
                             </script>';
             }
-			else{
-				echo "failed login request <br />";
-			}
         }
 
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
