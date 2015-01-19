@@ -25,7 +25,9 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="index.php">Home</a>
                     </li>
-                    <li class="active">Farms</li>
+					<li><a href="admin_farm_list.php">Farms</a>
+                    </li>
+                    <li class="active">Bins</li>
                 </ol>
             </div>
         </div>
@@ -36,13 +38,14 @@ include('header.php');
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
 			if ($loggedIn == true) {
 ////////////////////////////////////////////////////////////////////
-						
+				// Get Farm Id
+				$id = $_GET["id"];
 				// Create query
-				$query = "select * FROM FARM";
-				$farms = mysql_query($query);
+				$query = "select * FROM bins WHERE wareouse_id = '$id'";
+				$result = mysql_query($query);
 				
-				while($row = mysql_fetch_array($farms)){
-					echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . "'>" . $row['farm_name'] . "</a><br />";
+				while($row = mysql_fetch_array($result)){
+					echo  $row['bin_name'] . "<br />";
 				}
 				$mysqli->close();
 			}
