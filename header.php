@@ -12,13 +12,13 @@
     <title>PEI Potato Solutions</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/PHP/RWL/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="http://localhost/PHP/RWL/css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://localhost/PHP/RWL/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">PEI Potato Solutions</a>
+                <a class="navbar-brand" href="http://localhost/PHP/RWL/index.php">PEI Potato Solutions</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,7 +61,7 @@
                         $username = (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
 
                         if ($loggedIn == false) {
-                            echo '<li><a href="login.php">Login</a></li>';
+                            echo '<li><a href="login">Login</a></li>';
                         }
                         else {
                             echo '<li class="dropdown">
@@ -118,7 +118,7 @@
                                         </li>
                                     </ul>
                                 </li>';
-                            echo '<li><a href="login.php?action=logout">Logout</a></li>';
+                            echo '<li><a href="login/index.php?action=logout">Logout</a></li>';
                         }
                     ?>
                 </ul>

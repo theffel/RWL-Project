@@ -1,4 +1,20 @@
 <?php
+/**
+ * This file provides the business functionality for the login index.php page.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Zachary Theriault
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-12
+ */
+
 // Start the session
 session_start();
 
@@ -7,7 +23,6 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'logout') {
         // Kill the server-side session
         session_destroy();
-
         // Kill the client-side cookie that stores the session ID
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
@@ -41,14 +56,9 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // To protect MySQL injection for Security purposes
+    // To protect MySQL injection for security purposes
     $username = $db->real_escape_string($_POST['username']);
     $password = $db->real_escape_string($_POST['password']);
-
-    // $username = stripslashes($username);
-    // $password = stripslashes($password);
-    // $username = mysql_real_escape_string($username);
-    // $password = mysql_real_escape_string($password);
 
     // Create query
     $query = "SELECT COUNT(*) FROM Users WHERE Username='" .$username ."' AND Password=sha1('" .$password ."')";
@@ -62,17 +72,13 @@ if (isset($_POST['submit'])) {
 
             // Store the login boolean and the username of the logged in user in the session
             $_SESSION['loggedIn'] = $loggedIn;
-            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['username'] = $username;
             // Go to the index.php
-            echo '<script type="text/javascript">
-                        location.replace("index.php");
-                        </script>';
+            echo '<script type="text/javascript">location.replace("../index.php");</script>';
         }
-
+        // If the login was not successful
         else {
-            echo '<script type="text/javascript">
-                        location.replace("login_failed.php");
-                        </script>';
+            // Do something
         }
     }
 ?>

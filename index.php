@@ -128,16 +128,10 @@ include('header.php');
             </div>
         </div>
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; RWL Holdings 2015</p>
-                </div>
-            </div>
-        </footer>
+        <?php
+        // Include the footer.php file
+        include('footer.php');
+        ?>
 
     </div>
     <!-- /.container -->
