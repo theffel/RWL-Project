@@ -6,7 +6,7 @@ require_once('MysqliDb.php');
 $host = "localhost";
 $name = "rwl_user";
 $pass = "rwl_pass";
-$db = "rwl";
+$db = "rwlholdings_potato_solutions";
 
 // Create connection to the database
 @$db = new MysqliDb($host, $name, $pass, $db);

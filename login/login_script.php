@@ -39,7 +39,7 @@ if (isset($_GET['action'])) {
 $host = "localhost";
 $name = "rwl_user";
 $pass = "rwl_pass";
-$db = "rwl";
+$db = "rwlholdings_potato_solutions";
 
 // Create connection to the database
 @$db = new mysqli($host, $name, $pass, $db);
@@ -61,7 +61,8 @@ if (isset($_POST['submit'])) {
     $password = $db->real_escape_string($_POST['password']);
 
     // Create query
-    $query = "SELECT COUNT(*) FROM Users WHERE Username='" .$username ."' AND Password=sha1('" .$password ."')";
+   // $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password=sha1('" .$password ."')";
+    $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password='" .$password ."'";
     $result = $db->query($query);
 
         $row = $result->fetch_row();
