@@ -52,28 +52,21 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <!-- Dispatcher -->
                                             <a href="'. ROOT . '/product_reception">Production Reception</a>
                                             <a href="'. ROOT . '/rejection.php">Rejection</a>
                                             <a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>
                                             <a href="'. ROOT . '/waste_disposal">Waste Disposal</a>
                                             <a href="'. ROOT . '/daily_mileage">Daily Mileage</a>
-                                            <!-- Driver -->
                                             <a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>
                                             <a href="'. ROOT . '/fuel">Fuel</a>
                                             <a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>
                                             <a href="'. ROOT . '/delivery">Delivery</a>
-                                            <!-- Dispatcher and driver -->
                                             <a href="'. ROOT . '/shipping">Shipping</a>
-                                            <!-- Line worker -->
                                             <a href="'. ROOT . '/wash_line_cleaning">Wash Line Cleaning</a>
                                             <a href="'. ROOT . '/plant_cleaning">Plant Cleaning</a>
-                                            <!-- Maintainance -->
                                             <a href="'. ROOT . '/equipment_insepection">Equipment Insepection</a>
                                             <a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>
-                                            <!-- Sampler -->
                                             <a href="'. ROOT . '/sample">Sample</a>
-                                            <!-- Waterboy -->
                                             <a href="'. ROOT . '/temperature_checks">Temperature Checks</a>
                                         </li>
                                     </ul>
@@ -82,11 +75,8 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Pages <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <!-- Add Farm -->
                                             <a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>
-                                            <!-- Add Employee -->
                                             <a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>
-                                            <!--  View Pages -->
                                             <a href="'. ROOT . '/admin_farm_list.php">View Farm</a>
                                         </li>
                                     </ul>
