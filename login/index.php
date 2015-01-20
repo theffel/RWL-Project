@@ -41,19 +41,19 @@ include('../header.php');
         ?>
         <form class="form-horizontal" name="loginForm" id="loginForm" method="post" action="index.php">
             <div class="form-group">
-                <label for="inputEmail" class="control-label col-xs-2">Username</label>
-                <div class="col-xs-10">
+                <label for="inputEmail" class="control-label col-md-2">Username</label>
+                <div class="col-md-10">
                     <input type="text" class="form-control" name="username" id="username" placeholder="Username" required data-validation-required-message="Please enter your username.">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword" class="control-label col-xs-2">Password</label>
-                <div class="col-xs-10">
+                <label for="inputPassword" class="control-label col-md-2">Password</label>
+                <div class="col-md-10">
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required data-validation-required-message="Please enter your password.">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-xs-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Login"/>
                 </div>
             </div>

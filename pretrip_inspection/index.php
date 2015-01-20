@@ -19,14 +19,13 @@
 session_start();
 
 // Include the database.php file
-include('database.php');
+include('../database.php');
 
 // Include the header.php file
-include('header.php');
+include('../header.php');
 ?>
     <!-- Page Content -->
     <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
@@ -38,14 +37,11 @@ include('header.php');
             </div>
         </div>
         <!-- /.row -->
-
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-
         // If the user is logged in and the user is the author of the message
         if ($loggedIn == true) {
         ?>
-
         <h2 class="page-header">Add an Inspection</h2>
 
         <form class="form-horizontal">
@@ -199,15 +195,13 @@ include('header.php');
 
         <h2 class="page-header">View Inspections</h2>
         <p>There are currently no inspection to view.</p>
-
         <?php
         }
         else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
-
         // Include the footer.php file
-        include('footer.php');
+        include('../footer.php');
         ?>
     </div>
     <!-- /.container -->

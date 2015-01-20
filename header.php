@@ -14,12 +14,6 @@
     <link href="<?php echo ROOT; ?>/css/modern-business.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="<?php echo ROOT; ?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
     <!-- Navigation -->
@@ -59,18 +53,18 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <!-- Dispatcher -->
-                                            <a href="'. ROOT . '/product_reception.php">Production Reception</a>
+                                            <a href="'. ROOT . '/product_reception">Production Reception</a>
                                             <a href="'. ROOT . '/rejection.php">Rejection</a>
                                             <a href="'. ROOT . '/byproduct_disposal.php">By-Product Disposal</a>
                                             <a href="'. ROOT . '/waste_disposal.php">Waste Disposal</a>
                                             <a href="'. ROOT . '/daily_mileage.php">Daily Mileage</a>
                                             <!-- Driver -->
-                                            <a href="'. ROOT . '/pretrip_inspection.php">Pre-Trip Inspection</a>
+                                            <a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>
                                             <a href="'. ROOT . '/fuel.php">Fuel</a>
                                             <a href="'. ROOT . '/oil_fluids.php">Oil and Fluids</a>
                                             <a href="'. ROOT . '/delivery.php">Delivery</a>
                                             <!-- Dispatcher and driver -->
-                                            <a href="'. ROOT . '/shipping.php">Shipping</a>
+                                            <a href="'. ROOT . '/shipping">Shipping</a>
                                             <!-- Line worker -->
                                             <a href="'. ROOT . '/wash_line_cleaning.php">Wash Line Cleaning</a>
                                             <a href="'. ROOT . '/plant_cleaning.php">Plant Cleaning</a>
