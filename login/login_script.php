@@ -18,6 +18,9 @@
 // Start the session
 session_start();
 
+// Include the database.php file
+include('../database.php');
+
 // Destroy the session and clear the session cookie
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'logout') {
@@ -35,23 +38,7 @@ if (isset($_GET['action'])) {
     header('location:index.php');
 }
 
-// Login information variables
-$host = "localhost";
-$name = "rwl_user";
-$pass = "rwl_pass";
-$db = "rwlholdings_potato_solutions";
-
-// Create connection to the database
-@$db = new mysqli($host, $name, $pass, $db);
-
-// Display message if there is an error connecting to the database
-if (mysqli_connect_errno()) {
-    echo '<h1>Error: Could not connect to database. Please try again later.</h1>';
-    exit;
-}
-
 if (isset($_POST['submit'])) {
-
     // Define $username and $password
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -61,27 +48,27 @@ if (isset($_POST['submit'])) {
     $password = $db->real_escape_string($_POST['password']);
 
     // Create query
-   // $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password=sha1('" .$password ."')";
+    // $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password=sha1('" .$password ."')";
     $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password='" .$password ."'";
     $result = $db->query($query);
 
-        $row = $result->fetch_row();
+    $row = $result->fetch_row();
 
-        // If the login was successful
-        if ($row[0] == 1) {
-            $loggedIn = true;
-            $employeeType = 1;
+    // If the login was successful
+    if ($row[0] == 1) {
+        $loggedIn = true;
+        //$employeeType = 1;
 
-            // Store the login boolean and the username of the logged in user in the session
-            $_SESSION['loggedIn'] = $loggedIn;
-            $_SESSION['username'] = $username;
-            $_SESSION['employeeType'] = $employeeType;
-            // Go to the index.php
-            header("location: ../index.php");
-        }
-        // If the login was not successful
-        else {
-            header("location: index.php");
-        }
+        // Store the login boolean and the username of the logged in user in the session
+        $_SESSION['loggedIn'] = $loggedIn;
+        $_SESSION['username'] = $username;
+        //$_SESSION['employeeType'] = $employeeType;
+        // Go to the index.php
+        header("location: ../index.php");
     }
+    // If the login was not successful
+    else {
+        header("location: index.php");
+    }
+}
 ?>
