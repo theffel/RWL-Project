@@ -31,7 +31,7 @@ include('../header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">Product Reception</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="../index.php">Home</a></li>
                     <li class="active">Product Reception</li>
                 </ol>
             </div>
@@ -192,8 +192,8 @@ include('../header.php');
     </div>
     <!-- /.container -->
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

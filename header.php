@@ -60,9 +60,9 @@
                                             <a href="'. ROOT . '/daily_mileage.php">Daily Mileage</a>
                                             <!-- Driver -->
                                             <a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>
-                                            <a href="'. ROOT . '/fuel.php">Fuel</a>
-                                            <a href="'. ROOT . '/oil_fluids.php">Oil and Fluids</a>
-                                            <a href="'. ROOT . '/delivery.php">Delivery</a>
+                                            <a href="'. ROOT . '/fuel">Fuel</a>
+                                            <a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>
+                                            <a href="'. ROOT . '/delivery">Delivery</a>
                                             <!-- Dispatcher and driver -->
                                             <a href="'. ROOT . '/shipping">Shipping</a>
                                             <!-- Line worker -->
@@ -72,7 +72,7 @@
                                             <a href="'. ROOT . '/equipment_insepection.php">Equipment Insepection</a>
                                             <a href="'. ROOT . '/repairs_maintenance.php">Repairs and Maintenance</a>
                                             <!-- Sampler -->
-                                            <a href="'. ROOT . '/sample.php">Sample</a>
+                                            <a href="'. ROOT . '/sample">Sample</a>
                                             <!-- Waterboy -->
                                             <a href="'. ROOT . '/temperature_checks.php">Temperature Checks</a>
                                         </li>
