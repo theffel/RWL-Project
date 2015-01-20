@@ -98,6 +98,15 @@ INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`) VALUES
 (8, 'accounting'),
 (9, 'fleet management');
 
+-- 
+-- Table structure for table `Job_Type`
+-- 
+CREATE TABLE IF NOT EXISTS `Job_Type` (
+`emp_type_id` int(2) unsigned NOT NULL,
+`emp_id` int(3) unsigned NOT NULL,
+PRIMARY KEY (`emp_type_id`, `emp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+
 
 -- 
 -- Table structure for table `Employee_Position`
