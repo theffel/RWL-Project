@@ -41,11 +41,11 @@ include('header.php');
 				// Get Farm Id
 				$id = $_GET["id"];
 				// Create query
-				$query = "select * FROM bins WHERE wareouse_id = '$id'";
+				$query = "select * FROM warehouse_bin WHERE wareouse_id = '$id'";
 				$result = mysql_query($query);
 				
 				while($row = mysql_fetch_array($result)){
-					echo  $row['bin_name'] . "<br />";
+					echo  $row['bin_marker'] . "<br />";
 				}
 				$mysqli->close();
 			}

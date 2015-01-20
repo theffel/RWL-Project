@@ -36,25 +36,24 @@ include('header.php');
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
 			if ($loggedIn == TRUE) {
 ////////////////////////////////////////////////////////////////////
-				if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivNum']) && isset($_POST['farmAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
-					$farmId = $mysqli->real_escape_string($_POST['farmId']);
-					$farmName = $mysqli->real_escape_string($_POST['farmName']);
-					$farmCivNum = $mysqli->real_escape_string($_POST['farmCivNum']);
-					$farmAddress = $mysqli->real_escape_string($_POST['farmAddress']);
-					$farmPhoneNum = $mysqli->real_escape_string($_POST['farmPhoneNum']);
-					$farmContact = $mysqli->real_escape_string($_POST['farmContact']);
-					$farmEmail = $mysqli->real_escape_string($_POST['farmEmail']);
+				if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
+					$farmId = $db->escape($_POST['farmId']);
+					$farmName = $db->escape($_POST['farmName']);
+					$farmCivAddress = $db->escape($_POST['farmCivAddress']);
+					$farmPhoneNum = $db->escape($_POST['farmPhoneNum']);
+					$farmContact = $db->escape($_POST['farmContact']);
+					$farmEmail = $db->escape($_POST['farmEmail']);
 
 					// Create query
-					$query = "INSERT INTO FARM (farm_id, farm_name, farm_civic_num, farm_address, farm_phone, farm_contact, farm_email) VALUES ('$farmId', '$farmName', '$farmCivNum', '$farmAddress', '$farmPhoneNum', '$farmContact', '$farmEmail')";
+					$query = "INSERT INTO `farm` (farm_id, farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ('$farmId', '$farmName', '$farmCivAddress',  '$farmPhoneNum', '$farmEmail', '$farmContact');";
 
-					if ($mysqli->query($query) === TRUE) {
+					if ($db->query($query) === TRUE) {
 						echo "New record created successfully";
 					} else {
-						echo "Error: " . $query . "<br>" . $mysqli->error;
+						echo "Error: " . $query . "<br>" . $db->error;
 					}
 
-					$mysqli->close();
+					$db->close();
 				}
 
 
@@ -79,19 +78,11 @@ include('header.php');
 						</div>
 					</div>
 					
-					<!--Farm Civic Number-->
+					<!--Farm Civic Address-->
 					<div class="form-group">
-						<label for="inputFarmCivNum" class="control-label col-xs-2">Farm Civic Number</label>
+						<label for="inputFarmCivAddress" class="control-label col-xs-2">Farm Civic Address</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmCivNum" id="farmCivNum" placeholder="Farm Civic #" required data-validation-required-message="Please enter the civic number of the new farm.">
-						</div>
-					</div>
-					
-					<!--Farm Address-->
-					<div class="form-group">
-						<label for="inputFarmAddress" class="control-label col-xs-2">Farm Address</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmAddress" id="farmAddress" placeholder="Farm Address" required data-validation-required-message="Please enter the Address of the new farm.">
+							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress" placeholder="Farm Civic Address" required data-validation-required-message="Please enter the civic address of the new farm.">
 						</div>
 					</div>
 					
@@ -107,7 +98,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmContact" class="control-label col-xs-2">Farm Business Contact</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="Farm Contact Name" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
+							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="Farm Contact Id" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
 						</div>
 					</div>
 					
@@ -133,7 +124,7 @@ include('header.php');
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("login.php");
+							location.replace("login/index.php");
 							</script>';
 			}
         ?>
