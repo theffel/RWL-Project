@@ -74,9 +74,15 @@ include('header.php');
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <button onclick="capturePhoto();" class="btn btn-primary">Capture Receipt</button>
                 </div>
             </div>
+                <p>
+                    <input type="file" id="take-picture" accept="image/*">
+                </p>
+                <p>
+                    <img src="about:blank" alt="" id="show-picture">
+                </p>
+                <p id="error"></p>
 
         </form>
 
