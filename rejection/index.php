@@ -3,27 +3,24 @@
 session_start();
 
 // Include the database.php file
-include('database.php');
+include('../database.php');
 
 // Include the header.php file
-include('header.php');
+include('../header.php');
 ?>
-
     <!-- Page Content -->
     <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">By-Product Disposal</h1>
+                <h1 class="page-header">Rejection</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a></li>
-                    <li class="active">By-Product Disposal</li>
+                    <li><a href="../index.php">Home</a></li>
+                    <li class="active">Rejection</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
-
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
 
@@ -31,7 +28,7 @@ include('header.php');
         if ($loggedIn == true) {
         ?>
 
-        <h2 class="page-header">Add a By-Product Disposal</h2>
+        <h2 class="page-header">Add a Rejected Load</h2>
 
         <form class="form-horizontal">
 
@@ -50,37 +47,44 @@ include('header.php');
                 </div>
             </div>
 
+            <!-- Drop down populated by the database -->
             <div class="form-group">
-                <label for="desc" class="control-label col-md-2">Description of Product</label>
+                <label for="producer" class="control-label col-md-2">Producer</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="desc">
+                    <input type="text" class="form-control" name="producer">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
+                <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="sent">
+                    <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
+                <label for="rewashedRegraded" class="control-label col-md-2">Was Product Re-Washed, Re-Graded</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="disposed">
-                        <option value="deepBurial">Deep Burial</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <ul class="list-inline">
+                        <li><input type="radio" name="rewashedRegraded" value="Yes"> Yes</li>
+                        <li><input type="radio" name="rewashedRegraded" value="No"> No</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
+                <label for="prodReturned" class="control-label col-md-2">Product Returned</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="transported">
-                        <option value="trailer">Trailer</option>
-                        <option value="dumptruck">Dumptruck</option>
-                    </select>
+                    <ul class="list-inline">
+                        <li><input type="checkbox" name="prodReturned" value="Processor"> Processor</input></li>
+                        <li><input type="checkbox" name="prodReturned" value="Producer"> Producer</input></li>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="returnDate" class="control-label col-md-2">Date of Return</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="returnDate" placeholder="MM-DD-YYYY">
                 </div>
             </div>
 
@@ -94,36 +98,22 @@ include('header.php');
 
         <hr>
 
-        <h2 class="page-header">View By-Product Disposals</h2>
-        <p>There are currently no by-product disposals to view.</p>
+        <h2 class="page-header">View Rejected Loads</h2>
+        <p>There are currently no rejected loads to view.</p>
 
         <?php
         }
         else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
+        // Include the footer.php file
+        include('../footer.php');
         ?>
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; RWL Holdings 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     <!-- /.container -->
-
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="../js/bootstrap.min.js"></script>
 </body>
-
 </html>

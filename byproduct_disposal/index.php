@@ -3,27 +3,24 @@
 session_start();
 
 // Include the database.php file
-include('database.php');
+include('../database.php');
 
 // Include the header.php file
-include('header.php');
+include('../header.php');
 ?>
-
     <!-- Page Content -->
     <div class="container">
-
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Waste Disposal</h1>
+                <h1 class="page-header">By-Product Disposal</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a></li>
-                    <li class="active">Waste Disposal</li>
+                    <li><a href="../index.php">Home</a></li>
+                    <li class="active">By-Product Disposal</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
-
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
 
@@ -31,7 +28,7 @@ include('header.php');
         if ($loggedIn == true) {
         ?>
 
-        <h2 class="page-header">Add a Waste Disposal</h2>
+        <h2 class="page-header">Add a By-Product Disposal</h2>
 
         <form class="form-horizontal">
 
@@ -94,36 +91,22 @@ include('header.php');
 
         <hr>
 
-        <h2 class="page-header">View Waste Disposals</h2>
-        <p>There are currently no waste disposals to view.</p>
+        <h2 class="page-header">View By-Product Disposals</h2>
+        <p>There are currently no by-product disposals to view.</p>
 
         <?php
         }
         else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
+        // Include the footer.php file
+        include('../footer.php');
         ?>
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; RWL Holdings 2015</p>
-                </div>
-            </div>
-        </footer>
-
     </div>
     <!-- /.container -->
-
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <script src="../js/bootstrap.min.js"></script>
 </body>
-
 </html>

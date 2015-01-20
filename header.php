@@ -55,9 +55,9 @@
                                             <!-- Dispatcher -->
                                             <a href="'. ROOT . '/product_reception">Production Reception</a>
                                             <a href="'. ROOT . '/rejection.php">Rejection</a>
-                                            <a href="'. ROOT . '/byproduct_disposal.php">By-Product Disposal</a>
-                                            <a href="'. ROOT . '/waste_disposal.php">Waste Disposal</a>
-                                            <a href="'. ROOT . '/daily_mileage.php">Daily Mileage</a>
+                                            <a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>
+                                            <a href="'. ROOT . '/waste_disposal">Waste Disposal</a>
+                                            <a href="'. ROOT . '/daily_mileage">Daily Mileage</a>
                                             <!-- Driver -->
                                             <a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>
                                             <a href="'. ROOT . '/fuel">Fuel</a>
@@ -66,15 +66,15 @@
                                             <!-- Dispatcher and driver -->
                                             <a href="'. ROOT . '/shipping">Shipping</a>
                                             <!-- Line worker -->
-                                            <a href="'. ROOT . '/wash_line_cleaning.php">Wash Line Cleaning</a>
-                                            <a href="'. ROOT . '/plant_cleaning.php">Plant Cleaning</a>
+                                            <a href="'. ROOT . '/wash_line_cleaning">Wash Line Cleaning</a>
+                                            <a href="'. ROOT . '/plant_cleaning">Plant Cleaning</a>
                                             <!-- Maintainance -->
-                                            <a href="'. ROOT . '/equipment_insepection.php">Equipment Insepection</a>
-                                            <a href="'. ROOT . '/repairs_maintenance.php">Repairs and Maintenance</a>
+                                            <a href="'. ROOT . '/equipment_insepection">Equipment Insepection</a>
+                                            <a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>
                                             <!-- Sampler -->
                                             <a href="'. ROOT . '/sample">Sample</a>
                                             <!-- Waterboy -->
-                                            <a href="'. ROOT . '/temperature_checks.php">Temperature Checks</a>
+                                            <a href="'. ROOT . '/temperature_checks">Temperature Checks</a>
                                         </li>
                                     </ul>
                                 </li>';
