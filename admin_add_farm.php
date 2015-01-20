@@ -44,10 +44,19 @@ include('header.php');
 					$farmContact = $db->escape($_POST['farmContact']);
 					$farmEmail = $db->escape($_POST['farmEmail']);
 
+					$insertData = Array(
+					'farm_id' => [$farmId], 
+					'farm_name' => [$farmName], 
+					'farm_civic_address' => [$farmCivAddress], 
+					'farm_phone' => [$farmPhoneNum], 
+					'farm_contact_id' => [$farmContact],
+					'farm_email' => [$farmEmail]
+					);
 					// Create query
-					$query = "INSERT INTO `farm` (farm_id, farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ('$farmId', '$farmName', '$farmCivAddress',  '$farmPhoneNum', '$farmEmail', '$farmContact');";
-
-					if ($db->query($query) === TRUE) {
+					//$query = "INSERT INTO `farm` (farm_id, farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES (" .$farmId.", '".$farmName."', '".$farmCivAddress."',  ".$farmPhoneNum.", '".$farmEmail."', ".$farmContact.")";
+					
+					//if ($db->query($query) === TRUE) {
+					if ($db->insert(`farm`, $insertData) === TRUE) {
 						echo "New record created successfully";
 					} else {
 						echo "Error: " . $query . "<br>" . $db->error;

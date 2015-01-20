@@ -39,10 +39,10 @@ include('header.php');
 						
 				// Create query
 				$query = "select * FROM FARM";
-				$farms = mysql_query($query);
+				$farms = $db->query($query);
 				
 				while($row = mysql_fetch_array($farms)){
-					echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . "'>" . $row['farm_name'] . "</a><br />";
+					echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . ">" . $row['farm_name'] . "</a><br />";
 				}
 				$mysqli->close();
 			}
