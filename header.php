@@ -69,7 +69,7 @@
                                             } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager, dispatcher or line worker
                                                 echo '<a href="'. ROOT . '/wash_line_cleaning">Wash Line Cleaning</a>';
                                                 echo '<a href="'. ROOT . '/plant_cleaning">Plant Cleaning</a>';
-                                            } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager or line worker
+                                            } if ($employeeType == 3 || $employeeType == 5) { // Production manager or line worker
                                                 echo '<a href="'. ROOT . '/temperature_checks">Temperature Checks</a>';
                                             } if ($employeeType == 3 || $employeeType == 4) { // Production manager or sampler
                                                 echo '<a href="'. ROOT . '/sample">Sample</a>';

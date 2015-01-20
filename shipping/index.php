@@ -39,13 +39,12 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 2) {
         ?>
         <h2 class="page-header">Add a Shipment</h2>
-
-        <form class="form-horizontal">
-
+        <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="index.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Load Date</label>
                 <div class="col-md-10">
@@ -60,42 +59,36 @@ include('../header.php');
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="potType" class="control-label col-md-2">Type of Potato</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="potType">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="potProd" class="control-label col-md-2">Potato Producer</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="potProd">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="quanShipped" class="control-label col-md-2">Quantity Shipped</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="quanShipped">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="weight" class="control-label col-md-2">Weight</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="weight">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="washed" class="control-label col-md-2">Washed</label>
                 <div class="col-md-10">
@@ -105,7 +98,6 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="destination" class="control-label col-md-2">Destination</label>
                 <div class="col-md-10">
@@ -117,7 +109,6 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
                 <div class="col-md-10">
@@ -127,7 +118,6 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="accepted" class="control-label col-md-2">Accepted</label>
                 <div class="col-md-10">
@@ -137,23 +127,17 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
         </form>
-
         <hr>
-
         <h2 class="page-header">View Shipments</h2>
         <p>There are currently no shipments to view.</p>
-
         <?php
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

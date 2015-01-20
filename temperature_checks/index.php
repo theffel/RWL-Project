@@ -1,4 +1,20 @@
 <?php
+/**
+ * Description for file goes here.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Zachary Theriault
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-15
+ */
+
 // Start the session
 session_start();
 
@@ -23,15 +39,12 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 3 || $employeeType == 5) {
         ?>
-
         <h2 class="page-header">Add a Temperature Check</h2>
-
-        <form class="form-horizontal">
-
+        <form class="form-horizontal" name="tempForm" id="tempForm" method="post" action="index.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
@@ -46,47 +59,37 @@ include('../header.php');
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="tank1" class="control-label col-xs-2">Tank #1</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="tank1">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="tank2" class="control-label col-xs-2">Tank #2</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="tank2">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="tank3" class="control-label col-xs-2">Tank #3</label>
                 <div class="col-xs-10">
                     <input type="text" class="form-control" name="tank3">
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
         </form>
-
         <hr>
-
         <h2 class="page-header">View Temperature Checks</h2>
         <p>There are currently no temperature checks to view.</p>
-
         <?php
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
-
         // Include the footer.php file
         include('../footer.php');
         ?>

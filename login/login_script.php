@@ -69,10 +69,12 @@ if (isset($_POST['submit'])) {
         // If the login was successful
         if ($row[0] == 1) {
             $loggedIn = true;
+            $employeeType = 1;
 
             // Store the login boolean and the username of the logged in user in the session
             $_SESSION['loggedIn'] = $loggedIn;
             $_SESSION['username'] = $username;
+            $_SESSION['employeeType'] = $employeeType;
             // Go to the index.php
             header("location: ../index.php");
         }
