@@ -3,7 +3,7 @@
 session_start();
 
 // Include the header.php file
-include('header.php');
+include('../header.php');
 ?>
 
     <!-- Page Content -->
@@ -100,16 +100,10 @@ include('header.php');
         </div>
         <!-- /.row -->
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; RWL Holdings 2015</p>
-                </div>
-            </div>
-        </footer>
+        <?php
+        // Include the footer.php file
+        include('../footer.php');
+        ?>
 
     </div>
     <!-- /.container -->

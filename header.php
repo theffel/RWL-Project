@@ -33,13 +33,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="<?php echo ROOT; ?>/about.php">About</a>
+                        <a href="<?php echo ROOT; ?>/about">About</a>
                     </li>
                     <li>
-                        <a href="<?php echo ROOT; ?>/services.php">Services</a>
+                        <a href="<?php echo ROOT; ?>/services">Services</a>
                     </li>
                     <li>
-                        <a href="<?php echo ROOT; ?>/contact.php">Contact</a>
+                        <a href="<?php echo ROOT; ?>/contact">Contact</a>
                     </li>
                     <?php
                         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
