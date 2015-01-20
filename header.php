@@ -44,31 +44,42 @@
                     <?php
                         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
                         $username = (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
+                        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
                         if ($loggedIn == false) {
                             echo '<li><a href="'. ROOT . '/login">Login</a></li>';
-                        }
-                        else {
+                        } else {
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="'. ROOT . '/product_reception">Production Reception</a>
-                                            <a href="'. ROOT . '/rejection.php">Rejection</a>
-                                            <a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>
-                                            <a href="'. ROOT . '/waste_disposal">Waste Disposal</a>
-                                            <a href="'. ROOT . '/daily_mileage">Daily Mileage</a>
-                                            <a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>
-                                            <a href="'. ROOT . '/fuel">Fuel</a>
-                                            <a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>
-                                            <a href="'. ROOT . '/delivery">Delivery</a>
-                                            <a href="'. ROOT . '/shipping">Shipping</a>
-                                            <a href="'. ROOT . '/wash_line_cleaning">Wash Line Cleaning</a>
-                                            <a href="'. ROOT . '/plant_cleaning">Plant Cleaning</a>
-                                            <a href="'. ROOT . '/equipment_insepection">Equipment Insepection</a>
-                                            <a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>
-                                            <a href="'. ROOT . '/sample">Sample</a>
-                                            <a href="'. ROOT . '/temperature_checks">Temperature Checks</a>
-                                        </li>
+                                        <li>';
+                                            if ($employeeType == 1) { // Driver
+                                                echo '<a href="'. ROOT . '/daily_mileage">Daily Mileage</a>';
+                                                echo '<a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>';
+                                                echo '<a href="'. ROOT . '/fuel">Fuel</a>';
+                                            } if ($employeeType == 1 || $employeeType == 3) { // Driver or production manager
+                                                echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
+                                            } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
+                                                echo '<a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>';
+                                                echo '<a href="'. ROOT . '/equipment_insepection">Equipment Insepection</a>';
+                                            } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
+                                                echo '<a href="'. ROOT . '/rejection.php">Rejection</a>';
+                                                echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
+                                            } if ($employeeType == 3) { // Production manager
+                                                echo '<a href="'. ROOT . '/waste_disposal">Waste Disposal</a>';
+                                            } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager, dispatcher or line worker
+                                                echo '<a href="'. ROOT . '/wash_line_cleaning">Wash Line Cleaning</a>';
+                                                echo '<a href="'. ROOT . '/plant_cleaning">Plant Cleaning</a>';
+                                            } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager or line worker
+                                                echo '<a href="'. ROOT . '/temperature_checks">Temperature Checks</a>';
+                                            } if ($employeeType == 3 || $employeeType == 4) { // Production manager or sampler
+                                                echo '<a href="'. ROOT . '/sample">Sample</a>';
+                                            } if ($employeeType == 2) { // Dispatcher
+                                                echo '<a href="'. ROOT . '/shipping">Shipping</a>';
+                                                echo '<a href="'. ROOT . '/delivery">Delivery</a>';
+                                            } if ($employeeType == 2) { // Maintenance
+                                                echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
+                                            }
+                            echo '      </li>
                                     </ul>
                                 </li>';
                             echo '<li class="dropdown">
