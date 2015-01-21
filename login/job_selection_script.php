@@ -41,16 +41,18 @@ while ($row = $result->fetch_assoc()){
 $jobDescs = array();
     
 // Create query for job type id
-$query = "SELECT type_description FROM employee_type";
+$query = "SELECT type_description, type_alt_description FROM employee_type";
 $result = $db->query($query);
    
 while ($row = $result->fetch_assoc()){
-    $typeDesc = $row['type_description'];   
-    $jobDescs[] = $typeDesc;
+    $typeDesc = $row['type_description'];
+	$typeAltDesc = $row['type_alt_description'];   
+		$jobDescs[] = $typeDesc;
+		$jobAltDescs[] = $typeAltDesc;
 }  
 
 for ($x = 0; $x < count($jobIds); $x++) {
-    $jobTypes[] = array($jobDescs[$x],$jobIds[$x]);
+    $jobTypes[] = array($jobDescs[$x], $jobAltDescs[$x], $jobIds[$x]);
 }
 
 $_SESSION['jobTypes'] = $jobTypes;
@@ -59,8 +61,8 @@ $_SESSION['jobTypes'] = $jobTypes;
  added to database will not effect employee type selection in time and attendence */   
 
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
-    if (isset($_POST[$jobTypes[$x][0]])) {
-        $_SESSION['employeeType'] = $jobTypes[$x][1];
+    if (isset($_POST[$jobTypes[$x][1]])) {
+        $_SESSION['employeeType'] = $jobTypes[$x][2];
         header("location: ../index.php");
     }
 }

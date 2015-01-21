@@ -44,13 +44,12 @@ include('../header.php');
         if ($loggedIn == true) {
        
         echo '<form class="form-horizontal" name="loginForm" id="loginForm" method="post" action="job_selection.php">';
-         //   $jobTitle;
-
+            
         for ($x = 0; $x < count($jobTypes); $x++){       
-          
+     
          echo'   <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][0] .'" value="' .$jobTypes[$x][0] .'"/>
+                    <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][1] .'" value="' .$jobTypes[$x][0] .'"/>
                 </div>
             </div>';
        }
