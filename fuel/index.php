@@ -1,4 +1,20 @@
 <?php
+/**
+ * Description for file goes here.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Zachary Theriault
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     1.00
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-18
+ */
+
 // Start the session
 session_start();
 
@@ -23,9 +39,9 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 1) {
         ?>
         <h2 class="page-header">Add Fuel</h2>
 

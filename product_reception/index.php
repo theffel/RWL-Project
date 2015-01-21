@@ -10,7 +10,7 @@
  * @author      Zachary Theriault
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-13
  */
@@ -39,14 +39,14 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 1 || $employeeType == 3) {
         ?>
 
         <h2 class="page-header">Add a Product</h2>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="receptionForm" id="receptionForm" method="post" action="index.php">
         
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
@@ -170,7 +170,7 @@ include('../header.php');
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
 

@@ -1,4 +1,20 @@
 <?php
+/**
+ * Description for file goes here.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Zachary Theriault
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     1.00
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-16
+ */
+
 // Start the session
 session_start();
 
@@ -23,13 +39,13 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 4) {
         ?>
         <h2 class="page-header">Add a Sample</h2>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="sampleForm" id="sampleForm" method="post" action="index.php">
 
             <div class="form-group">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
@@ -310,7 +326,7 @@ include('../header.php');
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
 
@@ -326,7 +342,6 @@ include('../header.php');
         else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
-
         // Include the footer.php file
         include('../footer.php');
         ?>

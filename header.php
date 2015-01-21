@@ -61,9 +61,9 @@
                                                 echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
                                             } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
                                                 echo '<a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>';
-                                                echo '<a href="'. ROOT . '/equipment_insepection">Equipment Insepection</a>';
+                                                echo '<a href="'. ROOT . '/equipment_insepection">Equipment Inspection</a>';
                                             } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
-                                                echo '<a href="'. ROOT . '/rejection.php">Rejection</a>';
+                                                echo '<a href="'. ROOT . '/rejection">Rejection</a>';
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
                                             } if ($employeeType == 3) { // Production manager
                                                 echo '<a href="'. ROOT . '/waste_disposal">Waste Disposal</a>';
@@ -77,7 +77,7 @@
                                             } if ($employeeType == 2) { // Dispatcher
                                                 echo '<a href="'. ROOT . '/shipping">Shipping</a>';
                                                 echo '<a href="'. ROOT . '/delivery">Delivery</a>';
-                                            } if ($employeeType == 2) { // Maintenance
+                                            } if ($employeeType == 7) { // Maintenance
                                                 echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
                                             }
                             echo '      </li>

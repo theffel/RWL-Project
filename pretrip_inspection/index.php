@@ -10,7 +10,7 @@
  * @author      Zachary Theriault
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-13
  */
@@ -39,12 +39,13 @@ include('../header.php');
         <!-- /.row -->
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-        // If the user is logged in and the user is the author of the message
-        if ($loggedIn == true) {
+        $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        // If the user is logged in with the correct employee permissions
+        if ($loggedIn == true && $employeeType == 1) {
         ?>
         <h2 class="page-header">Add an Inspection</h2>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="insepectionForm" id="insepectionForm" method="post" action="index.php">
 
             <!-- Pre-populate driver's name from who is logged in -->
             <div class="form-group">
@@ -185,7 +186,7 @@ include('../header.php');
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
 
