@@ -80,6 +80,7 @@ INSERT INTO `employee` (`emp_id`, `emp_type_id`, `position_id`, `emp_sin`, `emp_
 CREATE TABLE IF NOT EXISTS `Employee_Type` (
 `emp_type_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `type_description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+`type_alt_description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`emp_type_id`)      
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
 
@@ -87,16 +88,16 @@ PRIMARY KEY (`emp_type_id`)
 -- 
 -- Dumping data for table `Employee_Type`
 --
-INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`) VALUES
-(1, 'truck driver'),
-(2, 'dispatcher'),
-(3, 'production'),
-(4, 'sampler'),
-(5, 'line worker'),
-(6, 'waterboy'),
-(7, 'maintenance'),
-(8, 'accounting'),
-(9, 'fleet management');
+INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_description`) VALUES
+(1, 'Truck driver', 'truckdriver'),
+(2, 'Dispatcher', 'dispatcher'),
+(3, 'Production', 'production'),                     
+(4, 'Sampler', 'sampler'),
+(5, 'Line Worker', 'lineworker'),
+(6, 'Waterboy', 'waterboy'),
+(7, 'Maintenance', 'maintenance'),
+(8, 'Accounting', 'accounting'),
+(9, 'Fleet Management', 'fleetmanagement');
 
 -- 
 -- Table structure for table `Job_Type`
