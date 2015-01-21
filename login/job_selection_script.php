@@ -64,7 +64,20 @@ $_SESSION['jobTypes'] = $jobTypes;
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
     if (isset($_POST[$jobTypes[$x][1]])) {
         $_SESSION['employeeType'] = $jobTypes[$x][2];
-        header("location: ../index.php");
+		
+		// insert attendance - start punch clock for employee
+		
+		$query = "INSERT INTO attendance (time_in, emp_id, date) VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate . "' )";
+		$result = $db->query($query);
+		
+		// load session with attendance id
+		$query = "SELECT attend_id FROM attendance WHERE emp_id=" . $empId . "AND date='" . $currentDate . "'";
+		$result = $db->query($query);
+		$row = $result->fetch_assoc();
+		$attendanceId = $row['attend_id'];    
+		$_SESSION['attendanceId'] = $attendanceId;
+		
+        header("location: ../index.php");		
     }
 }
 
