@@ -48,6 +48,7 @@
                         if ($loggedIn == false) {
                             echo '<li><a href="'. ROOT . '/login">Login</a></li>';
                         } else {
+                            if ($employeeType != 0) {
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -82,6 +83,10 @@
                             echo '      </li>
                                     </ul>
                                 </li>';
+                            }
+                            else {
+                                echo '<li><a href="'. ROOT . '/login/job_selection.php">Job Selection</a></li>';
+                            }
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Pages <b class="caret"></b></a>
                                     <ul class="dropdown-menu">

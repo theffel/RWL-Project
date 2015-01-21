@@ -64,7 +64,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $username;
         //$_SESSION['employeeType'] = $employeeType;
         // Go to the index.php
-        header("location: ../index.php");
+
+        header("location: job_selection.php");
     }
     // If the login was not successful
     else {
