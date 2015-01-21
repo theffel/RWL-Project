@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the login index.php page.
+ * This file provides the business functionality for the login job_selection.php page.
  *
  * PHP version 5
  *
@@ -8,11 +8,12 @@
  * @category    CategoryName
  * @package     PackageName
  * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-12
+ * @since       2015-01-20
  */
 
 // Start the session
