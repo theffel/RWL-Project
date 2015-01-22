@@ -18,11 +18,11 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Farm Addition</h1>
+                <h1 class="page-header">New Warehouse Addition</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a>
                     </li>
-					<li><a href="../admin_farm_list.php">Farms</a>
+					<li><a href="admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Add Warehouse</li>
                 </ol>
@@ -31,36 +31,11 @@ include('header.php');
         <!-- /.row -->
 		<?php
 			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
 			if ($loggedIn == true) {	
-////////////////////////////////////////////////////////////////////
-				// Get Farm Id
-				$farmId = $_GET["id"];
-				// get warehouse submit
-				if (isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehousePhoneNum'])) {
-					$warehouseName = ($_POST['warehouseName']);
-					$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-					$warehousePhoneNum = ($_POST['warehousePhoneNum']);
-
-					// Create query
-					$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_phone) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}',  '{$warehousePhoneNum}')";
-					
-					if ($db->query($query) === TRUE) {
-						echo "New record created successfully";
-					} else {
-						echo "Error: " . $query . "<br>" . $db->error;
-					}
-
-					$db->close();
-				}
-
-
-			
-			
-
-				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='../admin_add_warehouse.php/?id=". $farmId ."'>";
+			// Get Farm Id
+			$farmId = $_GET["id"];
+				
+				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='add_to_database.php/?id=". $farmId ."'>";
 			?>		
 					<!--warehouse Name-->
 					<div class="form-group">

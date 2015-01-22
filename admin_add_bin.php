@@ -18,26 +18,28 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Farm Addition</h1>
+                <h1 class="page-header">New Warehouse Bin Addition</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a>
                     </li>
-					<li><a href="../admin_farm_list.php">Farms</a>
-                    </li>
-                    <li class="active">Add Warehouse</li>
+					<li><a href="admin_farm_list.php">Farms</a>
+					</li>
+<?php
+			// If the user is logged in, display the form
+			if ($loggedIn == true) {	
+				// Get Farm Id
+				$warehouseId = $_GET["id"];
+				//warehouse breadcrumb
+//				echo "<li><a href='admin_warehouse_list.php?id=" . $warehouseId . "'>warehouse</a></li>";
+?>				                 
+					
+                    <li class="active">Add Bin</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
-			if ($loggedIn == true) {	
-////////////////////////////////////////////////////////////////////
-				// Get Farm Id
-				$warehouseId = $_GET["id"];
+
 				// get warehouse submit
 				if (isset($_POST['binMarker'])) {
 					$binMarker = ($_POST['binMarker']);

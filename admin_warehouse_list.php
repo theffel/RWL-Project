@@ -21,7 +21,7 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of Farms</h1>
+                <h1 class="page-header">List of Warehouses</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a>
                     </li>
@@ -33,12 +33,8 @@ include('header.php');
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
+			// If the user is logged in, display the form
 			if ($loggedIn == true) {	
-////////////////////////////////////////////////////////////////////
 				// Get Farm Id
 				$id = $_GET["id"];
 				// Create query
@@ -47,7 +43,7 @@ include('header.php');
 				
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()){
-						echo "<a href = ../admin_bin_list.php/?id=" . $row['warehouse_id'] . ">" . $row['warehouse_name'] . "</a><br />";
+						echo "<form action = 'admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit value = '" . $row['warehouse_name'] . "'></form><br />";
 					}
 				}
 				else {

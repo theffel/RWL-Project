@@ -31,12 +31,8 @@ include('header.php');
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
+			// If the user is logged in, display the form
 			if ($loggedIn == true) {			
-////////////////////////////////////////////////////////////////////
 						
 				// Create query
 				$query = "select * FROM FARM";
@@ -44,7 +40,7 @@ include('header.php');
 				
 				if ($farms->num_rows > 0) {
 					while($row = $farms->fetch_assoc()){
-						echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . ">" . $row['farm_name'] . "</a><br />";
+						echo "<form action = 'admin_warehouse_list.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['farm_id'] . "' checked><input type = submit value = '" . $row['farm_name'] . "'></form><br />";
 					}
 				}
 				else {

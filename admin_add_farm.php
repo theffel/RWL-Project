@@ -34,41 +34,17 @@ include('header.php');
         <!-- /.row -->
 		<?php
 			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
 			if ($loggedIn == true) {	
-////////////////////////////////////////////////////////////////////
-				if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
-					$farmName = ($_POST['farmName']);
-					$farmCivAddress = ($_POST['farmCivAddress']);
-					$farmPhoneNum = ($_POST['farmPhoneNum']);
-					$farmContact = ($_POST['farmContact']);
-					$farmEmail = ($_POST['farmEmail']);
-
-					// Create query
-					$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ('{$farmName}', '{$farmCivAddress}',  '{$farmPhoneNum}', '{$farmEmail}', '{$farmContact}')";
-					
-					if ($db->query($query) === TRUE) {
-						echo "New record created successfully";
-					} else {
-						echo "Error: " . $query . "<br>" . $db->error;
-					}
-
-					$db->close();
-				}
-
-
 			
 			?>
 
-				<form class="form-horizontal" name="addFarmForm" id="addFarmForm" method="post" action="admin_add_farm.php">
+				<form class="form-horizontal" name="addFarmForm" id="addFarmForm" method="post" action="add_to_database.php"> <!--connect straight to add warehouse-->
 					
 					<!--Farm Name-->
 					<div class="form-group">
 						<label for="inputFarmName" class="control-label col-xs-2">Farm Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmName" id="farmName" placeholder="Farm Name" required data-validation-required-message="Please enter the name of the new farm.">
+							<input type="text" class="form-control" name="farmName" id="farmName"  required data-validation-required-message="Please enter the name of the new farm.">
 						</div>
 					</div>
 					
@@ -76,7 +52,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmCivAddress" class="control-label col-xs-2">Farm Civic Address</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress" placeholder="Farm Civic Address" required data-validation-required-message="Please enter the civic address of the new farm.">
+							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress"  required data-validation-required-message="Please enter the civic address of the new farm.">
 						</div>
 					</div>
 					
@@ -84,7 +60,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmPhoneNum" class="control-label col-xs-2">Farm Phone Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" placeholder="Farm Phone #" required data-validation-required-message="Please enter the Phone number of the new farm.">
+							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" required data-validation-required-message="Please enter the Phone number of the new farm.">
 						</div>
 					</div>
 					
@@ -92,7 +68,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmContact" class="control-label col-xs-2">Farm Business Contact</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="Farm Contact Id" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
+							<input type="text" class="form-control" name="farmContact" id="farmContact" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
 						</div>
 					</div>
 					
@@ -100,7 +76,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmemail" class="control-label col-xs-2">Farm email Address</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmEmail" id="farmEmail" placeholder="Farm email" required data-validation-required-message="Please enter the email Address of the new farm.">
+							<input type="text" class="form-control" name="farmEmail" id="farmEmail" required data-validation-required-message="Please enter the email Address of the new farm.">
 						</div>
 					</div>
 			

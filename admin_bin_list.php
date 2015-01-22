@@ -34,11 +34,7 @@ include('header.php');
         <!-- /.row -->
 		<?php
 			// If the user is logged in, display the add farm form
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-//			if ($loggedIn == false) {
 			if ($loggedIn == true) {	
-////////////////////////////////////////////////////////////////////
 				// Get Farm Id
 				$id = $_GET["id"];
 				// Create query
