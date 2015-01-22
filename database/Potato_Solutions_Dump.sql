@@ -273,6 +273,7 @@ PRIMARY KEY (`medical_id`)
 --
 CREATE TABLE IF NOT EXISTS `Employee_Work_History` (
 `history_id` int(3) unsigned NOT NULL AUTO_INCREMENT, 
+`emp_id` int(3) unsigned NOT NULL,
 `emp_type_id` int(2) unsigned NOT NULL,           
 `wage_id` int(2) unsigned NOT NULL,
 `hours` double unsigned DEFAULT NULL,
