@@ -453,6 +453,7 @@ CREATE TABLE IF NOT EXISTS `RWL_Process` (
 `process_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
 `farm_id` int(4) unsigned NOT NULL,
 `warehouse_id` int(4) unsigned NOT NULL,
+`potato_id` int(2) unsigned NOT NULL,
 `rwl_bin_id` int(2) unsigned NOT NULL,
 `arrive_date` date NOT NULL,
 `arrive_time` time NOT NULL,
