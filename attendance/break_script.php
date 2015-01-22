@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the login job_selection.php page.
+ * This file provides the business functionality for the break part of the attendance index.php page.
  *
  * PHP version 5
  *
@@ -13,11 +13,10 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-20
+ * @since       2015-01-21
  */
 
-
-// Include the database.php file
+// Include php files
 include('../database.php');
 include('../session_load.php');
 
@@ -26,24 +25,21 @@ $empId = $_SESSION['empId'];
 
 // Start Break
 if (isset($_POST['startBreak'])) {
-		$query = "INSERT INTO break (start_break_time, emp_id, break_date) 
-		VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate ."')";
-		$result = $db->query($query);
+	$query = "INSERT INTO break (start_break_time, emp_id, break_date) VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate ."')";
+	$result = $db->query($query);
 
-		// load session with break id
-		$query = "SELECT break_id FROM break WHERE break_date='". $currentDate . "' AND emp_id = " . $empId;
+	// load session with break id
+	$query = "SELECT break_id FROM break WHERE break_date='". $currentDate . "' AND emp_id = " . $empId;
 		
-		$result = $db->query($query);
-		$row = $result->fetch_assoc();
-		$breakId = $row['break_id'];    
-		$_SESSION['breakId'] = $breakId;
-
-	// End Break
-} 
-if (isset($_POST['endBreak'])) {
-		$query = "UPDATE break SET end_break_time = '" .$currentTime . "' WHERE break_id=" . $_SESSION['breakId'];
-        $result = $db->query($query);
-   
+	$result = $db->query($query);
+	$row = $result->fetch_assoc();
+	$breakId = $row['break_id'];    
+	$_SESSION['breakId'] = $breakId;
 }
 
+// End Break
+if (isset($_POST['endBreak'])) {
+	$query = "UPDATE break SET end_break_time = '" .$currentTime . "' WHERE break_id=" . $_SESSION['breakId'];
+	$result = $db->query($query);
+}
 ?>

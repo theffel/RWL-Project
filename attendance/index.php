@@ -8,11 +8,12 @@
  * @category    CategoryName
  * @package     PackageName
  * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.0
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-12
+ * @since       2015-01-21
  */
 
 // Include the attendance_script.php file
@@ -40,70 +41,65 @@ include('../header.php');
         // If the user is not logged in, display a login form
         if ($loggedIn == true) {
         
-        echo '<form class="form-horizontal" name="breakForm" id="breakForm" method="post" action="index.php">
-            <h2 class="page-header">Punch Clock</h2>';
-        if ($attendanceId == 0){
-
-            // load session with attendance id
-            $query = "SELECT attend_id, time_out FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
-            // need to be able to handle more then one login for the day
-            $result = $db->query($query);
-            $numRows = $result->num_rows;
-            if (!empty($numRows)){
-                $row = $result->fetch_assoc();
-                $attendId = $row['attend_id'];               
-
-                $punchOutSet = $row['time_out'] ;
-                if ($punchOutSet != '00:00:00'){                    
-                    $_SESSION['attendanceId'] = 0;
-       
-                }else{
-                   
-                $_SESSION['attendanceId'] = $attendId;
-                 
-                }
-            }
-        }      
-
-if ($_SESSION['attendanceId'] == 0){
-
-            echo '<div class="form-group">
-                <div class="col-md-offset-5 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="punchIn" value="Punch In"/>
-                </div>
-            </div>';
-
-        } else {
-            echo ' <div class="form-group">
-                <div class="col-md-offset-5 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="punchOut" value="Punch Out"/>
-                </div>
-            </div>
+        	echo '<form class="form-horizontal" name="breakForm" id="breakForm" method="post" action="index.php">
+            	<h2 class="page-header">Punch Clock</h2>';
+        	if ($attendanceId == 0) {
+            	// load session with attendance id
+            	$query = "SELECT attend_id, time_out FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
             
-             <h2 class="page-header">Job Selection</h2>';
-            for ($x = 0; $x < count($jobTypes); $x++) {
-                echo '<div class="form-group">
-                        <div class="col-md-offset-5 col-md-10">
-                            <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][1] .'" value="' .$jobTypes[$x][0] .'"/>
-                        </div>
-                    </div>';
+            	// need to be able to handle more then one login for the day
+            	$result = $db->query($query);
+            	$numRows = $result->num_rows;
+            	
+            	if (!empty($numRows)) {
+                	$row = $result->fetch_assoc();
+                	$attendId = $row['attend_id'];
+                	$punchOutSet = $row['time_out'];
+
+                	if ($punchOutSet != '00:00:00') {                    
+                    	$_SESSION['attendanceId'] = 0;
+                	} else {
+                		$_SESSION['attendanceId'] = $attendId;
+                	}
+            	}
             }
+
+			if ($_SESSION['attendanceId'] == 0) {
+
+            	echo '<div class="form-group">
+                	<div class="col-md-offset-5 col-md-10">
+                	    <input type="submit" class="btn btn-primary" name="punchIn" value="Punch In"/>
+                	</div>
+            	</div>';
+        	} else {
+            	echo ' <div class="form-group">
+                	<div class="col-md-offset-5 col-md-10">
+                    	<input type="submit" class="btn btn-primary" name="punchOut" value="Punch Out"/>
+                	</div>
+            	</div>
             
-            echo '
-            <h2 class="page-header">Break</h2>
-            <div class="form-group">
-                <div class="col-md-offset-5 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="startBreak" value="Start Break"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-5 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="endBreak" value="End Break"/>
-                </div>
-            </div>';
-        }
-        echo '</form>';
-        
+             	<h2 class="page-header">Job Selection</h2>';
+            	for ($x = 0; $x < count($jobTypes); $x++) {
+                	echo '<div class="form-group">
+                        	<div class="col-md-offset-5 col-md-10">
+                       	 	    <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][1] .'" value="' .$jobTypes[$x][0] .'"/>
+                        	</div>
+                    	</div>';
+            	}
+            
+            	echo '<h2 class="page-header">Break</h2>
+            		<div class="form-group">
+                		<div class="col-md-offset-5 col-md-10">
+                    		<input type="submit" class="btn btn-primary" name="startBreak" value="Start Break"/>
+                		</div>
+            		</div>
+            		<div class="form-group">
+                		<div class="col-md-offset-5 col-md-10">
+                    		<input type="submit" class="btn btn-primary" name="endBreak" value="End Break"/>
+                		</div>
+            		</div>';
+        	}
+        	echo '</form>';
         } // If the user is logged in, redirect them to index.php if they try to access this page
         else {
             echo '<script type="text/javascript">location.replace("../index.php");</script>';

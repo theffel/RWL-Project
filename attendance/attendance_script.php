@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the login job_selection.php page.
+ * This file provides the business functionality for the attendance index.php page.
  *
  * PHP version 5
  *
@@ -13,7 +13,7 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-20
+ * @since       2015-01-21
  */
 
 // Start the session
@@ -25,29 +25,26 @@ include('job_selection_script.php');
 include('../database.php');
 include('../session_load.php');
 
-
-
-		// insert attendance - start punch clock for employee
+// insert attendance - start punch clock for employee
 if (isset($_POST['punchIn'])) {		
-		$query = "INSERT INTO attendance (time_in, emp_id, attend_date) 
-		VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate . "' )";
-		$result = $db->query($query);
+	$query = "INSERT INTO attendance (time_in, emp_id, attend_date) 
+	VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate . "' )";
+	$result = $db->query($query);
 		
-		// load session with attendance id
-		$query = "SELECT attend_id FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
-		// need to be able to handle more then one login for the day
-		$result = $db->query($query);
-		$row = $result->fetch_assoc();
-		$attendanceId = $row['attend_id'];    
-		$_SESSION['attendanceId'] = $attendanceId;
+	// load session with attendance id
+	$query = "SELECT attend_id FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
 
-	}
-	if (isset($_POST['punchOut'])) {
-		// insert attendance - end punch clock for employee
-		$query = "UPDATE attendance SET time_out = '" .$currentTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
-        $result = $db->query($query); 
-     
-        $_SESSION['attendanceId'] = 0;
+	// need to be able to handle more then one login for the day
+	$result = $db->query($query);
+	$row = $result->fetch_assoc();
+	$attendanceId = $row['attend_id'];    
+	$_SESSION['attendanceId'] = $attendanceId;
+}
 
-    }
+// insert attendance - end punch clock for employee
+if (isset($_POST['punchOut'])) {
+	$query = "UPDATE attendance SET time_out = '" .$currentTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
+	$result = $db->query($query); 
+    $_SESSION['attendanceId'] = 0;
+}
 ?>

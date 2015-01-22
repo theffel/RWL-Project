@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the login job_selection.php page.
+ * This file provides the business functionality for the job selection part of the attendance index.php page.
  *
  * PHP version 5
  *
@@ -61,8 +61,6 @@ $_SESSION['jobTypes'] = $jobTypes;
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
     if (isset($_POST[$jobTypes[$x][1]])) {
         $_SESSION['employeeType'] = $jobTypes[$x][2];
-		
     }
 }
-
 ?>
