@@ -206,7 +206,7 @@ PRIMARY KEY (`type_change_id`)
 -- Table structure for table `Break`
 --
 CREATE TABLE IF NOT EXISTS `Break` (
-`break_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+/*`break_id` int(6) unsigned NOT NULL AUTO_INCREMENT,*/
 `start_break` datetime NOT NULL,
 `end_break` datetime NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
