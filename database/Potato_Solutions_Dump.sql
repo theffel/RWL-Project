@@ -184,12 +184,11 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 `time_in` datetime NOT NULL,
 `time_out` datetime NOT NULL,
 `wage_id` int(2) unsigned NOT NULL,
-`break_id` int(6) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`attend_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
- 
- 
+
+
 -- 
 -- Table structure for table `Employee_Type_Change`
 -- 
@@ -200,17 +199,15 @@ CREATE TABLE IF NOT EXISTS `Employee_Type_Change` (
 `type_change_time` datetime NOT NULL,
 PRIMARY KEY (`type_change_id`)      
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
-
-
+ 
+ 
 -- 
 -- Table structure for table `Break`
 --
 CREATE TABLE IF NOT EXISTS `Break` (
-/*`break_id` int(6) unsigned NOT NULL AUTO_INCREMENT,*/
 `start_break` datetime NOT NULL,
 `end_break` datetime NOT NULL,
-`emp_id` int(3) unsigned NOT NULL,
-PRIMARY KEY (`break_id`)
+`emp_id` int(3) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
