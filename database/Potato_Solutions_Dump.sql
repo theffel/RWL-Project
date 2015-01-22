@@ -1,5 +1,7 @@
 
 
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -23,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `RWL` (
 `rwl_city` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
 `rwl_prov` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
 `rwl_postal_code` varchar(6) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -31,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `RWL` (
 --
 INSERT INTO `rwl`(`name`, `rwl_phone`, `rwl_cell`, `rwl_fax`, `rwl_email`, `rwl_address`, `rwl_city`, `rwl_prov`, `rwl_postal_code`) VALUES
 ('PEI Potato Solutions', '9024366721', '9022180212', '555-555-5555', 'rwl@pei.ca', '1325 Wilmot Valley Road', 'Travelers Rest', 'PEI', 'C0B1M0');
-/* tel 9024366721 Cel 9022180212 */
+
 
 /*======================================================================================*/
 /*                                    EMPLOYEE                                          */
@@ -63,16 +65,8 @@ CREATE TABLE IF NOT EXISTS `Employee` (
 `created` datetime NOT NULL,
 PRIMARY KEY (`emp_id`)
 /*FOREIGN KEY (`emp_type_id`) REFERENCES Employee_Type(`emp_type_id`) ON DELETE CASCADE ON UPDATE CASCADE*/
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`emp_id`, `emp_type_id`, `position_id`, `emp_sin`, `emp_first_name`, `emp_last_name`, `emp_middle_initial`, `emp_address`, `emp_city`, `emp_postal_code`, `emp_phone`, `emp_email`, `emp_gender`, `emp_dob`, `primary_contact_id`, `secondary_contact_id`, `active`, `deleted`, `modified`, `created`) VALUES
-(1, 1, 0, '555555555', 'driver', 'driver', 'd', '4534524', 'summerside', 'cn14p9', '555555555', 'test@gmail.com', 0, '2015-01-11', 1, 2, 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
 
 -- 
 -- Table structure for table `Employee_Type`
@@ -82,13 +76,13 @@ CREATE TABLE IF NOT EXISTS `Employee_Type` (
 `type_description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 `type_alt_description` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`emp_type_id`)      
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
 -- Dumping data for table `Employee_Type`
 --
-INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_description`) VALUES
+INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_description`) VALUES
 (1, 'Truck driver', 'truckdriver'),
 (2, 'Dispatcher', 'dispatcher'),
 (3, 'Production', 'production'),                     
@@ -99,6 +93,7 @@ INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_descrip
 (8, 'Accounting', 'accounting'),
 (9, 'Fleet Management', 'fleetmanagement');
 
+
 -- 
 -- Table structure for table `Job_Type`
 -- 
@@ -106,18 +101,18 @@ CREATE TABLE IF NOT EXISTS `Job_Type` (
 `emp_type_id` int(2) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`emp_type_id`, `emp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
 -- Table structure for table `Employee_Position`
 -- 
 CREATE TABLE IF NOT EXISTS `Employee_Position` (
-`position_id` int(2) unsigned NOT NULL AUTO_INCREMENT,                   /* Need to find out types of positions */
+`position_id` int(2) unsigned NOT NULL AUTO_INCREMENT,                   
 `position_title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-`emp_id` int(3) unsigned NOT NULL,
+`emp_id` int(3) unsigned DEFAULT NULL,
 PRIMARY KEY (`position_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -130,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `Employee_Emergency_Contact` (
 `emerg_last_name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
 `emerg_phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`emerg_contact_id`, `emp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -144,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `Employee_Training_Certificate` (
 `completed` tinyint(1) unsigned NOT NULL COMMENT '0 - not complete, 1 - complete',
 `training_type_id` int(2) unsigned NOT NULL,
 PRIMARY KEY (`certificate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -154,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `Training_Type` (
 `training_type_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `training_type_discription` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`training_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -166,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `Driver` (
 `medical_id` int(3) unsigned NOT NULL, 
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`driver_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 /*======================================================================================*/
@@ -191,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 `break_id` int(6) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`attend_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
  
 -- 
 -- Table structure for table `Break`
@@ -202,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `Break` (
 `end_break` datetime NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`break_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 /*======================================================================================*/
@@ -225,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `Licence` (
 `lic_type_id` varchar(2) NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`lic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -235,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `Licence_Type` (
 `lic_type_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `lic_type_desc` varchar(100) NOT NULL,
 PRIMARY KEY (`lic_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -248,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `Images` (
 `img_name` varchar(15) NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`img_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -260,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `Medical` (
 `medical_expiry_date` date NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`medical_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 
@@ -282,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `Employee_Work_History` (
 `wage_id` int(2) unsigned NOT NULL,
 `hours` double unsigned DEFAULT NULL,
 PRIMARY KEY (`history_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -292,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `Wages` (
 `wage_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `wage` DECIMAL (3,2) unsigned NOT NULL,
 PRIMARY KEY (`wage_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 /*======================================================================================*/
@@ -320,10 +315,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
 `emp_id` int(3) unsigned default NULL,
 `farm_id` int(4) unsigned default NULL,
 PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
-
-INSERT INTO `users` (`user_id`, `username`, `password`, `user_last_login`, `active`, `deleted`, `modified`, `created`, `emp_id`, `farm_id`) VALUES
-(1, 'driver', 'pass', '0000-00-00 00:00:00', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 /*======================================================================================*/
@@ -352,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `Farm` (
 `modified` datetime NOT NULL,
 `created` datetime NOT NULL,
 PRIMARY KEY (`farm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 -- 
@@ -365,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `Farm_Contact` (
 `contact_last_name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
 `contact_phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`farm_contact_id`, `farm_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -382,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `Warehouse` (
 `modified` datetime NOT NULL,
 `created` datetime NOT NULL,
 PRIMARY KEY (`warehouse_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 -- 
@@ -397,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `Warehouse_Bin` (
 `modified` datetime NOT NULL,
 `created` datetime NOT NULL,
 PRIMARY KEY (`bin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 -- 
@@ -408,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `Field` (
 `field_location` varchar(100) COLLATE utf8_unicode_ci NOT NULL,                 
 `bin_id` int(4) unsigned NOT NULL,
 PRIMARY KEY (`field_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 -- 
@@ -427,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `Pick_Up` (
 `trailer_id` int(3) unsigned NOT NULL,
 `patato_id` int(2) unsigned NOT NULL,
 PRIMARY KEY (`pickup_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- 
 -- Table structure for table `RWL_Process`
@@ -446,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `RWL_Process` (
 `depart_time` time NOT NULL,
 `trailer_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`process_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 -- 
 -- Table structure for table `RWL_Bin`
@@ -456,7 +448,7 @@ CREATE TABLE IF NOT EXISTS `RWL_Bin` (
 `weight` int(5) unsigned NOT NULL,
 `bin_marker` int(2) unsigned NOT NULL,
 PRIMARY KEY (`rwl_bin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 -- 
 -- Table structure for table `Destination`
@@ -468,7 +460,7 @@ CREATE TABLE IF NOT EXISTS `Destination` (
 `dest_phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 `dest_contact_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`dest_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- 
 -- Table structure for table `Destination_Record`
@@ -486,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `Destination_Record` (
 `potato_id` int(10) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`record_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 -- 
 -- Table structure for table `Processor`
@@ -498,7 +490,7 @@ CREATE TABLE IF NOT EXISTS `Processor` (
 `processor_phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 `processor_contact_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`processor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
 -- 
@@ -544,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `Sample` (
 `in_out` tinyint(1) unsigned NOT NULL COMMENT '0 - incoming sample, 1 - outgoing sample',
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`sample_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -554,7 +546,7 @@ CREATE TABLE IF NOT EXISTS `Product` (                              /* what are 
 `product_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `product_type` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -564,7 +556,7 @@ CREATE TABLE IF NOT EXISTS `Potato` (
 `potato_id` int(2) unsigned NOT NULL AUTO_INCREMENT,                              
 `potato_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,                        
 PRIMARY KEY (`potato_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 -- 
 -- Dumping data for table `Potato`
@@ -609,7 +601,7 @@ CREATE TABLE IF NOT EXISTS `Trailer` (
 `plate_num` int(8) unsigned NOT NULL,
 `ins_id` int(5) unsigned NOT NULL,
 PRIMARY KEY (`trailer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -625,7 +617,7 @@ CREATE TABLE IF NOT EXISTS `Truck` (
 `oil_change_kms` int(6) unsigned NOT NULL,
 `tranny_fluid_change_kms` int(6) unsigned NOT NULL,
 PRIMARY KEY (`truck_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -638,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `Registration` (
 `trailer_id` int(3) unsigned NOT NULL, 
 `img_id` int(4) unsigned NOT NULL,                                       
 PRIMARY KEY (`reg_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 -- 
 -- Table structure for table `Inspection`
@@ -650,7 +642,7 @@ CREATE TABLE IF NOT EXISTS `Inspection` (
 `trailer_id` int(3) unsigned NOT NULL, 
 `img_id` int(4) unsigned NOT NULL,                  
 PRIMARY KEY (`inspect_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -663,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `Insurance` (
 `trailer_id` int(3) unsigned NOT NULL, 
 `img_id` int(4) unsigned NOT NULL,                  
 PRIMARY KEY (`ins_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -678,7 +670,7 @@ CREATE TABLE IF NOT EXISTS `Fuel` (
 `img_id` int(4) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`fuel_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 -- 
@@ -691,7 +683,7 @@ CREATE TABLE IF NOT EXISTS `Fluids` (
 `truck_id` int(3) unsigned DEFAULT NULL, 
 `trailer_id` int(3) unsigned DEFAULT NULL,                    
 PRIMARY KEY (`fluid_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 /*======================================================================================*/
@@ -715,18 +707,19 @@ CREATE TABLE IF NOT EXISTS `Temparature_Check` (
 `tank2_temp` double unsigned NOT NULL,
 `tank3_temp` double unsigned NOT NULL,                   
 PRIMARY KEY (`temp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=80 ; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
 /*======================================================================================*/
 /*                               END TEMPERATURE CHECK                                  */
 /*======================================================================================*/
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON rwlholdings_potato_solutions.*
-	TO 'rwl_user'@'localhost'
-	IDENTIFIED BY 'rwl_pass';
 
-FLUSH PRIVILEGES;
+
+
+
+
+
 
 
 
