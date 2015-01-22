@@ -91,7 +91,8 @@ INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_descrip
 (6, 'Waterboy', 'waterboy'),
 (7, 'Maintenance', 'maintenance'),
 (8, 'Accounting', 'accounting'),
-(9, 'Fleet Management', 'fleetmanagement');
+(9, 'Admin', 'admin'),
+(10, 'Fleet Management', 'fleetmanagement');
 
 
 -- 
