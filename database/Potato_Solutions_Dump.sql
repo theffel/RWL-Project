@@ -189,6 +189,19 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 PRIMARY KEY (`attend_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
  
+ 
+-- 
+-- Table structure for table `Employee_Type_Change`
+-- 
+CREATE TABLE IF NOT EXISTS `Employee_Type_Change` (
+`type_change_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+`emp_type_id` int(2) unsigned NOT NULL,
+`emp_id` int(3) unsigned NOT NULL,
+`type_change_time` datetime NOT NULL,
+PRIMARY KEY (`type_change_id`)      
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
+
+
 -- 
 -- Table structure for table `Break`
 --
