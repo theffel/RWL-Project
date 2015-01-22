@@ -412,6 +412,8 @@ CREATE TABLE IF NOT EXISTS `Pick_Up` (
 `farm_id` int(4) unsigned NOT NULL,
 `warehouse_id` int(4) unsigned NOT NULL,
 `bin_id` int(4) unsigned NOT NULL,
+`bin_marker` int(4) unsigned NOT NULL,
+`field_id` int(4) unsigned NOT NULL,
 `arrive_date` date NOT NULL,
 `arrive_time` time NOT NULL,
 `weight_in` int(5) unsigned DEFAULT NULL,
