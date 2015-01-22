@@ -382,6 +382,7 @@ PRIMARY KEY (`warehouse_id`)
 -- 
 CREATE TABLE IF NOT EXISTS `Warehouse_Bin` (
 `bin_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+`bin_name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 `warehouse_id` int(4) unsigned NOT NULL,
 `bin_marker` int(4) unsigned NOT NULL,
 `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
