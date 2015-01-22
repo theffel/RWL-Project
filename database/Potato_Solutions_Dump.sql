@@ -716,7 +716,11 @@ PRIMARY KEY (`temp_id`)
 /*======================================================================================*/
 
 
+GRANT SELECT, INSERT, UPDATE, DELETE ON rwlholdings_potato_solutions.*
+	TO 'rwl_user'@'localhost'
+	IDENTIFIED BY 'rwl_pass';
 
+FLUSH PRIVILEGES;
 
 
 
