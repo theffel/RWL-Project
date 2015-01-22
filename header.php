@@ -32,23 +32,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="<?php echo ROOT; ?>/about">About</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo ROOT; ?>/services">Services</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo ROOT; ?>/contact">Contact</a>
-                    </li>
+                    <li><a href="<?php echo ROOT; ?>/about">About</a></li>
+                    <li><a href="<?php echo ROOT; ?>/services">Services</a></li>
+                    <li><a href="<?php echo ROOT; ?>/contact">Contact</a></li>
                     <?php
                         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
                         $username = (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
                         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+                        $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
                         if ($loggedIn == false) {
                             echo '<li><a href="'. ROOT . '/login">Login</a></li>';
                         } else {
-                            if ($employeeType != 0) {
+                            if ($attendanceId != 0 && $employeeType != 0) {
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -84,9 +79,8 @@
                                     </ul>
                                 </li>';
                             }
-                            else {
-                                echo '<li><a href="'. ROOT . '/login/job_selection.php">Job Selection</a></li>';
-                            }
+                            echo '<li><a href="'. ROOT . '/attendance/">Attendance</a></li>';
+                            echo '<li><a href="'. ROOT . '/login/index.php?action=logout">Logout</a></li>';
                             echo '<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Pages <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -97,8 +91,6 @@
                                         </li>
                                     </ul>
                                 </li>';
-                            echo '<li><a href="'. ROOT . '/attendance/">Break</a></li>';
-                            echo '<li><a href="'. ROOT . '/login/index.php?action=logout">Logout</a></li>';
                         }
                     ?>
                 </ul>
