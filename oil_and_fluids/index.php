@@ -40,8 +40,9 @@ include('../header.php');
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $employeeType == 1 || $employeeType == 7) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 7) {
         ?>
         <h2 class="page-header">Add Oil and Fluids</h2>
 

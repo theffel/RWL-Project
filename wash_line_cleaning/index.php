@@ -40,8 +40,9 @@ include('../header.php');
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
+        $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
         ?>
         <h2 class="page-header">Add Wash Line Cleaning</h2>
         <form class="form-horizontal" name="washForm" id="washForm" method="post" action="index.php">
