@@ -82,7 +82,7 @@ PRIMARY KEY (`emp_type_id`)
 -- 
 -- Dumping data for table `Employee_Type`
 --
-INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_description`) VALUES
+INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_description`) VALUES
 (1, 'Truck driver', 'truckdriver'),
 (2, 'Dispatcher', 'dispatcher'),
 (3, 'Production', 'production'),                     
