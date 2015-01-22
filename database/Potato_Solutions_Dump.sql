@@ -406,6 +406,16 @@ PRIMARY KEY (`bin_id`)
 
 
 -- 
+-- Table structure for table `Bin_Marker`
+-- 
+CREATE TABLE IF NOT EXISTS `Bin_Marker` (
+`marker_id` int(4) unsigned NOT NULL AUTO_INCREMENT,                 
+`bin_id` int(4) unsigned NOT NULL,
+PRIMARY KEY (`marker_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+
+-- 
 -- Table structure for table `Field`
 -- 
 CREATE TABLE IF NOT EXISTS `Field` (
