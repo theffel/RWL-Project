@@ -27,12 +27,12 @@ include('../session_load.php');
 
 // insert attendance - start punch clock for employee
 if (isset($_POST['punchIn'])) {		
-	$query = "INSERT INTO attendance (time_in, emp_id, attend_date) 
-	VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate . "' )";
+	$query = "INSERT INTO attendance (time_in, emp_id) 	VALUES ('" . $dateTime . "'," . $empId . ")";
 	$result = $db->query($query);
 		
 	// load session with attendance id
-	$query = "SELECT attend_id FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
+    $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . 
+    " ORDER BY time_out ASC";
 
 	// need to be able to handle more then one login for the day
 	$result = $db->query($query);
@@ -43,7 +43,7 @@ if (isset($_POST['punchIn'])) {
 
 // insert attendance - end punch clock for employee
 if (isset($_POST['punchOut'])) {
-	$query = "UPDATE attendance SET time_out = '" .$currentTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
+	$query = "UPDATE attendance SET time_out = '" .$dateTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
 	$result = $db->query($query); 
     $_SESSION['attendanceId'] = 0;
 }

@@ -61,6 +61,10 @@ $_SESSION['jobTypes'] = $jobTypes;
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
     if (isset($_POST[$jobTypes[$x][1]])) {
         $_SESSION['employeeType'] = $jobTypes[$x][2];
+
+    $query = "INSERT INTO employee_type_change (type_change_time, emp_type_id, emp_id)  VALUES ('" . $dateTime . "'," 
+        .$_SESSION['employeeType'] . "," . $empId . ")";
+    $result = $db->query($query);
     }
 }
 ?>

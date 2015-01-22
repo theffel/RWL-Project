@@ -45,8 +45,9 @@ include('../header.php');
             	<h2 class="page-header">Punch Clock</h2>';
         	if ($attendanceId == 0) {
             	// load session with attendance id
-            	$query = "SELECT attend_id, time_out FROM attendance WHERE attend_date='". $currentDate . "' AND emp_id = " . $empId;
-            
+                  $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . 
+                  " ORDER BY time_out ASC";
+                var_dump($query);
             	// need to be able to handle more then one login for the day
             	$result = $db->query($query);
             	$numRows = $result->num_rows;
@@ -56,7 +57,7 @@ include('../header.php');
                 	$attendId = $row['attend_id'];
                 	$punchOutSet = $row['time_out'];
 
-                	if ($punchOutSet != '00:00:00') {                    
+                	if ($punchOutSet != '0000-00-00 00:00:00') {                    
                     	$_SESSION['attendanceId'] = 0;
                 	} else {
                 		$_SESSION['attendanceId'] = $attendId;
