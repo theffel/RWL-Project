@@ -1,7 +1,4 @@
 <?php
-//created by: Taylor Hardy
-//created on: 2015/01/15
-//version 0.9
 
 // Start the session
 session_start();
@@ -21,13 +18,13 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of Farms</h1>
+                <h1 class="page-header">New Farm Addition</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a>
                     </li>
 					<li><a href="../admin_farm_list.php">Farms</a>
                     </li>
-                    <li class="active">Warehouses</li>
+                    <li class="active">Add Warehouse</li>
                 </ol>
             </div>
         </div>
@@ -40,32 +37,56 @@ include('header.php');
 			if ($loggedIn == true) {	
 ////////////////////////////////////////////////////////////////////
 				// Get Farm Id
-				$id = $_GET["id"];
-				// Create query
-				$query = "select * FROM warehouse WHERE farm_id = '{$id}'";
-				$result = $db->query($query);
-				
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()){
-						echo "<a href = ../admin_bin_list.php/?id=" . $row['warehouse_id'] . ">" . $row['warehouse_name'] . "</a><br />";
+				$warehouseId = $_GET["id"];
+				// get warehouse submit
+				if (isset($_POST['binMarker'])) {
+					$binMarker = ($_POST['binMarker']);
+
+					// Create query
+					$query = "INSERT INTO `warehouse_bin` (warehouse_id, bin_marker) VALUES ('{$warehouseId}', '{$binMarker}')";
+					
+					if ($db->query($query) === TRUE) {
+						echo "New record created successfully";
+					} else {
+						echo "Error: " . $query . "<br>" . $db->error;
 					}
+
+					$db->close();
 				}
-				else {
-					echo "0 results";
-				}	
-				$db->close();
+
+
+			
+			
+
+				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='../admin_add_bin.php/?id=". $warehouseId ."'>";
+			?>		
+					<!--Bin Marker-->
+					<div class="form-group">
+						<label for="inputbinMarker" class="control-label col-xs-2">Bin Marker</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="binMarker" id="binMarker" placeholder="Bin Marker" required data-validation-required-message="Please enter the marker of the new bin.">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<input type="submit" class="btn btn-primary" name="addFarm" value="Add Warehouse"/>
+						</div>
+					</div>
+					
+				</form>
+
+			<?php
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("login.php");
+							location.replace("login/index.php");
 							</script>';
 			}
-        
-        echo "<hr><a href = ../admin_add_warehouse.php/?id=" . $id . ">Add new warehouse to current farm</a><br />";
-		?>
-		<hr>
+        ?>
+        <hr>
 
         <!-- Footer -->
         <footer>

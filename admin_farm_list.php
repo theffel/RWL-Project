@@ -34,17 +34,23 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == true) {
+//			if ($loggedIn == false) {
+			if ($loggedIn == true) {			
 ////////////////////////////////////////////////////////////////////
 						
 				// Create query
 				$query = "select * FROM FARM";
 				$farms = $db->query($query);
 				
-				while($row = mysql_fetch_array($farms)){
-					echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . ">" . $row['farm_name'] . "</a><br />";
+				if ($farms->num_rows > 0) {
+					while($row = $farms->fetch_assoc()){
+						echo "<a href = admin_warehouse_list.php/?id=" . $row['farm_id'] . ">" . $row['farm_name'] . "</a><br />";
+					}
 				}
-				$mysqli->close();
+				else {
+					echo "0 results";
+				}
+				$db->close();
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
@@ -55,6 +61,8 @@ include('header.php');
 			}
         ?>
         <hr>
+		<a href = admin_add_farm.php>Add New Farm</a><br />
+		<hr>
 
         <!-- Footer -->
         <footer>

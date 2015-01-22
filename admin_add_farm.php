@@ -25,6 +25,8 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="index.php">Home</a>
                     </li>
+					<li><a href="admin_farm_list.php">Farms</a>
+                    </li>
                     <li class="active">Add Farm</li>
                 </ol>
             </div>
@@ -34,7 +36,8 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == FALSE) {
+//			if ($loggedIn == false) {
+			if ($loggedIn == true) {	
 ////////////////////////////////////////////////////////////////////
 				if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
 					$farmName = ($_POST['farmName']);

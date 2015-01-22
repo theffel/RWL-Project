@@ -23,9 +23,9 @@ include('header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">List of Farms</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a>
+                    <li><a href="../index.php">Home</a>
                     </li>
-					<li><a href="admin_farm_list.php">Farms</a>
+					<li><a href="../admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Bins</li>
                 </ol>
@@ -36,18 +36,24 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == true) {
+//			if ($loggedIn == false) {
+			if ($loggedIn == true) {	
 ////////////////////////////////////////////////////////////////////
 				// Get Farm Id
 				$id = $_GET["id"];
 				// Create query
-				$query = "select * FROM warehouse_bin WHERE wareouse_id = '$id'";
-				$result = mysql_query($query);
+				$query = "select * FROM warehouse_bin WHERE warehouse_id = '{$id}'";
+				$result = $db->query($query);
 				
-				while($row = mysql_fetch_array($result)){
-					echo  $row['bin_marker'] . "<br />";
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()){
+						echo  $row['bin_marker'] . "<br />";
+					}
 				}
-				$mysqli->close();
+				else {
+					echo "0 results";
+				}
+				$db->close();
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
@@ -56,7 +62,8 @@ include('header.php');
 							location.replace("login.php");
 							</script>';
 			}
-        ?>
+        echo "<hr><a href = ../admin_add_bin.php/?id=" . $id . ">Add new bin to current warehouse</a><br />";       
+		?>
         <hr>
 
         <!-- Footer -->
