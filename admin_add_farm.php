@@ -37,21 +37,14 @@ include('header.php');
 			if ($loggedIn == FALSE) {
 ////////////////////////////////////////////////////////////////////
 				if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
-					$farmName = $db->escape($_POST['farmName']);
-					$farmCivAddress = $db->escape($_POST['farmCivAddress']);
-					$farmPhoneNum = $db->escape($_POST['farmPhoneNum']);
-					$farmContact = $db->escape($_POST['farmContact']);
-					$farmEmail = $db->escape($_POST['farmEmail']);
+					$farmName = ($_POST['farmName']);
+					$farmCivAddress = ($_POST['farmCivAddress']);
+					$farmPhoneNum = ($_POST['farmPhoneNum']);
+					$farmContact = ($_POST['farmContact']);
+					$farmEmail = ($_POST['farmEmail']);
 
-					$insertData = Array(
-					'farm_name' => [$farmName], 
-					'farm_civic_address' => [$farmCivAddress], 
-					'farm_phone' => [$farmPhoneNum], 
-					'farm_contact_id' => [$farmContact],
-					'farm_email' => [$farmEmail]
-					);
 					// Create query
-				$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ({$farmName}, {$farmCivAddress},  {$farmPhoneNum}, {$farmEmail}, {$farmContact})";
+					$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ('{$farmName}', '{$farmCivAddress}',  '{$farmPhoneNum}', '{$farmEmail}', '{$farmContact}')";
 					
 					if ($db->query($query) === TRUE) {
 						echo "New record created successfully";
