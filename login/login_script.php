@@ -34,11 +34,9 @@ if (isset($_GET['action'])) {
                 $params["secure"], $params["httponly"]
             );
         }
-		// insert attendance - end punch clock for employee
-		$query = "INSERT INTO attendance (time_out) VALUES ('" .$currentTime . "') WHERE attend_id=" . $_SESSION['attendanceId'] . ")";
-		$result = $db->query($query);
+
     }
-    header('location:index.php');
+    header('location:../index.php');
 }
 
 if (isset($_POST['submit'])) {
@@ -68,7 +66,7 @@ if (isset($_POST['submit'])) {
         //$_SESSION['employeeType'] = $employeeType;
         // Go to the index.php
 
-        header("location: job_selection.php");
+        header("location: index.php");
     }
     // If the login was not successful
     else {

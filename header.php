@@ -97,6 +97,7 @@
                                         </li>
                                     </ul>
                                 </li>';
+                            echo '<li><a href="'. ROOT . '/attendance/">Break</a></li>';
                             echo '<li><a href="'. ROOT . '/login/index.php?action=logout">Logout</a></li>';
                         }
                     ?>
