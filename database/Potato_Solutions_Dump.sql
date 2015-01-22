@@ -603,6 +603,7 @@ INSERT INTO `Potato`(`potato_id`, `potato_name`) VALUES
 --
 CREATE TABLE IF NOT EXISTS `Trailer` (
 `trailer_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+`trailer_num` int(5) unsigned NOT NULL,
 `reg_id` int(5) unsigned NOT NULL,
 `inspect_id` int(5) unsigned NOT NULL,
 `plate_num` int(8) unsigned NOT NULL,
@@ -616,6 +617,7 @@ PRIMARY KEY (`trailer_id`)
 --
 CREATE TABLE IF NOT EXISTS `Truck` (
 `truck_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+`truck_num` int(5) unsigned NOT NULL,
 `reg_id` int(5) unsigned NOT NULL,                                   
 `inspect_id` int(5) unsigned NOT NULL,
 `plate_num` int(8) unsigned NOT NULL,
