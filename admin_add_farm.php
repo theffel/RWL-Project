@@ -34,10 +34,9 @@ include('header.php');
 			// If the user is logged in, display the add farm form
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //REMEMBER TO CHANGE THIS WHEN LOGIN FUNCTIONALITY IS UP////////////////
-			if ($loggedIn == TRUE) {
+			if ($loggedIn == FALSE) {
 ////////////////////////////////////////////////////////////////////
-				if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
-					$farmId = $db->escape($_POST['farmId']);
+				if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
 					$farmName = $db->escape($_POST['farmName']);
 					$farmCivAddress = $db->escape($_POST['farmCivAddress']);
 					$farmPhoneNum = $db->escape($_POST['farmPhoneNum']);
@@ -45,7 +44,6 @@ include('header.php');
 					$farmEmail = $db->escape($_POST['farmEmail']);
 
 					$insertData = Array(
-					'farm_id' => [$farmId], 
 					'farm_name' => [$farmName], 
 					'farm_civic_address' => [$farmCivAddress], 
 					'farm_phone' => [$farmPhoneNum], 
@@ -53,10 +51,9 @@ include('header.php');
 					'farm_email' => [$farmEmail]
 					);
 					// Create query
-					//$query = "INSERT INTO `farm` (farm_id, farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES (" .$farmId.", '".$farmName."', '".$farmCivAddress."',  ".$farmPhoneNum.", '".$farmEmail."', ".$farmContact.")";
+				$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ({$farmName}, {$farmCivAddress},  {$farmPhoneNum}, {$farmEmail}, {$farmContact})";
 					
-					//if ($db->query($query) === TRUE) {
-					if ($db->insert(`farm`, $insertData) === TRUE) {
+					if ($db->query($query) === TRUE) {
 						echo "New record created successfully";
 					} else {
 						echo "Error: " . $query . "<br>" . $db->error;
@@ -70,14 +67,6 @@ include('header.php');
 			?>
 
 				<form class="form-horizontal" name="addFarmForm" id="addFarmForm" method="post" action="admin_add_farm.php">
-					
-					<!--farm ID-->
-					<div class="form-group">
-						<label for="inputFarmId" class="control-label col-xs-2">Farm Id</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmId" id="farmId" placeholder="Farm ID" required data-validation-required-message="Please enter the designated farm ID.">
-						</div>
-					</div>
 					
 					<!--Farm Name-->
 					<div class="form-group">
