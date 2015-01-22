@@ -20,19 +20,20 @@ while ($row = $result->fetch_assoc()){
 }
 $_SESSION['potatoes'] = $potatoes;
 
-/*
-
-// Store trucks in the session
+//  Store trucks in the session
+$trucks[] = null;
 $query = "SELECT truck_id, truck_num FROM truck";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()){        
 	$truckId = $row['truck_id'];  
 	$truckNum = $row['truck_num'];
 	$trucks[] = array($truckId, $truckNum);
+	var_dump($trucks);
 }
 $_SESSION['trucks'] = $trucks;	
 
 // Store trailers in the session
+$trailers[] = null;
 $query = "SELECT trailer_id, trailer_num FROM trailer";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()){        
@@ -42,6 +43,6 @@ while ($row = $result->fetch_assoc()){
 }
 $_SESSION['trailers'] = $trailers;
 
-*/
+
 
 ?>
