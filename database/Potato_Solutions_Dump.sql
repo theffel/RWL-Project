@@ -571,6 +571,7 @@ PRIMARY KEY (`sample_id`)
 CREATE TABLE IF NOT EXISTS `Product` (                              /* what are the different product types*/
 `product_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
 `product_type` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+`potato_id` int(2) unsigned NOT NULL,
 PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
