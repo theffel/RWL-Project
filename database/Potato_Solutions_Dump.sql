@@ -183,6 +183,7 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 `attend_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
 `time_in` datetime NOT NULL,
 `time_out` datetime NOT NULL,
+`on_time` tinyint(1) unsigned NOT NULL COMMENT '0 - ontime, 1 - late',
 `wage_id` int(2) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 PRIMARY KEY (`attend_id`)
