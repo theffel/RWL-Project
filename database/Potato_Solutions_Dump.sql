@@ -692,6 +692,8 @@ CREATE TABLE IF NOT EXISTS `Fuel` (
 `truck_id` int(3) unsigned NOT NULL,
 `purchace_date` datetime NOT NULL, 
 `mileage` int(6) unsigned NOT NULL,
+`liters` int(4) unsigned NOT NULL,
+`cost` double unsigned NOT NULL,
 `location` varchar(100) COLLATE utf8_unicode_ci NOT NULL,      /* not sure if this is supposed to be gas station location */
 `img_id` int(4) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
