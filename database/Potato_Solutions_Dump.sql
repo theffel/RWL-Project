@@ -692,7 +692,7 @@ CREATE TABLE IF NOT EXISTS `Fuel` (
 `truck_id` int(3) unsigned NOT NULL,
 `purchase_date` datetime NOT NULL, 
 `mileage` int(6) unsigned NOT NULL,
-`liters` int(4) unsigned NOT NULL,
+`litres` int(4) unsigned NOT NULL,
 `cost` double unsigned NOT NULL,
 `location` varchar(100) COLLATE utf8_unicode_ci NOT NULL,      /* not sure if this is supposed to be gas station location */
 `img_id` int(4) unsigned NOT NULL,
@@ -706,7 +706,7 @@ PRIMARY KEY (`fuel_id`)
 --
 CREATE TABLE IF NOT EXISTS `Fluids` (
 `fluid_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
-`amount_liters` double unsigned DEFAULT NULL,
+`amount_litres` double unsigned DEFAULT NULL,
 `fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
 `truck_id` int(3) unsigned DEFAULT NULL, 
 `trailer_id` int(3) unsigned DEFAULT NULL,                    
