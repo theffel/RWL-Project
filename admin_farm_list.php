@@ -1,7 +1,19 @@
 <?php
-//created by: Taylor Hardy
-//created on: 2015/01/15
-//version 0.9
+/**
+ * This page holds the form for displaying farms.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Taylor Hardy
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-15
+ */
 
 // Start the session
 session_start();

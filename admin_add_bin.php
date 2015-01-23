@@ -1,5 +1,20 @@
 <?php
-
+/**
+ * This page holds the form for adding a new warehouse bin.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Taylor Hardy
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-15
+ */
+ 
 // Start the session
 session_start();
 
@@ -22,12 +37,12 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a>
                     </li>
-					<li><a href="admin_farm_list.php">Farms</a>
+					<li><a href="./admin_farm_list.php">Farms</a>
 					</li>
 <?php
 			// If the user is logged in, display the form
 			if ($loggedIn == true) {	
-				// Get Farm Id
+				// Get warehouse Id
 				$warehouseId = $_GET["id"];
 				//warehouse breadcrumb
 //				echo "<li><a href='admin_warehouse_list.php?id=" . $warehouseId . "'>warehouse</a></li>";
@@ -40,39 +55,25 @@ include('header.php');
         <!-- /.row -->
 		<?php
 
-				// get warehouse submit
-				if (isset($_POST['binMarker'])) {
-					$binMarker = ($_POST['binMarker']);
 
-					// Create query
-					$query = "INSERT INTO `warehouse_bin` (warehouse_id, bin_marker) VALUES ('{$warehouseId}', '{$binMarker}')";
-					
-					if ($db->query($query) === TRUE) {
-						echo "New record created successfully";
-					} else {
-						echo "Error: " . $query . "<br>" . $db->error;
-					}
-
-					$db->close();
-				}
 
 
 			
 			
 
-				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='../admin_add_bin.php/?id=". $warehouseId ."'>";
+				echo "<form class='form-horizontal' name='addWarehouseBinForm' id='addWarehouseBinForm' method='post' action='add_to_database.php/?id=". $warehouseId ."'>";
 			?>		
-					<!--Bin Marker-->
+					<!--Bin Name-->
 					<div class="form-group">
-						<label for="inputbinMarker" class="control-label col-xs-2">Bin Marker</label>
+						<label for="inputbinName" class="control-label col-xs-2">Bin Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="binMarker" id="binMarker" placeholder="Bin Marker" required data-validation-required-message="Please enter the marker of the new bin.">
+							<input type="text" class="form-control" name="binName" id="binName" required data-validation-required-message="Please enter the Name of the new bin." autofocus>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">
-							<input type="submit" class="btn btn-primary" name="addFarm" value="Add Warehouse"/>
+							<input type="submit" class="btn btn-primary" name="addFarm" value="Add Bin"/>
 						</div>
 					</div>
 					

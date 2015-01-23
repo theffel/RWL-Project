@@ -1,7 +1,19 @@
 <?php
-//created by: Taylor Hardy
-//created on: 2015/01/15
-//version 0.9
+/**
+ * This page holds the form for displaying warehouses.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Taylor Hardy
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-15
+ */
 
 // Start the session
 session_start();
@@ -23,9 +35,9 @@ include('header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">List of Warehouses</h1>
                 <ol class="breadcrumb">
-                    <li><a href="../index.php">Home</a>
+                    <li><a href="./index.php">Home</a>
                     </li>
-					<li><a href="../admin_farm_list.php">Farms</a>
+					<li><a href="./admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Warehouses</li>
                 </ol>
@@ -43,7 +55,9 @@ include('header.php');
 				
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()){
-						echo "<form action = 'admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit value = '" . $row['warehouse_name'] . "'></form><br />";
+						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
+						$binCount = $db->query($binQuery)->num_rows;
+						echo "<form action = 'admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit value = '" . $row['warehouse_name'] . "'>Total Bins: " . $binCount . "</form><br />";
 					}
 				}
 				else {
@@ -59,7 +73,7 @@ include('header.php');
 							</script>';
 			}
         
-        echo "<hr><a href = ../admin_add_warehouse.php/?id=" . $id . ">Add new warehouse to current farm</a><br />";
+        echo "<hr><a href = ./admin_add_warehouse.php/?id=" . $id . ">Add new warehouse to current farm</a><br />";
 		?>
 		<hr>
 

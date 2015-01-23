@@ -1,7 +1,19 @@
 <?php
-//created by: Taylor Hardy
-//created on: 2015/01/15
-//version 0.9
+/**
+ * This page holds the form for adding a new farm.
+ *
+ * PHP version 5
+ *
+ *
+ * @category    CategoryName
+ * @package     PackageName
+ * @author      Taylor Hardy
+ * @copyright   2015 sCIS
+ * @license     http://php.net/license/3_01.txt  PHP License 3.01
+ * @version     x.xx
+ * @link        http://pear.php.net/package/PackageName
+ * @since       2015-01-13
+ */
 
 // Start the session
 session_start();
@@ -60,7 +72,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmPhoneNum" class="control-label col-xs-2">Farm Phone Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" required data-validation-required-message="Please enter the Phone number of the new farm.">
+							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the Phone number of the new farm.">
 						</div>
 					</div>
 					
@@ -68,7 +80,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmContact" class="control-label col-xs-2">Farm Business Contact</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContact" id="farmContact" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
+							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="###" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
 						</div>
 					</div>
 					
