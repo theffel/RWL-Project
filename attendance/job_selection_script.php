@@ -18,10 +18,9 @@
 
 // Include the database.php file
 include('../database.php');
-include('../session_load.php');
 
 // Get empId from session  
-$empId = $_SESSION['empId'];
+$empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
 
 // declare array
 $jobIds = array();
@@ -29,7 +28,7 @@ $jobIds = array();
 // Create query for job type id
 $query = "SELECT emp_type_id FROM job_type WHERE emp_id=" .$empId;
 $result = $db->query($query);
-   
+  var_dump($query); 
 while ($row = $result->fetch_assoc()){
     $empTypeId = $row['emp_type_id'];   
     $jobIds[] = $empTypeId;

@@ -61,13 +61,13 @@ include('../header.php');
             <div class="form-group">
                 <label for="startDate" class="control-label col-md-2">Start Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startDate" placeholder="MM-DD-YYYY">
+                    <input type="text" class="form-control" name="startDate" value= "<?php echo $currentDate; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="startKmTruck" class="control-label col-md-2">Start KM on Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startKmTruck">
+                    <input type="text" class="form-control" name="startKmTruck"required data-validation-required-message="Please enter starting Km.">
                 </div>
             </div>
             <div class="form-group">
@@ -91,13 +91,13 @@ include('../header.php');
             <div class="form-group">
                 <label for="litresFuelTank" class="control-label col-md-2">Litres of Fuel in the Tank</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="litresFuelTank">
+                    <input type="text" class="form-control" name="litresFuelTank"required data-validation-required-message="Please enter amount of fuel.">
                 </div>
             </div>
             <div class="form-group">
                 <label for="finishKm" class="control-label col-md-2">Finish KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="finishKm">
+                    <input type="text" class="form-control" name="finishKm"required data-validation-required-message="Please enter your finished Km.">
                 </div>
             </div>
             <div class="form-group">

@@ -18,10 +18,9 @@
 
 // Include php files
 include('../database.php');
-include('../session_load.php');
 
 // Get empId from session  
-$empId = $_SESSION['empId'];
+$empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
 
 // Start Break
 if (isset($_POST['startBreak'])) {
