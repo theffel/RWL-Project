@@ -74,6 +74,10 @@
                                                 echo '<a href="'. ROOT . '/delivery">Delivery</a>';
                                             } if ($employeeType == 7) { // Maintenance
                                                 echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
+                                            } if ($employeeType == 9) { // Admin
+                                                echo '<a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>';
+                                            	echo '<a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>';
+                                            	echo '<a href="'. ROOT . '/admin_farm_list.php">View Farm</a>';
                                             }
                             echo '      </li>
                                     </ul>
@@ -81,16 +85,6 @@
                             }
                             echo '<li><a href="'. ROOT . '/attendance/">Attendance</a></li>';
                             echo '<li><a href="'. ROOT . '/login/index.php?action=logout">Logout</a></li>';
-                            echo '<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Pages <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>
-                                            <a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>
-                                            <a href="'. ROOT . '/admin_farm_list.php">View Farm</a>
-                                        </li>
-                                    </ul>
-                                </li>';
                         }
                     ?>
                 </ul>
