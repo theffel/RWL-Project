@@ -325,8 +325,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
 `modified` datetime NOT NULL,
 `created` datetime NOT NULL,
-`emp_id` int(3) unsigned default NULL,
-`farm_id` int(4) unsigned default NULL,
+`emp_id` int(3) unsigned DEFAULT NULL,
+`farm_id` int(4) unsigned DEFAULT NULL,
 PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
