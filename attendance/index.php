@@ -48,8 +48,7 @@ include('../header.php');
         	if ($attendanceId == 0) {
             	// load session with attendance id
                   $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . 
-                  " ORDER BY time_out ASC";
-                var_dump($query);
+                  " ORDER BY time_out ASC";              
             	// need to be able to handle more then one login for the day
             	$result = $db->query($query);
             	$numRows = $result->num_rows;

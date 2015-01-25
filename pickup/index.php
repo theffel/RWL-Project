@@ -159,8 +159,6 @@ include('../header.php');
                                       xmlhttp.onreadystatechange=function() {
                                         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
                                         var jsWarehouses = JSON.parse(xmlhttp.responseText);
-                                        alert(jsWarehouses);
-                                        alert(jsWarehouses.length);
                                         document.getElementById("warehouse").options.length=0;
                                         for (var y = 0; y < jsWarehouses.length; y++){
                                            addOption(document.pickForm.warehouse, jsWarehouses[y][1], jsWarehouses[y][0]);
