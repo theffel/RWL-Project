@@ -52,6 +52,7 @@
                                                 echo '<a href="'. ROOT . '/daily_mileage">Daily Mileage</a>';
                                                 echo '<a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>';
                                                 echo '<a href="'. ROOT . '/fuel">Fuel</a>';
+                                                echo '<a href="'. ROOT . '/pickup">Pick Up</a>';
                                             } if ($employeeType == 1 || $employeeType == 3) { // Driver or production manager
                                                 echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
                                             } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
@@ -71,7 +72,7 @@
                                                 echo '<a href="'. ROOT . '/sample">Sample</a>';
                                             } if ($employeeType == 2) { // Dispatcher
                                                 echo '<a href="'. ROOT . '/shipping">Shipping</a>';
-                                                echo '<a href="'. ROOT . '/delivery">Delivery</a>';
+                                                
                                             } if ($employeeType == 7) { // Maintenance
                                                 echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
                                             } if ($employeeType == 9) { // Admin
