@@ -325,8 +325,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
 `modified` datetime NOT NULL,
 `created` datetime NOT NULL,
-`emp_id` int(3) unsigned DEFAULT NULL,
-`farm_id` int(4) unsigned DEFAULT NULL,
+`emp_id` int(3) unsigned default NULL,
+`farm_id` int(4) unsigned default NULL,
 PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
@@ -381,7 +381,6 @@ CREATE TABLE IF NOT EXISTS `Warehouse` (
 `farm_id` int(4) unsigned NOT NULL,
 `warehouse_name` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
 `warehouse_civic_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-`warehouse_prov` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
 `warehouse_phone` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
 `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
 `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -485,7 +484,6 @@ CREATE TABLE IF NOT EXISTS `Destination` (
 `dest_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
 `dest_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
 `dest_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-`dest_prov` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
 `dest_phone` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
 `dest_contact_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
 PRIMARY KEY (`dest_id`)

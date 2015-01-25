@@ -25,10 +25,7 @@ session_start();
 include('../database.php');
 include('../session_load.php');
 
-$empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
-
 // insert attendance - start punch clock for employee
-
 if (isset($_POST['punchIn'])) {		
 	$query = "INSERT INTO attendance (time_in, emp_id) 	VALUES ('" . $dateTime . "'," . $empId . ")";
 	$result = $db->query($query);
@@ -102,7 +99,6 @@ for ($x = 0; $x < count($jobIds); $x++) {
 }
 
 $_SESSION['jobTypes'] = $jobTypes;
-
 
  /* loop over array to set employee type. Done this way if another employee type is
  added to database will not effect employee type selection in time and attendence */   

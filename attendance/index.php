@@ -36,8 +36,6 @@ include('../header.php');
     </div>
     <!-- /.row -->
         <?php
-
-        $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         // If the user is not logged in, display a login form
