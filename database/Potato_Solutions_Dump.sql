@@ -44,7 +44,6 @@ INSERT INTO `rwl`(`name`, `rwl_phone`, `rwl_cell`, `rwl_fax`, `rwl_email`, `rwl_
 -- 
 CREATE TABLE IF NOT EXISTS `Employee` (
 `emp_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
-`emp_type_id` int(2) unsigned NOT NULL,
 `position_id` int(2) unsigned NOT NULL,
 `emp_sin` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
 `emp_first_name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
