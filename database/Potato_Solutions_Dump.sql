@@ -732,20 +732,22 @@ PRIMARY KEY (`fuel_id`)
 
 
 -- 
--- Table structure for table `Fluids`
+-- Table structure for table `Maintenance`
 --
-CREATE TABLE IF NOT EXISTS `Fluids` (
-`fluid_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `Maintenance` (
+`maintain_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
 `change_date` datetime NOT NULL,
 `engine_oil_litres` double unsigned DEFAULT NULL,
 `hyd_oil_litres` double unsigned DEFAULT NULL,
 `trans_fluid_litres` double unsigned DEFAULT NULL,
 `coolant_litres` double unsigned DEFAULT NULL,
 /*`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL, ----------not sure if this is needed with the types above---------------- */
+`oil_change_kms` int(6) unsigned NOT NULL,
+`tranny_fluid_change_kms` int(6) unsigned NOT NULL,
 `emp_id` int(3) unsigned NOT NULL,
 `truck_id` int(3) unsigned DEFAULT NULL, 
 `trailer_id` int(3) unsigned DEFAULT NULL,                    
-PRIMARY KEY (`fluid_id`)
+PRIMARY KEY (`maintain_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
