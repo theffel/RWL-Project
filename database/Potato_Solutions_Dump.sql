@@ -450,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `Pick_Up` (
 `depart_time_farm` datetime NOT NULL,
 `arrive_time_rwl` datetime NOT NULL,
 `unload_time` datetime NOT NULL,
-`depart_time` datetime NOT NULL,
+`depart_time_rwl` datetime NOT NULL,
 `ticket_num` int(5) unsigned NOT NULL,
 `gross_weight` int(5) unsigned NOT NULL,
 `tare_weight` int(5) unsigned NOT NULL,
