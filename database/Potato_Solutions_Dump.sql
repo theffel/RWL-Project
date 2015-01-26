@@ -639,6 +639,7 @@ CREATE TABLE IF NOT EXISTS `Trailer` (
 `inspect_id` int(5) unsigned NOT NULL,
 `plate_num` int(8) unsigned NOT NULL,
 `ins_id` int(5) unsigned NOT NULL,
+`maintain_id` int(5) unsigned NOT NULL,
 PRIMARY KEY (`trailer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
@@ -653,8 +654,7 @@ CREATE TABLE IF NOT EXISTS `Truck` (
 `inspect_id` int(5) unsigned NOT NULL,
 `plate_num` int(8) unsigned NOT NULL,
 `ins_id` int(5) unsigned NOT NULL,
-`oil_change_kms` int(6) unsigned NOT NULL,
-`tranny_fluid_change_kms` int(6) unsigned NOT NULL,
+`maintain_id` int(5) unsigned NOT NULL,
 PRIMARY KEY (`truck_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
