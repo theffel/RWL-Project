@@ -13,21 +13,19 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-25
+ * @since       2015-01-2r
  */
 
-// Include the database.php file
 include('../database.php');
-
-$farmId = intval($_GET['q']);
-$query = "SELECT warehouse_id, warehouse_name FROM warehouse WHERE farm_id=" . $farmId;
+	
+$warehouseId = intval($_GET['q']);
+$query = "SELECT bin_id, bin_name FROM warehouse_bin WHERE warehouse_id=" . $warehouseId;
 $result = $db->query($query);
 
 while($row = $result->fetch_assoc()) {
-	$warehouseId = $row['warehouse_id'];
-	$warehouseName = $row['warehouse_name'];
-	$warehouses[] = array($warehouseId, $warehouseName);
+	$binId = $row['bin_id'];
+	$binName = $row['bin_name'];
+	$bins[] = array($binId, $binName);
 }
-
-echo json_encode($warehouses);
+echo json_encode($bins);
 ?>

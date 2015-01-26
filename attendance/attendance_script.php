@@ -23,6 +23,7 @@ session_start();
 include('../database.php');
 include('../session_load.php');
 
+// Get the empId from the session
 $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
 
 // Insert attendance - start punch clock for employee
@@ -31,8 +32,7 @@ if (isset($_POST['punchIn'])) {
 	$result = $db->query($query);
 		
 	// load session with attendance id
-    $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . 
-    " ORDER BY time_out ASC";
+    $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY time_out ASC";
 
 	// need to be able to handle more then one login for the day
 	$result = $db->query($query);
@@ -62,16 +62,14 @@ if (isset($_POST['startBreak'])) {
 	$_SESSION['breakId'] = $breakId;
 }
 
-// End ereak
+// End break
 if (isset($_POST['endBreak'])) {
 	$query = "UPDATE break SET end_break_time = '" .$currentTime . "' WHERE break_id=" . $_SESSION['breakId'];
 	$result = $db->query($query);
 }
 
 // Job selection
-$query = "SELECT job_type.emp_type_id, type_description, type_alt_description
-		FROM job_type INNER JOIN employee_type ON job_type.emp_type_id = employee_type.emp_type_id
-		WHERE emp_id =" .$empId;
+$query = "SELECT job_type.emp_type_id, type_description, type_alt_description FROM job_type INNER JOIN employee_type ON job_type.emp_type_id = employee_type.emp_type_id WHERE emp_id =" .$empId;
 $result = $db->query($query);
 
 while ($row = $result->fetch_assoc()){
@@ -83,16 +81,12 @@ while ($row = $result->fetch_assoc()){
 
 $_SESSION['jobTypes'] = $jobTypes;
 
- /* loop over array to set employee type. Done this way if another employee type is
- added to database will not effect employee type selection in time and attendence */   
-
+/* loop over array to set employee type. Done this way if another employee type is added to database will not effect employee type selection in time and attendence */   
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
     if (isset($_POST[$jobTypes[$x][2]])) {
         $_SESSION['employeeType'] = $jobTypes[$x][0];
-
-    $query = "INSERT INTO employee_type_change (type_change_time, emp_type_id, emp_id)  VALUES ('" . $dateTime . "'," 
-        .$_SESSION['employeeType'] . "," . $empId . ")";
-    $result = $db->query($query);
+    	$query = "INSERT INTO employee_type_change (type_change_time, emp_type_id, emp_id)  VALUES ('" . $dateTime . "'," .$_SESSION['employeeType'] . "," . $empId . ")";
+    	$result = $db->query($query);
     }
 }
 ?>

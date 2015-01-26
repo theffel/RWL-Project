@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the attendance index.php page.
+ * This file provides the business functionality for the pickup index.php page.
  *
  * PHP version 5
  *
