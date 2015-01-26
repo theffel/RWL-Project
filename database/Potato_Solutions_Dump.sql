@@ -453,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `Pick_Up` (
 `ticket_num` int(5) unsigned NOT NULL,
 `gross_weight` double(8) unsigned NOT NULL,
 `tare_weight` double(8) unsigned NOT NULL,
-`patato_id` int(2) unsigned NOT NULL,
+`potato_id` int(2) unsigned NOT NULL,
 PRIMARY KEY (`pickup_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
