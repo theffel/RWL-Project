@@ -24,7 +24,9 @@
 	// Include the header.php file
 	include('header.php');
 		// If the user is logged in, display the form
-		if ($loggedIn == true) {	
+		if ($loggedIn == true) {
+			
+			// get submit from add warehouse
 			if (isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehousePhoneNum'])) {
 			$farmId = $_GET["id"];
 			$warehouseName = ($_POST['warehouseName']);
@@ -36,14 +38,14 @@
 			$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_phone) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}',  '{$warehousePhoneNum}')";
 			
 			if ($db->query($query) === TRUE) {
-				echo "New record created successfully";
+				echo "New record created successfully";			
 			} else {
 				echo "Error: " . $query . "<br>" . $db->error;
 			}
 			
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("../admin_add_warehouse.php?id=' . $farmId . '");
+					location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
 					</script>';				
 		}
 		// get submit from add farm page
@@ -65,7 +67,7 @@
 
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("admin_add_warehouse.php?id=' . $farmId . '");
+					location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
 					</script>';			
 		}
 						// get warehouse bin submit
@@ -85,7 +87,7 @@
 
 					$db->close();
 			echo '<script type="text/javascript">
-					location.replace("../admin_add_bin.php?id=' . $warehouseId . '");
+					location.replace("'.ROOT.'/admin_add_bin.php?id=' . $warehouseId . '");
 					</script>';	
 				}
 				else if (isset($_POST['employeeTypeId']) && isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePCI']) && isset($_POST['employeeSCI'])){
@@ -117,12 +119,12 @@
 
 					$db->close();
 					echo '<script type="text/javascript">
-					location.replace("admin_add_employee.php");
+					location.replace("'.ROOT.'/admin_add_employee.php");
 					</script>';	
 				}
 		else{
 			echo '<script type="text/javascript">
-					location.replace("admin_farm_list.php");
+					location.replace("'.ROOT.'/admin_farm_list.php");
 					</script>';	
 		}
 	}
@@ -130,7 +132,7 @@
 	// If the user is not logged in, redirect them to login.php if they try to access this page
 	else {
 		echo '<script type="text/javascript">
-					location.replace("login/index.php");
+					location.replace("'.ROOT.'/login/index.php");
 					</script>';
 	}
 ?>

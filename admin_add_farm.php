@@ -35,9 +35,9 @@ include('header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">New Farm Addition</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a>
+                    <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Add Farm</li>
                 </ol>
@@ -106,7 +106,7 @@ include('header.php');
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("login/index.php");
+							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
         ?>
