@@ -48,6 +48,9 @@
 					location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
 					</script>';				
 		}
+		
+		
+		
 		// get submit from add farm page
 		else 	if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
 			$farmName = ($_POST['farmName']);
@@ -70,6 +73,10 @@
 					location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
 					</script>';			
 		}
+		
+		
+		
+		
 						// get warehouse bin submit
 		else if (isset($_POST['binName'])) {
 					// Get Farm Id
@@ -90,8 +97,12 @@
 					location.replace("'.ROOT.'/admin_add_bin.php?id=' . $warehouseId . '");
 					</script>';	
 				}
-				else if (isset($_POST['employeeTypeId']) && isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePCI']) && isset($_POST['employeeSCI'])){
-					$employeeTypeId = $_POST['employeeTypeId'];
+				
+				
+				
+				
+				//add employee
+				else if (isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePCI']) && isset($_POST['employeeSCI'])){
 					$employeePosId = $_POST['employeePosId'];
 					$employeeSIN = $_POST['employeeSIN'];
 					$employeeFN = $_POST['employeeFN'];
@@ -109,22 +120,76 @@
 					
 
 					// Create query
-					$query = "INSERT INTO `employee` (emp_type_id, position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, primary_contact_id, secondary_contact_id) VALUES ('{$employeeTypeId}', '{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', '{$employeePCI}', '{$employeeSCI}')";
+					$query = "INSERT INTO `employee` (position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, primary_contact_id, secondary_contact_id) VALUES ('{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', '{$employeePCI}', '{$employeeSCI}')";
 
 					if ($db->query($query) === TRUE) {
 						echo "New record created successfully";
+						$db->close();
+						echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin_add_employee.php");
+						</script>';	
 					} else {
-						echo "Error: " . $query . "<br>" . $mysqli->error;
+						echo "Error: " . $query . "<br>" . $db->error;
 					}
 
-					$db->close();
-					echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_add_employee.php");
-					</script>';	
+
 				}
+				
+				
+				
+				
+				//add employee emergency contacts
+				else if (isset($_POST['employeeECFN']) && isset($_POST['employeeECLN']) && isset($_POST['employeeECPhoneNum'])){
+					$employeeECFN = $_POST['employeeECFN'];
+					$employeeECLN = $_POST['employeeECLN'];
+					$employeeECPhoneNum = $_POST['employeeECPhoneNum'];
+					
+
+					// Create query
+					$query = "INSERT INTO `employee_emergency_contact` (emerg_first_name, emerg_last_name, emerg_phone) VALUES ('{$employeeECFN}', '{$employeeECLN}', '{$employeeECPhoneNum}')";
+
+					if ($db->query($query) === TRUE) {
+						echo "New record created successfully";
+						$db->close();
+						echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin_add_employee_emergency_contacts.php");
+						</script>';	
+					} else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+					}
+					
+					
+					
+					
+				//add employee training certificate
+				else if (isset($_POST['employeeId']) && isset($_POST['TrainingStart']) && isset($_POST['TrainingEnd']) && isset($_POST['CompletionStat']) && isset($_POST['TrainingTypeId'])){
+					$employeeID = $_POST['employeeId'];
+					$TrainingStart = $_POST['TrainingStart'];
+					$TrainingEnd = $_POST['TrainingEnd'];
+					$CompletionStat = $_POST['CompletionStat'];
+					$TrainingTypeId = $_POST['TrainingTypeId'];
+					
+
+					// Create query
+					$query = "INSERT INTO `employee_training_certificate` (emp_id, start_date, end_date, completed, training_type_id) VALUES ('{$employeeId}', '{$TrainingStart}', '{$TrainingEnd}', '{$CompletionStat}', '{$TrainingTypeId}')";
+
+					if ($db->query($query) === TRUE) {
+						echo "New record created successfully";
+						$db->close();
+						echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin_add_employee_training_certificate.php");
+						</script>';	
+					} else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+					}
+
+				}
+				//improper sending variable
 		else{
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_farm_list.php");
+					location.replace("'.ROOT.'/index.php");
 					</script>';	
 		}
 	}

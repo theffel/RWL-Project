@@ -53,14 +53,6 @@ include('header.php');
 
 				<form class="form-horizontal" name="addemployeeForm" id="addemployeeForm" method="post" action="add_to_database.php">
 
-					<!--employee type ID-->
-					<div class="form-group">
-						<label for="inputEmployeeTypeId" class="control-label col-xs-2">Employee type Id</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeTypeId" id="employeeTypeId" placeholder="##" required data-validation-required-message="Please enter the designated employee type ID.">
-						</div>
-					</div>
-
 					<!--employee position ID-->
 					<div class="form-group">
 						<label for="inputEmployeePositionId" class="control-label col-xs-2">Employee position Id</label>
