@@ -34,11 +34,10 @@ if (isset($_POST['submit'])) {
 	$result = $db->query($query);
 }
 
-// load array with fuel receipts for day by employee
+// Load array with fuel receipts for day by employee
 $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE purchase_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY purchase_date DESC";
 $result = $db->query($query);
 
-// need to be able to handle more then one login for the day
 while ($row = $result->fetch_assoc()){
 	$fuelId = $row['fuel_id'];
     $date = $row['purchase_date'];
@@ -51,7 +50,7 @@ while ($row = $result->fetch_assoc()){
     $_SESSION['fuelReceipts'] = $fuelReceipts;
 }
 
-// insert attendance - end punch clock for employee
+// Select fuel receipts
 for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){	
     if (isset($_POST[$fuelReceipts[$x][0]])) {
   		$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
@@ -70,7 +69,7 @@ for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
 	}
 }
 
-// Update attendance
+// Update fuel
 if (isset($_POST['update'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$truck = $db->real_escape_string($_POST['truck']);

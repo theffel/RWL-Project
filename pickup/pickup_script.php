@@ -42,69 +42,7 @@ if (isset($_POST['submit'])) {
 	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
 	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
 	
-	//$query = "INSERT INTO fuel (truck_id, purchase_date, mileage, litres, cost, location, emp_id) VALUES (" . $truck . ",'" . $dateTime . "', " . $mileage . ", " . $litres . "," . $cost . ",'" . $location . "'," . $empId . ")";
-	//$result = $db->query($query);
-}
-/*
-	// load array with fuel receipts for day by employee
-    $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id 
-    	WHERE purchase_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY purchase_date DESC";
-	
-	// need to be able to handle more then one login for the day
+	$query = "INSERT INTO pick_up (pd_date, driver_id, dispatcher_id, trailer_id, truck_id, farm_id, warehouse_id, bin_id, bin_marker, field_id, arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight, potato_id, emp_id) VALUES (" . $date . "," . $driver . "," . $dispatcher . "," . $trailer . "," . $truck . "," . $farm . "," . $warehouse . "," . $bin . "," . $binMarker . "," . $field . "," . $warehouse . "," . $bin . "," . $binMarker . "," . $field . ",'" . $farmArrivalTime . ",'" . $loadTime . ",'" . $farmDepartureTime . ",'" . $rwlArrivalTime . ",'" . $rwlUnloadTime . ",'" . $rwlDepartureTime . "," . $ticketNumber . "," . $grossWeight . "," . $tareWeight . "," . $potato . "," . $empId . ")";
 	$result = $db->query($query);
-	while ($row = $result->fetch_assoc()){
-	$fuelId = $row['fuel_id'];
-    $date = $row['purchase_date'];
-    $truck = $row['truck_num']; 
-    $litres = $row['litres'];
-    $cost = $row['cost'];   
-    $mileage = $row['mileage'];
-    $location = $row['location'];   
-    $fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
-    $_SESSION['fuelReceipts'] = $fuelReceipts;
-	}
-
-// insert attendance - end punch clock for employee
-	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){	
-
-    	if (isset($_POST[$fuelReceipts[$x][0]])) {
-  		$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
-  		$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id 
-    	WHERE fuel_id = " . $_SESSION['receiptNum'];
-    	$result = $db->query($query);
-    	$row = $result->fetch_assoc();
-		$date = $row['purchase_date'];
-		$truck = $row['truck_num']; 
-    	$litres = $row['litres'];
-    	$cost = $row['cost'];   
-   		$mileage = $row['mileage'];
-    	$location = $row['location'];  
-    	$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
-    	$_SESSION['editReceipt'] = $editReceipt;
-        header ("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
-	
 }
-}
-
-if (isset($_POST['update'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
-	$truck = $db->real_escape_string($_POST['truck']);
-	$mileage = $db->real_escape_string($_POST['mileage']);
-	$litres = $db->real_escape_string($_POST['litres']);
-	$cost = $db->real_escape_string($_POST['cost']);
-	$location = $db->real_escape_string($_POST['location']);
-	
-	$query = "SELECT truck_id FROM truck WHERE truck_num = '" . $truck . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$truckId = $row['truck_id'];
-	
-	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", litres = " . $litres . ",
-		cost = " . $cost . ", location = '" . $location . "'";
-	$result = $db->query($query);
-	// kill session var 'fuelReceipts'
-	unset($_SESSION['fuelReceipts']);
-	header ("location:index.php");
-}
-*/
 ?>
