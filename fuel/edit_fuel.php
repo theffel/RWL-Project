@@ -8,11 +8,12 @@
  * @category    CategoryName
  * @package     PackageName
  * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-18
+ * @since       2015-01-23
  */
 
 // Start the session
@@ -43,31 +44,24 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-      
         $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
-   
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
-            
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {  
         ?>
         <h2 class="page-header">Edit Receipt</h2>
-
         <form class="form-horizontal" name="fuelForm" id="fuelForm" method="post" action="edit_fuel.php">
-
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
                    <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editReceipt'][0][1]; ?>">                  
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck #</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="truck" value= "<?php echo $_SESSION['editReceipt'][0][2]; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="mileage" class="control-label col-md-2">Mileage</label>
                 <div class="col-md-10">
@@ -86,24 +80,20 @@ include('../header.php');
                     <input type="text" class="form-control" name="cost" value= "<?php echo $_SESSION['editReceipt'][0][5]; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="location" class="control-label col-md-2">Location</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="location" value= "<?php echo $_SESSION['editReceipt'][0][6]; ?>">
                 </div>
             </div>
-        
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
         </form>
-
         <?php
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

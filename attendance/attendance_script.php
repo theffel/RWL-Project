@@ -13,22 +13,19 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-21
+ * @since       2015-01-23
  */
 
 // Start the session
 session_start();
 
 // Include php files
-//include('break_script.php');
-//include('job_selection_script.php');
 include('../database.php');
 include('../session_load.php');
 
 $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
 
-// insert attendance - start punch clock for employee
-
+// Insert attendance - start punch clock for employee
 if (isset($_POST['punchIn'])) {		
 	$query = "INSERT INTO attendance (time_in, emp_id) 	VALUES ('" . $dateTime . "'," . $empId . ")";
 	$result = $db->query($query);
@@ -44,14 +41,14 @@ if (isset($_POST['punchIn'])) {
 	$_SESSION['attendanceId'] = $attendanceId;
 }
 
-// insert attendance - end punch clock for employee
+// Insert attendance - end punch clock for employee
 if (isset($_POST['punchOut'])) {
 	$query = "UPDATE attendance SET time_out = '" .$dateTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
 	$result = $db->query($query); 
     $_SESSION['attendanceId'] = 0;
 }
 
-// Start Break
+// Start break
 if (isset($_POST['startBreak'])) {
 	$query = "INSERT INTO break (start_break_time, emp_id, break_date) VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate ."')";
 	$result = $db->query($query);
@@ -65,12 +62,13 @@ if (isset($_POST['startBreak'])) {
 	$_SESSION['breakId'] = $breakId;
 }
 
-// End Break
+// End ereak
 if (isset($_POST['endBreak'])) {
 	$query = "UPDATE break SET end_break_time = '" .$currentTime . "' WHERE break_id=" . $_SESSION['breakId'];
 	$result = $db->query($query);
 }
 
+// Job selection
 $query = "SELECT job_type.emp_type_id, type_description, type_alt_description
 		FROM job_type INNER JOIN employee_type ON job_type.emp_type_id = employee_type.emp_type_id
 		WHERE emp_id =" .$empId;
@@ -84,7 +82,6 @@ while ($row = $result->fetch_assoc()){
 }
 
 $_SESSION['jobTypes'] = $jobTypes;
-
 
  /* loop over array to set employee type. Done this way if another employee type is
  added to database will not effect employee type selection in time and attendence */   

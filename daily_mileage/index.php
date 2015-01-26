@@ -40,7 +40,6 @@ include('../header.php');
         <?php
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
-
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
@@ -52,8 +51,8 @@ include('../header.php');
                     <select class="form-control" name="truck">
                         <?php
                         for ($x = 0; $x < count($trucks); $x++){
-                        echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
-                    }
+                            echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
+                        }
                     ?>
                     </select>
                 </div>

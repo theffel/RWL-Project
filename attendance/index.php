@@ -36,13 +36,12 @@ include('../header.php');
     </div>
     <!-- /.row -->
         <?php
-
         $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+
         // If the user is not logged in, display a login form
         if ($loggedIn == true) {
-        
         	echo '<form class="form-horizontal" name="breakForm" id="breakForm" method="post" action="index.php">
             	<h2 class="page-header">Punch Clock</h2>';
         	if ($attendanceId == 0) {
@@ -57,7 +56,6 @@ include('../header.php');
                 	$row = $result->fetch_assoc();
                 	$attendId = $row['attend_id'];
                 	$punchOutSet = $row['time_out'];
-
                 	if ($punchOutSet != '0000-00-00 00:00:00') {                    
                     	$_SESSION['attendanceId'] = 0;
                 	} else {
@@ -67,7 +65,6 @@ include('../header.php');
             }
 
 			if ($_SESSION['attendanceId'] == 0) {
-
             	echo '<div class="form-group">
                 	<div class="col-md-offset-5 col-md-10">
                 	    <input type="submit" class="btn btn-primary" name="punchIn" value="Punch In"/>
@@ -81,7 +78,6 @@ include('../header.php');
             	</div>
             
              	<h2 class="page-header">Job Selection</h2>';
- 
             	for ($x = 0; $x < count($jobTypes); $x++) {
                 	echo '<div class="form-group">
                                 	<div class="col-md-offset-5 col-md-10">
@@ -112,7 +108,7 @@ include('../header.php');
         ?>
     </div>
     <!-- /.container -->
-        <!-- jQuery -->
+    <!-- jQuery -->
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>

@@ -13,15 +13,11 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-22
+ * @since       2015-01-25
  */
 
 // Include php files
 include('../database.php');
-
-
-
-
 
 // Insert pickup
 if (isset($_POST['submit'])) {	
@@ -46,9 +42,8 @@ if (isset($_POST['submit'])) {
 	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
 	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
 	
-	$query = "INSERT INTO fuel (truck_id, purchase_date, mileage, litres, cost, location, emp_id) VALUES (" . $truck . ",'" . $dateTime . "',
-		" . $mileage . ", " . $litres . "," . $cost . ",'" . $location . "'," . $empId . ")";
-	$result = $db->query($query);
+	//$query = "INSERT INTO fuel (truck_id, purchase_date, mileage, litres, cost, location, emp_id) VALUES (" . $truck . ",'" . $dateTime . "', " . $mileage . ", " . $litres . "," . $cost . ",'" . $location . "'," . $empId . ")";
+	//$result = $db->query($query);
 }
 /*
 	// load array with fuel receipts for day by employee

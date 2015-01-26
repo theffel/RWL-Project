@@ -8,11 +8,12 @@
  * @category    CategoryName
  * @package     PackageName
  * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-01-23
  */
  
 // Start the session
@@ -43,16 +44,11 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-       // $warehouses = (!empty($_SESSION['warehouses'])) ? $_SESSION['warehouses'] : "";
-
-        $warehouses = 0;  // required
-        
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
         <h2 class="page-header">Add an Incoming Delivery</h2>
         <form class="form-horizontal" name="pickForm" id="pickForm" method="post" action="index.php">
-
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
@@ -78,9 +74,8 @@ include('../header.php');
                         <div class="col-md-5">
                             <select class="form-control" name="driver">                                
                                 <?php
-
                                 for ($x = 0; $x < count($drivers); $x++){
-                                echo '<option value="' . $drivers[$x][0] .'">' . $drivers[$x][1] .'</option>';
+                                    echo '<option value="' . $drivers[$x][0] .'">' . $drivers[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -90,7 +85,7 @@ include('../header.php');
                             <select class="form-control" name="dispatcher">
                                 <?php
                                 for ($x = 0; $x < count($dispatchers); $x++){
-                                echo '<option value="' . $dispatchers[$x][0] .'">' . $dispatchers[$x][1] .'</option>';
+                                    echo '<option value="' . $dispatchers[$x][0] .'">' . $dispatchers[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -106,7 +101,7 @@ include('../header.php');
                             <select class="form-control" name="truck">
                                 <?php
                                 for ($x = 0; $x < count($trucks); $x++){
-                                echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
+                                    echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -116,7 +111,7 @@ include('../header.php');
                             <select class="form-control" name="trailer">
                                 <?php
                                 for ($x = 0; $x < count($trailers); $x++){
-                                echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
+                                    echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -134,7 +129,7 @@ include('../header.php');
                                 <option value="" disabled selected style="display:none;"></option>
                                 <?php
                                 for ($x = 0; $x < count($farms); $x++){
-                                echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
+                                    echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -145,7 +140,7 @@ include('../header.php');
                             </select>
                         </div>
                     </div>
-            </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="bin" class="control-label col-md-2">Bin</label>
@@ -162,7 +157,6 @@ include('../header.php');
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="bin" class="control-label col-md-2">Field</label>
                 <div class="col-md-10">
@@ -176,7 +170,7 @@ include('../header.php');
                                 <option value="" disabled selected style="display:none;"></option>
                                 <?php
                                 for ($x = 0; $x < count($potatoes); $x++){
-                                echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                                    echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
                                 }
                                 ?>
                             </select>
@@ -276,40 +270,31 @@ include('../header.php');
                     <input type="text" class="form-control" name="ticketNumber" placeholder="">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="grossWeight" placeholder="">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="tareWeight" placeholder="">
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                      <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
         </form>
-
         <hr>
-
         <h2 class="page-header">View Deliverys</h2>
         <p>There are currently no deliverys to view.</p>
-
         <?php
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
-
         // Include the footer.php file
         include('../footer.php');
         ?>
@@ -319,7 +304,7 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-<!-- Load Custome JavaScript -->
+    <!-- Custom JavaScript -->
     <script src="../js/custom_js.js"></script>
 </body>
 </html>
