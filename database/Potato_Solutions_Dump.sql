@@ -719,8 +719,13 @@ PRIMARY KEY (`fuel_id`)
 --
 CREATE TABLE IF NOT EXISTS `Fluids` (
 `fluid_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
-`amount_litres` double unsigned DEFAULT NULL,
-`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+`change_date` datetime NOT NULL,
+`engine_oil_litres` double unsigned DEFAULT NULL,
+`hyd_oil_litres` double unsigned DEFAULT NULL,
+`trans_fluid_litres` double unsigned DEFAULT NULL,
+`coolant_litres` double unsigned DEFAULT NULL,
+/*`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL, ----------not sure if this is needed with the types above---------------- */
+`emp_id` int(3) unsigned NOT NULL,
 `truck_id` int(3) unsigned DEFAULT NULL, 
 `trailer_id` int(3) unsigned DEFAULT NULL,                    
 PRIMARY KEY (`fluid_id`)
