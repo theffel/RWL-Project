@@ -660,6 +660,23 @@ PRIMARY KEY (`truck_id`)
 
 
 -- 
+-- Table structure for table `Daily_Mileage`
+-- 
+CREATE TABLE IF NOT EXISTS `Daily_Mileage` (
+`mileage_id` int(2) unsigned NOT NULL,
+`truck_num` int(5) unsigned NOT NULL,
+`start_date` datetime NOT NULL,
+`starting_km` int(6) unsigned NOT NULL,
+`pei_km` int(6) unsigned NOT NULL,
+`nb_km` int(6) unsigned NOT NULL,
+`ns_km` int(6) unsigned NOT NULL,
+`litres_fuel` int(6) unsigned NOT NULL,
+`finish_km` int(6) unsigned NOT NULL,
+PRIMARY KEY (`emp_type_id`, `emp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
+
+
+-- 
 -- Table structure for table `Registration`
 --
 CREATE TABLE IF NOT EXISTS `Registration` (
