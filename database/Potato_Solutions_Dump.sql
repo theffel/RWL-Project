@@ -672,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `Daily_Mileage` (
 `ns_km` int(6) unsigned NOT NULL,
 `litres_fuel` int(6) unsigned NOT NULL,
 `finish_km` int(6) unsigned NOT NULL,
-PRIMARY KEY (`emp_type_id`, `emp_id`)
+PRIMARY KEY (`mileage_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ; 
 
 
