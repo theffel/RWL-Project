@@ -156,6 +156,7 @@ include('../header.php');
                             </select>
                         </div>
                         <label for="binMarker" class="control-label col-md-2">Bin Marker</label>
+<<<<<<< HEAD
                         <div class="col-md-5">
                             <input type="text" class="form-control" name="binMarker">
                         </div>
@@ -167,8 +168,10 @@ include('../header.php');
                 <label for="bin" class="control-label col-md-2">Field</label>
                 <div class="col-md-10">
                     <div class="form-group row">                        
+=======
+>>>>>>> origin/master
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="field">
+                            <input type="text" class="form-control" name="binMarker">
                         </div>
                         <label for="potato" class="control-label col-md-2">Potato</label>
                         <div class="col-md-5">
@@ -185,6 +188,16 @@ include('../header.php');
                 </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            <div class="form-group">
+                <label for="field" class="control-label col-md-2">Field</label>
+                <div class="col-md-10">
+                   <input type="text" class="form-control" name="field">
+                </div>
+            </div>
+
+>>>>>>> origin/master
             <div class="form-group">
                 <label for="farmArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">

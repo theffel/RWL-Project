@@ -44,7 +44,6 @@ INSERT INTO `rwl`(`name`, `rwl_phone`, `rwl_cell`, `rwl_fax`, `rwl_email`, `rwl_
 -- 
 CREATE TABLE IF NOT EXISTS `Employee` (
 `emp_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
-`emp_type_id` int(2) unsigned NOT NULL,
 `position_id` int(2) unsigned NOT NULL,
 `emp_sin` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
 `emp_first_name` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -433,17 +432,27 @@ PRIMARY KEY (`field_id`)
 -- 
 CREATE TABLE IF NOT EXISTS `Pick_Up` (
 `pickup_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+`pd_date` datetime NOT NULL COMMENT 'pd_date pd=pickup/delivery',
+`loads_left` int(3) unsigned NOT NULL,
+`total_loads` int(3) unsigned NOT NULL,
+`driver_id` int(2) unsigned NOT NULL,
+`dispatcher_id` int(2) unsigned NOT NULL,
+`trailer_id` int(3) unsigned NOT NULL,
+`truck_id` int(3) unsigned NOT NULL,
 `farm_id` int(4) unsigned NOT NULL,
 `warehouse_id` int(4) unsigned NOT NULL,
 `bin_id` int(4) unsigned NOT NULL,
 `bin_marker` int(4) unsigned NOT NULL,
 `field_id` int(4) unsigned NOT NULL,
-`arrive_date` date NOT NULL,
-`arrive_time` time NOT NULL,
-`weight_in` int(5) unsigned DEFAULT NULL,
-`load_time` time NOT NULL,
-`depart_time` time NOT NULL,
-`trailer_id` int(3) unsigned NOT NULL,
+`arrive_time_farm` datetime NOT NULL,
+`load_time` datetime NOT NULL,
+`depart_time_farm` datetime NOT NULL,
+`arrive_time_rwl` datetime NOT NULL,
+`unload_time` datetime NOT NULL,
+`depart_time_rwl` datetime NOT NULL,
+`ticket_num` int(5) unsigned NOT NULL,
+`gross_weight` int(5) unsigned NOT NULL,
+`tare_weight` int(5) unsigned NOT NULL,
 `patato_id` int(2) unsigned NOT NULL,
 PRIMARY KEY (`pickup_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
@@ -710,8 +719,13 @@ PRIMARY KEY (`fuel_id`)
 --
 CREATE TABLE IF NOT EXISTS `Fluids` (
 `fluid_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
-`amount_litres` double unsigned DEFAULT NULL,
-`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+`change_date` datetime NOT NULL,
+`engine_oil_litres` double unsigned DEFAULT NULL,
+`hyd_oil_litres` double unsigned DEFAULT NULL,
+`trans_fluid_litres` double unsigned DEFAULT NULL,
+`coolant_litres` double unsigned DEFAULT NULL,
+/*`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL, ----------not sure if this is needed with the types above---------------- */
+`emp_id` int(3) unsigned NOT NULL,
 `truck_id` int(3) unsigned DEFAULT NULL, 
 `trailer_id` int(3) unsigned DEFAULT NULL,                    
 PRIMARY KEY (`fluid_id`)
