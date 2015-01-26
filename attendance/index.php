@@ -81,10 +81,11 @@ include('../header.php');
             	</div>
             
              	<h2 class="page-header">Job Selection</h2>';
+ 
             	for ($x = 0; $x < count($jobTypes); $x++) {
                 	echo '<div class="form-group">
-                        	<div class="col-md-offset-5 col-md-10">
-                       	 	    <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][1] .'" value="' .$jobTypes[$x][0] .'"/>
+                                	<div class="col-md-offset-5 col-md-10">
+                       	 	    <input type="submit" class="btn btn-primary" name="' .$jobTypes[$x][2] .'" value="' .$jobTypes[$x][1] .'"/>
                         	</div>
                     	</div>';
             	}

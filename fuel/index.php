@@ -59,7 +59,7 @@ include('../header.php');
             </div>
 
             <div class="form-group">
-                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
                     <select class="form-control" name="truck">
                         <?php

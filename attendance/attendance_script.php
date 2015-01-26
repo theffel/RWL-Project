@@ -71,34 +71,16 @@ if (isset($_POST['endBreak'])) {
 	$result = $db->query($query);
 }
 
-// declare array
-$jobIds = array();
-    
-// Create query for job type id
-$query = "SELECT emp_type_id FROM job_type WHERE emp_id=" .$empId;
+$query = "SELECT job_type.emp_type_id, type_description, type_alt_description
+		FROM job_type INNER JOIN employee_type ON job_type.emp_type_id = employee_type.emp_type_id
+		WHERE emp_id =" .$empId;
 $result = $db->query($query);
-  
+
 while ($row = $result->fetch_assoc()){
     $empTypeId = $row['emp_type_id'];   
-    $jobIds[] = $empTypeId;
-}
-
-// declare array
-$jobDescs = array();
-    
-// Create query for job type id
-$query = "SELECT type_description, type_alt_description FROM employee_type";
-$result = $db->query($query);
-   
-while ($row = $result->fetch_assoc()){
     $typeDesc = $row['type_description'];
 	$typeAltDesc = $row['type_alt_description'];   
-		$jobDescs[] = $typeDesc;
-		$jobAltDescs[] = $typeAltDesc;
-}  
-
-for ($x = 0; $x < count($jobIds); $x++) {
-    $jobTypes[] = array($jobDescs[$x], $jobAltDescs[$x], $jobIds[$x]);
+	$jobTypes[] = array($empTypeId, $typeDesc, $typeAltDesc);
 }
 
 $_SESSION['jobTypes'] = $jobTypes;
@@ -108,8 +90,8 @@ $_SESSION['jobTypes'] = $jobTypes;
  added to database will not effect employee type selection in time and attendence */   
 
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
-    if (isset($_POST[$jobTypes[$x][1]])) {
-        $_SESSION['employeeType'] = $jobTypes[$x][2];
+    if (isset($_POST[$jobTypes[$x][2]])) {
+        $_SESSION['employeeType'] = $jobTypes[$x][0];
 
     $query = "INSERT INTO employee_type_change (type_change_time, emp_type_id, emp_id)  VALUES ('" . $dateTime . "'," 
         .$_SESSION['employeeType'] . "," . $empId . ")";

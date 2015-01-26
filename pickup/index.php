@@ -141,42 +141,7 @@ include('../header.php');
                         </div>
                         <label for="warehouse" class="control-label col-md-2">Warehouse</label>
                         <div class="col-md-5">
-                            <select class="form-control" name="warehouse" id="warehouse">
-                                echo '<option value=""></option>';
-                                <script type="text/javascript">
-                                
-                                    function warehouseFunction(str){
-                                      if (str=="") {
-                                        document.getElementById("txtHint").innerHTML="";
-                                        return;
-                                      } 
-                                      if (window.XMLHttpRequest) {
-                                        // code for IE7+, Firefox, Chrome, Opera, Safari
-                                        xmlhttp=new XMLHttpRequest();
-                                      } else { // code for IE6, IE5
-                                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                                      }
-                                      xmlhttp.onreadystatechange=function() {
-                                        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                                        var jsWarehouses = JSON.parse(xmlhttp.responseText);
-                                        document.getElementById("warehouse").options.length=0;
-                                        for (var y = 0; y < jsWarehouses.length; y++){
-                                           addOption(document.pickForm.warehouse, jsWarehouses[y][1], jsWarehouses[y][0]);
-                                            }
-                                        }
-                                      }
-                                      var temp = xmlhttp.open("GET","warehouses_script.php?q="+str,true);
-                                      xmlhttp.send();                        
-                                                                   
-                                    }  
-
-                                    function addOption(selectbox,text,value ){
-                                        var optn = document.createElement("OPTION");
-                                        optn.text = text;
-                                        optn.value = value;
-                                        selectbox.options.add(optn);
-                                    }
-                                 </script>
+                            <select class="form-control" name="warehouse" id="warehouse" onchange="binFunction(this.value)">
                             </select>
                         </div>
                     </div>
@@ -186,35 +151,49 @@ include('../header.php');
                 <label for="bin" class="control-label col-md-2">Bin</label>
                 <div class="col-md-10">
                     <div class="form-group row">
-                        <div class="col-md-1">
-                              <select class="form-control" name="bin">
-                                <?php
-                                for ($x = 0; $x < count($bins); $x++){
-                                echo '<option value="' . $bins[$x][0] .'">' . $bins[$x][1] .'</option>';
-                                }
-                                ?>
+                        <div class="col-md-5">
+                            <select class="form-control" name="bin" id="bin">
                             </select>
                         </div>
                         <label for="binMarker" class="control-label col-md-2">Bin Marker</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" name="binMarker">
-                        </div>
-                        <label for="field" class="control-label col-md-2">Field</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="field">
+                            <input type="text" class="form-control" name="binMarker">
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="bin" class="control-label col-md-2">Field</label>
+                <div class="col-md-10">
+                    <div class="form-group row">                        
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="field">
+                        </div>
+                        <label for="potato" class="control-label col-md-2">Potato</label>
+                        <div class="col-md-5">
+                            <select class="form-control" name="potato" id="potato">
+                                <option value="" disabled selected style="display:none;"></option>
+                                <?php
+                                for ($x = 0; $x < count($potatoes); $x++){
+                                echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="farmArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="farmArrivalTime" value="">
+                            <input type="text" class="form-control" id="farmArrivalTime" name="farmArrivalTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="farmArrivalTimeBtn" onclick="" value="&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;"/>
+                            <button type="button" class="btn btn-primary" value="farmArrivalTime" name="farmArrivalTimeBtn" onclick="getTime(this.value)" >&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -224,10 +203,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="loadTime" value="">
+                            <input type="text" class="form-control" id="loadTime" name="loadTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="loadTimeBtn" value="&nbsp;&nbsp;&nbsp;&nbsp;Load Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                        <button type="button" class="btn btn-primary" name="loadTimeBtn" value="loadTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Load Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -237,10 +216,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="farmDepartureTime" value="">
+                            <input type="text" class="form-control" id="farmDepartureTime" name="farmDepartureTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="farmDepartureTimeBtn" value="Departure Time&nbsp;"/>
+                        <button type="button" class="btn btn-primary" name="farmDepartureTimeBtn" value="farmDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -251,10 +230,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="rwlfarmArrivalTime" value="">
+                            <input type="text" class="form-control" id="rwlFarmArrivalTime" name="rwlFarmArrivalTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="rwlfarmArrivalTimeBtn" value="&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;"/>
+                        <button type="button" class="btn btn-primary" name="rwlFarmArrivalTimeBtn" value="rwlFarmArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -264,10 +243,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="rwlunloadTime" value="">
+                            <input type="text" class="form-control" id="rwlUnloadTime" name="rwlUnloadTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="rwlunloadTimeBtn" value="&nbsp;&nbsp;&nbsp;Unload Time&nbsp;&nbsp;&nbsp;"/>
+                        <button type="button" class="btn btn-primary" name="rwlUnloadTimeBtn" value="rwlUnloadTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;Unload Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -277,10 +256,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="rwlDepartureTime" value="">
+                            <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <input type="submit" class="btn btn-primary" name="rwlDepartureTimeBtn" value="Departure Time&nbsp;"/>
+                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -335,11 +314,9 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        function getTime {
-            
-        }
-    </script>
+<!-- Load Custome JavaScript -->
+    <script src="../js/custom_js.js"></script>
+
 
 </body>
 </html>

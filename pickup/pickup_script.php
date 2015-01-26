@@ -23,16 +23,29 @@ include('../database.php');
 
 
 
-// Insert fuel
+// Insert pickup
 if (isset($_POST['submit'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
+	$date = $db->real_escape_string($_POST['date']);
+	$driver = $db->real_escape_string($_POST['driver']);
+	$dispatcher = $db->real_escape_string($_POST['dispatcher']);
 	$truck = $db->real_escape_string($_POST['truck']);
-	$mileage = $db->real_escape_string($_POST['mileage']);
-	$litres = $db->real_escape_string($_POST['litres']);
-	$cost = $db->real_escape_string($_POST['cost']);
-	$location = $db->real_escape_string($_POST['location']);
-	// $takePicture = $db->real_escape_string($_POST['take-picture']);
-
+	$trailer = $db->real_escape_string($_POST['trailer']);
+	$farm = $db->real_escape_string($_POST['farm']);
+	$warehouse = $db->real_escape_string($_POST['warehouse']);
+	$bin = $db->real_escape_string($_POST['bin']);
+	$binMarker = $db->real_escape_string($_POST['binMarker']);
+	$field = $db->real_escape_string($_POST['field']);
+	$potato = $db->real_escape_string($_POST['potato']);
+	$farmArrivalTime = $db->real_escape_string($_POST['farmArrivalTime']);
+	$loadTime = $db->real_escape_string($_POST['loadTime']);
+	$farmDepartureTime = $db->real_escape_string($_POST['farmDepartureTime']);
+	$rwlArrivalTime = $db->real_escape_string($_POST['rwlArrivalTime']);
+	$rwlUnloadTime = $db->real_escape_string($_POST['rwlUnloadTime']);
+	$rwlDepartureTime = $db->real_escape_string($_POST['rwlDepartureTime']);
+	$ticketNumber = $db->real_escape_string($_POST['ticketNumber']);
+	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
+	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
+	
 	$query = "INSERT INTO fuel (truck_id, purchase_date, mileage, litres, cost, location, emp_id) VALUES (" . $truck . ",'" . $dateTime . "',
 		" . $mileage . ", " . $litres . "," . $cost . ",'" . $location . "'," . $empId . ")";
 	$result = $db->query($query);

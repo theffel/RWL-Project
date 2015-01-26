@@ -41,39 +41,31 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 7) {
         ?>
         <h2 class="page-header">Add Oil and Fluids</h2>
 
-        <form class="form-horizontal">
-
-            <div class="form-group">
-                <label for="truck" class="control-label col-md-2">Truck #</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="truck">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="driver" class="control-label col-md-2">Driver</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="driver">
-                </div>
-            </div>
+         <form class="form-horizontal" name="fluidsForm" id="fluidsForm" method="post" action="index.php">
 
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
-                        </div>
-                        <label for="time" class="control-label col-md-2">Time</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="truck" class="control-label col-md-2">Truck</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="truck">
+                        <?php
+                        for ($x = 0; $x < count($trucks); $x++){
+                        echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -107,7 +99,7 @@ include('../header.php');
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                   <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
 
