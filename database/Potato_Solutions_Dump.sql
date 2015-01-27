@@ -737,10 +737,10 @@ PRIMARY KEY (`fuel_id`)
 CREATE TABLE IF NOT EXISTS `Maintenance` (
 `maintain_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
 `change_date` datetime NOT NULL,
-`engine_oil_litres` double unsigned DEFAULT NULL,
-`hyd_oil_litres` double unsigned DEFAULT NULL,
-`trans_fluid_litres` double unsigned DEFAULT NULL,
-`coolant_litres` double unsigned DEFAULT NULL,
+`engine_oil_litres` double(3,2) unsigned DEFAULT NULL,
+`hyd_oil_litres` double(3,2) unsigned DEFAULT NULL,
+`trans_fluid_litres` double(3,2) unsigned DEFAULT NULL,
+`coolant_litres` double(3,2) unsigned DEFAULT NULL,
 /*`fluid_type` varchar(2) COLLATE utf8_unicode_ci NOT NULL, ----------not sure if this is needed with the types above---------------- */
 `oil_change_kms` int(6) unsigned NOT NULL,
 `tranny_fluid_change_kms` int(6) unsigned NOT NULL,
