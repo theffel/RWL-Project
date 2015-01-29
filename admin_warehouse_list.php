@@ -57,7 +57,7 @@ include('header.php');
 					while($row = $result->fetch_assoc()){
 						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
 						$binCount = $db->query($binQuery)->num_rows;
-						echo "<form action = 'admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit value = '" . $row['warehouse_name'] . "'>Total Bins: " . $binCount . "</form><br />";
+						echo "<form action = 'admin_update_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit class='btn btn-primary' value = '" . $row['warehouse_name'] . "'>Total Bins: " . $binCount . "</form><br />";
 					}
 				}
 				else {
@@ -73,7 +73,8 @@ include('header.php');
 							</script>';
 			}
         
-        echo "<hr><a href = '".ROOT."/admin_add_warehouse.php/?id=" . $id . "'>Add new warehouse to current farm</a><br />";
+        echo "<hr><a href = '".ROOT."/admin_add_warehouse.php?id=" . $id . "'>Add new warehouse to current farm</a><br />";
+        echo "<hr><a href = '".ROOT."/admin_update_farm.php?id=" . $id . "'>Update the current farm</a><br />";
 		?>
 		<hr>
 

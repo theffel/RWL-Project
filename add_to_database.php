@@ -23,7 +23,7 @@
 
 	// Include the header.php file
 	include('header.php');
-		// If the user is logged in, display the form
+		// If the user is logged in, run the script
 		if ($loggedIn == true) {
 			
 			// get submit from add warehouse
@@ -157,6 +157,7 @@
 					} else {
 						echo "Error: " . $query . "<br>" . $db->error;
 						$db->close();
+					}
 					}
 					
 					
