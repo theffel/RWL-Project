@@ -40,14 +40,13 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
 
-        // If the user is not logged in, display a login form
+        // If the user is logged in
         if ($loggedIn == true) {
         	echo '<form class="form-horizontal" name="breakForm" id="breakForm" method="post" action="index.php">
             	<h2 class="page-header">Punch Clock</h2>';
         	if ($attendanceId == 0) {
             	// load session with attendance id
-                  $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . 
-                  " ORDER BY time_out ASC";              
+                $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY time_out ASC";              
             	// need to be able to handle more then one login for the day
             	$result = $db->query($query);
             	$numRows = $result->num_rows;
@@ -99,9 +98,8 @@ include('../header.php');
             		</div>';
         	}
         	echo '</form>';
-        } // If the user is logged in, redirect them to index.php if they try to access this page
-        else {
-            echo '<script type="text/javascript">location.replace("../index.php");</script>';
+        } else {
+            echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file
         include('../footer.php');
