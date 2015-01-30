@@ -21,7 +21,8 @@ INSERT INTO `Employee_Emergency_Contact`(`emerg_contact_id`, `emp_id`, `emerg_fi
 INSERT INTO `Users`(`user_id`, `username`, `password`, `user_last_login`, `active`, `deleted`, `modified`, `created`, `emp_id`, `farm_id`) VALUES
 ('1', 'test1', 'pass1', '0000-00-00 00:00:00', '1', '0', '01022013', '11122012', '1', ''),
 ('2', 'test2', 'pass2', '0000-00-00 00:00:00', '1', '0', '12112014', '05042002', '2', ''),
-('3', 'test3', 'pass3', '0000-00-00 00:00:00', '1', '0', '04052015', '12122014', '', '1');
+('3', 'test3', 'pass3', '0000-00-00 00:00:00', '1', '0', '04052015', '12122014', '', '1'),
+('4', 'admin', 'pass', '0000-00-00 00:00:00', '1', '0', '12112014', '05042002', '3', '');
 
 
 INSERT INTO `Farm`(`farm_id`, `farm_name`, `farm_civic_address`, `farm_phone`, `farm_email`, `farm_contact_id`, `active`, `deleted`, `modified`, `created`) VALUES
