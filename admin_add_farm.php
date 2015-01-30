@@ -50,7 +50,7 @@ include('header.php');
 			
 			?>
 
-				<form class="form-horizontal" name="addFarmForm" id="addFarmForm" method="post" action="add_to_database.php"> <!--connect straight to add warehouse-->
+				<form class="form-horizontal" name="addFarmForm" id="addFarmForm" method="post" action="<?php echo ROOT; ?>/add_to_database.php"> <!--connect straight to add warehouse-->
 					
 					<!--Farm Name-->
 					<div class="form-group">
