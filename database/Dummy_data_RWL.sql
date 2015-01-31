@@ -29,6 +29,24 @@ INSERT INTO `Farm`(`farm_id`, `farm_name`, `farm_civic_address`, `farm_phone`, `
 ('2', 'Tom Jones Farm', '4455 Park rd Seaview', '9028885544', 'hisfarm@shoreside.ca', '2', '1', '0', '00000000', '00000000');
 
 
+
+INSERT INTO `Potato`(`potato_id`, `potato_name`) VALUES
+(1, 'Russet Burbank'),
+(2, 'Russet Goldrush'),
+(3, 'Ranger Russet'),
+(4, 'Russet Norkotah'),
+(5, 'Superior(White)'),
+(6, 'Kennebec(White)'),
+(7, 'Atlantic(White)'),
+(8, 'Dakota Pearl(White)'),
+(9, 'Shepody(White)'),
+(10, 'Red Norland(Red)'),
+(11, 'Chieftain(Red)'),
+(12, 'Yukon Gold(Yellow)'),
+(13, 'Innovator(Yellow)'),
+(14, 'Prospect');
+
+
 INSERT INTO `Warehouse`(`warehouse_id`, `farm_id`, `warehouse_name`, `warehouse_civic_address`, `warehouse_prov`, `warehouse_phone`, `active`, `deleted`, `modified`, `created`) VALUES
 ('1', '1', 'Warehouse1', '4577 Patato Ln Patatoville', 'PEI', '9023654787', '1', '0', '11111111', '11111111'),
 ('2', '2', 'Warehouse2', '5211 Spud St Tatertopia', 'NB', '9021235566', '1', '0', '22222222', '22222222');
