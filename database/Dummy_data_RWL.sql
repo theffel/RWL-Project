@@ -18,6 +18,19 @@ INSERT INTO `Employee_Emergency_Contact`(`emerg_contact_id`, `emp_id`, `emerg_fi
 ('2', '3', 'harry', 'henderson', '9025666633');
 
 
+INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_description`) VALUES
+(1, 'Truck driver', 'truckdriver'),
+(2, 'Dispatcher', 'dispatcher'),
+(3, 'Production', 'production'),                     
+(4, 'Sampler', 'sampler'),
+(5, 'Line Worker', 'lineworker'),
+(6, 'Waterboy', 'waterboy'),
+(7, 'Maintenance', 'maintenance'),
+(8, 'Accounting', 'accounting'),
+(9, 'Admin', 'admin'),
+(10, 'Fleet Management', 'fleetmanagement');
+
+
 INSERT INTO `Users`(`user_id`, `username`, `password`, `user_last_login`, `active`, `deleted`, `modified`, `created`, `emp_id`, `farm_id`) VALUES
 ('2', 'test1', 'pass1', '0000-00-00 00:00:00', '1', '0', '01022013', '11122012', '1', ''),
 ('3', 'test2', 'pass2', '0000-00-00 00:00:00', '1', '0', '12112014', '05042002', '2', ''),
