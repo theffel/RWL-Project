@@ -79,6 +79,7 @@
                                                 echo '<a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>';
                                             	echo '<a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>';
                                             	echo '<a href="'. ROOT . '/admin_farm_list.php">View Farm</a>';
+                                                echo '<a href="'. ROOT . '/report/index.php">Report</a>';
                                             }
                             echo '      </li>
                                     </ul>
