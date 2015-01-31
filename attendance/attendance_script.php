@@ -50,21 +50,22 @@ if (isset($_POST['punchOut'])) {
 
 // Start break
 if (isset($_POST['startBreak'])) {
-	$query = "INSERT INTO break (start_break_time, emp_id, break_date) VALUES ('" . $currentTime . "'," . $empId . ",'" . $currentDate ."')";
+	$query = "INSERT INTO break (start_break, emp_id) VALUES ('" . $dateTime . "'," . $empId . ")";
 	$result = $db->query($query);
 
 	// load session with break id
-	$query = "SELECT break_id FROM break WHERE break_date='". $currentDate . "' AND emp_id = " . $empId;
-		
+	$query = "SELECT break_id FROM break WHERE start_break LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY start_break DESC";
 	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$breakId = $row['break_id'];    
-	$_SESSION['breakId'] = $breakId;
+	if (!empty($result)) {
+		$row = $result->fetch_assoc();
+		$breakId = $row['break_id'];    
+		$_SESSION['breakId'] = $breakId;
+	}	
 }
 
 // End break
 if (isset($_POST['endBreak'])) {
-	$query = "UPDATE break SET end_break_time = '" .$currentTime . "' WHERE break_id=" . $_SESSION['breakId'];
+	$query = "UPDATE break SET end_break = '" .$dateTime . "' WHERE break_id=" . $_SESSION['breakId'];
 	$result = $db->query($query);
 }
 

@@ -84,4 +84,12 @@ while ($row = $result->fetch_assoc()){
 }
 $_SESSION['farms'] = $farms;
 
+$query = "SELECT break_id FROM break WHERE start_break LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY start_break DESC";
+$result = $db->query($query);
+if (!empty($result)) {
+	$row = $result->fetch_assoc();
+	$breakId = $row['break_id'];    
+	$_SESSION['breakId'] = $breakId;
+}
+
 ?>
