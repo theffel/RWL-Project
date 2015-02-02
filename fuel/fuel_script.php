@@ -52,19 +52,17 @@ while ($row = $result->fetch_assoc()){
 
 // Select fuel receipts
 for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
-
     if (isset($_POST[$fuelReceipts[$x][0]])) {
-    	var_dump($_POST[$fuelReceipts[$x][0]]);
     	$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
   		$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
     	$result = $db->query($query);
     	$row = $result->fetch_assoc();
 		$date = $row['purchase_date'];
-		$truck = $row['truck_num']; 
+		$truck = $row['truck_num'];
     	$litres = $row['litres'];
-    	$cost = $row['cost'];   
+    	$cost = $row['cost'];
    		$mileage = $row['mileage'];
-    	$location = $row['location'];  
+    	$location = $row['location'];
     	$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
     	$_SESSION['editReceipt'] = $editReceipt;
         header ("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
