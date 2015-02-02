@@ -24,7 +24,8 @@ include('../database.php');
 include('../session_load.php');
 
 if (isset($_POST['Attendance'])) {
-	$query = "SELECT e.emp_first_name, e.emp_last_name, a.time_in, a.time_out
+	//query for attendance data
+	$query = "SELECT a.emp_id, e.emp_first_name, e.emp_last_name, a.time_in, a.time_out
 			  FROM attendance as a INNER JOIN employee as e ON a.emp_id = e.emp_id
     		  WHERE a.time_in > '" . $currentDate . " 00:00:00' AND a.time_out < '" . $currentDate . " 11:59:59'";
 
@@ -35,37 +36,96 @@ if (isset($_POST['Attendance'])) {
 			$empLName = $row['emp_last_name'];
 			$timeIn = $row['time_in'];
 			$timeOut = $row['time_out'];
+			$empID = $row['emp_id'];
+
+			//query for break data of emp_id from above
+			$query = "SELECT b.start_break, b.end_break
+					  FROM break as b INNER JOIN attendance as a ON b.emp_id = ".$empID."
+    				  WHERE b.start_break > '" . $currentDate . " 00:00:00' AND b.end_break < '" . $currentDate . " 11:59:59'";
+
+			$result = $db->query($query);
+
+			while ($row = $result->fetch_assoc()) {
+				$startTime = $row['start_break'];
+				$endTime = $row['end_break'];
+
+				$break[] = array($startTime, $endTime);
+				$_SESSION['break'] = $break;
+			}
 
 			$attendance[] = array($empFName, $empLName, $timeIn, $timeOut);
 			$_SESSION['attendance'] = $attendance;
 		}
 	}
 
-	$query = "SELECT b.start_break, b.end_break
-			  FROM break as b INNER JOIN attendance as a ON b.emp_id = a.emp_id
-    		  WHERE b.start_break > '" . $currentDate . " 00:00:00' AND b.end_break < '" . $currentDate . " 11:59:59'";
-
-	$result = $db->query($query);
-	//if ($result != null) {
-		while ($row = $result->fetch_assoc()) {
-		$startTime = $row['start_break'];
-		$endTime = $row['end_break'];
-
-		$break[] = array($startTime, $endTime);
-		$_SESSION['break'] = $break;
-		}
+//	//query for break data
+//	$query = "SELECT b.start_break, b.end_break
+//			  FROM break as b INNER JOIN attendance as a ON b.emp_id = a.emp_id
+//    		  WHERE b.start_break > '" . $currentDate . " 00:00:00' AND b.end_break < '" . $currentDate . " 11:59:59'";
+//
+//	$result = $db->query($query);
+//
+//	while ($row = $result->fetch_assoc()) {
+//		$startTime = $row['start_break'];
+//		$endTime = $row['end_break'];
+//		$empIDbreak = $row['emp_id'];
+//
+//		$break[] = array($startTime, $endTime);
+//		$_SESSION['break'] = $break;
 //	}
+
 } else {
 	// Work result part
-	$query = "SELECT  WHERE time_in > '".$currentDate." 00:00' AND time_out < '".$currentDate." 23:59'";
+	//For total potato incoming
+	$query = "SELECT  tare_weight FROM pick_up WHERE arrive_time_rwl > '".$currentDate." 00:00' AND arrive_time_rwl < '".$currentDate." 23:59'";
 	$result = $db->query($query)	;
-//
-//	while($row = $result->fetch_assoc()) {
-//		$totalAmount = $row['total_amount'];
-//		$sampleAmount = $row['sample_Amount'];
-//		$good = $row['good'];
-//		$totalIncoming = $row['total_incoming'];
-//		$totalOutgoing = $row['total_outgoing'];
-//	}
+
+	while($row = $result->fetch_assoc()) {
+		$IncomingPotato += $row['tare_weigh'];
+
+		//$incoming[] = $IncomingPotato;
+		$_SESSION['incoming'] = $IncomingPotato;
+	}
+
+	//For total potato outgoing
+	$query = "SELECT  weight_out FROM destination_record WHERE arrive_date = '".$currentDate."'";
+	$result = $db->query($query)	;
+
+	while($row = $result->fetch_assoc()) {
+		$outgoingPotato += $row['weight_out'];
+
+//		$outgoing[] = $outgoingPotato;
+		$_SESSION['outgoing'] = $outgoingPotato;
+	}
+
+	//For Sample Amount
+	$query = "SELECT * FROM sample WHERE sample_date =  '".$currentDate."'";
+	$result = $db->query($query)	;
+
+	while($row = $result->fetch_assoc()) {
+		$totalSampleWeight += $row['total_smaple_weight'];
+		$unuseableWeight += $row['unuseable_weight'];
+		$rotWeight += $row['rot_weight'];
+		$internalWeight += $row['internal_weight'];
+		$pitRot += $row['pit_rot_weight'];
+		$wireworm += $row['wireworm_weight'];
+		$jellyEnd += $row['jelly_end_weight'];
+		$scab += $row['scab_weight'];
+		$hollowHeart += $row['hollow_heart_weight'];
+		$sunburn += $row['sunburn_weight'];
+		$mechBruise += $row['mech_bruise_weight'];
+		$smalls += $row['smalls_weight'];
+		$tenOz += $row['ten_oz_weight'];
+		$air += $row['air_weight'];
+		$water += $row['water_weight'];
+		$rockForeign += $row['rock_foreign_weight'];
+		$other += $row['other_weight'];
+
+		$totalBadAmount = $unuseableWeight + $rotWeight + $internalWeight + $pitRot + $wireworm + $ $jellyEnd + $scab + $hollowHeart + $sunburn + $mechBruise + $smalls + $tenOz + $air + $water + $rockForeign + $other;
+		$totalGoodAmount = $totalSampleWeight - $totalBadAmount;
+		$totalGoodPercent = ( $totalSampleWeight / $totalGoodAmount ) * 100;
+		$sample[] = array($totalSampleWeight, $totalGoodPercent);
+		$_SESSION['sample'] = $sample;
+	}
 }
 ?> {

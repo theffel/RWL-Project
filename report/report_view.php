@@ -81,10 +81,20 @@ include('../header.php');
                         </td>
                     </tr>
                     <tr>
+<!--                        <td>-->
+<!--                            --><?php
+//                                foreach($_SESSION['attendance'] as $attend) {
+//                                    echo $attend[0];
+//                                }
+//                            ?>
+<!--                        </td>-->
+                    </tr>
+                    <tr>
                         <td>
                             <?php echo $_SESSION['attendance'][0][0]." ".$_SESSION['attendance'][0][1]; ?>
                         </td>
-                        <td>
+
+                            <td>
                             <?php echo $_SESSION['attendance'][0][2]; ?>
                         </td>
                         <td>
@@ -123,12 +133,12 @@ include('../header.php');
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <table>
-                <tr>
+                 <tr>
                     <td>
-                        Total Amount of Potato
+                        Total Incoming Amount
                     </td>
                     <td>
-                        something value
+                        <?php echo $_SESSION['incoming']; ?>
                     </td>
                 </tr>
                  <tr>
@@ -136,7 +146,7 @@ include('../header.php');
                         Total Sample Amount
                     </td>
                     <td>
-                        something value
+                        <?php echo $_SESSION['sample'][0][0]; ?>
                     </td>
                 </tr>
                  <tr>
@@ -144,15 +154,7 @@ include('../header.php');
                         Total Good Percent
                     </td>
                     <td>
-                        something value %
-                    </td>
-                </tr>
-                 <tr>
-                    <td>
-                        Total Incoming Amount
-                    </td>
-                    <td>
-                        something value
+                       <?php echo $_SESSION['sample'][0][1]; ?> %
                     </td>
                 </tr>
                  <tr>
@@ -160,7 +162,7 @@ include('../header.php');
                         Total Outgoing Amount
                     </td>
                     <td>
-                        something value
+                       <?php echo $_SESSION['outgoing']; ?>
                     </td>
                 </tr>
             </table>
