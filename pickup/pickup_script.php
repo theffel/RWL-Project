@@ -56,39 +56,41 @@ $query = "SELECT pickup_id, pd_date, truck_num, trailer_num, farm_name, warehous
 			WHERE pd_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY pd_date DESC";
 $result = $db->query($query);
 
-while ($row = $result->fetch_assoc()){
-	$pickupId = $row['pickup_id'];
-    $date = $row['pd_date'];
-    $truck = $row['truck_num']; 
-    $trailer = $row['trailer_num'];
-    $farm = $row['farm_name'];   
-    $warehouse = $row['warehouse_name']; 
-    $incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
-    $_SESSION['incomingDeliveries'] = $incomingDeliveries;
-}
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()){
+		$pickupId = $row['pickup_id'];
+		$date = $row['pd_date'];
+		$truck = $row['truck_num']; 
+		$trailer = $row['trailer_num'];
+		$farm = $row['farm_name'];   
+		$warehouse = $row['warehouse_name']; 
+		$incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
+		$_SESSION['incomingDeliveries'] = $incomingDeliveries;
+	}
 
-// Select incoming deliveries 
-for ($x = 0; $x < count($_SESSION['incomingDeliveries']); $x++){	
-    if (isset($_POST[$incomingDeliveries[$x][0]])) {
-  		$_SESSION['deliveryNum'] = $incomingDeliveries[$x][0];
-  		$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight 
-  			FROM pick_up WHERE pickup_id = " . $_SESSION['deliveryNum'];
-						var_dump($query);
-    	$result = $db->query($query);
-    	$row = $result->fetch_assoc();
-		$arriveTimeFarm = $row['arrive_time_farm'];
-	    $loadTime = $row['load_time'];
-	    $departTimeFarm = $row['depart_time_farm']; 
-	    $arriveTimeRwl = $row['arrive_time_rwl'];
-	    $unloadTime = $row['unload_time'];   
-	    $departTimeRwl = $row['depart_time_rwl']; 
-	    $ticketNum = $row['ticket_num'];   
-	    $grossWeight = $row['gross_weight']; 
-	    $tareWeight = $row['tare_weight'];   
-    	$editIncomingDeliveries[] = array($arriveTimeFarm, $loadTime, $departTimeFarm, $arriveTimeRwl, $unloadTime, $departTimeRwl, $ticketNum,
-    		$grossWeight, $tareWeight); 
-    	$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
-        header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
+	// Select incoming deliveries 
+	for ($x = 0; $x < count($_SESSION['incomingDeliveries']); $x++){	
+		if (isset($_POST[$incomingDeliveries[$x][0]])) {
+			$_SESSION['deliveryNum'] = $incomingDeliveries[$x][0];
+			$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight 
+				FROM pick_up WHERE pickup_id = " . $_SESSION['deliveryNum'];
+							var_dump($query);
+			$result = $db->query($query);
+			$row = $result->fetch_assoc();
+			$arriveTimeFarm = $row['arrive_time_farm'];
+			$loadTime = $row['load_time'];
+			$departTimeFarm = $row['depart_time_farm']; 
+			$arriveTimeRwl = $row['arrive_time_rwl'];
+			$unloadTime = $row['unload_time'];   
+			$departTimeRwl = $row['depart_time_rwl']; 
+			$ticketNum = $row['ticket_num'];   
+			$grossWeight = $row['gross_weight']; 
+			$tareWeight = $row['tare_weight'];   
+			$editIncomingDeliveries[] = array($arriveTimeFarm, $loadTime, $departTimeFarm, $arriveTimeRwl, $unloadTime, $departTimeRwl, $ticketNum,
+				$grossWeight, $tareWeight); 
+			$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
+			header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
+		}
 	}
 }
 
