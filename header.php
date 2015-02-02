@@ -57,7 +57,7 @@
                                                 echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
                                             } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
                                                 echo '<a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>';
-                                                echo '<a href="'. ROOT . '/equipment_insepection">Equipment Inspection</a>';
+                                                echo '<a href="'. ROOT . '/equipment_inspection">Equipment Inspection</a>';
                                             } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
                                                 echo '<a href="'. ROOT . '/rejection">Rejection</a>';
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';

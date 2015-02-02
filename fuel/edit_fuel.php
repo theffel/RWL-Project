@@ -57,7 +57,7 @@ include('../header.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="truck" value= "<?php echo $_SESSION['editReceipt'][0][2]; ?>">
                 </div>
