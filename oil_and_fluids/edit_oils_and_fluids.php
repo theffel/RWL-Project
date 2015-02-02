@@ -41,90 +41,54 @@ include('oils_and_fluids_script.php');
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
-        $oilsAndFluids = (!empty($_SESSION['oilsAndFluids'])) ? $_SESSION['oilsAndFluids'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 7) {
         ?>
-        <h2 class="page-header">Add Oil and Fluids</h2>
-        <form class="form-horizontal" name="fluidsForm" id="fluidsForm" method="post" action="index.php">
+        <h2 class="page-header">Edit Oil and Fluids</h2>
+        <form class="form-horizontal" name="fluidsForm" id="fluidsForm" method="post" action="edit_oils_and_fluids.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
+                   <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editOilsAndFluids'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
-                    <select class="form-control" name="truck">
-                        <?php
-                        for ($x = 0; $x < count($trucks); $x++){
-                            echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                    <input type="text" class="form-control" name="truck" value="<?php echo $_SESSION['editOilsAndFluids'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="engineOilLiters" class="control-label col-md-2">Engine Oil Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="engineOilLiters">
+                    <input type="text" class="form-control" name="engineOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="hydraulicOilLiters" class="control-label col-md-2">Hydraulic Oil Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="hydraulicOilLiters">
+                    <input type="text" class="form-control" name="hydraulicOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="transFluidLiters" class="control-label col-md-2">Transmission Fluid Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="transFluidLiters">
+                    <input type="text" class="form-control" name="transFluidLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][5]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="coolantLitres" class="control-label col-md-2">Coolant Litres</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="coolantLitres">
+                    <input type="text" class="form-control" name="coolantLitres" value="<?php echo $_SESSION['editOilsAndFluids'][0][6]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                   <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                   <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
-        <hr>
-        <h2 class="page-header">Edit Oils and Fluids</h2>
+        </form>
         <?php
-            if (!empty($oilsAndFluids)) {
-                echo '<table class="table">
-                        <thead>
-                           <tr>
-                                <th>Date</th>
-                                <th>Truck</th>
-                                <th>Engine Oil Liters</th>
-                                <th>Hydraulic Oil Liters</th>
-                                <th>Transmission Fluid Liters</th>
-                                <th>Coolant Litres</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                for ($x = 0; $x < count($oilsAndFluids); $x++) {
-                    echo '<tr>
-                        <td>'. $oilsAndFluids[$x][1].'</td>
-                        <td>'. $oilsAndFluids[$x][2].'</td>
-                        <td>'. $oilsAndFluids[$x][3].'</td>
-                        <td>'. $oilsAndFluids[$x][4].'</td>
-                        <td>'. $oilsAndFluids[$x][5].'</td>
-                        <td>'. $oilsAndFluids[$x][6].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $oilsAndFluids[$x][0].'" value="Edit"/></td>
-                    </tr>';
-                }
-                echo '</tbody></table></form>';
-            } else{
-                echo "<p>There are currently no oils and fluids to view.</p>";
-            }
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }

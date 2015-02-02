@@ -147,7 +147,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-5">
-                            <select class="form-control" name="bin" id="bin">
+                            <select class="form-control" name="bin" id="bin" onchange="fieldFunction(this.value)">
                             </select>
                         </div>
                         <label for="binMarker" class="control-label col-md-2">Bin Marker</label>
@@ -158,11 +158,12 @@ include('../header.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="bin" class="control-label col-md-2">Field</label>
+                <label for="field" class="control-label col-md-2">Field</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="binMarker">
+                            <select class="form-control" name="field" id="field">
+                            </select>
                         </div>
                         <label for="potato" class="control-label col-md-2">Potato</label>
                         <div class="col-md-5">
@@ -178,12 +179,7 @@ include('../header.php');
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="field" class="control-label col-md-2">Field</label>
-                <div class="col-md-10">
-                   <input type="text" class="form-control" name="field">
-                </div>
-            </div>
+
             <div class="form-group">
                 <label for="farmArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">
@@ -229,10 +225,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="rwlFarmArrivalTime" name="rwlFarmArrivalTime" value="">
+                            <input type="text" class="form-control" id="rwlArrivalTime" name="rwlArrivalTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="rwlFarmArrivalTimeBtn" value="rwlFarmArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
+                        <button type="button" class="btn btn-primary" name="rwlArrivalTimeBtn" value="rwlArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -287,11 +283,38 @@ include('../header.php');
                      <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-        </form>
+       
         <hr>
-        <h2 class="page-header">View Deliverys</h2>
-        <p>There are currently no deliverys to view.</p>
+        <h2 class="page-header">Edit Incoming Delivery</h2>
         <?php
+            if (!empty($incomingDeliveries)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Truck</th>
+                                <th>Trailer</th>
+                                <th>Farm</th>
+                                <th>Warehouse</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($incomingDeliveries); $x++) {
+                    echo '<tr>
+                        <td>'. $incomingDeliveries[$x][1].'</td>
+                        <td>'. $incomingDeliveries[$x][2].'</td>
+                        <td>'. $incomingDeliveries[$x][3].'</td>
+                        <td>'. $incomingDeliveries[$x][4].'</td>
+                        <td>'. $incomingDeliveries[$x][5].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $incomingDeliveries[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table>  </form>';
+            } else{
+                echo "<p>There are currently no incoming deliveries to view.</p>";
+            }
+       
+        
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }

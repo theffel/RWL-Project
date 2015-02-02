@@ -38,36 +38,40 @@ if (isset($_POST['submit'])) {
 $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE purchase_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY purchase_date DESC";
 $result = $db->query($query);
 
-while ($row = $result->fetch_assoc()){
-	$fuelId = $row['fuel_id'];
-    $date = $row['purchase_date'];
-    $truck = $row['truck_num']; 
-    $litres = $row['litres'];
-    $cost = $row['cost'];   
-    $mileage = $row['mileage'];
-    $location = $row['location'];   
-    $fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
-    $_SESSION['fuelReceipts'] = $fuelReceipts;
-}
-
-// Select fuel receipts
-for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){	
-    if (isset($_POST[$fuelReceipts[$x][0]])) {
-  		$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
-  		$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
-    	$result = $db->query($query);
-    	$row = $result->fetch_assoc();
-		$date = $row['purchase_date'];
-		$truck = $row['truck_num']; 
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()){
+		$fuelId = $row['fuel_id'];
+    	$date = $row['purchase_date'];
+    	$truck = $row['truck_num']; 
     	$litres = $row['litres'];
     	$cost = $row['cost'];   
-   		$mileage = $row['mileage'];
-    	$location = $row['location'];  
-    	$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
-    	$_SESSION['editReceipt'] = $editReceipt;
-        header ("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
+    	$mileage = $row['mileage'];
+    	$location = $row['location'];   
+    	$fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
+    	$_SESSION['fuelReceipts'] = $fuelReceipts;
+	}
+
+
+	// Select fuel receipts
+	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
+		if (isset($_POST[$fuelReceipts[$x][0]])) {
+			$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
+			$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
+			$result = $db->query($query);
+			$row = $result->fetch_assoc();
+			$date = $row['purchase_date'];
+			$truck = $row['truck_num'];
+			$litres = $row['litres'];
+			$cost = $row['cost'];
+			$mileage = $row['mileage'];
+			$location = $row['location'];
+			$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
+			$_SESSION['editReceipt'] = $editReceipt;
+			header ("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
+		}
 	}
 }
+
 
 // Update fuel
 if (isset($_POST['update'])) {	
@@ -83,11 +87,12 @@ if (isset($_POST['update'])) {
 	$row = $result->fetch_assoc();
 	$truckId = $row['truck_id'];
 	
-	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", litres = " . $litres . ",cost = " . $cost . ", location = '" . $location . "'";
+	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", 
+			litres = " . $litres . ",cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'fuelReceipts'
 	unset($_SESSION['fuelReceipts']);
 	header ("location:index.php");
-}
+} 
 ?>

@@ -22,5 +22,4 @@ if (mysqli_connect_errno()) {
 	echo '<h1>Error: Could not connect to database. Please try again later.</h1>';
 	exit;
 }
-
 ?>

@@ -103,7 +103,7 @@ include('../header.php');
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-        </form>
+      
         <hr>
         <h2 class="page-header">Edit Receipts</h2>
         <?php
