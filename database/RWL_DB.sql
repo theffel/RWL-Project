@@ -13,7 +13,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
-
+DROP DATABASE IF EXISTS RWLHoldings_Potato_Solutions;
+DROP DATABASE IF EXISTS RWLHoldings_Snow_Removal;
 CREATE DATABASE IF NOT EXISTS RWLHoldings_Potato_Solutions;
 CREATE DATABASE IF NOT EXISTS RWLHoldings_Snow_Removal;
 use RWLHoldings_Potato_Solutions;
@@ -401,8 +402,8 @@ CREATE TABLE IF NOT EXISTS `insurance` (
 
 CREATE TABLE IF NOT EXISTS `job_type` (
   `emp_type_id` int(2) unsigned NOT NULL,
-  `emp_id` int(3) unsigned NOT NULL,
-  PRIMARY KEY (`emp_type_id`,`emp_id`)
+  `emp_id` int(3) unsigned NOT NULL
+ /* PRIMARY KEY (`emp_type_id`,`emp_id`)*/
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 -- --------------------------------------------------------
@@ -512,7 +513,7 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
   KEY `FK_pickup_map5` (`warehouse_id`),
   KEY `FK_pickup_map6` (`bin_id`),
   KEY `FK_pickup_map7` (`field_id`),
-  KEY `FK_pickup_map8` (`marker_id`),
+  KEY `FK_pickup_map8` (`bin_marker`),
   KEY `FK_pickup_map9` (`potato_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -717,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `trailer` (
   `inspect_id` int(5) unsigned NOT NULL,
   `plate_num` int(8) unsigned NOT NULL,
   `ins_id` int(5) unsigned NOT NULL,
-  `maintain_id` int(5) unsigned NOT NULL,
+  /*`maintain_id` int(5) unsigned NOT NULL,*/
   PRIMARY KEY (`trailer_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
@@ -751,7 +752,7 @@ CREATE TABLE IF NOT EXISTS `truck` (
   `inspect_id` int(5) unsigned NOT NULL,
   `plate_num` int(8) unsigned NOT NULL,
   `ins_id` int(5) unsigned NOT NULL,
-  `maintain_id` int(5) unsigned NOT NULL,
+  /*`maintain_id` int(5) unsigned NOT NULL,*/
   PRIMARY KEY (`truck_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
