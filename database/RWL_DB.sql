@@ -13,7 +13,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
-
+DROP DATABASE IF EXISTS RWLHoldings_Potato_Solutions;
+DROP DATABASE IF EXISTS RWLHoldings_Snow_Removal;
 CREATE DATABASE IF NOT EXISTS RWLHoldings_Potato_Solutions;
 CREATE DATABASE IF NOT EXISTS RWLHoldings_Snow_Removal;
 use RWLHoldings_Potato_Solutions;
@@ -327,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `field` (
 CREATE TABLE IF NOT EXISTS `fuel` (
   `fuel_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
   `truck_id` int(3) unsigned NOT NULL,
-  `purchace_date` datetime NOT NULL,
+  `purchase_date` datetime NOT NULL,
   `mileage` int(6) unsigned NOT NULL,
   `litres` int(4) unsigned NOT NULL,
   `cost` double unsigned NOT NULL,
@@ -401,8 +402,8 @@ CREATE TABLE IF NOT EXISTS `insurance` (
 
 CREATE TABLE IF NOT EXISTS `job_type` (
   `emp_type_id` int(2) unsigned NOT NULL,
-  `emp_id` int(3) unsigned NOT NULL,
-  PRIMARY KEY (`emp_type_id`,`emp_id`)
+  `emp_id` int(3) unsigned NOT NULL
+ /* PRIMARY KEY (`emp_type_id`,`emp_id`)*/
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 -- --------------------------------------------------------
@@ -491,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
   `farm_id` int(4) unsigned NOT NULL,
   `warehouse_id` int(4) unsigned NOT NULL,
   `bin_id` int(4) unsigned NOT NULL,
-  `marker_id` int(4) unsigned NOT NULL,
+  `bin_marker` int(4) unsigned NOT NULL,
   `field_id` int(4) unsigned NOT NULL,
   `arrive_time_farm` datetime NOT NULL,
   `load_time` datetime NOT NULL,
@@ -503,6 +504,7 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
   `gross_weight` double unsigned NOT NULL,
   `tare_weight` double unsigned NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
   PRIMARY KEY (`pickup_id`),
   KEY `driver_id` (`driver_id`,`dispatcher_id`,`trailer_id`,`truck_id`,`farm_id`,`warehouse_id`,`bin_id`,`field_id`,`potato_id`),
   KEY `FK_pickup_map2` (`trailer_id`),
@@ -511,7 +513,7 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
   KEY `FK_pickup_map5` (`warehouse_id`),
   KEY `FK_pickup_map6` (`bin_id`),
   KEY `FK_pickup_map7` (`field_id`),
-  KEY `FK_pickup_map8` (`marker_id`),
+  KEY `FK_pickup_map8` (`bin_marker`),
   KEY `FK_pickup_map9` (`potato_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -716,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `trailer` (
   `inspect_id` int(5) unsigned NOT NULL,
   `plate_num` int(8) unsigned NOT NULL,
   `ins_id` int(5) unsigned NOT NULL,
-  `maintain_id` int(5) unsigned NOT NULL,
+  /*`maintain_id` int(5) unsigned NOT NULL,*/
   PRIMARY KEY (`trailer_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
@@ -750,7 +752,7 @@ CREATE TABLE IF NOT EXISTS `truck` (
   `inspect_id` int(5) unsigned NOT NULL,
   `plate_num` int(8) unsigned NOT NULL,
   `ins_id` int(5) unsigned NOT NULL,
-  `maintain_id` int(5) unsigned NOT NULL,
+  /*`maintain_id` int(5) unsigned NOT NULL,*/
   PRIMARY KEY (`truck_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
