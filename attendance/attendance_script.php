@@ -36,8 +36,12 @@ if (isset($_POST['punchIn'])) {
 
 	// need to be able to handle more then one login for the day
 	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$attendanceId = $row['attend_id'];    
+
+	if (!empty($result)) {
+		$row = $result->fetch_assoc();
+		$attendanceId = $row['attend_id'];
+	}
+	
 	$_SESSION['attendanceId'] = $attendanceId;
 }
 
@@ -60,7 +64,7 @@ if (isset($_POST['startBreak'])) {
 		$row = $result->fetch_assoc();
 		$breakId = $row['break_id'];    
 		$_SESSION['breakId'] = $breakId;
-	}	
+	}
 }
 
 // End break
@@ -73,11 +77,13 @@ if (isset($_POST['endBreak'])) {
 $query = "SELECT job_type.emp_type_id, type_description, type_alt_description FROM job_type INNER JOIN employee_type ON job_type.emp_type_id = employee_type.emp_type_id WHERE emp_id =" .$empId;
 $result = $db->query($query);
 
-while ($row = $result->fetch_assoc()){
-    $empTypeId = $row['emp_type_id'];   
-    $typeDesc = $row['type_description'];
-	$typeAltDesc = $row['type_alt_description'];   
-	$jobTypes[] = array($empTypeId, $typeDesc, $typeAltDesc);
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()){
+    	$empTypeId = $row['emp_type_id'];   
+    	$typeDesc = $row['type_description'];
+		$typeAltDesc = $row['type_alt_description'];   
+		$jobTypes[] = array($empTypeId, $typeDesc, $typeAltDesc);
+	}
 }
 
 $_SESSION['jobTypes'] = $jobTypes;

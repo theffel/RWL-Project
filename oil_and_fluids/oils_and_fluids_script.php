@@ -36,16 +36,18 @@ if (isset($_POST['submit'])) {
 $query = "SELECT maintenance.maintain_id, change_date, truck_num, engine_oil_litres, hyd_oil_litres, trans_fluid_litres, coolant_litres FROM maintenance INNER JOIN truck ON maintenance.truck_id = truck.truck_id WHERE change_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY change_date DESC";
 $result = $db->query($query);
 
-while ($row = $result->fetch_assoc()){
-	$maintainId = $row['maintain_id'];
-    $date = $row['change_date'];
-    $truck = $row['truck_num']; 
-    $engineOilLiters = $row['engine_oil_litres'];
-    $hydraulicOilLiters = $row['hyd_oil_litres'];
-    $transFluidLiters = $row['trans_fluid_litres'];
-    $coolantLitres = $row['coolant_litres'];
-    $oilsAndFluids[] = array($maintainId, $date, $truck, $engineOilLiters, $hydraulicOilLiters, $transFluidLiters, $coolantLitres);
-    $_SESSION['oilsAndFluids'] = $oilsAndFluids;
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()) {
+		$maintainId = $row['maintain_id'];
+    	$date = $row['change_date'];
+    	$truck = $row['truck_num']; 
+    	$engineOilLiters = $row['engine_oil_litres'];
+    	$hydraulicOilLiters = $row['hyd_oil_litres'];
+    	$transFluidLiters = $row['trans_fluid_litres'];
+    	$coolantLitres = $row['coolant_litres'];
+    	$oilsAndFluids[] = array($maintainId, $date, $truck, $engineOilLiters, $hydraulicOilLiters, $transFluidLiters, $coolantLitres);
+    	$_SESSION['oilsAndFluids'] = $oilsAndFluids;
+	}
 }
 
 // Select oils and fluids
@@ -56,14 +58,14 @@ for ($x = 0; $x < count($_SESSION['oilsAndFluids']); $x++){
     	$result = $db->query($query);
     	$row = $result->fetch_assoc();
 		$date = $row['change_date'];
-    	$truck = $row['truck_num']; 
+    	$truck = $row['truck_num'];
     	$engineOilLiters = $row['engine_oil_litres'];
     	$hydraulicOilLiters = $row['hyd_oil_litres'];
     	$transFluidLiters = $row['trans_fluid_litres'];
-    	$coolantLitres = $row['coolant_litres'];  
+    	$coolantLitres = $row['coolant_litres'];
     	$editOilsAndFluids[] = array($date, $truck, $engineOilLiters, $hydraulicOilLiters, $transFluidLiters, $coolantLitres);
     	$_SESSION['editOilsAndFluids'] = $editOilsAndFluids;
-        header("location:edit_oils_and_fluids.php?id=" . $_SESSION['maintainNum'] );
+        header("location:edit_oils_and_fluids.php?id=" . $_SESSION['maintainNum']);
 	}
 }
 

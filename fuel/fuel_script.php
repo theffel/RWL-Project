@@ -38,16 +38,18 @@ if (isset($_POST['submit'])) {
 $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE purchase_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY purchase_date DESC";
 $result = $db->query($query);
 
-while ($row = $result->fetch_assoc()){
-	$fuelId = $row['fuel_id'];
-    $date = $row['purchase_date'];
-    $truck = $row['truck_num']; 
-    $litres = $row['litres'];
-    $cost = $row['cost'];   
-    $mileage = $row['mileage'];
-    $location = $row['location'];   
-    $fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
-    $_SESSION['fuelReceipts'] = $fuelReceipts;
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()){
+		$fuelId = $row['fuel_id'];
+    	$date = $row['purchase_date'];
+    	$truck = $row['truck_num']; 
+    	$litres = $row['litres'];
+    	$cost = $row['cost'];   
+    	$mileage = $row['mileage'];
+    	$location = $row['location'];   
+    	$fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
+    	$_SESSION['fuelReceipts'] = $fuelReceipts;
+	}
 }
 
 // Select fuel receipts
