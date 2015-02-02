@@ -62,57 +62,81 @@ include('../header.php');
                             PUNCH IN
                         </td>
                         <td>
-                            Start Break
-                        </td>
-                        <td>
-                            End Break
-                        </td>
-                        <td>
-                            Start Break
-                        </td>
-                        <td>
-                            End Break
-                        </td>
-                        <td>
                             PUNCH OUT
                         </td>
                         <td>
-                            LATE
+                            Start Break 1
                         </td>
-                    </tr>
-                    <tr>
-<!--                        <td>-->
-<!--                            --><?php
-//                                foreach($_SESSION['attendance'] as $attend) {
-//                                    echo $attend[0];
-//                                }
-//                            ?>
-<!--                        </td>-->
-                    </tr>
-                    <tr>
                         <td>
-                            <?php echo $_SESSION['attendance'][0][0]." ".$_SESSION['attendance'][0][1]; ?>
+                            End Break 1
                         </td>
+                        <td>
+                            Lunch Break
+                        </td>
+                        <td>
+                            Lunch Break
+                        </td>
+                        <td>
+                            Start Break 2
+                        </td>
+                        <td>
+                            End Break 2
+                        </td>
+                    </tr>
+                    <tr>
+                        <?php
+                            $attendanceData = $_SESSION['attendance'];
+                            $breakData = $_SESSION['break'];
 
-                            <td>
-                            <?php echo $_SESSION['attendance'][0][2]; ?>
-                        </td>
-                        <td>
-                            <?php echo $_SESSION['break'][0][0]; ?>
-                        </td>
-                        <td>
-                            <?php echo $_SESSION['break'][0][1]; ?>
-                        </td>
-                        <td>
-                            <?php echo $_SESSION['break'][1][0]; ?>
-                        </td>
-                        <td>
-                            <?php echo $_SESSION['break'][1][1]; ?>
-                        </td>
-                        <td>
-                            <?php echo $_SESSION['attendance'][0][3]; ?>
-                        </td>
+                            print_r($attendanceData);
+                            echo "<br>";
+                            print_r($breakData); echo "<br>";
+
+                            for($x = 0; $x < count($_SESSION['attendance']); $x++) {
+                                echo "<td>";
+                                    echo $attendanceData[$x][0]." ".$attendanceData[$x][1];
+                                echo "</td>";
+                                echo "<td>";
+                                    echo $attendanceData[$x][2];
+                                echo "</td>";
+                                echo "<td>";
+                                    echo $attendanceData[$x][3];
+                                echo "</td>";
+							}
+							
+                            for($x=0; $x < count($_SESSION['break']); $x++) {
+							
+								echo "<td>";
+									echo $break[$x][0];
+                                echo "</td>";
+								echo "<td>";
+                                    echo $break[$x][1];
+                                echo "</td>";
+							}							
+							
+//                            for($x = 0; $x < $breakData; $x++) {
+ //                               echo "<td>";
+//                                    echo $breakData[$x][0];
+//                                echo "</td>";
+//                                echo "<td>";
+//                                    echo $breakData[$x][1];
+ //                               echo "</td>";
+//                                echo "<td>";
+//                                    echo $breakData[$x][2];
+//                                echo "</td>";
+//                                echo "<td>";
+//                                    echo $breakData[$x][3];
+//                                echo "</td>";
+//                                echo "<td>";
+//                                    echo $breakData[$x][4];
+//                                echo "</td>";
+//                                echo "<td>";
+//                                    echo $breakData[$x][5];
+//                                echo "</td>";
+ //                          }
+                        ?>
                     </tr>
+
                 </table>
             </div>
         </div>

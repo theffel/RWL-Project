@@ -27,7 +27,7 @@ if (isset($_POST['Attendance'])) {
 	//query for attendance data
 	$query = "SELECT a.emp_id, e.emp_first_name, e.emp_last_name, a.time_in, a.time_out
 			  FROM attendance as a INNER JOIN employee as e ON a.emp_id = e.emp_id
-    		  WHERE a.time_in > '" . $currentDate . " 00:00:00' AND a.time_out < '" . $currentDate . " 11:59:59'";
+    		  WHERE a.time_in > '" . $currentDate . " 00:00:00' AND a.time_out < '" . $currentDate . " 23:59:59'";
 
 	$result = $db->query($query);
 	if ($result != null) {
@@ -38,10 +38,14 @@ if (isset($_POST['Attendance'])) {
 			$timeOut = $row['time_out'];
 			$empID = $row['emp_id'];
 
+
+			$attendance[] = array($empFName, $empLName, $timeIn, $timeOut);
+			$_SESSION['attendance'] = $attendance;
+			
 			//query for break data of emp_id from above
-			$query = "SELECT b.start_break, b.end_break
-					  FROM break as b INNER JOIN attendance as a ON b.emp_id = ".$empID."
-    				  WHERE b.start_break > '" . $currentDate . " 00:00:00' AND b.end_break < '" . $currentDate . " 11:59:59'";
+			$query = "SELECT start_break, end_break
+					  FROM break 
+    				  WHERE emp_id = ".$empID." AND start_break >= '" . $currentDate . " 00:00:00' AND end_break <= '" . $currentDate . " 23:59:59'";
 
 			$result = $db->query($query);
 
@@ -52,9 +56,6 @@ if (isset($_POST['Attendance'])) {
 				$break[] = array($startTime, $endTime);
 				$_SESSION['break'] = $break;
 			}
-
-			$attendance[] = array($empFName, $empLName, $timeIn, $timeOut);
-			$_SESSION['attendance'] = $attendance;
 		}
 	}
 
