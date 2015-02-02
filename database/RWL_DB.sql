@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `field` (
 CREATE TABLE IF NOT EXISTS `fuel` (
   `fuel_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
   `truck_id` int(3) unsigned NOT NULL,
-  `purchace_date` datetime NOT NULL,
+  `purchase_date` datetime NOT NULL,
   `mileage` int(6) unsigned NOT NULL,
   `litres` int(4) unsigned NOT NULL,
   `cost` double unsigned NOT NULL,
