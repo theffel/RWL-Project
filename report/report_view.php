@@ -51,46 +51,46 @@ include('../header.php');
                 <hr><br>
             </div>
         </div>
-        <div class="form-group">
+        <div class="CSSTableGenerator">
             <div class="col-md-offset-2 col-md-10">
                 <table>
                     <tr>
-                        <td>
+                        <th>
                             NAME
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             PUNCH IN
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             PUNCH OUT
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Start Break 1
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             End Break 1
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Lunch Break
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Lunch Break
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             Start Break 2
-                        </td>
-                        <td>
+                        </th>
+                        <th>
                             End Break 2
-                        </td>
+                        </th>
                     </tr>
                     <tr>
                         <?php
                             $attendanceData = $_SESSION['attendance'];
                             $breakData = $_SESSION['break'];
-
-                            print_r($attendanceData);
-                            echo "<br>";
-                            print_r($breakData); echo "<br>";
+//
+//                            print_r($attendanceData);
+//                            echo "<br>";
+//                            print_r($breakData); echo "<br>";
 
                             for($x = 0; $x < count($_SESSION['attendance']); $x++) {
                                 for($i = 0 ; $i <count($_SESSION['attendance'][$x]); $i++) {
@@ -107,7 +107,7 @@ include('../header.php');
 							}
 							
                             for($x=0; $x < count($_SESSION['break']); $x++) {
-                            for($i = 0 ; $i <count($_SESSION['break'][$x]); $i++) {
+                                for($i = 0 ; $i <count($_SESSION['break'][$x]); $i++) {
                                     echo "<td>";
                                     echo $break[$x][$i][0];
                                     echo "</td>";
@@ -128,7 +128,7 @@ include('../header.php');
     } else {
     ?>
 
-    <div class="form-group">
+    <div class="CSSTableGenerator">
         <div class="col-md-offset-2 col-md-10">
             <h3 class="page-header">Daily Work Result for RWL Holdings</h3>
             <hr><br>

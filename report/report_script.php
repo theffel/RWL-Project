@@ -27,7 +27,7 @@ if (isset($_POST['Attendance'])) {
 	//query for attendance data
 	$query = "SELECT a.emp_id, e.emp_first_name, e.emp_last_name, a.time_in, a.time_out
 			  FROM attendance as a INNER JOIN employee as e ON a.emp_id = e.emp_id
-    		  WHERE a.time_in >= '" . $currentDate . " 00:00:00' AND a.time_out <= '" . $currentDate . " 23:59:59'";
+    		  WHERE a.time_in >= '" . $currentDate . " 00:00:01' AND a.time_out <= '" . $currentDate . " 23:59:59'";
 	$result = $db->query($query);
 
 	if ($result != null) {
