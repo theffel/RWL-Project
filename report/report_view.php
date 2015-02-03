@@ -93,47 +93,29 @@ include('../header.php');
                             print_r($breakData); echo "<br>";
 
                             for($x = 0; $x < count($_SESSION['attendance']); $x++) {
-                                echo "<td>";
-                                    echo $attendanceData[$x][0]." ".$attendanceData[$x][1];
-                                echo "</td>";
-                                echo "<td>";
-                                    echo $attendanceData[$x][2];
-                                echo "</td>";
-                                echo "<td>";
-                                    echo $attendanceData[$x][3];
-                                echo "</td>";
+                                for($i = 0 ; $i <count($_SESSION['attendance'][$x]); $i++) {
+                                    echo "<td>";
+                                        echo $attendanceData[$x][$i][0] . " " . $attendanceData[$x][$i][1];
+                                    echo "</td>";
+                                    echo "<td>";
+                                        echo $attendanceData[$x][$i][2];
+                                    echo "</td>";
+                                    echo "<td>";
+                                        echo $attendanceData[$x][$i][3];
+                                    echo "</td>";
+                                }
 							}
 							
                             for($x=0; $x < count($_SESSION['break']); $x++) {
-							
-								echo "<td>";
-									echo $break[$x][0];
-                                echo "</td>";
-								echo "<td>";
-                                    echo $break[$x][1];
-                                echo "</td>";
-							}							
-							
-//                            for($x = 0; $x < $breakData; $x++) {
- //                               echo "<td>";
-//                                    echo $breakData[$x][0];
-//                                echo "</td>";
-//                                echo "<td>";
-//                                    echo $breakData[$x][1];
- //                               echo "</td>";
-//                                echo "<td>";
-//                                    echo $breakData[$x][2];
-//                                echo "</td>";
-//                                echo "<td>";
-//                                    echo $breakData[$x][3];
-//                                echo "</td>";
-//                                echo "<td>";
-//                                    echo $breakData[$x][4];
-//                                echo "</td>";
-//                                echo "<td>";
-//                                    echo $breakData[$x][5];
-//                                echo "</td>";
- //                          }
+                            for($i = 0 ; $i <count($_SESSION['break'][$x]); $i++) {
+                                    echo "<td>";
+                                    echo $break[$x][$i][0];
+                                    echo "</td>";
+                                    echo "<td>";
+                                    echo $break[$x][$i][1];
+                                    echo "</td>";
+                                }
+                            }
                         ?>
                     </tr>
 
@@ -156,18 +138,23 @@ include('../header.php');
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
+        <?php
+            echo "incoming : "; print_r($_SESSION['incoming']);
+        echo "outgoing : "; print_r($_SESSION['outgoing']);
+        echo "sample : "; print_r($_SESSION['sample']);
+        ?>
             <table>
                  <tr>
                     <td>
-                        Total Incoming Amount
+                        Total Incoming Amount:
                     </td>
                     <td>
-                        <?php echo $_SESSION['incoming']; ?>
+                        <?php echo $_SESSION['incoming'][0]; ?>
                     </td>
                 </tr>
                  <tr>
                     <td>
-                        Total Sample Amount
+                        Total Sample Amount:
                     </td>
                     <td>
                         <?php echo $_SESSION['sample'][0][0]; ?>
@@ -175,7 +162,7 @@ include('../header.php');
                 </tr>
                  <tr>
                     <td>
-                        Total Good Percent
+                        Total Good Percent:
                     </td>
                     <td>
                        <?php echo $_SESSION['sample'][0][1]; ?> %
@@ -183,10 +170,10 @@ include('../header.php');
                 </tr>
                  <tr>
                     <td>
-                        Total Outgoing Amount
+                        Total Outgoing Amount:
                     </td>
                     <td>
-                       <?php echo $_SESSION['outgoing']; ?>
+                       <?php echo $_SESSION['outgoing'][0]; ?>
                     </td>
                 </tr>
             </table>
