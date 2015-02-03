@@ -12,7 +12,7 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     x.xx
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-02-03
  */
 
 // Start the session
@@ -40,7 +40,7 @@ include('temperature_checks_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-        $temperatureChecks = (!empty($_SESSION['temperatureChecks'])) ? $_SESSION['temperatureChecks'] : "";
+        $editTemperatureCheck = (!empty($_SESSION['editTemperatureCheck'])) ? $_SESSION['editTemperatureCheck'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 5) {
         ?>
@@ -49,61 +49,35 @@ include('temperature_checks_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value="<?php echo $dateTime; ?>">                  
+                   <input type="text" class="form-control" name= "date" value="<?php echo $_SESSION['editTemperatureCheck'][0][1]; ?>">  
                 </div>
             </div>
             <div class="form-group">
                 <label for="tank1" class="control-label col-xs-2">Tank #1</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank1">
+                    <input type="text" class="form-control" name="tank1" value="<?php echo $_SESSION['editTemperatureCheck'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="tank2" class="control-label col-xs-2">Tank #2</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank2">
+                    <input type="text" class="form-control" name="tank2" value="<?php echo $_SESSION['editTemperatureCheck'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="tank3" class="control-label col-xs-2">Tank #3</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank3">
+                    <input type="text" class="form-control" name="tank3" value="<?php echo $_SESSION['editTemperatureCheck'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
-        <hr>
-        <h2 class="page-header">Edit Temperature Checks</h2>
+        </form>
         <?php
-            if (!empty($temperatureChecks)) {
-                echo '<table class="table">
-                        <thead>
-                           <tr>
-                                <th>Date</th>
-                                <th>Tank 1</th>
-                                <th>Tank 2</th>
-                                <th>Tank 3</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                for ($x = 0; $x < count($temperatureChecks); $x++) {
-                    echo '<tr>
-                        <td>'. $temperatureChecks[$x][1].'</td>
-                        <td>'. $temperatureChecks[$x][2].'</td>
-                        <td>'. $temperatureChecks[$x][3].'</td>
-                        <td>'. $temperatureChecks[$x][4].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $temperatureChecks[$x][0].'" value="Edit"/></td>
-                    </tr>';
-                }
-                echo '</tbody></table></form>';
-            } else{
-                echo "<p>There are currently no temperature checks to view.</p>";
-            }
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

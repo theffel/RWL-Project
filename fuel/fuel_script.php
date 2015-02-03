@@ -51,7 +51,6 @@ if (!empty($result)) {
     	$_SESSION['fuelReceipts'] = $fuelReceipts;
 	}
 
-
 	// Select fuel receipts
 	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
 		if (isset($_POST[$fuelReceipts[$x][0]])) {
@@ -67,11 +66,10 @@ if (!empty($result)) {
 			$location = $row['location'];
 			$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
 			$_SESSION['editReceipt'] = $editReceipt;
-			header ("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
+			header("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
 		}
 	}
 }
-
 
 // Update fuel
 if (isset($_POST['update'])) {	
@@ -87,12 +85,11 @@ if (isset($_POST['update'])) {
 	$row = $result->fetch_assoc();
 	$truckId = $row['truck_id'];
 	
-	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", 
-			litres = " . $litres . ",cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
+	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", litres = " . $litres . ", cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'fuelReceipts'
 	unset($_SESSION['fuelReceipts']);
-	header ("location:index.php");
+	header("location:index.php");
 } 
 ?>
