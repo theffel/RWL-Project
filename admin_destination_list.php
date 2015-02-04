@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for displaying warehouse bins.
+ * This page holds the form for displaying dests.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     x.xx
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-02-01
  */
 
 // Start the session
@@ -33,31 +33,26 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of Farms</h1>
+                <h1 class="page-header">List of destinations</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
-                    </li>
-                    <li class="active">Bins</li>
+                    <li class="active">destinations</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the add farm form
-			if ($loggedIn == true) {	
-				// Get Farm Id
-				$id = $_GET["id"];
+			// If the user is logged in, display the form
+			if ($loggedIn == true) {			
+						
 				// Create query
-				$query = "select * FROM warehouse_bin WHERE warehouse_id = '{$id}'";
-				$result = $db->query($query);
+				$query = "select * FROM destination";
+				$dests = $db->query($query);
 				
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()){
-						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
-						$binCount = $db->query($binQuery)->num_rows;
-						echo "<form action = 'admin_add_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = '" . $row['bin_name'] . "'></form><br />";
+				if ($dests->num_rows > 0) {
+					while($row = $dests->fetch_assoc()){
+						echo "<form ><input type = 'submit' class='btn btn-primary' value = '" . $row['dest_name'] . "'></form><br />";
 					}
 				}
 				else {
@@ -69,12 +64,13 @@ include('header.php');
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/login/index.php");
+							location.replace("'.ROOT.'/login.php");
 							</script>';
 			}
-        echo "<hr><a href = '".ROOT."/admin_add_bin.php/?id=" . $id . "'>Add new bin to current warehouse</a><br />";       
-		?>
+        ?>
         <hr>
+		<a href = "<?php echo ROOT; ?>/admin_add_destination.php">Add New Destination</a><br />
+		<hr>
 
         <!-- Footer -->
         <footer>

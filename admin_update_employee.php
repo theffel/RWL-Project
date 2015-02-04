@@ -198,6 +198,11 @@ include('header.php');
 
 
 			<?php
+				$query2 = "select * from driver where emp_id = '{$empId}'";
+				$result = $db->query($query2);
+				if ($result->num_rows < 1) {
+					echo "<form action = 'admin_add_driver.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Add as Driver'></form><br />";
+				}
 			}
 			else{
 				echo "failed query";

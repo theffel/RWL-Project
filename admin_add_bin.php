@@ -35,9 +35,9 @@ include('header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">New Warehouse Bin Addition</h1>
                 <ol class="breadcrumb">
-                    <li><a href="../index.php">Home</a>
+                    <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="./admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
 					</li>
 <?php
 			// If the user is logged in, display the form

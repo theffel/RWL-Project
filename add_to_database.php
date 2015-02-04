@@ -235,6 +235,26 @@
 			}					
 		}
 		
+		// get submit from add Field page
+		else if (isset($_POST['fieldLocation'])) {
+					// Get bin Id
+					$binId = $_GET["id"];
+					$fieldLocation = ($_POST['fieldLocation']);
+
+					// Create query
+					$query = "INSERT INTO `field` (bin_id, field_location) VALUES ('{$binId}', '{$fieldLocation}')";
+					
+					if ($db->query($query) === TRUE) {
+						echo "New record created successfully";
+					} else {
+						echo "Error: " . $query . "<br>" . $db->error;
+					}
+
+					$db->close();
+			echo '<script type="text/javascript">
+					location.replace("'.ROOT.'/admin_add_field.php?id=' . $warehouseId . '");
+					</script>';	
+				}
 		
 				//improper sending variable
 		else{

@@ -723,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `trailer` (
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
   KEY `plate_num` (`plate_num`),
-  KEY `maintain_id` (`maintain_id`),
+ /* KEY `maintain_id` (`maintain_id`),*/
   KEY `FK_trailer_map2` (`ins_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -756,8 +756,8 @@ CREATE TABLE IF NOT EXISTS `truck` (
   PRIMARY KEY (`truck_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
-  KEY `ins_id` (`ins_id`),
-  KEY `maintain_id` (`maintain_id`)
+  KEY `ins_id` (`ins_id`)/*,
+  KEY `maintain_id` (`maintain_id`)*/
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------

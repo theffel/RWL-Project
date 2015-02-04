@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for displaying warehouse bins.
+ * This page holds the form for adding a new bin field.
  *
  * PHP version 5
  *
@@ -12,9 +12,9 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     x.xx
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-02-03
  */
-
+ 
 // Start the session
 session_start();
 
@@ -33,47 +33,62 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of Farms</h1>
+                <h1 class="page-header">New bin field Addition</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
-                    </li>
-                    <li class="active">Bins</li>
+					</li>
+<?php
+			// If the user is logged in, display the form
+			if ($loggedIn == true) {	
+				// Get bin Id
+				$binId = $_GET["id"];
+				//bin breadcrumb
+//				echo "<li><a href='admin_bin_list.php?id=" . $binId . "'>bin</a></li>";
+?>				                 
+					
+                    <li class="active">Add field</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the add farm form
-			if ($loggedIn == true) {	
-				// Get Farm Id
-				$id = $_GET["id"];
-				// Create query
-				$query = "select * FROM warehouse_bin WHERE warehouse_id = '{$id}'";
-				$result = $db->query($query);
-				
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()){
-						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
-						$binCount = $db->query($binQuery)->num_rows;
-						echo "<form action = 'admin_add_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = '" . $row['bin_name'] . "'></form><br />";
-					}
-				}
-				else {
-					echo "0 results";
-				}
-				$db->close();
+
+
+
+
+			
+			
+
+				echo "<form class='form-horizontal' name='addBinFieldForm' id='addBinFieldForm' method='post' action='add_to_database.php/?id=". $binId ."'>";
+			?>		
+					<!--field Location-->
+					<div class="form-group">
+						<label for="inputfieldName" class="control-label col-xs-2">field Name</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="fieldLocation" id="fieldLocation" required data-validation-required-message="Please enter the Location of the new field." autofocus>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<input type="submit" class="btn btn-primary" name="addField" value="Add field"/>
+						</div>
+					</div>
+					
+				</form>
+
+			<?php
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/login/index.php");
+							location.replace("login/index.php");
 							</script>';
 			}
-        echo "<hr><a href = '".ROOT."/admin_add_bin.php/?id=" . $id . "'>Add new bin to current warehouse</a><br />";       
-		?>
+        ?>
         <hr>
 
         <!-- Footer -->
