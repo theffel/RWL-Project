@@ -697,8 +697,8 @@ CREATE TABLE IF NOT EXISTS `sample` (
 
 CREATE TABLE IF NOT EXISTS `temparature_check` (
   `temp_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
-  `check_date` date NOT NULL,
-  `check_time` time NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
+  `temp_check` datetime NOT NULL,
   `tank1_temp` double unsigned NOT NULL,
   `tank2_temp` double unsigned NOT NULL,
   `tank3_temp` double unsigned NOT NULL,
