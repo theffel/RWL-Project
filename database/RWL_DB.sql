@@ -122,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `destination_record` (
   `ticket_num` int(25) unsigned NOT NULL,
   `trailer_id` int(3) unsigned NOT NULL,
   `dest_id` int(4) unsigned NOT NULL,
+  `farm_id` int(4) unsigned NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,
   `emp_id` int(3) unsigned NOT NULL,
   PRIMARY KEY (`record_id`),
