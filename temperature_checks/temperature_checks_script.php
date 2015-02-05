@@ -19,25 +19,26 @@
 include('../database.php');
 include('../session_load.php');
 
-// Insert fuel
+// Insert temperature check
 if (isset($_POST['submit'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$tank1 = $db->real_escape_string($_POST['tank1']);
 	$tank2 = $db->real_escape_string($_POST['tank2']);
 	$tank3 = $db->real_escape_string($_POST['tank3']);
 
-	$query = "INSERT INTO temparature_check (check_date, tank1_temp, tank2_temp, tank3_temp) VALUES ('" . $dateTime . "', " . $tank1 . ", " . $tank2 . "," . $tank3 . $empId . ")";
+	$query = "INSERT INTO temparature_check (temp_check, tank1_temp, tank2_temp, tank3_temp, emp_id) VALUES ('" . $dateTime . "', " . $tank1 . ", " . $tank2 . ", " . $tank3 . " ," . $empId . ")";
 	$result = $db->query($query);
+	var_dump($query);
 }
 
 // Load array with temperature checks for day by employee
-$query = "SELECT temp_id, check_date, tank1_temp, tank2_temp, tank3_temp FROM temparature_check WHERE check_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY check_date DESC";
+$query = "SELECT temp_id, temp_check, tank1_temp, tank2_temp, tank3_temp FROM temparature_check WHERE temp_check LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY temp_check DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
 		$tempId = $row['temp_id'];
-    	$date = $row['check_date'];
+    	$date = $row['temp_check'];
     	$tank1 = $row['tank1_temp']; 
     	$tank2 = $row['tank2_temp'];
     	$tank3 = $row['tank3_temp']; 
@@ -49,10 +50,10 @@ if (!empty($result)) {
 	for ($x = 0; $x < count($_SESSION['temperatureChecks']); $x++){
 		if (isset($_POST[$temperatureChecks[$x][0]])) {
 			$_SESSION['checkNum'] = $temperatureChecks[$x][0];
-			$query = "SELECT check_date, tank1_temp, tank2_temp, tank3_temp FROM temparature_check WHERE temp_id = " . $_SESSION['checkNum'];
+			$query = "SELECT temp_check, tank1_temp, tank2_temp, tank3_temp FROM temparature_check WHERE temp_id = " . $_SESSION['checkNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
-			$date = $row['check_date'];
+			$date = $row['temp_check'];
     		$tank1 = $row['tank1_temp'];
     		$tank2 = $row['tank2_temp'];
     		$tank3 = $row['tank3_temp'];
@@ -70,7 +71,7 @@ if (isset($_POST['update'])) {
 	$tank2 = $db->real_escape_string($_POST['tank2']);
 	$tank3 = $db->real_escape_string($_POST['tank3']);
 	
-	$query = "UPDATE temparature_check SET check_date = '" . $dateTime . "', tank1_temp =" . $tank1 . ", tank2_temp = " . $tank2 . ", tank3_temp = " . $tank3 . " WHERE temp_id = " . $_SESSION['checkNum'];
+	$query = "UPDATE temparature_check SET temp_check = '" . $dateTime . "', tank1_temp =" . $tank1 . ", tank2_temp = " . $tank2 . ", tank3_temp = " . $tank3 . " WHERE temp_id = " . $_SESSION['checkNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'temperatureChecks'

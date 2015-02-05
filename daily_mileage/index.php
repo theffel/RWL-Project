@@ -66,7 +66,7 @@ include('daily_mileage_script.php');
             <div class="form-group">
                 <label for="startKmTruck" class="control-label col-md-2">Start KM on Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startKmTruck" required data-validation-required-message="Please enter starting Km.">
+                    <input type="text" class="form-control" name="startKmTruck">
                 </div>
             </div>
             <div class="form-group">
@@ -90,13 +90,13 @@ include('daily_mileage_script.php');
             <div class="form-group">
                 <label for="litresFuelTank" class="control-label col-md-2">Litres of Fuel in the Tank</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="litresFuelTank" required data-validation-required-message="Please enter amount of fuel.">
+                    <input type="text" class="form-control" name="litresFuelTank">
                 </div>
             </div>
             <div class="form-group">
                 <label for="finishKm" class="control-label col-md-2">Finish KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="finishKm" required data-validation-required-message="Please enter your finished Km.">
+                    <input type="text" class="form-control" name="finishKm">
                 </div>
             </div>
             <div class="form-group">

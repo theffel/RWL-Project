@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Load array with daily mileage for the day for the employee
-$query = "SELECT mileage_id, truck_num, start_date, starting_km, pei_km, nb_km, ns_km, litres_fuel, finish_km FROM daily_mileage INNER JOIN truck ON daily_mileage.truck_id = truck.truck_id WHERE start_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY start_date DESC";
+$query = "SELECT mileage_id, truck.truck_num, start_date, starting_km, pei_km, nb_km, ns_km, litres_fuel, finish_km FROM daily_mileage INNER JOIN truck ON daily_mileage.truck_id = truck.truck_id WHERE start_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY start_date DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
