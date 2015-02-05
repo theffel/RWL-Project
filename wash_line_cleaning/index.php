@@ -49,15 +49,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD">
-                        </div>
-                        <label for="time" class="control-label col-md-2">Time</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="time">
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
                 </div>
             </div>
             <div class="form-group">
