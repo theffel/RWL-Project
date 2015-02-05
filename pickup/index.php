@@ -179,7 +179,6 @@ include('../header.php');
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="farmArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">
@@ -234,7 +233,7 @@ include('../header.php');
                 </div>
             </div> 
             <div class="form-group">
-                <label for="rwlunloadTime" class="control-label col-md-2">Unload Time</label>
+                <label for="rwlUnloadTime" class="control-label col-md-2">Unload Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">

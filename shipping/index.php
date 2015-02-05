@@ -18,11 +18,10 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
+include('shipping_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -53,9 +52,16 @@ include('../header.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="potType" class="control-label col-md-2">Type of Potato</label>
+                <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="potType">
+                    <select class="form-control" name="potato" id="potato">
+                        <option value="" disabled selected style="display:none;"></option>
+                        <?php
+                        for ($x = 0; $x < count($potatoes); $x++){
+                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
