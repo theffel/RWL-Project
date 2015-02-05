@@ -10,6 +10,16 @@ $row = $result->fetch_assoc();
 $empId = $row['emp_id'];    
 $_SESSION['empId'] = $empId;
 
+// Store destinations in the session
+$query = "SELECT * FROM destination";
+$result = $db->query($query);
+while ($row = $result->fetch_assoc()){        
+	$destId = $row['dest_id'];  
+	$destName = $row['dest_name'];
+	$destinations[] = array($destId, $destName);
+}
+$_SESSION['destinations'] = $destinations;
+
 // Store potatoes in the session
 $query = "SELECT * FROM potato";
 $result = $db->query($query);
