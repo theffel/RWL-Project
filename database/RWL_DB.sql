@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `break` (
 
 CREATE TABLE IF NOT EXISTS `daily_mileage` (
   `mileage_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `emp_id` int(3) unsigned NOT NULL,
   `truck_num` int(5) unsigned NOT NULL,
   `truck_id` int(3) unsigned NOT NULL,
   `start_date` datetime NOT NULL,
