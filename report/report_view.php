@@ -1,18 +1,17 @@
 <?php
 /**
- * This page allows the user to enter their username and password to login to the system.
+ * This page allows the user to show report from DB
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Report
+ * @package     report_view.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.0
- * @link        http://pear.php.net/package/PackageName
+ * @link        http://theffel.hccis.info/report/report_view.php
  * @since       2015-01-21
  */
 
@@ -40,7 +39,7 @@ include('../header.php');
     <!-- /.row -->
     <?php
 
-    // If the user is not logged in, display a login form
+    // If the user click the Attendance button, display Attendance report.
     if (isset($_POST['Attendance'])) {
         ?>
         <div class="form-group">
@@ -87,25 +86,27 @@ include('../header.php');
                         <?php
                             $attendanceData = $_SESSION['attendance'];
                             $breakData = $_SESSION['break'];
-//
+
+//                            For error checking script
 //                            print_r($attendanceData);
 //                            echo "<br>";
 //                            print_r($breakData); echo "<br>";
-
+                            //Get data from multi dimension Seesion variable
                             for($x = 0; $x < count($_SESSION['attendance']); $x++) {
                                 for($i = 0 ; $i <count($_SESSION['attendance'][$x]); $i++) {
                                     echo "<td>";
-                                        echo $attendanceData[$x][$i][0] . " " . $attendanceData[$x][$i][1];
+                                        echo $attendanceData[$x][$i][0] . " " . $attendanceData[$x][$i][1]; //show first and last name
                                     echo "</td>";
                                     echo "<td>";
-                                        echo $attendanceData[$x][$i][2];
+                                        echo $attendanceData[$x][$i][2]; //show Punch in time
                                     echo "</td>";
                                     echo "<td>";
-                                        echo $attendanceData[$x][$i][3];
+                                        echo $attendanceData[$x][$i][3]; //show Punch out time
                                     echo "</td>";
                                 }
 							}
-							
+
+                            //Display all break time
                             for($x=0; $x < count($_SESSION['break']); $x++) {
                                 for($i = 0 ; $i <count($_SESSION['break'][$x]); $i++) {
                                     echo "<td>";
@@ -125,7 +126,7 @@ include('../header.php');
         </br>
     <?php
 
-    } else {
+    } else { // If the user click the Work Result button, display Work Result report.
     ?>
 
     <div class="CSSTableGenerator">
@@ -139,9 +140,10 @@ include('../header.php');
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
         <?php
-            echo "incoming : "; print_r($_SESSION['incoming']);
-        echo "outgoing : "; print_r($_SESSION['outgoing']);
-        echo "sample : "; print_r($_SESSION['sample']);
+//         Below is for data checking
+//            echo "incoming : "; print_r($_SESSION['incoming']);
+//            echo "outgoing : "; print_r($_SESSION['outgoing']);
+//            echo "sample : "; print_r($_SESSION['sample']);
         ?>
             <table>
                  <tr>
@@ -149,7 +151,7 @@ include('../header.php');
                         Total Incoming Amount:
                     </td>
                     <td>
-                        <?php echo $_SESSION['incoming'][0]; ?>
+                        <?php echo $_SESSION['incoming'][0]; ?> <!-- display total incoming amount -->
                     </td>
                 </tr>
                  <tr>
@@ -157,7 +159,7 @@ include('../header.php');
                         Total Sample Amount:
                     </td>
                     <td>
-                        <?php echo $_SESSION['sample'][0][0]; ?>
+                        <?php echo $_SESSION['sample'][0][0]; ?>  <!-- display total sample amount -->
                     </td>
                 </tr>
                  <tr>
@@ -165,7 +167,7 @@ include('../header.php');
                         Total Good Percent:
                     </td>
                     <td>
-                       <?php echo $_SESSION['sample'][0][1]; ?> %
+                       <?php echo $_SESSION['sample'][0][1]; ?> %  <!-- display percentage of total good sample -->
                     </td>
                 </tr>
                  <tr>
@@ -173,7 +175,7 @@ include('../header.php');
                         Total Outgoing Amount:
                     </td>
                     <td>
-                       <?php echo $_SESSION['outgoing'][0]; ?>
+                       <?php echo $_SESSION['outgoing'][0]; ?>  <!-- display total outgoing amount -->
                     </td>
                 </tr>
             </table>
