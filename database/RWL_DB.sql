@@ -115,8 +115,7 @@ CREATE TABLE IF NOT EXISTS `destination` (
 
 CREATE TABLE IF NOT EXISTS `destination_record` (
   `record_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
-  `arrive_date` date NOT NULL,
-  `arrive_time` time NOT NULL,
+  `arrive_date` datetime NOT NULL,
   `weight_in` int(8) unsigned NOT NULL,
   `unload_time` time NOT NULL,
   `weight_out` int(8) unsigned NOT NULL,
