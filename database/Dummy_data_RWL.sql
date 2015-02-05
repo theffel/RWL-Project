@@ -95,11 +95,11 @@ INSERT INTO `destination`(`dest_id`, `dest_name`, `dest_address`, `dest_prov`, `
 ('2', 'We Buy Taters', '3344 WireWorm Rd Tatertown', 'NB', '9025587744', 'Betty Bongos');
 
 
-INSERT INTO `truck`(`truck_id`, `truck_num`, `reg_id`, `inspect_id`, `plate_num`, `ins_id`, maintain_id) VALUES
-('1', '2554', '1', '1', '365587', '1', '1'),
-('2', '3698', '2', '2', '778564', '2', '2');
+INSERT INTO `truck`(`truck_id`, `truck_num`, `reg_id`, `inspect_id`, `plate_num`, `ins_id`) VALUES
+('1', '2554', '1', '1', '365587', '1'),
+('2', '3698', '2', '2', '778564', '2');
 
 
-INSERT INTO `trailer`(`trailer_id`, `trailer_num`, `reg_id`, `inspect_id`, `plate_num`, `ins_id`, maintain_id) VALUES
-('1', '76554', '1', '1', '56443', '1', '1'),
-('2', '45456', '2', '2', '33433', '2', '2');
+INSERT INTO `trailer`(`trailer_id`, `trailer_num`, `reg_id`, `inspect_id`, `plate_num`, `ins_id`) VALUES
+('1', '76554', '1', '1', '56443', '1'),
+('2', '45456', '2', '2', '33433', '2');
