@@ -53,6 +53,8 @@
                                                 echo '<a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>';
                                                 echo '<a href="'. ROOT . '/fuel">Fuel</a>';
                                                 echo '<a href="'. ROOT . '/pickup">Pick Up</a>';
+                                                echo '<a href="'. ROOT . '/delivery">Delivery</a>';                                               
+                                                
                                             } if ($employeeType == 1 || $employeeType == 3) { // Driver or production manager
                                                 echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
                                             } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
@@ -61,6 +63,7 @@
                                             } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
                                                 echo '<a href="'. ROOT . '/rejection">Rejection</a>';
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
+                                                echo '<a href="'. ROOT . '/delivery">Delivery</a>';                                               
                                             } if ($employeeType == 3) { // Production manager
                                                 echo '<a href="'. ROOT . '/waste_disposal">Waste Disposal</a>';
                                             } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager, dispatcher or line worker
@@ -80,6 +83,14 @@
                                             	echo '<a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>';
                                             	echo '<a href="'. ROOT . '/admin_farm_list.php">View Farm</a>';
                                                 echo '<a href="'. ROOT . '/report/index.php">Report</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_trailer.php">Add Trailer</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_truck.php">Add Truck</a>';
+                                                echo '<a href="'. ROOT . '/admin_emp_list.php">Emp list</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_processor.php">Add Processor</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_employee_emergency_contacts.php">Add Contact</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_employee_training_certificate.php">Add cert</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_destination.php">destination</a>';
+                                                echo '<a href="'. ROOT . '/admin_add_processor.php">Add Processor</a>';
                                             }
                             echo '      </li>
                                     </ul>

@@ -44,24 +44,24 @@ include('temperature_checks_script.php');
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 5) {
         ?>
-        <h2 class="page-header">Add a Temperature Check</h2>
-        <form class="form-horizontal" name="tempForm" id="tempForm" method="post" action="index.php">
+        <h2 class="page-header">Temperature Check</h2>
+        <form class="form-horizontal" name="tempForm" id="tempForm" method="post" action="edit_temperature_check.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value="<?php echo $_SESSION['editTemperatureCheck'][0][1]; ?>">  
+                   <input type="text" class="form-control" name= "date" value="<?php echo $_SESSION['editTemperatureCheck'][0][0]; ?>">  
                 </div>
             </div>
             <div class="form-group">
                 <label for="tank1" class="control-label col-xs-2">Tank #1</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank1" value="<?php echo $_SESSION['editTemperatureCheck'][0][2]; ?>">
+                    <input type="text" class="form-control" name="tank1" value="<?php echo $_SESSION['editTemperatureCheck'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="tank2" class="control-label col-xs-2">Tank #2</label>
                 <div class="col-xs-10">
-                    <input type="text" class="form-control" name="tank2" value="<?php echo $_SESSION['editTemperatureCheck'][0][3]; ?>">
+                    <input type="text" class="form-control" name="tank2" value="<?php echo $_SESSION['editTemperatureCheck'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">

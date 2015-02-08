@@ -57,7 +57,7 @@ if (!empty($result)) {
     		$tank1 = $row['tank1_temp'];
     		$tank2 = $row['tank2_temp'];
     		$tank3 = $row['tank3_temp'];
-			$editReceipt[] = array($date, $tank1, $tank2, $tank3); 
+			$editTemperatureCheck[] = array($date, $tank1, $tank2, $tank3); 
 			$_SESSION['editTemperatureCheck'] = $editTemperatureCheck;
 			header("location:edit_temperature_check.php?id=" . $_SESSION['checkNum'] );
 		}

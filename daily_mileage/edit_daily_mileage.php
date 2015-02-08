@@ -48,7 +48,7 @@ include('daily_mileage_script.php');
             <div class="form-group">
                 <label for="startDate" class="control-label col-md-2">Start Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startDate" value="<?php echo $_SESSION['editDailyMileage'][0][2]; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editDailyMileage'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -60,42 +60,42 @@ include('daily_mileage_script.php');
             <div class="form-group">
                 <label for="startKmTruck" class="control-label col-md-2">Start KM on Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startKmTruck" value="<?php echo $_SESSION['editDailyMileage'][0][3]; ?>">
+                    <input type="text" class="form-control" name="startKmTruck" value="<?php echo $_SESSION['editDailyMileage'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="peiKm" class="control-label col-md-2">PEI KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="peiKm" value="<?php echo $_SESSION['editDailyMileage'][0][4]; ?>">
+                    <input type="text" class="form-control" name="peiKm" value="<?php echo $_SESSION['editDailyMileage'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="nbKM" class="control-label col-md-2">NB KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="nbKM" value="<?php echo $_SESSION['editDailyMileage'][0][5]; ?>">
+                    <input type="text" class="form-control" name="nbKM" value="<?php echo $_SESSION['editDailyMileage'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="nsKm" class="control-label col-md-2">NS KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="nsKm" value="<?php echo $_SESSION['editDailyMileage'][0][6]; ?>">
+                    <input type="text" class="form-control" name="nsKm" value="<?php echo $_SESSION['editDailyMileage'][0][5]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="litresFuelTank" class="control-label col-md-2">Litres of Fuel in the Tank</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="litresFuelTank" value="<?php echo $_SESSION['editDailyMileage'][0][7]; ?>">
+                    <input type="text" class="form-control" name="litresFuelTank" value="<?php echo $_SESSION['editDailyMileage'][0][6]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="finishKm" class="control-label col-md-2">Finish KM</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="finishKm" value="<?php echo $_SESSION['editDailyMileage'][0][8]; ?>">
+                    <input type="text" class="form-control" name="finishKm" value="<?php echo $_SESSION['editDailyMileage'][0][7]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
         </form>

@@ -7,7 +7,7 @@
  *
  * @category    CategoryName
  * @package     PackageName
- * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
@@ -23,6 +23,9 @@ include('../database.php');
 
 // Include the header.php file
 include('../header.php');
+
+// Include the sample_script.php file
+include('sample_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -41,6 +44,9 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $trailers = (!empty($_SESSION['trailers'])) ? $_SESSION['trailers'] : "";
+        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 4) {
         ?>
@@ -51,17 +57,34 @@ include('../header.php');
             <div class="form-group">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="trailer">
+                    <select class="form-control" name="trailer">
+                        <?php
+                        for ($x = 0; $x < count($trailers); $x++){
+                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group row">
                 <label for="incomingOutgoing" class="control-label col-md-2">Incoming / Outgoing</label>
-                <div class="col-md-10">
+                <div class="col-md-3">
                     <ul class="list-inline">
                         <li><input type="radio" name="incomingOutgoing" value="Incoming"> Incoming</li>
                         <li><input type="radio" name="incomingOutgoing" value="Outgoing"> Outgoing</li>
                     </ul>
+                </div>
+                <label for="potato" class="control-label col-md-2">Potato</label>
+                <div class="col-md-5">
+                    <select class="form-control" name="potato" id="potato">
+                        <option value="" disabled selected style="display:none;"></option>
+                        <?php
+                            for ($x = 0; $x < count($potatoes); $x++){
+                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -75,15 +98,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
-                        </div>
-                        <label for="time" class="control-label col-md-2">Time</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="time">
-                        </div>
-                    </div>
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
                 </div>
             </div>
 
@@ -92,7 +107,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="totalWeight" class="control-label col-md-2">Total Sample Weight</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="totalWeight">
+                    <input type="text" class="form-control" name="totalWeight" value="" onchange="setSampleWeight(this.value)">
                 </div>
             </div>
 
@@ -102,7 +117,7 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="useableWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="useableWeight">
+                            <input type="text" class="form-control" name="useableWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -352,5 +367,7 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+        <!-- Custom JavaScript -->
+    <script src="../js/custom_js.js"></script>
 </body>
 </html>
