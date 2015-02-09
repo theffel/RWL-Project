@@ -18,11 +18,10 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
+include('product_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -44,26 +43,38 @@ include('../header.php');
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 3) {
         ?>
-
         <h2 class="page-header">Add a Product</h2>
-
         <form class="form-horizontal" name="receptionForm" id="receptionForm" method="post" action="index.php">
-        
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
-
-            <!-- Drop down populated by the database -->
             <div class="form-group">
-                <label for="potType" class="control-label col-md-2">Type of Potato</label>
+                <label for="farm" class="control-label col-md-2">Farm</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="potType">
+                    <select class="form-control" name="farm" id="farm">
+                        <?php
+                        for ($x = 0; $x < count($farms); $x++){
+                            echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label for="potato" class="control-label col-md-2">Potato</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="potato" id="potato">
+                        <?php
+                        for ($x = 0; $x < count($potatoes); $x++){
+                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <!-- Drop down populated by the database -->
             <div class="form-group">
                 <label for="potProd" class="control-label col-md-2">Potato Producer</label>
@@ -71,21 +82,18 @@ include('../header.php');
                     <input type="text" class="form-control" name="potProd">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="quanRecieved" class="control-label col-md-2">Quantity Recieved</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="quanRecieved">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="bulkOther" class="control-label col-md-2">Bulk or Other</label>
                 <div class="col-md-10">
@@ -95,7 +103,6 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="washed" class="control-label col-md-2">Washed</label>
                 <div class="col-md-10">
@@ -105,25 +112,23 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="cleanliness" class="control-label col-md-2">Cleanliness of Trailer After Unloading</label>
                 <div class="col-md-10">
                     <select class="form-control" name="cleanliness">
-                        <option value="cleanliness1">1</option>
-                        <option value="cleanliness2">2</option>
-                        <option value="cleanliness3">3</option>
-                        <option value="cleanliness4">4</option>
-                        <option value="cleanliness5">5</option>
-                        <option value="cleanliness6">6</option>
-                        <option value="cleanliness7">7</option>
-                        <option value="cleanliness8">8</option>
-                        <option value="cleanliness9">9</option>
-                        <option value="cleanliness10">10</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="CFIANotified" class="control-label col-md-2">CFIA Notified</label>
                 <div class="col-md-10">
@@ -133,14 +138,12 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="CFIANotifiedBy" class="control-label col-md-2">CFIA Notified By</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="CFIANotifiedBy">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="movementCert" class="control-label col-md-2">Movement Certifcate</label>
                 <div class="col-md-10">
@@ -150,7 +153,6 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="accepted" class="control-label col-md-2">Accepted</label>
                 <div class="col-md-10">
@@ -160,23 +162,41 @@ include('../header.php');
                     </ul>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
-        </form>
-
         <hr>
-
-        <h2 class="page-header">View Products</h2>
-        <p>There are currently no products to view.</p>
-
+        <h2 class="page-header">Edit Product</h2>
         <?php
-        }
-        else {
+            if (!empty($products)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Truck</th>
+                                <th>Trailer</th>
+                                <th>Farm</th>
+                                <th>Warehouse</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($products); $x++) {
+                    echo '<tr>
+                        <td>'. $products[$x][1].'</td>
+                        <td>'. $products[$x][2].'</td>
+                        <td>'. $products[$x][3].'</td>
+                        <td>'. $products[$x][4].'</td>
+                        <td>'. $products[$x][5].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $products[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table></form>';
+            } else {
+                echo "<p>There are currently no products to view.</p>";
+            }
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

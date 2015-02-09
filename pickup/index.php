@@ -19,12 +19,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
-include('../session_load.php');
 include('pickup_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -282,7 +279,6 @@ include('../header.php');
                      <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-       
         <hr>
         <h2 class="page-header">Edit Incoming Delivery</h2>
         <?php
@@ -308,12 +304,10 @@ include('../header.php');
                         <td><input type="submit" class="btn btn-primary" name="'. $incomingDeliveries[$x][0].'" value="Edit"/></td>
                     </tr>';
                 }
-                echo '</tbody></table>  </form>';
-            } else{
+                echo '</tbody></table></form>';
+            } else {
                 echo "<p>There are currently no incoming deliveries to view.</p>";
             }
-       
-        
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
