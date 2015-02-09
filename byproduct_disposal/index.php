@@ -18,11 +18,10 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
+include('byproduct_disposal_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -41,34 +40,36 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $byproducts = (!empty($_SESSION['byproducts'])) ? $_SESSION['byproducts'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2) {
         ?>
         <h2 class="page-header">Add a By-Product Disposal</h2>
-
-        <form class="form-horizontal">
-
+        <form class="form-horizontal" name="byproductForm" id="byproductForm" method="post" action="index.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="desc" class="control-label col-md-2">Description of Product</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="desc">
+                    <select class="form-control" id="desc">
+                        <option value="desc1">Desc1</option>
+                        <option value="desc2">Desc2</option>
+                    </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="sent">
+                    <select class="form-control" id="sent">
+                        <option value="location1">Location1</option>
+                        <option value="location2">Location2</option>
+                    </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
                 <div class="col-md-10">
@@ -78,7 +79,6 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
                 <div class="col-md-10">
@@ -88,23 +88,42 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
         </form>
-
         <hr>
-
-        <h2 class="page-header">View By-Product Disposals</h2>
-        <p>There are currently no by-product disposals to view.</p>
-
+        <h2 class="page-header">Edit By-Product</h2>
         <?php
-        }
-        else {
+            if (!empty($byproducts)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Sent</th>
+                                <th>Disposal</th>
+                                <th>Transported</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($byproducts); $x++) {
+                    echo '<tr>
+                        <td>'. $byproducts[$x][1].'</td>
+                        <td>'. $byproducts[$x][2].'</td>
+                        <td>'. $byproducts[$x][3].'</td>
+                        <td>'. $byproducts[$x][4].'</td>
+                        <td>'. $byproducts[$x][5].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $byproducts[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table></form>';
+            } else{
+                echo "<p>There are currently no byproduct disposals to view.</p>";
+            }
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

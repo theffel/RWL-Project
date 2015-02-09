@@ -19,11 +19,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
 include('fuel_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -131,11 +129,10 @@ include('../header.php');
                     </tr>';
                 }
                 echo '</tbody></table>  </form>';
-            } else{
+            } else {
                 echo "<p>There are currently no fuels to view.</p>";
             }
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

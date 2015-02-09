@@ -83,7 +83,7 @@ if (isset($_POST['update'])) {
 	$row = $result->fetch_assoc();
 	$truckId = $row['truck_id'];
 	
-	$query = "UPDATE maintenance SET truck_id = " . $truckId . ", change_date = '" . $dateTime . "', engine_oil_litres =" . $engineOilLiters . ", hyd_oil_litres = " . $hydraulicOilLiters . ", trans_fluid_litres = " . $transFluidLiters . ", coolant_litres = " . $coolantLitres . " WHERE maintain_id = " . $_SESSION['maintainNum'];
+	$query = "UPDATE maintenance SET truck_id = " . $truckId . ", change_date = '" . $date . "', engine_oil_litres =" . $engineOilLiters . ", hyd_oil_litres = " . $hydraulicOilLiters . ", trans_fluid_litres = " . $transFluidLiters . ", coolant_litres = " . $coolantLitres . " WHERE maintain_id = " . $_SESSION['maintainNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'oilsAndFluids'

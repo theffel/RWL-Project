@@ -18,11 +18,10 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
+include('waste_disposal_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -41,6 +40,7 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $wastes = (!empty($_SESSION['wastes'])) ? $_SESSION['wastes'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3) {
         ?>
@@ -49,7 +49,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -95,10 +95,36 @@ include('../header.php');
             </div>
         </form>
         <hr>
-        <h2 class="page-header">View Waste Disposals</h2>
-        <p>There are currently no waste disposals to view.</p>
+        <h2 class="page-header">Edit Waste</h2>
         <?php
-        } else {
+            if (!empty($wastes)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Sent</th>
+                                <th>Disposal</th>
+                                <th>Transported</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($wastes); $x++) {
+                    echo '<tr>
+                        <td>'. $wastes[$x][1].'</td>
+                        <td>'. $wastes[$x][2].'</td>
+                        <td>'. $wastes[$x][3].'</td>
+                        <td>'. $wastes[$x][4].'</td>
+                        <td>'. $wastes[$x][5].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $wastes[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table></form>';
+            } else{
+                echo "<p>There are currently no wastes dispoals to view.</p>";
+            }
+        }
+        else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file

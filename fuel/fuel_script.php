@@ -39,7 +39,7 @@ $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, locat
 $result = $db->query($query);
 
 if (!empty($result)) {
-	while ($row = $result->fetch_assoc()){
+	while ($row = $result->fetch_assoc()) {
 		$fuelId = $row['fuel_id'];
     	$date = $row['purchase_date'];
     	$truck = $row['truck_num']; 
@@ -52,7 +52,7 @@ if (!empty($result)) {
 	}
 
 	// Select fuel receipts
-	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
+	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++) {
 		if (isset($_POST[$fuelReceipts[$x][0]])) {
 			$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
 			$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location 
@@ -86,7 +86,7 @@ if (isset($_POST['update'])) {
 	$row = $result->fetch_assoc();
 	$truckId = $row['truck_id'];
 	
-	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $dateTime . "', mileage =" . $mileage . ", litres = " . $litres . ", cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
+	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $date . "', mileage =" . $mileage . ", litres = " . $litres . ", cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'fuelReceipts'
