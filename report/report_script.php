@@ -42,8 +42,7 @@ if (isset($_POST['Attendance'])) {
 			//query for break data of emp_id from above
 			$query = "SELECT start_break, end_break
 					  FROM break
-    				  WHERE emp_id = ".$empID." AND start_break '" . $currentDate . "%'
-    		  		  ORDER BY e.emp_first_name DESC";
+    				  WHERE emp_id = ".$empID." AND start_break LIKE '" .$currentDate. "%'";
 
 			$result = $db->query($query);
 
