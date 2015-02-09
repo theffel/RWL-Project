@@ -49,37 +49,37 @@ include('oils_and_fluids_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editOilsAndFluids'][0][1]; ?>">
+                   <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editOilsAndFluids'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="truck" value="<?php echo $_SESSION['editOilsAndFluids'][0][2]; ?>">
+                    <input type="text" class="form-control" name="truck" value="<?php echo $_SESSION['editOilsAndFluids'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="engineOilLiters" class="control-label col-md-2">Engine Oil Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="engineOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][3]; ?>">
+                    <input type="text" class="form-control" name="engineOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="hydraulicOilLiters" class="control-label col-md-2">Hydraulic Oil Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="hydraulicOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][4]; ?>">
+                    <input type="text" class="form-control" name="hydraulicOilLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="transFluidLiters" class="control-label col-md-2">Transmission Fluid Liters</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="transFluidLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][5]; ?>">
+                    <input type="text" class="form-control" name="transFluidLiters" value="<?php echo $_SESSION['editOilsAndFluids'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="coolantLitres" class="control-label col-md-2">Coolant Litres</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="coolantLitres" value="<?php echo $_SESSION['editOilsAndFluids'][0][6]; ?>">
+                    <input type="text" class="form-control" name="coolantLitres" value="<?php echo $_SESSION['editOilsAndFluids'][0][5]; ?>">
                 </div>
             </div>
             <div class="form-group">

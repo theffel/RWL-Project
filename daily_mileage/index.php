@@ -48,7 +48,7 @@ include('daily_mileage_script.php');
             <div class="form-group">
                 <label for="startDate" class="control-label col-md-2">Start Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="startDate" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
             <div class="form-group">

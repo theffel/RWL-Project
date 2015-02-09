@@ -7,7 +7,7 @@
  *
  * @category    CategoryName
  * @package     PackageName
- * @author      Zachary Theriault
+ * @author      Trevor Heffel
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
@@ -23,6 +23,9 @@ include('../database.php');
 
 // Include the header.php file
 include('../header.php');
+
+// Include the sample_script.php file
+include('sample_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -41,6 +44,9 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $trailers = (!empty($_SESSION['trailers'])) ? $_SESSION['trailers'] : "";
+        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 4) {
         ?>
@@ -51,17 +57,34 @@ include('../header.php');
             <div class="form-group">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="trailer">
+                    <select class="form-control" name="trailer">
+                        <?php
+                        for ($x = 0; $x < count($trailers); $x++){
+                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group row">
                 <label for="incomingOutgoing" class="control-label col-md-2">Incoming / Outgoing</label>
-                <div class="col-md-10">
+                <div class="col-md-3">
                     <ul class="list-inline">
                         <li><input type="radio" name="incomingOutgoing" value="Incoming"> Incoming</li>
                         <li><input type="radio" name="incomingOutgoing" value="Outgoing"> Outgoing</li>
                     </ul>
+                </div>
+                <label for="potato" class="control-label col-md-2">Potato</label>
+                <div class="col-md-5">
+                    <select class="form-control" name="potato" id="potato">
+                        <option value="" disabled selected style="display:none;"></option>
+                        <?php
+                            for ($x = 0; $x < count($potatoes); $x++){
+                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -75,15 +98,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="date" placeholder="MM-DD-YYYY">
-                        </div>
-                        <label for="time" class="control-label col-md-2">Time</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="time">
-                        </div>
-                    </div>
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
                 </div>
             </div>
 
@@ -92,7 +107,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="totalWeight" class="control-label col-md-2">Total Sample Weight</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="totalWeight">
+                    <input type="text" class="form-control" name="totalWeight" value="" onchange="setSampleWeight(this.value)">
                 </div>
             </div>
 
@@ -102,11 +117,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="useableWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="useableWeight">
+                            <input type="text" class="form-control" name="useableWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="useablePercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="useablePercent" name="useablePercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -118,11 +133,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="rotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="rotWeight">
+                            <input type="text" class="form-control" name="rotWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="rotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="rotPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="rotPercent" name="rotPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -134,15 +149,17 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="internalWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="internalWeight">
+                            <input type="text" class="form-control" name="internalWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="internalPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="internalPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="internalPercent" name="internalPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Pit Rot naming conventions changed for reusable code in custom.js to pitrot instead of pitRot-->
 
             <div class="form-group">
                 <label for="pitRot" class="control-label col-md-2">Pit Rot</label>
@@ -150,11 +167,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="pitRotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="pitRotWeight" placeholder="">
+                            <input type="text" class="form-control" name="pitrotWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="pitRotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="pitRotPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -166,15 +183,17 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="wirewormWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="wirewormWeight" placeholder="">
+                            <input type="text" class="form-control" name="wirewormWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="wirewormPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="wirewormPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Jelly End naming conventions changed for reusable code in custom.js to jellyend instead of jellyEnd   -->
 
             <div class="form-group">
                 <label for="jellyEnd" class="control-label col-md-2">Jelly End</label>
@@ -182,11 +201,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="jellyEndWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="jellyEndWeight" placeholder="">
+                            <input type="text" class="form-control" name="jellyendWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="jellyEndPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="jellyEndPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -198,15 +217,17 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="otherWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="otherWeight" placeholder="">
+                            <input type="text" class="form-control" name="otherWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="otherPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="otherPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="otherPercent" name="otherPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Hollow Heart naming conventions changed for reusable code in custom.js to hollowheart instead of hollowHeart-->
 
             <div class="form-group">
                 <label for="hollowHeart" class="control-label col-md-2">Hollow Heart</label>
@@ -214,11 +235,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="hollowHeartWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="hollowHeartWeight" placeholder="">
+                            <input type="text" class="form-control" name="hollowheartWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="hollowHeartPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="hollowHeartPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -230,11 +251,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="scabWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="scabWeight" placeholder="">
+                            <input type="text" class="form-control" name="scabWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="scabPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="scabPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="scabPercent" name="scabPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -246,15 +267,17 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="sunburnWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="sunburnWeight" placeholder="">
+                            <input type="text" class="form-control" name="sunburnWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="sunburnPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="sunburnPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Mech Bruise naming conventions changed for reusable code in custom.js to mechbruise instead of mechBruise-->
 
             <div class="form-group">
                 <label for="mechBruise" class="control-label col-md-2">Mech Bruise</label>
@@ -262,11 +285,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="mechBruiseWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="mechBruiseWeight" placeholder="">
+                            <input type="text" class="form-control" name="mechbruiseWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="mechBruisePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="mechBruisePercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -278,11 +301,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="smallsWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="smallsWeight" placeholder="">
+                            <input type="text" class="form-control" name="smallsWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="smallsPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="smallsPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -294,11 +317,11 @@ include('../header.php');
                     <div class="form-group row">
                         <label for="10ozWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="10ozsWeight" placeholder="">
+                            <input type="text" class="form-control" name="tenozsWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="10ozPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="10ozPercent" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
@@ -321,7 +344,7 @@ include('../header.php');
             <div class="form-group">
                 <label for="rockMaterial" class="control-label col-md-2">Rock & Foreign Material</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="rockMaterial" placeholder="">
+                    <input type="text" class="form-control" name="rockWeight" placeholder="">
                 </div>
             </div>
 
@@ -352,5 +375,7 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+        <!-- Custom JavaScript -->
+    <script src="../js/custom_js.js"></script>
 </body>
 </html>

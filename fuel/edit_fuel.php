@@ -53,37 +53,37 @@ include('../header.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editReceipt'][0][1]; ?>">                  
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editReceipt'][0][0]; ?>">                  
                 </div>
             </div>
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="truck" value= "<?php echo $_SESSION['editReceipt'][0][2]; ?>">
+                    <input type="text" class="form-control" name="truck" value= "<?php echo $_SESSION['editReceipt'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="mileage" class="control-label col-md-2">Mileage</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="mileage" value= "<?php echo $_SESSION['editReceipt'][0][3]; ?>">
+                    <input type="text" class="form-control" name="mileage" value= "<?php echo $_SESSION['editReceipt'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="litres" class="control-label col-md-2">Litres</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="litres" value= "<?php echo $_SESSION['editReceipt'][0][4]; ?>">
+                    <input type="text" class="form-control" name="litres" value= "<?php echo $_SESSION['editReceipt'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="cost" class="control-label col-md-2">Cost</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="cost" value= "<?php echo $_SESSION['editReceipt'][0][5]; ?>">
+                    <input type="text" class="form-control" name="cost" value= "<?php echo $_SESSION['editReceipt'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="location" class="control-label col-md-2">Location</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="location" value= "<?php echo $_SESSION['editReceipt'][0][6]; ?>">
+                    <input type="text" class="form-control" name="location" value= "<?php echo $_SESSION['editReceipt'][0][5]; ?>">
                 </div>
             </div>
             <div class="form-group">

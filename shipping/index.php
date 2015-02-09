@@ -40,6 +40,9 @@ include('shipping_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
+        $farms = (!empty($_SESSION['farms'])) ? $_SESSION['farms'] : "";
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 2) {
         ?>
@@ -48,7 +51,7 @@ include('shipping_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Load Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -67,23 +70,36 @@ include('shipping_script.php');
             <div class="form-group">
                 <label for="potProd" class="control-label col-md-2">Potato Producer</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="potProd">
+                    <select class="form-control" id="farm" name="farm" onchange="warehouseFunction(this.value)">
+                        <option value="" disabled selected style="display:none;"></option>
+                        <?php
+                        for ($x = 0; $x < count($farms); $x++){
+                            echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
+                <label for="trailer" class="control-label col-md-2">Trailer</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="trailer">
+                        <?php
+                        for ($x = 0; $x < count($trailers); $x++){
+                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>             
+            </div>            
+            <div class="form-group">
+                <label for="loadIDInfo" class="control-label col-md-2">RWL Ticket Number</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="loadIDInfo">
                 </div>
             </div>
             <div class="form-group">
-                <label for="quanShipped" class="control-label col-md-2">Quantity Shipped</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="quanShipped">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="weight" class="control-label col-md-2">Weight</label>
+                <label for="weight" class="control-label col-md-2">Weight Shipped</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="weight">
                 </div>
@@ -108,7 +124,7 @@ include('shipping_script.php');
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+<!--            <div class="form-group">
                 <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
@@ -116,16 +132,7 @@ include('shipping_script.php');
                         <li><input type="radio" name="truckCleaned" value="No"> No</li>
                     </ul>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="accepted" class="control-label col-md-2">Accepted</label>
-                <div class="col-md-10">
-                    <ul class="list-inline">
-                        <li><input type="radio" name="accepted" value="Yes"> Yes</li>
-                        <li><input type="radio" name="accepted" value="No"> No</li>
-                    </ul>
-                </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>

@@ -1,3 +1,25 @@
+// delcare gobla varitables
+
+//for sample page
+
+var sampleWeight = 0;
+
+var rotWeight = 0;
+var internalWeight = 0;
+var pitrotWeight = 0;
+var wirewormWeight = 0;
+var jellyendWeight = 0;
+var otherWeight = 0;
+var hollowheartWeight = 0;
+var scabWeight = 0;
+var sunburnWeight = 0;
+var mechbruiseWeight = 0;
+var smallWeight = 0;
+var tenozWeight = 0;
+var airWeight = 0;
+var waterWeight = 0;
+var rockWeight = 0;
+
 function addOption(selectbox,text,value ){
     var optn = document.createElement("OPTION");
     optn.text = text;
@@ -6,7 +28,6 @@ function addOption(selectbox,text,value ){
 }
 
 function getTime(name) {
-
 	var currentTime = new Date()
 	var month = currentTime.getMonth() + 1
 		if (month < 10){
@@ -26,10 +47,20 @@ function getTime(name) {
 	var seconds = currentTime.getSeconds()
 		if (seconds < 10){
 	seconds = "0" + seconds
-	}
-
+ 	}
     document.getElementById(name).value = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
 
+}
+
+// function sets the sampleWeight
+function setSampleWeight(passedValue){
+  sampleWeight = passedValue;
+}
+
+function calculatePercent(passedValue, passedName) {
+  var splitString = passedName.split(/(?=[A-Z])/);
+  var name = splitString[0].concat("Percent");
+  document.getElementById(name).value = ((passedValue / sampleWeight * 100).toFixed(2));
 }
 
 function warehouseFunction(str){

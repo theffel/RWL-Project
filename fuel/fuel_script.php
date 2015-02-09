@@ -55,7 +55,8 @@ if (!empty($result)) {
 	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++){
 		if (isset($_POST[$fuelReceipts[$x][0]])) {
 			$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
-			$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
+			$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location 
+			FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$date = $row['purchase_date'];
@@ -64,7 +65,7 @@ if (!empty($result)) {
 			$cost = $row['cost'];
 			$mileage = $row['mileage'];
 			$location = $row['location'];
-			$editReceipt[] = array($purchase_date, $date, $truck, $mileage, $litres, $cost, $location); 
+			$editReceipt[] = array($date, $truck, $mileage, $litres, $cost, $location); 
 			$_SESSION['editReceipt'] = $editReceipt;
 			header("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
 		}
