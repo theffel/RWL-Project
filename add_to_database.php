@@ -83,7 +83,7 @@
 
 
 			// Create query
-			$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_phone) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}',  '{$warehousePhoneNum}')";
+			$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_phone, created) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}',  '{$warehousePhoneNum}', CURRENT_TIMESTAMP)";
 				
 			if ($db->query($query) === TRUE) {
 				$db->close();
@@ -103,7 +103,7 @@
 			$binName = ($_POST['binName']);
 
 			// Create query
-			$query = "INSERT INTO `warehouse_bin` (warehouse_id, bin_name) VALUES ('{$warehouseId}', '{$binName}')";
+			$query = "INSERT INTO `warehouse_bin` (warehouse_id, bin_name, created) VALUES ('{$warehouseId}', '{$binName}', CURRENT_TIMESTAMP)";
 						
 			if ($db->query($query) === TRUE) {
 			$db->close();
@@ -157,7 +157,7 @@
 						
 
 			// Create query
-			$query = "INSERT INTO `employee` (position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, primary_contact_id, secondary_contact_id) VALUES ('{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', '{$employeePCI}', '{$employeeSCI}')";
+			$query = "INSERT INTO `employee` (position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, primary_contact_id, secondary_contact_id, created) VALUES ('{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', '{$employeePCI}', '{$employeeSCI}', CURRENT_TIMESTAMP)";
 
 			if ($db->query($query) === TRUE) {
 				echo "New record created successfully";

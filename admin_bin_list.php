@@ -54,11 +54,18 @@ include('header.php');
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {
+					echo "<table style='width:100%'>";
+					echo "<tr><td>Bin Name/Number</td><td></td><td>Number of Fields</td><td></td></tr>";
 					while($row = $result->fetch_assoc()){
-						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
-						$binCount = $db->query($binQuery)->num_rows;
-						echo "<form action = 'admin_add_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = '" . $row['bin_name'] . "'></form><br />";
+						$fieldQuery = "select * from field where bin_id = '{$row['bin_id']}'";
+						$fieldCount = $db->query($fieldQuery)->num_rows;
+						echo "<tr><td>".$row['bin_name']."</td>";
+						echo "<td><form action = 'admin_update_bin.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						echo "<td>" . $fieldCount . "</td>";
+						echo "<td><form action = 'admin_add_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Add Field'></form></td>";
+						echo "</tr>";
 					}
+					echo "</table>";
 				}
 				else {
 					echo "0 results";
