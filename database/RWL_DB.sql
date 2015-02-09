@@ -58,6 +58,22 @@ CREATE TABLE IF NOT EXISTS `bin_marker` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `byproduct_disposal`
+--
+
+CREATE TABLE IF NOT EXISTS `byproduct_disposal` (
+  `by_pro_disposal_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `dispose_date` datetime NOT NULL,
+  `product_descript` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_where` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_how` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_transport` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`by_pro_disposal_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `break`
 --
 
@@ -110,26 +126,24 @@ CREATE TABLE IF NOT EXISTS `destination` (
 
 
 --
--- Table structure for table `destination_record`
+-- Table structure for table `delivery_record`
 --
 
-CREATE TABLE IF NOT EXISTS `destination_record` (
+CREATE TABLE IF NOT EXISTS `delivery_record` (
   `record_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
   `arrive_date` datetime NOT NULL,
-  `weight_in` int(8) unsigned NOT NULL,
+  `weight_in` int(6) unsigned NOT NULL,
   `unload_time` time NOT NULL,
-  `weight_out` int(8) unsigned NOT NULL,
+  `tare_weight` int(6) unsigned NOT NULL,
   `ticket_num` int(25) unsigned NOT NULL,
   `trailer_id` int(3) unsigned NOT NULL,
+  `truck_id` int(3) unsigned NOT NULL,
   `dest_id` int(4) unsigned NOT NULL,
   `farm_id` int(4) unsigned NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,
   `emp_id` int(3) unsigned NOT NULL,
-  PRIMARY KEY (`record_id`),
-  KEY `trailer_id` (`trailer_id`,`dest_id`,`potato_id`,`emp_id`),
-  KEY `FK_dest_rec_map2` (`emp_id`),
-  KEY `FK_dest_rec_map3` (`dest_id`),
-  KEY `FK_dest_rec_map4` (`potato_id`)
+  `rejected` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  PRIMARY KEY (`record_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -146,6 +160,21 @@ CREATE TABLE IF NOT EXISTS `driver` (
   PRIMARY KEY (`driver_id`),
   KEY `lic_id` (`lic_id`,`medical_id`,`emp_id`),
   KEY `fk_emp_id` (`emp_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `down_time`
+--
+
+CREATE TABLE IF NOT EXISTS `down_time` (
+  `down_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `down_start` datetime NOT NULL,
+  `down_end` datetime NOT NULL, 
+  `reason` tinyint(1) unsigned NOT NULL COMMENT '0 = incoming truck, 1 = outgoing truck, 2 = rwl breakdown',  
+  `emp_id` int(3) unsigned NOT NULL,
+  PRIMARY KEY (`down_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -267,6 +296,18 @@ CREATE TABLE IF NOT EXISTS `employee_work_history` (
   PRIMARY KEY (`history_id`),
   KEY `emp_type_id` (`emp_type_id`,`wage_id`),
   KEY `FK_hist_map2` (`wage_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equiptment_list`
+--
+
+CREATE TABLE IF NOT EXISTS `equiptment_list` (
+  `equip_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+  `equip_name` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`equip_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -521,6 +562,24 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `plant_cleaning`
+--
+
+CREATE TABLE IF NOT EXISTS `plant_cleaning` (
+  `plant_clean_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `plant_clean_date` datetime NOT NULL,
+  `equip_id` int(3) unsigned NOT NULL,
+  `clean_descript` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cleaner1` int(3) unsigned NOT NULL,
+  `cleaner2` int(3) unsigned DEFAULT NULL,
+  `cleaner3` int(3) unsigned DEFAULT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
+  PRIMARY KEY (`plant_clean_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `potato`
 --
 
@@ -530,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `potato` (
   PRIMARY KEY (`potato_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `processor`
@@ -562,6 +621,28 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `production_reception`
+--
+
+CREATE TABLE IF NOT EXISTS `production_reception` (
+  `reception_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `reception_date` datetime NOT NULL,
+  `potato_id` int(2) unsigned NOT NULL,
+  `farm_id` int(4) unsigned NOT NULL,
+  `load_id_info` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
+  `quanity_recieved` double unsigned NOT NULL COMMENT 'incoming weight',
+  `trailer_tandom` tinyint(1) unsigned NOT NULL COMMENT '0 = trailer, 1 = tandom',
+  `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `CFIA_notified` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `emp_id` int(3) unsigned NOT NULL COMMENT 'CFIA notified by',
+  `movement_certificate` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `accepted` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  PRIMARY KEY (`reception_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `registration`
 --
 
@@ -576,6 +657,26 @@ CREATE TABLE IF NOT EXISTS `registration` (
   KEY `FK_reg_map2` (`trailer_id`),
   KEY `FK_reg_map3` (`img_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rejection`
+--
+
+CREATE TABLE IF NOT EXISTS `rejection` (
+  `reject_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `reject_date` datetime NOT NULL,
+  `potato_id` int(2) unsigned NOT NULL,
+  `farm_id` int(4) unsigned NOT NULL,
+  `load_id_info` int(6) unsigned NOT NULL COMMENT 'Processor ticket number',
+  `quanity_returned` double unsigned NOT NULL COMMENT 'rejection weight',
+  `re_washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `re_graded` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `emp_id` int(3) unsigned NOT NULL,
+  `returned_to` tinyint(1) unsigned NOT NULL COMMENT '0 = processor, 1 = producer',
+  PRIMARY KEY (`reject_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -679,6 +780,27 @@ CREATE TABLE IF NOT EXISTS `sample` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shipping`
+--
+
+CREATE TABLE IF NOT EXISTS `shipping` (
+  `ship_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `ship_date` datetime NOT NULL,
+  `potato_id` int(2) unsigned NOT NULL,
+  `farm_id` int(4) unsigned NOT NULL,
+  `load_id_info` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
+  `weight_shipped` double unsigned NOT NULL,
+  `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `dest_id` int(4) unsigned NOT NULL,
+  `truck_cleaned` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `accepted` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `emp_id` int(3) unsigned NOT NULL,
+  PRIMARY KEY (`ship_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `temparature_check`
 --
 
@@ -743,8 +865,8 @@ CREATE TABLE IF NOT EXISTS `truck` (
   PRIMARY KEY (`truck_id`),
   KEY `reg_id` (`reg_id`),
   KEY `inspect_id` (`inspect_id`),
-  KEY `ins_id` (`ins_id`)/*,
-  KEY `maintain_id` (`maintain_id`)*/
+  KEY `ins_id` (`ins_id`)
+ /* KEY `maintain_id` (`maintain_id`)*/
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -820,6 +942,43 @@ CREATE TABLE IF NOT EXISTS `warehouse_bin` (
   PRIMARY KEY (`bin_id`),
   KEY `warehouse_id` (`warehouse_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wash_line_cleaning`
+--
+
+CREATE TABLE IF NOT EXISTS `wash_line_cleaning` (
+  `line_clean_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `line_clean_date` datetime NOT NULL,
+  `equip_id` int(3) unsigned NOT NULL,
+  `clean_descript` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cleaner1` int(3) unsigned NOT NULL,
+  `cleaner2` int(3) unsigned DEFAULT NULL,
+  `cleaner3` int(3) unsigned DEFAULT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
+  PRIMARY KEY (`line_clean_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+
+--
+-- Table structure for table `waste_disposal`
+--
+
+CREATE TABLE IF NOT EXISTS `waste_disposal` (
+  `waste_disposal_id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `dispose_date` datetime NOT NULL,
+  `product_descript` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_where` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_how` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `dispose_transport` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`waste_disposal_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Constraints for dumped tables
