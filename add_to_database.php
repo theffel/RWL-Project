@@ -28,11 +28,10 @@
 	if ($loggedIn == true) {
 							
 		// get submit from add farm page
-		if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail']) && isset($_POST['farmContactFN']) && isset($_POST['farmContactLN']) && isset($_POST['farmContactPN'])) {
+		if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmEmail']) && isset($_POST['farmContactFN']) && isset($_POST['farmContactLN']) && isset($_POST['farmContactPN'])) {
 			$farmName = ($_POST['farmName']);
 			$farmCivAddress = ($_POST['farmCivAddress']);
 			$farmPhoneNum = ($_POST['farmPhoneNum']);
-			$farmContact = ($_POST['farmContact']);
 			$farmEmail = ($_POST['farmEmail']);
 			$farmContactFN = ($_POST['farmContactFN']);
 			$farmContactLN = ($_POST['farmContactLN']);
@@ -46,15 +45,31 @@
 				$queryId = $result->fetch_assoc();
 				$farmId = $queryId['farm_id'];
 				$query2 = "INSERT INTO `farm_contact` (farm_id, contact_first_name, contact_last_name, contact_phone) VALUES ('{$farmId}', '{$farmContactFN}',  '{$farmContactLN}', '{$farmContactPN}')";
-				//if ($db->query($query2) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-						location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
-						</script>';	
+				if ($db->query($query2) === TRUE) {
+					$result2 = $db->query("select farm_contact_id from farm_contact WHERE farm_id = '{$farmId}'");
+					$queryId2 = $result2->fetch_assoc();
+					$farmContactId = $queryId2['farm_contact_id'];
+				 	$query3 = "UPDATE `farm` SET farm_contact_id = '{$farmContactId}' WHERE farm_id = '{$farmId}'";
+					if ($db->query($query3) === TRUE) {
+						$db->close();
+						echo '<script type="text/javascript">
+								location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");
+								</script>';	
+					}
+					else{			
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+					}
+				}
+				else{			
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+				}
+				
 			}
 			else{			
-			echo "Error: " . $query . "<br>" . $db->error;
-			$db->close();
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
 			}
 				
 		}

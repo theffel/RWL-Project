@@ -104,7 +104,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputFarmContact" class="control-label col-xs-2">Business Contact Phone #</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContactPN" id="farmContactPN" placeholder="#######" required data-validation-required-message="Please enter the phone number of the business contact at the new farm.">
+							<input type="text" class="form-control" name="farmContactPN" id="farmContactPN" placeholder="902#######" required data-validation-required-message="Please enter the phone number of the business contact at the new farm.">
 						</div>
 					</div>
 			
