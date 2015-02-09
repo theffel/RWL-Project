@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `byproduct_disposal` (
   `dispose_where` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `dispose_how` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `dispose_transport` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
   PRIMARY KEY (`by_pro_disposal_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -591,6 +592,65 @@ CREATE TABLE IF NOT EXISTS `potato` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pretrip_inspection`
+--
+
+CREATE TABLE IF NOT EXISTS `pretrip_inspection` (
+  `pretrip_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `emp_id` int(3) unsigned NOT NULL,
+  `inspect_date` datetime NOT NULL,
+  `truck_id` int(3) unsigned NOT NULL,
+  `trailer_id` int(3) unsigned NOT NULL,
+  `park_break` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `cleanliness` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `oil_pressure` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `air_pressure` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `low_air_warn` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `inst_pannel` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `horn` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `wiper_washer` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `heat_defrost` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `mirrors` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `steering_wheel` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `emerg_trailer_breaks` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `fire_extinguisher_warning_device` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `headlights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `clearence_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `identfy_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `turn_signals_4way_flashers` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `wheel_lug_front` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `fuel_tank_cap_left` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `sidemarker_lights_left` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `reflectors_left` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `wheel_lug_left` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `cargo_tiedowns_doors_left` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `tail_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `stop_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `turn_signals_4way_flashers_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `clearence_lights_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `identfy_lights_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `reflectors_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `wheel_lug_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `bumper` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `cargo_tiedowns_doors_rear` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `fuel_tank_cap_right` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `sidemarker_lights_right` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `reflectors_right` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `wheel_lug_right` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `cargo_tiedowns_doors_right` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `hoses_couplers` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `electrical_connector` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `couplings` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `marking_placecards` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `proper_ship_papers` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `release_trailer_emerg_breaks` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `apply_service_breaks` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  PRIMARY KEY (`pretrip_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `processor`
 --
 
@@ -871,6 +931,21 @@ CREATE TABLE IF NOT EXISTS `truck` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `truck_usage`
+--
+
+CREATE TABLE IF NOT EXISTS `truck_usage` (
+  `usage_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
+  `usage_date` datetime NOT NULL,
+  `truck_id` int(3) unsigned NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
+  PRIMARY KEY (`usage_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+
+--
 -- Table structure for table `users`
 --
 
@@ -974,6 +1049,7 @@ CREATE TABLE IF NOT EXISTS `waste_disposal` (
   `dispose_where` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `dispose_how` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `dispose_transport` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
   PRIMARY KEY (`waste_disposal_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
