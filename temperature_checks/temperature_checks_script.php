@@ -28,7 +28,6 @@ if (isset($_POST['submit'])) {
 
 	$query = "INSERT INTO temparature_check (temp_check, tank1_temp, tank2_temp, tank3_temp, emp_id) VALUES ('" . $dateTime . "', " . $tank1 . ", " . $tank2 . ", " . $tank3 . " ," . $empId . ")";
 	$result = $db->query($query);
-	var_dump($query);
 }
 
 // Load array with temperature checks for day by employee

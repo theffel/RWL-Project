@@ -55,36 +55,36 @@ include('waste_script.php');
             <div class="form-group">
                 <label for="desc" class="control-label col-md-2">Description of Product</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="desc">
-                        <option value="potato">Potato</option>
-                        <option value="rock">Rock</option>
+                    <select class="form-control" name="desc" id="desc">
+                        <option value="Potato">Potato</option>
+                        <option value="Rock">Rock</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="sent">
-                        <option value="location1">Location 1</option>
-                        <option value="location2">Location 2</option>
+                    <select class="form-control" name="sent" id="sent">
+                        <option value="Location 1">Location 1</option>
+                        <option value="Location 2">Location 2</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="disposed">
-                        <option value="deepBurial">Deep Burial</option>
-                        <option value="other">Other</option>
+                    <select class="form-control" name="disposed" id="disposed">
+                        <option value="Deep Burial">Deep Burial</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="transported">
-                        <option value="trailer">Trailer</option>
-                        <option value="dumptruck">Dumptruck</option>
+                    <select class="form-control" name="transported" id="transported">
+                        <option value="Trailer">Trailer</option>
+                        <option value="Dumptruck">Dumptruck</option>
                     </select>
                 </div>
             </div>

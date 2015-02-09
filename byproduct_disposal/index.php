@@ -55,36 +55,36 @@ include('byproduct_script.php');
             <div class="form-group">
                 <label for="desc" class="control-label col-md-2">Description of Product</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="desc">
-                        <option value="desc1">Desc1</option>
-                        <option value="desc2">Desc2</option>
+                    <select class="form-control" name="desc" id="desc">
+                        <option value="Desc1">Desc1</option>
+                        <option value="Desc2">Desc2</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="sent">
-                        <option value="location1">Location1</option>
-                        <option value="location2">Location2</option>
+                    <select class="form-control" name="sent" id="sent">
+                        <option value="Location1">Location1</option>
+                        <option value="Location2">Location2</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="disposed">
-                        <option value="deepBurial">Deep Burial</option>
-                        <option value="other">Other</option>
+                    <select class="form-control" name="disposed" id="disposed">
+                        <option value="Deep Burial">Deep Burial</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="transported">
-                        <option value="trailer">Trailer</option>
-                        <option value="dumptruck">Dumptruck</option>
+                    <select class="form-control" name="transported" id="transported">
+                        <option value="Trailer">Trailer</option>
+                        <option value="Dumptruck">Dumptruck</option>
                     </select>
                 </div>
             </div>
