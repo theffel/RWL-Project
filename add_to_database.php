@@ -28,20 +28,25 @@
 	if ($loggedIn == true) {
 							
 		// get submit from add farm page
-		if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail'])) {
+		if (isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmContact']) && isset($_POST['farmEmail']) && isset($_POST['farmContactFN']) && isset($_POST['farmContactLN']) && isset($_POST['farmContactPN'])) {
 			$farmName = ($_POST['farmName']);
 			$farmCivAddress = ($_POST['farmCivAddress']);
 			$farmPhoneNum = ($_POST['farmPhoneNum']);
 			$farmContact = ($_POST['farmContact']);
 			$farmEmail = ($_POST['farmEmail']);
+			$farmContactFN = ($_POST['farmContactFN']);
+			$farmContactLN = ($_POST['farmContactLN']);
+			$farmContactPN = ($_POST['farmContactPN']);
 
 			// Create query
-			$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, farm_contact_id) VALUES ('{$farmName}', '{$farmCivAddress}',  '{$farmPhoneNum}', '{$farmEmail}', '{$farmContact}')";
+			$query = "INSERT INTO `farm` (farm_name, farm_civic_address, farm_phone, farm_email, created) VALUES ('{$farmName}', '{$farmCivAddress}',  '{$farmPhoneNum}', '{$farmEmail}', CURRENT_TIMESTAMP)";
 						
 			if ($db->query($query) === TRUE) {
 				$result = $db->query("select farm_id from farm where created = now()");
 				$queryId = $result->fetch_assoc();
 				$farmId = $queryId['farm_id'];
+				$query2 = "INSERT INTO `farm_contact` (farm_id, contact_first_name, contact_last_name, contact_phone) VALUES ('{$farmId}', '{$farmContactFN}',  '{$farmContactLN}', '{$farmContactPN}')";
+				//if ($db->query($query2) === TRUE) {
 				$db->close();
 				echo '<script type="text/javascript">
 						location.replace("'.ROOT.'/admin_add_warehouse.php?id=' . $farmId . '");

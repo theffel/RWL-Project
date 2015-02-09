@@ -54,7 +54,7 @@ include('header.php');
 					
 					<!--Farm Name-->
 					<div class="form-group">
-						<label for="inputFarmName" class="control-label col-xs-2">Farm Name</label>
+						<label for="inputFarmName" class="control-label col-xs-2">Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="farmName" id="farmName"  required data-validation-required-message="Please enter the name of the new farm.">
 						</div>
@@ -62,7 +62,7 @@ include('header.php');
 					
 					<!--Farm Civic Address-->
 					<div class="form-group">
-						<label for="inputFarmCivAddress" class="control-label col-xs-2">Farm Civic Address</label>
+						<label for="inputFarmCivAddress" class="control-label col-xs-2">Civic Address</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress"  required data-validation-required-message="Please enter the civic address of the new farm.">
 						</div>
@@ -76,19 +76,35 @@ include('header.php');
 						</div>
 					</div>
 					
-					<!--Farm Contact-->
+					<!--Farm email address-->
 					<div class="form-group">
-						<label for="inputFarmContact" class="control-label col-xs-2">Farm Business Contact</label>
+						<label for="inputFarmemail" class="control-label col-xs-2">Email Address</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="###" required data-validation-required-message="Please enter the name of the business contact at the new farm.">
+							<input type="text" class="form-control" name="farmEmail" id="farmEmail" required data-validation-required-message="Please enter the email Address of the new farm.">
 						</div>
 					</div>
 					
-					<!--Farm email address-->
+					<!--Farm Contact First Name-->
 					<div class="form-group">
-						<label for="inputFarmemail" class="control-label col-xs-2">Farm email Address</label>
+						<label for="inputFarmContact" class="control-label col-xs-2">Business Contact First Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmEmail" id="farmEmail" required data-validation-required-message="Please enter the email Address of the new farm.">
+							<input type="text" class="form-control" name="farmContactFN" id="farmContactFN" required data-validation-required-message="Please enter the given name of the business contact at the new farm.">
+						</div>
+					</div>
+					
+					<!--Farm Contact Last Name-->
+					<div class="form-group">
+						<label for="inputFarmContact" class="control-label col-xs-2">Business Contact Last Name</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="farmContactLN" id="farmContactLN" required data-validation-required-message="Please enter the surname of the business contact at the new farm.">
+						</div>
+					</div>
+					
+					<!--Farm Contact Phone #-->
+					<div class="form-group">
+						<label for="inputFarmContact" class="control-label col-xs-2">Business Contact Phone #</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="farmContactPN" id="farmContactPN" placeholder="#######" required data-validation-required-message="Please enter the phone number of the business contact at the new farm.">
 						</div>
 					</div>
 			
