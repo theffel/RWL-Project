@@ -67,9 +67,8 @@ include('header.php');
 							location.replace("'.ROOT.'/login.php");
 							</script>';
 			}
-        ?>
-        <hr>
-		<a href = "<?php echo ROOT; ?>/admin_add_employee.php">Add New employee</a><br />
+ 		echo "<hr><form action = '".ROOT."/admin_add_employee.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Employee'></form><br />";
+		?>
 		<hr>
 
         <!-- Footer -->

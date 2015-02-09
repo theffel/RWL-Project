@@ -72,7 +72,8 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
-        echo "<hr><a href = '".ROOT."/admin_add_bin.php/?id=" . $id . "'>Add new bin to current warehouse</a><br />";       
+
+		echo "<hr><form action = '".ROOT."/admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add Bin'></form><br />";
 		?>
         <hr>
 

@@ -67,9 +67,8 @@ include('header.php');
 							location.replace("'.ROOT.'/login.php");
 							</script>';
 			}
-        ?>
-        <hr>
-		<a href = "<?php echo ROOT; ?>/admin_add_processor.php">Add New processor</a><br />
+ 		echo "<hr><form action = '".ROOT."/admin_add_processor.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Processor'></form><br />";
+		?>
 		<hr>
 
         <!-- Footer -->
