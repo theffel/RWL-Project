@@ -31,7 +31,8 @@ include('temperature_checks_script.php');
                 <h1 class="page-header">Temperature Checks</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active">Temperature Checks</li>
+                    <li><a href="index.php">Temperature Checks</a></li>
+                    <li class="active">Edit</li>
                 </ol>
             </div>
         </div>
@@ -44,7 +45,7 @@ include('temperature_checks_script.php');
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 5) {
         ?>
-        <h2 class="page-header">Temperature Check</h2>
+        <h2 class="page-header">Edit Temperature Check</h2>
         <form class="form-horizontal" name="tempForm" id="tempForm" method="post" action="edit_temperature_check.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>

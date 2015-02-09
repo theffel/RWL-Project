@@ -31,7 +31,8 @@ include('daily_mileage_script.php');
                 <h1 class="page-header">Daily Mileage</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active">Daily Mileage</li>
+                    <li><a href="index.php">Daily Mileage</a></li>
+                    <li class="active">Edit</li>
                 </ol>
             </div>
         </div>
