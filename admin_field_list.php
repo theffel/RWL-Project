@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for displaying warehouses.
+ * This page holds the form for displaying warehouse fields.
  *
  * PHP version 5
  *
@@ -25,6 +25,13 @@ include('database.php');
 include('header.php');
 ?>
 
+<?php
+	// If the user is logged in, display the add farm form
+	if ($loggedIn == true) {	
+	// Get warehouse Id
+	$id = $_GET["id"];
+
+?>
 <html>
 	<body>
 		    <!-- Page Content -->
@@ -33,45 +40,37 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of Warehouses</h1>
+                <h1 class="page-header">List of Fields</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
                     </li>
-                    <li class="active">Warehouses</li>
+                    <li class="active">Field</li>
                 </ol>
             </div>
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the form
-			if ($loggedIn == true) {	
-				// Get Farm Id
-				$id = $_GET["id"];
+
 				// Create query
-				$query = "select * FROM warehouse WHERE farm_id = '{$id}'";
+				$query = "select * FROM field WHERE bin_id = '{$id}'";
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {
 					echo "<table style='width:100%'>";
-					echo "<tr><td>Name</td> <td>Address</td> <td></td> <td>Number of Bins</td> <td></td> </tr>";
+					echo "<tr><td>Field Name/id</td> <td>Field Location</td> <td></td> </tr>";
 					while($row = $result->fetch_assoc()){
-						$binQuery = "select * from warehouse_bin where warehouse_id = '{$row['warehouse_id']}'";
-						$binCount = $db->query($binQuery)->num_rows;
-						
-						//fill table
-						echo "<tr><td>".$row['warehouse_name']."</td>";
-						echo "<td>".$row['warehouse_civic_address']."</td>";
-						echo "<td><form action = '".ROOT."/admin_update_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit Warehouse'></form></td>";
-						echo "<td>".$binCount."</td>";
-						echo "<td><form action = '".ROOT."/admin_bin_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['warehouse_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Bin List'></form></td></tr>";
+						echo "<tr><td>".$row['field_id']."</td>";
+						echo "<td>" . $row['field_location'] . "</td>";
+						echo "<td><form action = 'admin_field_list.php' method = 'get'><input hidden type = radio name = id value = '" . $row['bin_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Field List'></form></td>";
+						echo "</tr>";
 					}
 					echo "</table>";
 				}
 				else {
 					echo "0 results";
-				}	
+				}
 				$db->close();
 			}
 
@@ -81,9 +80,10 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
-		echo "<hr><form action = '".ROOT."/admin_add_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add Warehouse'></form><br />";
+
+		echo "<hr><form action = '".ROOT."/admin_add_field.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add field'></form><br />";
 		?>
-		<hr>
+        <hr>
 
         <!-- Footer -->
         <footer>

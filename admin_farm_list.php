@@ -51,9 +51,38 @@ include('header.php');
 				$farms = $db->query($query);
 				
 				if ($farms->num_rows > 0) {
+					//make table
+					echo "<table style='width:100%' border='1'>";
+					echo "<tr><td>Name</td> <td>Address</td> <td>Contact person(s)</td> <td>Phone # </td> <td></td> <td>Number of Warehouses</td> <td></td> </tr>";				
 					while($row = $farms->fetch_assoc()){
-						echo "<form action = 'admin_warehouse_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = '" . $row['farm_name'] . "'></form><br />";
+						$warehouseQuery = "select * from warehouse where farm_id = '{$row['farm_id']}'";
+						$warehouseCount = $db->query($warehouseQuery)->num_rows;
+						$contactQuery = "select * from farm_contact where farm_id = '{$row['farm_id']}'";
+						$contact = $db->query($contactQuery);
+						
+						//fill table
+						echo "<tr><td>".$row['farm_name']."</td>";
+						echo "<td>".$row['farm_civic_address']."</td>";
+						if ($contact->num_rows > 0) {
+							echo "<td>";
+							while($contactRow = $contact->fetch_assoc()){
+								echo $contactRow['contact_first_name']." ".$contactRow['contact_last_name']."<br />";
+							}
+							echo "</td><td>";
+							$contact = $db->query($contactQuery);
+							while($contactRow = $contact->fetch_assoc()){
+								echo $contactRow['contact_phone']."<br />";
+							}
+							echo "</td>";
+						}
+						else {
+							echo "<td></td><td></td>";
+						}
+						echo "<td><form action = '".ROOT."/admin_update_farm.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Update Farm'></form></td>";
+						echo "<td>".$warehouseCount."</td>";
+						echo "<td><form action = '".ROOT."/admin_warehouse_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Warehouse List'></form></td></tr>";
 					}
+					echo "</table>";
 				}
 				else {
 					echo "0 results";

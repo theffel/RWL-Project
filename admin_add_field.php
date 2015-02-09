@@ -65,7 +65,7 @@ include('header.php');
 			?>		
 					<!--field Location-->
 					<div class="form-group">
-						<label for="inputfieldName" class="control-label col-xs-2">field Name</label>
+						<label for="inputfieldName" class="control-label col-xs-2">Field Location</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="fieldLocation" id="fieldLocation" required data-validation-required-message="Please enter the Location of the new field." autofocus>
 						</div>
