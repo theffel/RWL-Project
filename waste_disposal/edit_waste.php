@@ -12,7 +12,7 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-02-09
  */
 
 // Start the session
@@ -31,7 +31,8 @@ include('waste_script.php');
                 <h1 class="page-header">Waste Disposal</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active">Waste Disposal</li>
+                    <li><a href="index.php">Waste Disposal</a></li>
+                    <li class="active">Edit</li>
                 </ol>
             </div>
         </div>
@@ -40,90 +41,50 @@ include('waste_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-        $wastes = (!empty($_SESSION['wastes'])) ? $_SESSION['wastes'] : "";
+        $editWastes = (!empty($_SESSION['editWastes'])) ? $_SESSION['editWastes'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3) {
         ?>
-        <h2 class="page-header">Add a Waste Disposal</h2>
-        <form class="form-horizontal" name="wasteForm" id="wasteForm" method="post" action="index.php">
+        <h2 class="page-header">Edit Waste Disposal</h2>
+        <form class="form-horizontal" name="wasteForm" id="wasteForm" method="post" action="edit_waste.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="desc" class="control-label col-md-2">Description of Product</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="desc">
-                        <option value="potato">Potato</option>
-                        <option value="rock">Rock</option>
-                    </select>
+                    <input type="text" class="form-control" name="desc" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="sent">
-                        <option value="location1">Location 1</option>
-                        <option value="location2">Location 2</option>
-                    </select>
+                    <input type="text" class="form-control" name="sent" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="disposed">
-                        <option value="deepBurial">Deep Burial</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <input type="text" class="form-control" name="disposed" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="transported">
-                        <option value="trailer">Trailer</option>
-                        <option value="dumptruck">Dumptruck</option>
-                    </select>
+                    <input type="text" class="form-control" name="transported" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
-        <hr>
-        <h2 class="page-header">Edit Waste</h2>
+        </form>
         <?php
-            if (!empty($wastes)) {
-                echo '<table class="table">
-                        <thead>
-                           <tr>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Sent</th>
-                                <th>Disposal</th>
-                                <th>Transported</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                for ($x = 0; $x < count($wastes); $x++) {
-                    echo '<tr>
-                        <td>'. $wastes[$x][1].'</td>
-                        <td>'. $wastes[$x][2].'</td>
-                        <td>'. $wastes[$x][3].'</td>
-                        <td>'. $wastes[$x][4].'</td>
-                        <td>'. $wastes[$x][5].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $wastes[$x][0].'" value="Edit"/></td>
-                    </tr>';
-                }
-                echo '</tbody></table></form>';
-            } else{
-                echo "<p>There are currently no wastes dispoals to view.</p>";
-            }
-        }
-        else {
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file
