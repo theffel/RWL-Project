@@ -197,8 +197,6 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `emp_email` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `emp_gender` tinyint(1) unsigned NOT NULL COMMENT '0 - male, 1 - female',
   `emp_dob` date NOT NULL,
-  `primary_contact_id` int(3) unsigned NOT NULL,
-  `secondary_contact_id` int(3) unsigned NOT NULL,
   `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `modified` datetime NOT NULL,
