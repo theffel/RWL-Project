@@ -59,31 +59,10 @@ if (isset($_POST['Attendance'])) {
 		}
 	}
 
-//	//query for break data
-//	$query = "SELECT b.start_break, b.end_break
-//			  FROM break as b INNER JOIN attendance as a ON b.emp_id = a.emp_id
-//    		  WHERE b.start_break > '" . $currentDate . " 00:00:00' AND b.end_break < '" . $currentDate . " 11:59:59'";
-//
-//	$result = $db->query($query);
-//
-//	while ($row = $result->fetch_assoc()) {
-//		$startTime = $row['start_break'];
-//		$endTime = $row['end_break'];
-//		$empIDbreak = $row['emp_id'];
-//
-//		$break[] = array($startTime, $endTime);
-//		$_SESSION['break'] = $break;
-//	}
 
 } else {
 	// Work result part
 	//For total potato incoming
-//	$query = "SELECT  SUM('gross_weight') FROM pick_up WHERE arrive_time_rwl >= '".$currentDate." 00:00' AND arrive_time_rwl <= '".$currentDate." 23:59'";
-//	$result = $db->query($query)	;
-//
-//	while($row = $result->fetch_assoc()) {
-//		$totalWeight = $row;
-//	}
 
 	$query = "SELECT  (SUM(gross_weight) - SUM(tare_weight)) AS incoming FROM pick_up WHERE arrive_time_rwl LIKE '".$currentDate."%'";
 	$result = $db->query($query)	;
@@ -124,7 +103,11 @@ if (isset($_POST['Attendance'])) {
 		$totalGoodWeight = $row['goodsum'];
 	}
 
-	$totalGoodPercent = (floatval($totalGoodWeight) / floatval($totalSampleWeight)) * 100;
+	if (empty($totalSampleWeight)) {
+		$totalGoodPercent = 0;
+	} else {
+		$totalGoodPercent = (floatval($totalGoodWeight) / floatval($totalSampleWeight)) * 100;
+	}
 	$sample[] = array($totalSampleWeight, $totalGoodPercent);
 	$_SESSION['sample'] = $sample;
 }

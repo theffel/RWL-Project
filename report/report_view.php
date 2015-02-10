@@ -85,35 +85,51 @@ include('../header.php');
                     </tr>
                     <tr>
                         <?php
-                            $attendanceData = $_SESSION['attendance'];
-                            $breakData = $_SESSION['break'];
+                            if (empty($_SESSION['attendance'])){
+                                echo "";
+                            } else {
+                                $attendanceData = $_SESSION['attendance'];
+                            }
+
+                            if (empty($_SESSION['break'])) {
+                                echo "";
+                            } else {
+                                $breakData = $_SESSION['break'];
+                            }
 //
 //                            print_r($attendanceData);
 //                            echo "<br>";
 //                            print_r($breakData); echo "<br>";
-
-                            for($x = 0; $x < count($_SESSION['attendance']); $x++) {
-                                for($i = 0 ; $i <count($_SESSION['attendance'][$x]); $i++) {
-                                    echo "<td>";
+                            if (empty($attendanceData)){
+                                echo "";
+                            } else {
+                                for ($x = 0; $x < count($_SESSION['attendance']); $x++) {
+                                    for ($i = 0; $i < count($_SESSION['attendance'][$x]); $i++) {
+                                        echo "<td>";
                                         echo $attendanceData[$x][$i][0] . " " . $attendanceData[$x][$i][1];
-                                    echo "</td>";
-                                    echo "<td>";
+                                        echo "</td>";
+                                        echo "<td>";
                                         echo $attendanceData[$x][$i][2];
-                                    echo "</td>";
-                                    echo "<td>";
+                                        echo "</td>";
+                                        echo "<td>";
                                         echo $attendanceData[$x][$i][3];
-                                    echo "</td>";
+                                        echo "</td>";
+                                    }
                                 }
-							}
-							
-                            for($x=0; $x < count($_SESSION['break']); $x++) {
-                                for($i = 0 ; $i <count($_SESSION['break'][$x]); $i++) {
-                                    echo "<td>";
-                                    echo $breakData[$x][$i][0];
-                                    echo "</td>";
-                                    echo "<td>";
-                                    echo $breakData[$x][$i][1];
-                                    echo "</td>";
+                            }
+
+                            if (empty($breakData)) {
+                                echo "";
+                            } else {
+                                for ($x = 0; $x < count($_SESSION['break']); $x++) {
+                                    for ($i = 0; $i < count($_SESSION['break'][$x]); $i++) {
+                                        echo "<td>";
+                                        echo $breakData[$x][$i][0];
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo $breakData[$x][$i][1];
+                                        echo "</td>";
+                                    }
                                 }
                             }
                         ?>
@@ -142,6 +158,7 @@ include('../header.php');
 //            echo "incoming : "; print_r($_SESSION['incoming']);
 //            echo "outgoing : "; print_r($_SESSION['outgoing']);
 //            echo "sample : "; print_r($_SESSION['sample']);
+
         ?>
             <table>
                  <tr>
