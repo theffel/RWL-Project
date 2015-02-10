@@ -127,7 +127,7 @@ include('header.php');
 					
 					<!--employee Email-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Email</label>
+						<label for="inputEmployeeEmail" class="control-label col-xs-2">Employee Email</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeEmail" id="employeeEmail" required data-validation-required-message="Please enter the designated employee Email.">
 						</div>
@@ -135,7 +135,7 @@ include('header.php');
 					
 					<!--employee Gender-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Gender</label>
+						<label for="inputEmployeeGender" class="control-label col-xs-2">Employee Gender</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeGender" id="employeeGender" placeholder="0-male 1-female"  required data-validation-required-message="Please enter the designated employee Gender.">
 						</div>
@@ -149,19 +149,51 @@ include('header.php');
 						</div>
 					</div>
 					
-					<!--employee primary contact-->
+					<!--Primary employee emergency contact FN-->
 					<div class="form-group">
-						<label for="inputEmployeePrimaryContactId" class="control-label col-xs-2">Employee Primary Emergency Contact Id</label>
+						<label for="inputemployeePrimaryECFN" class="control-label col-xs-2">Employee Primary Emergency contact First Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeePCI" id="employeePCI" placeholder="###" required data-validation-required-message="Please enter the designated employees primary emergency contact Id.">
+							<input type="text" class="form-control" name="employeePrimaryECFN" id="employeePrimaryECFN" required data-validation-required-message="Please enter the designated employees emergency contacts first name.">
 						</div>
 					</div>
 					
-					<!--employee secondary contact-->
+					<!--Primary employee emergency contact LN-->
 					<div class="form-group">
-						<label for="inputEmployeeSecondaryContactId" class="control-label col-xs-2">Employee Secondary Emergency Contact Id</label>
+						<label for="inputemployeePrimaryECLN" class="control-label col-xs-2">Employee Primary Emergency contact Last Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeSCI" id="employeeSCI" placeholder="###" required data-validation-required-message="Please enter the designated employees secondary emergency contact Id.">
+							<input type="text" class="form-control" name="employeePrimaryECLN" id="employeePrimaryECLN" required data-validation-required-message="Please enter the designated employees emergency contacts last name.">
+						</div>
+					</div>
+
+					<!--Primary employee emergency contact PhoneNum-->
+					<div class="form-group">
+						<label for="inputemployeePrimaryECPN" class="control-label col-xs-2">Employee Primary Emergency contact Phone Number</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="employeePrimaryECPhoneNum" id="employeePrimaryECPhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the designated employees emergency contacts phone#.">
+						</div>
+					</div>
+					
+					<!--Secondary employee emergency contact FN-->
+					<div class="form-group">
+						<label for="inputemployeeSecondaryECFN" class="control-label col-xs-2">Employee Secondary Emergency contact First Name</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="employeeSecondaryECFN" id="employeeSecondaryECFN" required data-validation-required-message="Please enter the designated employees emergency contacts first name.">
+						</div>
+					</div>
+					
+					<!--Secondary employee emergency contact LN-->
+					<div class="form-group">
+						<label for="inputemployeeSecondaryECLN" class="control-label col-xs-2">Employee Secondary Emergency contact Last Name</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="employeeSecondaryECLN" id="employeeSecondaryECLN" required data-validation-required-message="Please enter the designated employees emergency contacts last name.">
+						</div>
+					</div>
+
+					<!--Secondary employee emergency contact PhoneNum-->
+					<div class="form-group">
+						<label for="inputemployeeSecondaryECPN" class="control-label col-xs-2">Employee Secondary Emergency contact Phone Number</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="employeeSecondaryECPhoneNum" id="employeeSecondaryECPhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the designated employees emergency contacts phone#.">
 						</div>
 					</div>
 			

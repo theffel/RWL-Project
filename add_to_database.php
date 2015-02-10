@@ -139,7 +139,7 @@
 		}			
 									
 		//add employee
-		else if (isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePCI']) && isset($_POST['employeeSCI'])){
+		else if (isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePrimaryECFN']) && isset($_POST['employeePrimaryECLN']) && isset($_POST['employeePrimaryECPhoneNum'])){
 			$employeePosId = $_POST['employeePosId'];
 			$employeeSIN = $_POST['employeeSIN'];
 			$employeeFN = $_POST['employeeFN'];
@@ -152,40 +152,45 @@
 			$employeeEmail = $_POST['employeeEmail'];
 			$employeeGender = $_POST['employeeGender'];
 			$employeeDOB = $_POST['employeeDOB'];
-			$employeePCI = $_POST['employeePCI'];
-			$employeeSCI = $_POST['employeeSCI'];
+			$employeePrimaryECFN = $_POST['employeePrimaryECFN'];
+			$employeePrimaryECLN = $_POST['employeePrimaryECLN'];
+			$employeePrimaryECPhoneNum = $_POST['employeePrimaryECPhoneNum'];
 						
 
 			// Create query
-			$query = "INSERT INTO `employee` (position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, primary_contact_id, secondary_contact_id, created) VALUES ('{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', '{$employeePCI}', '{$employeeSCI}', CURRENT_TIMESTAMP)";
+			$query = "INSERT INTO `employee` (position_id, emp_sin, emp_first_name, emp_last_name, emp_middle_initial, emp_address, emp_city, emp_postal_code, emp_phone, emp_email, emp_gender, emp_dob, created) VALUES ('{$employeePosId}', '{$employeeSIN}', '{$employeeFN}', '{$employeeLN}', '{$employeeMN}', '{$employeeAddress}', '{$employeeCity}', '{$employeePC}', '{$employeePhoneNum}', '{$employeeEmail}', '{$employeeGender}', '{$employeeDOB}', CURRENT_TIMESTAMP)";
 
 			if ($db->query($query) === TRUE) {
+				//find employee id
+				$queryEmp = "select emp_id from employee where created = CURRENT_TIMESTAMP limit 1";
+				$emp = $db->query($queryEmp)->fetch_assoc();
+				$empId = $emp['emp_id'];
+				
+				//add primary emergency contact
+				$queryPEC = "INSERT INTO `employee_emergency_contact` (emerg_contact_id, emp_id, emerg_first_name, emerg_last_name, emerg_phone) VALUES ('1','{$empId}', '{$employeePrimaryECFN}', '{$employeePrimaryECLN}', '{$employeePrimaryECPhoneNum}')";
+				if ($db->query($queryPEC) === TRUE) {
+				
+					//add secondary emergency contact
+					if(isset($_POST['employeeSecondaryECFN']) && isset($_POST['employeeSecondaryECLN']) && isset($_POST['employeeSecondaryECPhoneNum'])){
+						$employeeSecondaryECFN = $_POST['employeeSecondaryECFN'];
+						$employeeSecondaryECLN = $_POST['employeeSecondaryECLN'];
+						$employeeSecondaryECPhoneNum = $_POST['employeeSecondaryECPhoneNum'];
+						$querySEC = "INSERT INTO `employee_emergency_contact` (emerg_contact_id, emp_id, emerg_first_name, emerg_last_name, emerg_phone) VALUES ('2', '{$empId}', '{$employeeSecondaryECFN}', '{$employeeSecondaryECLN}', '{$employeeSecondaryECPhoneNum}')";
+						if ($db->query($querySEC) === false) {
+							echo "Error: " . $query . "<br>" . $db->error;
+							$db->close();
+						}
+					}
+					
+				}
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+				}
 				echo "New record created successfully";
 				$db->close();
 				echo '<script type="text/javascript">
 					location.replace("'.ROOT.'/admin_add_employee.php");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-			}
-		}
-					
-		//add employee emergency contacts
-		else if (isset($_POST['employeeECFN']) && isset($_POST['employeeECLN']) && isset($_POST['employeeECPhoneNum'])){
-			$employeeECFN = $_POST['employeeECFN'];
-			$employeeECLN = $_POST['employeeECLN'];
-			$employeeECPhoneNum = $_POST['employeeECPhoneNum'];
-						
-			// Create query
-			$query = "INSERT INTO `employee_emergency_contact` (emerg_first_name, emerg_last_name, emerg_phone) VALUES ('{$employeeECFN}', '{$employeeECLN}', '{$employeeECPhoneNum}')";
-
-			if ($db->query($query) === TRUE) {
-				echo "New record created successfully";
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_add_employee_emergency_contacts.php");
 					</script>';	
 			} 
 			else {

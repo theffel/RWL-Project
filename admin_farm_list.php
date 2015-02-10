@@ -63,6 +63,7 @@ include('header.php');
 						//fill table
 						echo "<tr><td>".$row['farm_name']."</td>";
 						echo "<td>".$row['farm_civic_address']."</td>";
+						//structure to deal with multiple contacts
 						if ($contact->num_rows > 0) {
 							echo "<td>";
 							while($contactRow = $contact->fetch_assoc()){
