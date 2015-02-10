@@ -15,16 +15,13 @@
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-23
  */
- 
+
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-include('../session_load.php');
 include('pickup_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -49,45 +46,45 @@ include('../header.php');
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
         <h2 class="page-header">Edit an Incoming Delivery</h2>
-        <form class="form-horizontal" name="pickForm" id="pickForm" method="post" action="edit_pickup.php"> 
-            <h3 class="page-header">Farm</h3>         
+        <form class="form-horizontal" name="pickForm" id="pickForm" method="post" action="edit_pickup.php">
+            <h3 class="page-header">Farm</h3>
             <div class="form-group">
                 <label for="farmArrivalTime" class="control-label col-md-2">Arrival Time</label>
-                <div class="col-md-10">                  
-                    <input type="text" class="form-control" id="farmArrivalTime" name="farmArrivalTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][0]; ?>">            
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="farmArrivalTime" name="farmArrivalTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][0]; ?>">
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="loadTime" class="control-label col-md-2">Load Time</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="loadTime" name="loadTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][1]; ?>">
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="farmDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="farmDepartureTime" name="farmDepartureTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][2]; ?>">
                 </div>
-            </div> 
+            </div>
             <h3 class="page-header">Potato Solutions</h3>
             <div class="form-group">
                 <label for="rwlArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="rwlArrivalTime" name="rwlArrivalTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][3]; ?>">
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="rwlunloadTime" class="control-label col-md-2">Unload Time</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="rwlUnloadTime" name="rwlUnloadTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][4]; ?>">
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value= "<?php echo $_SESSION['editIncomingDeliveries'][0][5]; ?>">
                 </div>
-            </div> 
+            </div>
             <hr>
             <div class="form-group">
                 <label for="ticketNumber" class="control-label col-md-2">Ticket Number</label>
@@ -114,7 +111,6 @@ include('../header.php');
             </div>
        </form>
        <?php
- 
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
@@ -127,6 +123,5 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-
 </body>
 </html>

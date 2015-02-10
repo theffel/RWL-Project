@@ -16,8 +16,9 @@
  * @since       2015-01-30
  */
 
+// Include database.php
 include('../database.php');
-	
+
 $binId = intval($_GET['q']);
 $query = "SELECT field_id, field_location FROM field WHERE bin_id=" . $binId;
 $result = $db->query($query);

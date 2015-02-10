@@ -87,7 +87,7 @@ include('../header.php');
                 </div>
             </div>
         <hr>
-        <h2 class="page-header">View Wash Line Cleanings</h2>
+        <h2 class="page-header">Edit Wash Line Cleanings</h2>
             <?php
             if (!empty($lineCleaning)) {
                 echo '<table class="table">
