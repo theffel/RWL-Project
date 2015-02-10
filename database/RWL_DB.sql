@@ -694,6 +694,7 @@ CREATE TABLE IF NOT EXISTS `production_reception` (
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `CFIA_notified` tinyint(1) unsigned NOT NULL,
   `notified_by` varchar(25) COLLATE utf8_unicode_ci NOT NULL  COMMENT 'CFIA notified by',
+  `cleanliness` int(2) unsigned NOT NULL,
   `emp_id` int(3) unsigned NOT NULL,
   `movement_certificate` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `accepted` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
