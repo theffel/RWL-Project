@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 	$movementCert = $db->real_escape_string($_POST['movementCert']);
 	$accepted = $db->real_escape_string($_POST['accepted']);
 
-	$query = "INSERT INTO production_reception (reception_date, potato_id, farm_id, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, movement_certificate, accepted, emp_id) VALUES ('" . $dateTime . "', " . $potato . ", " . $farm . ", " . $loadIDInfo . ", " . $quantity . ", " . $washed . ", " . $bulkOther . ", " . $CFIANotified . ", " . $CFIANotifiedBy . ", " . $movementCert . ", " . $accepted . ", " . $empId . ")";
+	$query = "INSERT INTO production_reception (reception_date, potato_id, farm_id, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, notified_by, movement_certificate, accepted, emp_id) VALUES ('" . $dateTime . "', " . $potato . ", " . $farm . ", " . $loadIDInfo . ", " . $quantity . ", " . $washed . ", " . $bulkOther . ", " . $CFIANotified . ", " . $CFIANotifiedBy . ", " . $movementCert . ", " . $accepted . ", " . $empId . ")";
 	$result = $db->query($query);
 }
 
