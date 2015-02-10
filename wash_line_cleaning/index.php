@@ -20,6 +20,8 @@ session_start();
 
 // Include the database.php file
 include('../database.php');
+include('../session_load.php');
+include('washLine_script.php');
 
 // Include the header.php file
 include('../header.php');
@@ -41,48 +43,85 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
         ?>
         <h2 class="page-header">Add Wash Line Cleaning</h2>
-        <form class="form-horizontal" name="washForm" id="washForm" method="post" action="index.php">
+        <form class="form-horizontal" name="washForm" id="washForm" method="POST" action="index.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="equipClean" class="control-label col-md-2">Equipment Cleaned</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="equipClean">
-                        <option value="truck1">Truck #</option>
-                        <option value="trailer1">Trailer #</option>
+                    <select class="form-control" name="equipment">
+                        <?php
+                        for ($x = 0; $x < count($equipment); $x++){
+                            echo '<option value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="descClean">
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="nameClean">
+                    <select class="form-control" name="employees">
+                        <?php
+                        for ($x = 0; $x < count($employee); $x++){
+                            echo '<option value="' . $employee[$x][0] .'">' . $employee[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-        </form>
         <hr>
         <h2 class="page-header">View Wash Line Cleanings</h2>
-        <p>There are currently no wash line cleanings to view.</p>
-        <?php
+
+            <?php
+            if (!empty($lineCleaning)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Equipment cleaned</th>
+                                <th>Description</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($lineCleaning); $x++) {
+                    echo '<tr>
+                        <td>'. $lineCleaning[$x][1].'</td>
+                        <td>'. $lineCleaning[$x][2].'</td>
+                        <td>'. $lineCleaning[$x][3].'</td>
+                        <td>'. $lineCleaning[$x][4].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $lineCleaning[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table>  </form>';
+            } else{
+                echo "<p>There are currently no Plant cleaning data to view.</p>";
+            }
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }

@@ -20,6 +20,8 @@ session_start();
 
 // Include the database.php file
 include('../database.php');
+include('../session_load.php');
+include('plant_script.php');
 
 // Include the header.php file
 include('../header.php');
@@ -47,19 +49,25 @@ include('../header.php');
 
         <h2 class="page-header">Add a Plant Cleaning</h2>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="plantForm" id="plantForm" method="POST" action="index.php">
 
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $currentDate; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="equipClean" class="control-label col-md-2">Equipment Cleaned</label>
+                <label for="equipClean" class="control-label col-md-2">Equipment List</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="equipClean">
+                    <select class="form-control" name="equipment">
+                        <?php
+                        for ($x = 0; $x < count($equipment); $x++){
+                            echo '<option value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -73,26 +81,52 @@ include('../header.php');
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="nameClean">
+                    <select class="form-control" name="employees">
+                        <?php
+                        for ($x = 0; $x < count($employee); $x++){
+                            echo '<option value="' . $employee[$x][0] .'">' . $employee[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
-        </form>
-
         <hr>
 
         <h2 class="page-header">View Plant Cleanings</h2>
-        <p>There are currently no plant cleanings to view.</p>
+            <?php
+            if (!empty($plantCleaning)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Equipment cleaned</th>
+                                <th>Description</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($plantCleaning); $x++) {
+                    echo '<tr>
+                        <td>'. $plantCleaning[$x][1].'</td>
+                        <td>'. $plantCleaning[$x][2].'</td>
+                        <td>'. $plantCleaning[$x][3].'</td>
+                        <td>'. $plantCleaning[$x][4].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $plantCleaning[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table>  </form>';
+            } else{
+                echo "<p>There are currently no Plant cleaning data to view.</p>";
+            }
 
-        <?php
-        }
-        else {
+
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file
