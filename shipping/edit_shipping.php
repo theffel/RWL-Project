@@ -40,91 +40,69 @@ include('shipping_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
-        $farms = (!empty($_SESSION['farms'])) ? $_SESSION['farms'] : "";
-        $destination = (!empty($_SESSION['destinations'])) ? $_SESSION['destinations'] : "";
-        $shipDetails = (!empty($_SESSION['shipDetails'])) ? $_SESSION['shipDetails'] : "";
+        $editShipping = (!empty($_SESSION['editShipping'])) ? $_SESSION['editShipping'] : "";
 
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 2) {
         ?>
-        <h2 class="page-header">Add a Shipment</h2>
-        <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="index.php">
+        <h2 class="page-header">Edit a Shipment</h2>
+        <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="edit_shipping.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Load Date</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
+                    <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editShipping'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-10">
-                    <select class="form-control" name="potato" id="potato">
-                        <option value="" disabled selected style="display:none;"></option>
-                        <?php
-                        for ($x = 0; $x < count($potatoes); $x++){
-                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                	<input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editShipping'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="potProd" class="control-label col-md-2">Potato Producer</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="farm" name="farm" onchange="warehouseFunction(this.value)">
-                        <option value="" disabled selected style="display:none;"></option>
-                        <?php
-                        for ($x = 0; $x < count($farms); $x++){
-                            echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                	<input type="text" class="form-control" name="farm" value="<?php echo $_SESSION['editShipping'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="trailer" class="control-label col-md-2">Trailer</label>
                 <div class="col-md-10">
-                    <select class="form-control" name="trailer">
-                        <?php
-                        for ($x = 0; $x < count($trailers); $x++){
-                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                <input type="text" class="form-control" name="trailer" value="<?php echo $_SESSION['editShipping'][0][3]; ?>">
                 </div>             
             </div>            
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-md-2">RWL Ticket Number</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="loadIDInfo">
+                    <input type="text" class="form-control" name="loadIDInfo" value="<?php echo $_SESSION['editShipping'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="weight" class="control-label col-md-2">Weight Shipped</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="weight">
+                    <input type="text" class="form-control" name="weight" value="<?php echo $_SESSION['editShipping'][0][5]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="washed" class="control-label col-md-2">Washed</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="washed" value="0"> Yes</li>
-                        <li><input type="radio" name="washed" value="1"> No</li>
+                        <?php
+							if ($_SESSION['editShipping'][0][6] == 0) {
+							echo '<li><input type="radio" name="washed" value="0" checked> Yes</li>';
+							echo '<li><input type="radio" name="washed" value="1"> No</li>';
+							} else {
+							echo '<li><input type="radio" name="washed" value="0"> Yes</li>';
+							echo '<li><input type="radio" name="washed" value="1" checked> No</li>';
+							}
+						?>
                     </ul>
                 </div>
             </div>
             <div class="form-group">
                 <label for="destination" class="control-label col-md-2">Destination</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="destination" name="destination">
-                        <?php
-                        for ($x = 0; $x < count($destination); $x++){
-                            echo '<option value="' . $destination[$x][0] .'">' . $destination[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                	<input type="text" class="form-control" name="destination" value="<?php echo $_SESSION['editShipping'][0][7]; ?>">
                 </div>
             </div>
 <!--            <div class="form-group">
@@ -138,40 +116,11 @@ include('shipping_script.php');
             </div> -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
-<hr>
-        <h2 class="page-header">Edit Shipping</h2>
-        <?php
-            if (!empty($shipDetails)) {
-                echo '<table class="table">
-                        <thead>
-                           <tr>
-                                <th>Date</th>
-                                <th>Potato</th>
-                                <th>Farm</th>
-                                <th>Trailer</th>
-                                <th>Weight</th>
-                                <th>Destination</th> 
-                            </tr>
-                        </thead>
-                        <tbody>';
-                for ($x = 0; $x < count($shipDetails); $x++) {
-                    echo '<tr>
-                        <td>'. $shipDetails[$x][1].'</td>
-                        <td>'. $shipDetails[$x][2].'</td>
-                        <td>'. $shipDetails[$x][3].'</td>
-                        <td>'. $shipDetails[$x][4].'</td>
-                        <td>'. $shipDetails[$x][5].'</td>
-                        <td>'. $shipDetails[$x][6].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $shipDetails[$x][0].'" value="Edit"/></td>
-                    </tr>';
-                }
-                echo '</tbody></table>  </form>';
-            } else {
-                echo "<p>There are currently no shipping details to view.</p>";
-            }
+</form>
+<?php
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
