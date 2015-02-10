@@ -54,7 +54,7 @@ include('header.php');
 			?>		
 					<!--warehouse Name-->
 					<div class="form-group">
-						<label for="inputwarehouseName" class="control-label col-xs-2">warehouse Name</label>
+						<label for="inputwarehouseName" class="control-label col-xs-2">Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="warehouseName" id="warehouseName" required data-validation-required-message="Please enter the name of the new warehouse.">
 						</div>
@@ -62,15 +62,23 @@ include('header.php');
 					
 					<!--warehouse Civic Address-->
 					<div class="form-group">
-						<label for="inputwarehouseCivAddress" class="control-label col-xs-2">warehouse Civic Address</label>
+						<label for="inputwarehouseCivAddress" class="control-label col-xs-2">Civic Address</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="warehouseCivAddress" id="warehouseCivAddress" required data-validation-required-message="Please enter the civic address of the new warehouse.">
 						</div>
 					</div>
 					
+					<!--warehouse Province-->
+					<div class="form-group">
+						<label for="inputwarehouseProvince" class="control-label col-xs-2">Province</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="warehouseProvince" id="warehouseProvince" required data-validation-required-message="Please enter the Province of the new warehouse.">
+						</div>
+					</div>
+					
 					<!--warehouse Phone Number-->
 					<div class="form-group">
-						<label for="inputwarehousePhoneNum" class="control-label col-xs-2">warehouse Phone Number</label>
+						<label for="inputwarehousePhoneNum" class="control-label col-xs-2">Phone Number</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="warehousePhoneNum" id="warehousePhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the Phone number of the new warehouse.">
 						</div>

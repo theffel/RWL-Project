@@ -37,6 +37,8 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin_destination_list.php">Destinations</a>
+                    </li>
                     <li class="active">Add Destination</li>
                 </ol>
             </div>

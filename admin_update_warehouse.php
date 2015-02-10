@@ -50,27 +50,20 @@ include('header.php');
 				// Get Farm Id
 				$warehouseId = $_GET["id"];
 				// Create query				
-				$query = "select farm_id, warehouse_name, warehouse_civic_address, warehouse_phone from `warehouse` where warehouse_id = '{$warehouseId}'";
+				$query = "select * from `warehouse` where warehouse_id = '{$warehouseId}'";
 				$result = $db->query($query);
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
 					$farmId = $queryValues['farm_id'];
 					$warehouseName = $queryValues['warehouse_name'];
 					$warehouseCivAddress = $queryValues['warehouse_civic_address'];
+					$warehouseProvince = $queryValues['warehouse_prov'];
 					$warehousePhoneNum = $queryValues['warehouse_phone'];
 				?>	
 					<form class="form-horizontal" name="updateWarehouseForm" id="updateWarehouseForm" method="post" action="update_database.php">
 					
 						<!--warehouse Id-->
 						<input hidden type = "radio" name = "warehouseId" id = "warehouseId" value = "<?php echo $warehouseId; ?>" checked>		
-
-						<!--Farm Id-->
-						<div class="form-group">
-							<label for="inputFarmId" class="control-label col-xs-2">Farm Id</label>
-							<div class="col-xs-10">
-								<input type="text" class="form-control" name="farmId" id="farmId" value = "<?php echo $farmId; ?>" required data-validation-required-message="Please enter the name of the new warehouse.">
-							</div>
-						</div>
 						
 						<!--warehouse Name-->
 						<div class="form-group">
@@ -85,6 +78,14 @@ include('header.php');
 							<label for="inputwarehouseCivaddress" class="control-label col-xs-2">warehouse Civic address</label>
 							<div class="col-xs-10">
 								<input type="text" class="form-control" name="warehouseCivAddress" id="warehouseCivAddress" value = "<?php echo $warehouseCivAddress; ?>" required data-validation-required-message="Please enter the civic address of the new warehouse.">
+							</div>
+						</div>
+			
+						<!--warehouse Province-->
+						<div class="form-group">
+							<label for="inputwarehouseProvince" class="control-label col-xs-2">Province</label>
+							<div class="col-xs-10">
+								<input type="text" class="form-control" name="warehouseProvince" id="warehouseProvince" value = "<?php echo $warehouseProvince; ?>" required data-validation-required-message="Please enter the Province of the new warehouse.">
 							</div>
 						</div>
 						
@@ -102,17 +103,7 @@ include('header.php');
 							</div>
 						</div>
 						
-					</form>
-					<form action = 'admin_add_bin.php' method = 'get'> 
-						<input hidden type = 'radio' name = 'id' value = '<?php echo $warehouseId; ?>' checked>
-						<input type = 'submit' class='btn btn-primary' value = 'Add New Bin to Warehouse'>
-					</form><br />
-					
-					<form action = 'admin_bin_list.php' method = 'get'> 
-						<input hidden type = 'radio' name = 'id' value = '<?php echo $warehouseId; ?>' checked>
-						<input type = 'submit' class='btn btn-primary' value = 'View Bins in Warehouse'>
-					</form><br />
-					
+					</form>					
 
 				<?php
 				}

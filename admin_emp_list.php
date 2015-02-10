@@ -52,19 +52,20 @@ include('header.php');
 				
 				if ($employees->num_rows > 0) {
 					echo "<table style='width:100%' border='1'>";
-					echo "<tr><td>Full Name</td> <td>Phone #</td> <td>Email</td> <td>Edit Personal Data</td> <td>Emergency Contact Name</td> <td></td> </tr>";
+					echo "<tr><td>Full Name</td> <td>Phone #</td> <td>Email</td> <td>Edit Personal Data</td> <td>Emergency Contact Name</td> <td>Modify Contacts</td> </tr>";
 					while($row = $employees->fetch_assoc()){
 						$contactQueryP = "select * from employee_emergency_contact where emp_id = '{$row['emp_id']}' AND emerg_contact_id = '1'";
 						$contactP = $db->query($contactQueryP)->fetch_assoc();
+						$contactQueryS = "select * from employee_emergency_contact where emp_id = '{$row['emp_id']}' AND emerg_contact_id = '2'";
+						$contactS = $db->query($contactQueryS)->fetch_assoc();
 						
 						echo "<tr><td>" . $row['emp_first_name'] . " " . $row['emp_middle_initial'] . " " . $row['emp_last_name'] . "</td>";
 						echo "<td>" . $row['emp_phone'] . "</td>";
 						echo "<td>" . $row['emp_email'] . "</td>";
 						echo "<td><form action = 'admin_update_employee.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
-						$contactQueryS = "select * from employee_emergency_contact where emp_id = '{$row['emp_id']}' AND emerg_contact_id = '2'";
-						$contactS = $db->query($contactQueryS);
-						echo "<td>".$contactP['emerg_first_name']." ".$contactP['emerg_last_name']."</td>";
-						echo "<td></td></tr>";
+
+						echo "<td>".$contactP['emerg_first_name']." ".$contactP['emerg_last_name']."<br />".$contactS['emerg_first_name']." ".$contactS['emerg_last_name']."</td>";
+						echo "<td><form action = 'admin_update_employee_emergency_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Modify'></form></td></tr>";
 					}
 					echo "</table>";
 				}
@@ -80,7 +81,7 @@ include('header.php');
 							location.replace("'.ROOT.'/login.php");
 							</script>';
 			}
- 		echo "<hr><form action = '".ROOT."/admin_add_employee.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Employee'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin_add_employee.php'><input type = submit class='btn btn-primary' value = 'Add Employee'></form><br />";
 		?>
 		<hr>
 
