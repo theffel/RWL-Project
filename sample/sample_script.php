@@ -18,91 +18,109 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
+
+// get last Sample#
+
+
 
 // Insert pickup
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submit'])) {
 	$trailer = $db->real_escape_string($_POST['trailer']);
-	$incoming = $db->real_escape_string($_POST['incoming']);
-	$outgoing = $db->real_escape_string($_POST['outgoing']);
+	$incomingOutgoing = $db->real_escape_string($_POST['incomingOutgoing']);
+	$numOfSample = $db->real_escape_string($_POST['numOfSample']);
 	$potato = $db->real_escape_string($_POST['potato']);
-	$toteSample = $db->real_escape_string($_POST['toteSample']);
-	$time = $db->real_escape_string($_POST['time']);
+	$date = $db->real_escape_string($_POST['date']);
+	$totalWeight = $db->real_escape_string($_POST['totalWeight']);
 	$useableWeight = $db->real_escape_string($_POST['useableWeight']);	
-	$rotWeight = $db->real_escape_string($_POST['rotWeight']);	
+	$rotWeight = $db->real_escape_string($_POST['rotWeight']);
+	$pitrotWeight = $db->real_escape_string($_POST['pitrotWeight']);	
 	$internalWeight = $db->real_escape_string($_POST['internalWeight']);	
 	$wirewormWeight = $db->real_escape_string($_POST['wirewormWeight']);	
-	$jellyEndWeight = $db->real_escape_string($_POST['jellyEndWeight']);
+	$jellyEndWeight = $db->real_escape_string($_POST['jellyendWeight']);
 	$otherWeight = $db->real_escape_string($_POST['otherWeight']);	
-	$hollowHeartWeight = $db->real_escape_string($_POST['hollowHeartWeight']);	
+	$hollowHeartWeight = $db->real_escape_string($_POST['hollowheartWeight']);	
 	$scabWeight = $db->real_escape_string($_POST['scabWeight']);	
 	$sunburnWeight = $db->real_escape_string($_POST['sunburnWeight']);	
-	$mechBruiseWeight = $db->real_escape_string($_POST['mechBruiseWeight']);	
+	$mechBruiseWeight = $db->real_escape_string($_POST['mechbruiseWeight']);	
 	$smallsWeight = $db->real_escape_string($_POST['smallsWeight']);
-	$tenozsWeight = $db->real_escape_string($_POST['10ozsWeight']);	
+	$tenozsWeight = $db->real_escape_string($_POST['tenozsWeight']);	
 	$airWeight = $db->real_escape_string($_POST['airWeight']);	
 	$waterWeight = $db->real_escape_string($_POST['waterWeight']);	
-	$rockMaterial = $db->real_escape_string($_POST['rockMaterial']);	
-
-
-
-
+	$rockMaterial = $db->real_escape_string($_POST['rockWeight']);
 	
-	$query = "INSERT INTO sample (sample_date_time, unuseable_weight,) 
-				VALUES ('" . $time . "'," . $useableWeight . "," . $rot_weight . "," . $trailer . "," . $truck . "," . $farm . "," . $warehouse . "," . $bin . "," . $binMarker . "," . $field . ",'" . $farmArrivalTime . "','" . $loadTime . "','" . $farmDepartureTime . "','" . $rwlArrivalTime . "','" . $rwlUnloadTime . "','" . $rwlDepartureTime . "'," . $ticketNumber . "," . $grossWeight . "," . $tareWeight . "," . $potato . "," . $empId . ")";
+	$query = "INSERT INTO sample (num_sample_per_load, sample_date, unuseable_weight, rot_weight, internal_weight, pit_rot_weight,
+			wireworm_weight, jelly_end_weight, scab_weight, hollow_heart_weight, sunburn_weight, mech_bruise_weight, smalls_weight,
+			ten_oz_weight, air_weight, water_weight, rock_foreign_weight, total_sample_weight, other_weight, trailer_id, potato_id,
+			in_out, emp_id) 
+				VALUES (" . $numOfSample . ",'" . $date . "',"  . $useableWeight . "," . $rotWeight . "," . $internalWeight . ","
+					. $pitrotWeight . "," . $wirewormWeight . "," . $jellyEndWeight . "," . $scabWeight . ","  . $hollowHeartWeight . ","
+					. $sunburnWeight . "," . $mechBruiseWeight . "," . $smallsWeight . "," . $tenozsWeight . "," . $airWeight . ","
+					. $waterWeight . "," . $rockMaterial . "," . $totalWeight . "," . $otherWeight . "," . $trailer . ","  . $potato . ","
+					. $incomingOutgoing . "," . $empId . ")";
 	$result = $db->query($query);
+	var_dump($query);
 }
 
+
 // Load array with incoming deliveries for day by employee
-$query = "SELECT pickup_id, pd_date, truck_num, trailer_num, farm_name, warehouse_name 
-			FROM pick_up INNER JOIN truck ON pick_up.truck_id = truck.truck_id 
-						INNER JOIN trailer ON pick_up.trailer_id = trailer.trailer_id
-						INNER JOIN farm ON pick_up.farm_id = farm.farm_id
-						INNER JOIN warehouse ON pick_up.warehouse_id = warehouse.warehouse_id
-			WHERE pd_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY pd_date DESC";
+$query = "SELECT sample_id, sample_date, trailer_num, num_sample_per_load, potato_name FROM sample 
+						INNER JOIN trailer ON sample.trailer_id = trailer.trailer_id
+						INNER JOIN potato ON sample.potato_id = potato.potato_id						
+			WHERE sample_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY sample_date DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
-		$pickupId = $row['pickup_id'];
-		$date = $row['pd_date'];
-		$truck = $row['truck_num']; 
+		$sampleId = $row['sample_id'];
+		$date = $row['sample_date'];
 		$trailer = $row['trailer_num'];
-		$farm = $row['farm_name'];   
-		$warehouse = $row['warehouse_name']; 
-		$incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
-		$_SESSION['incomingDeliveries'] = $incomingDeliveries;
+		$potato = $row['potato_name'];   
+		$numSample = $row['num_sample_per_load']; 
+		$samples[] = array($sampleId, $date, $trailer, $numSample, $potato);
+		$_SESSION['samples'] = $samples;
 	}
 
 	// Select incoming deliveries 
-	for ($x = 0; $x < count($_SESSION['incomingDeliveries']); $x++){	
-		if (isset($_POST[$incomingDeliveries[$x][0]])) {
-			$_SESSION['deliveryNum'] = $incomingDeliveries[$x][0];
-			$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight 
-				FROM pick_up WHERE pickup_id = " . $_SESSION['deliveryNum'];
-							var_dump($query);
+	for ($x = 0; $x < count($_SESSION['samples']); $x++){	
+		if (isset($_POST[$samples[$x][0]])) {
+			$_SESSION['sampleNum'] = $samples[$x][0];
+			$query = "SELECT num_sample_per_load, sample_date, unuseable_weight, rot_weight, internal_weight, pit_rot_weight,
+						wireworm_weight, jelly_end_weight, scab_weight, hollow_heart_weight, sunburn_weight, mech_bruise_weight, smalls_weight,
+						ten_oz_weight, air_weight, water_weight, rock_foreign_weight, total_sample_weight, other_weight, trailer_num, potato_name,
+						in_out FROM sample 
+						INNER JOIN trailer ON sample.trailer_id = trailer.trailer_id
+						INNER JOIN potato ON sample.potato_id = potato.potato_id
+						WHERE sample_id = " . $_SESSION['sampleNum'];
+				
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
-			$arriveTimeFarm = $row['arrive_time_farm'];
-			$loadTime = $row['load_time'];
-			$departTimeFarm = $row['depart_time_farm']; 
-			$arriveTimeRwl = $row['arrive_time_rwl'];
-			$unloadTime = $row['unload_time'];   
-			$departTimeRwl = $row['depart_time_rwl']; 
-			$ticketNum = $row['ticket_num'];   
-			$grossWeight = $row['gross_weight']; 
-			$tareWeight = $row['tare_weight'];   
-			$editIncomingDeliveries[] = array($arriveTimeFarm, $loadTime, $departTimeFarm, $arriveTimeRwl, $unloadTime, $departTimeRwl, $ticketNum,
-				$grossWeight, $tareWeight); 
-			$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
-			header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
+			$trailer = $row['trailer_num'];
+			$incomingOutgoing = $row['in_out'] ;
+			$numOfSample = $row['num_sample_per_load'];
+			$potato = $row['potato_name'];
+			$date = $row['sample_date'];
+			$totalWeight = $row['total_sample_weight'];
+			$useableWeight = $row['unuseable_weight'];	
+			$rotWeight = $row['rot_weight'];
+			$pitrotWeight = $row['pit_rot_weight'];	
+			$internalWeight = $row['internal_weight'];	
+			$wirewormWeight = $row['wireworm_weight'];	
+			$jellyEndWeight = $row['jelly_end_weight'];
+			$otherWeight = $row['other_weight'];	
+			$hollowHeartWeight = $row['hollow_heart_weight'];	
+			$scabWeight = $row['scab_weight'];	
+			$sunburnWeight = $row['sunburn_weight'];	
+			$mechBruiseWeight = $row['mech_bruise_weight'];	
+			$smallsWeight = $row['smalls_weight'];
+			$tenozsWeight = $row['ten_oz_weight'];	
+			$airWeight = $row['air_weight'];	
+			$waterWeight = $row['water_weight'];	
+			$rockMaterial = $row['rock_foreign_weight'];   
+			$editSamples[] = array($trailer, $numSample, $incomingOutgoing, $potato); 
+			$_SESSION['editSamples'] = $editSamples;
+			header ("location:edit_sample.php?id=" . $_SESSION['sampleNum'] );
 		}
-    	$date = $row['pd_date'];
-    	$truck = $row['truck_num']; 
-    	$trailer = $row['trailer_num'];
-    	$farm = $row['farm_name'];   
-    	$warehouse = $row['warehouse_name']; 
-    	$incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
-    	$_SESSION['incomingDeliveries'] = $incomingDeliveries;
 	}
 }
 

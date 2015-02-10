@@ -18,6 +18,7 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
 
 // Insert pickup
 if (isset($_POST['submit'])) {	
@@ -74,7 +75,6 @@ if (!empty($result)) {
 			$_SESSION['deliveryNum'] = $incomingDeliveries[$x][0];
 			$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight 
 				FROM pick_up WHERE pickup_id = " . $_SESSION['deliveryNum'];
-							var_dump($query);
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$arriveTimeFarm = $row['arrive_time_farm'];
@@ -91,13 +91,7 @@ if (!empty($result)) {
 			$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
 			header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
 		}
-    	$date = $row['pd_date'];
-    	$truck = $row['truck_num']; 
-    	$trailer = $row['trailer_num'];
-    	$farm = $row['farm_name'];   
-    	$warehouse = $row['warehouse_name']; 
-    	$incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
-    	$_SESSION['incomingDeliveries'] = $incomingDeliveries;
+
 	}
 }
 

@@ -57,17 +57,11 @@ include('sample_script.php');
             <div class="form-group row">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="trailer">
-                        <?php
-                        for ($x = 0; $x < count($trailers); $x++){
-                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>                    
+                    <input type="text" class="form-control" name="trailer" value= "<?php echo $_SESSION['editSamples'][0][0]; ?>">
                 </div>
                 <label for="rockMaterial" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="numOfSample" value="">
+                    <input type="text" class="form-control" name="numOfSample" value="<?php echo $_SESSION['editSamples'][0][1]; ?>">
                 </div>
             </div>
 
@@ -75,20 +69,20 @@ include('sample_script.php');
                 <label for="incomingOutgoing" class="control-label col-md-2">Incoming / Outgoing</label>
                 <div class="col-md-4">
                     <ul class="list-inline">
-                        <li><input type="radio" name="incomingOutgoing" value="0"> Incoming</li>
-                        <li><input type="radio" name="incomingOutgoing" value="1"> Outgoing</li>
+                        <?php
+                        if ($_SESSION['editSamples'][0][2] == 0 ) {
+                            echo '<li><input type="radio" name="incomingOutgoing" value="0" checked> Incoming</li>';
+                            echo '<li><input type="radio" name="incomingOutgoing" value="1"> Outgoing</li>';
+                        } else {
+                            echo '<li><input type="radio" name="incomingOutgoing" value="0" > Incoming</li>';
+                            echo '<li><input type="radio" name="incomingOutgoing" value="1" checked> Outgoing</li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="potato" id="potato">
-                        <option value="" disabled selected style="display:none;"></option>
-                        <?php
-                            for ($x = 0; $x < count($potatoes); $x++){
-                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
-                            }
-                        ?>
-                    </select>
+                    <input type="text" class="form-control" name="potato" value="">
                 </div>
             </div>
 

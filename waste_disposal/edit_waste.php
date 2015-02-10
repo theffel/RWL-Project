@@ -56,25 +56,25 @@ include('waste_script.php');
             <div class="form-group">
                 <label for="desc" class="control-label col-md-2">Description of Product</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="desc" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
+                    <input type="text" class="form-control" name="desc" value="<?php echo $_SESSION['editWastes'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="sent" class="control-label col-md-2">Where Product Was Sent</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="sent" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
+                    <input type="text" class="form-control" name="sent" value="<?php echo $_SESSION['editWastes'][0][2]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="disposed" class="control-label col-md-2">How Product Was Disposed Of</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="disposed" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
+                    <input type="text" class="form-control" name="disposed" value="<?php echo $_SESSION['editWastes'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="transported" class="control-label col-md-2">How Product Was Transported</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="transported" value="<?php echo $_SESSION['editWastes'][0][0]; ?>">
+                    <input type="text" class="form-control" name="transported" value="<?php echo $_SESSION['editWastes'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
