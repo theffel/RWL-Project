@@ -692,8 +692,9 @@ CREATE TABLE IF NOT EXISTS `production_reception` (
   `quantity_recieved` double unsigned NOT NULL COMMENT 'incoming weight',
   `trailer_tandom` tinyint(1) unsigned NOT NULL COMMENT '0 = trailer, 1 = tandom',
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
-  `CFIA_notified` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
-  `emp_id` int(3) unsigned NOT NULL COMMENT 'CFIA notified by',
+  `CFIA_notified` tinyint(1) unsigned NOT NULL,
+  `notified_by` varchar(25) COLLATE utf8_unicode_ci NOT NULL  COMMENT 'CFIA notified by',
+  `emp_id` int(3) unsigned NOT NULL,
   `movement_certificate` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `accepted` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   PRIMARY KEY (`reception_id`)
