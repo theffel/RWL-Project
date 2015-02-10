@@ -19,9 +19,9 @@
 include('../database.php');
 include('../session_load.php');
 
-// Insert fuel
-if (isset($_POST['submit'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
+// Insert byproduct
+if (isset($_POST['submit'])) {
+	$date = $db->real_escape_string($_POST['date']);
 	$desc = $db->real_escape_string($_POST['desc']);
 	$sent = $db->real_escape_string($_POST['sent']);
 	$disposed = $db->real_escape_string($_POST['disposed']);
@@ -39,9 +39,9 @@ if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
 		$byprodId = $row['by_pro_disposal_id'];
     	$date = $row['dispose_date'];
-    	$desc = $row['product_descript']; 
+    	$desc = $row['product_descript'];
     	$sent = $row['dispose_where'];
-    	$disposed = $row['dispose_how'];   
+    	$disposed = $row['dispose_how'];
     	$transported = $row['dispose_transport'];
     	$byproducts[] = array($byprodId, $date, $desc, $sent, $disposed, $transported);
     	$_SESSION['byproducts'] = $byproducts;
@@ -55,11 +55,11 @@ if (!empty($result)) {
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
     		$date = $row['dispose_date'];
-    		$desc = $row['product_descript']; 
+    		$desc = $row['product_descript'];
     		$sent = $row['dispose_where'];
-    		$disposed = $row['dispose_how'];   
+    		$disposed = $row['dispose_how'];
     		$transported = $row['dispose_transport'];
-			$editByproducts[] = array($date, $desc, $sent, $disposed, $transported); 
+			$editByproducts[] = array($date, $desc, $sent, $disposed, $transported);
 			$_SESSION['editByproducts'] = $editByproducts;
 			header("location:edit_byproduct.php?id=" . $_SESSION['byprodNum']);
 		}
@@ -67,18 +67,18 @@ if (!empty($result)) {
 }
 
 // Update byproduct
-if (isset($_POST['update'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
+if (isset($_POST['update'])) {
+	$date = $db->real_escape_string($_POST['date']);
 	$desc = $db->real_escape_string($_POST['desc']);
 	$sent = $db->real_escape_string($_POST['sent']);
 	$disposed = $db->real_escape_string($_POST['disposed']);
 	$transported = $db->real_escape_string($_POST['transported']);
-	
+
 	$query = "UPDATE byproduct_disposal SET dispose_date = '" . $date . "', product_descript = '" . $desc . "', dispose_where = '" . $sent . "', dispose_how = '" . $disposed . "', dispose_transport = '" . $transported . "' WHERE by_pro_disposal_id = " . $_SESSION['byprodNum'];
 	$result = $db->query($query);
-	
+
 	// kill session var 'byproducts'
 	unset($_SESSION['byproducts']);
 	header("location:index.php");
-} 
+}
 ?>

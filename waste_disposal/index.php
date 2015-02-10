@@ -119,7 +119,7 @@ include('waste_script.php');
                     </tr>';
                 }
                 echo '</tbody></table></form>';
-            } else{
+            } else {
                 echo "<p>There are currently no wastes dispoals to view.</p>";
             }
         }

@@ -16,10 +16,8 @@
  * @since       2015-01-21
  */
 
-// Include the attendance_script.php file
+// Include php files
 include('attendance_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
 <!-- Page Content -->
@@ -29,7 +27,7 @@ include('../header.php');
         <div class="col-lg-12">
             <h1 class="page-header">Employee Attendance</h1>
             <ol class="breadcrumb">
-                <li><a href="../index.php">Home</a></li>                        
+                <li><a href="../index.php">Home</a></li>
                 <li class="active">Attendance</li>
             </ol>
         </div>
@@ -39,23 +37,22 @@ include('../header.php');
         $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-
         // If the user is logged in
         if ($loggedIn == true) {
         	echo '<form class="form-horizontal" name="breakForm" id="breakForm" method="post" action="index.php">
             	<h2 class="page-header">Punch Clock</h2>';
         	if ($attendanceId == 0) {
             	// load session with attendance id
-                $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY time_out ASC";              
+                $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY time_out ASC";
             	// need to be able to handle more then one login for the day
             	$result = $db->query($query);
             	$numRows = $result->num_rows;
-            	
+
             	if (!empty($numRows)) {
                 	$row = $result->fetch_assoc();
                 	$attendId = $row['attend_id'];
                 	$punchOutSet = $row['time_out'];
-                	if ($punchOutSet != '0000-00-00 00:00:00') {                    
+                	if ($punchOutSet != '0000-00-00 00:00:00') {
                     	$_SESSION['attendanceId'] = 0;
                 	} else {
                 		$_SESSION['attendanceId'] = $attendId;
@@ -75,7 +72,7 @@ include('../header.php');
                     	<input type="submit" class="btn btn-primary" name="punchOut" value="Punch Out"/>
                 	</div>
             	</div>
-            
+
              	<h2 class="page-header">Job Selection</h2>';
             	for ($x = 0; $x < count($jobTypes); $x++) {
                 	echo '<div class="form-group">
@@ -84,7 +81,7 @@ include('../header.php');
                         	</div>
                     	</div>';
             	}
-            
+
             	echo '<h2 class="page-header">Break</h2>
             		<div class="form-group">
                 		<div class="col-md-offset-5 col-md-10">
