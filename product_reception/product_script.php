@@ -19,57 +19,59 @@
 include('../database.php');
 include('../session_load.php');
 
-// // Insert fuel
-// if (isset($_POST['submit'])) {	
-// 	$date = $db->real_escape_string($_POST['date']);	
-// 	$truck = $db->real_escape_string($_POST['truck']);
-// 	$mileage = $db->real_escape_string($_POST['mileage']);
-// 	$litres = $db->real_escape_string($_POST['litres']);
-// 	$cost = $db->real_escape_string($_POST['cost']);
-// 	$location = $db->real_escape_string($_POST['location']);
-// 	// $takePicture = $db->real_escape_string($_POST['take-picture']);
+// Insert product reception
+if (isset($_POST['submit'])) {	
+	$date = $db->real_escape_string($_POST['date']);	
+	$farm = $db->real_escape_string($_POST['farm']);
+	$potato = $db->real_escape_string($_POST['potato']);
+	$loadIDInfo = $db->real_escape_string($_POST['loadIDInfo']);
+	$quantity = $db->real_escape_string($_POST['quanRecieved']);
+	$bulkOther = $db->real_escape_string($_POST['bulkOther']);
+	$washed = $db->real_escape_string($_POST['washed']);
+	$cleanliness = $db->real_escape_string($_POST['cleanliness']);
+	$CFIANotified = $db->real_escape_string($_POST['CFIANotified']);
+	$CFIANotifiedBy = $db->real_escape_string($_POST['CFIANotifiedBy']);
+	$movementCert = $db->real_escape_string($_POST['movementCert']);
+	$accepted = $db->real_escape_string($_POST['accepted']);
 
-// 	$query = "INSERT INTO fuel (truck_id, purchase_date, mileage, litres, cost, location, emp_id) VALUES (" . $truck . ",'" . $dateTime . "', " . $mileage . ", " . $litres . "," . $cost . ",'" . $location . "'," . $empId . ")";
-// 	$result = $db->query($query);
-// }
+	$query = "INSERT INTO production_reception (reception_date, potato_id, farm_id, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, movement_certificate, accepted, emp_id) VALUES ('" . $dateTime . "', " . $potato . ", " . $farm . ", " . $loadIDInfo . ", " . $quantity . ", " . $washed . ", " . $bulkOther . ", " . $CFIANotified . ", " . $CFIANotifiedBy . ", " . $movementCert . ", " . $accepted . ", " . $empId . ")";
+	$result = $db->query($query);
+}
 
-// // Load array with fuel receipts for day by employee
-// $query = "SELECT fuel_id, truck_num, purchase_date, mileage, litres, cost, location FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE purchase_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY purchase_date DESC";
-// $result = $db->query($query);
+// Load array with product receptions for day by employee
+$query = "SELECT reception_id, reception_date, potato_name, farm_name, load_info_id, quantity_recieved FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY reception_date DESC";
+$result = $db->query($query);
 
-// if (!empty($result)) {
-// 	while ($row = $result->fetch_assoc()) {
-// 		$fuelId = $row['fuel_id'];
-//     	$date = $row['purchase_date'];
-//     	$truck = $row['truck_num']; 
-//     	$litres = $row['litres'];
-//     	$cost = $row['cost'];   
-//     	$mileage = $row['mileage'];
-//     	$location = $row['location'];   
-//     	$fuelReceipts[] = array($fuelId, $date, $truck, $mileage, $litres, $cost, $location);
-//     	$_SESSION['fuelReceipts'] = $fuelReceipts;
-// 	}
+if (!empty($result)) {
+	while ($row = $result->fetch_assoc()) {
+		$receptionId = $row['reception_id'];
+    	$date = $row['reception_date'];
+    	$potato = $row['potato_name']; 
+    	$farm = $row['farm_name'];
+    	$loadIDInfo = $row['load_info_id'];   
+    	$quantity = $row['quantity_recieved'];  
+    	$productionReception[] = array($receptionId, $date, $potato, $farm, $loadIDInfo, $quantity);
+    	$_SESSION['productionReception'] = $productionReception;
+	}
 
-// 	// Select fuel receipts
-// 	for ($x = 0; $x < count($_SESSION['fuelReceipts']); $x++) {
-// 		if (isset($_POST[$fuelReceipts[$x][0]])) {
-// 			$_SESSION['receiptNum'] = $fuelReceipts[$x][0];
-// 			$query = "SELECT truck_num, purchase_date, mileage, litres, cost, location 
-// 			FROM fuel INNER JOIN truck ON fuel.truck_id = truck.truck_id WHERE fuel_id = " . $_SESSION['receiptNum'];
-// 			$result = $db->query($query);
-// 			$row = $result->fetch_assoc();
-// 			$date = $row['purchase_date'];
-// 			$truck = $row['truck_num'];
-// 			$litres = $row['litres'];
-// 			$cost = $row['cost'];
-// 			$mileage = $row['mileage'];
-// 			$location = $row['location'];
-// 			$editReceipt[] = array($date, $truck, $mileage, $litres, $cost, $location); 
-// 			$_SESSION['editReceipt'] = $editReceipt;
-// 			header("location:edit_fuel.php?id=" . $_SESSION['receiptNum'] );
-// 		}
-// 	}
-// }
+	// Select fuel receipts
+	// for ($x = 0; $x < count($_SESSION['productionReception']); $x++) {
+	// 	if (isset($_POST[$productionReception[$x][0]])) {
+	// 		$_SESSION['receptionNum'] = $productionReception[$x][0];
+	// 		$query = "SELECT reception_date, potato_name, farm_name, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, movement_certificate, accepted FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_id = " . $_SESSION['receptionNum'];
+	// 		$result = $db->query($query);
+	// 		$row = $result->fetch_assoc();
+	// 		$date = $row['reception_date'];
+ //    		$farm = $row['farm_name'];
+ //    		$potato = $row['potato_name'];
+ //    		$loadIDInfo = $row['load_info_id'];
+ //    		$quantity = $row['quantity_recieved'];
+	// 		$editProductionReception[] = array($date, $truck, $mileage, $litres, $cost, $location); 
+	// 		$_SESSION['editProductionReception'] = $editReceipt;
+	// 		header("location:edit_production.php?id=" . $_SESSION['receptionNum'] );
+	// 	}
+	// }
+}
 
 // // Update fuel
 // if (isset($_POST['update'])) {	

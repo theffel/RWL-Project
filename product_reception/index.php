@@ -75,13 +75,6 @@ include('product_script.php');
                     </select>
                 </div>
             </div>
-            <!-- Drop down populated by the database -->
-            <div class="form-group">
-                <label for="potProd" class="control-label col-md-2">Potato Producer</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="potProd">
-                </div>
-            </div>
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-md-2">Load ID Info</label>
                 <div class="col-md-10">
@@ -98,8 +91,9 @@ include('product_script.php');
                 <label for="bulkOther" class="control-label col-md-2">Bulk or Other</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="bulkOther" value="Bulk"> Bulk</li>
-                        <li><input type="radio" name="bulkOther" value="Other"> Other</li>
+                        <li><input type="radio" name="bulkOther" value="0"> Trailer</li>
+                        <li><input type="radio" name="bulkOther" value="1"> Tandom</li>
+                        <li><input type="radio" name="bulkOther" value="2"> Other</li>
                     </ul>
                 </div>
             </div>
@@ -107,8 +101,8 @@ include('product_script.php');
                 <label for="washed" class="control-label col-md-2">Washed</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="washed" value="Yes"> Yes</li>
-                        <li><input type="radio" name="washed" value="No"> No</li>
+                        <li><input type="radio" name="washed" value="0"> Yes</li>
+                        <li><input type="radio" name="washed" value="1"> No</li>
                     </ul>
                 </div>
             </div>
@@ -133,15 +127,21 @@ include('product_script.php');
                 <label for="CFIANotified" class="control-label col-md-2">CFIA Notified</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="CFIANotified" value="Yes"> Yes</li>
-                        <li><input type="radio" name="CFIANotified" value="No"> No</li>
+                        <li><input type="radio" name="CFIANotified" value="0"> Yes</li>
+                        <li><input type="radio" name="CFIANotified" value="1"> No</li>
                     </ul>
                 </div>
             </div>
             <div class="form-group">
                 <label for="CFIANotifiedBy" class="control-label col-md-2">CFIA Notified By</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="CFIANotifiedBy">
+                    <select class="form-control" name="CFIANotifiedBy" id="CFIANotifiedBy">
+                        <?php
+                        for ($x = 0; $x < count($productionManagers); $x++){
+                            echo '<option value="' . $productionManagers[$x][0] .'">' . $productionManagers[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -170,26 +170,26 @@ include('product_script.php');
         <hr>
         <h2 class="page-header">Edit Product</h2>
         <?php
-            if (!empty($products)) {
+            if (!empty($productionReception)) {
                 echo '<table class="table">
                         <thead>
                            <tr>
                                 <th>Date</th>
-                                <th>Truck</th>
-                                <th>Trailer</th>
                                 <th>Farm</th>
-                                <th>Warehouse</th>
+                                <th>Potato</th>
+                                <th>Load ID</th>
+                                <th>Quantity</th>
                             </tr>
                         </thead>
                         <tbody>';
-                for ($x = 0; $x < count($products); $x++) {
+                for ($x = 0; $x < count($productionReception); $x++) {
                     echo '<tr>
-                        <td>'. $products[$x][1].'</td>
-                        <td>'. $products[$x][2].'</td>
-                        <td>'. $products[$x][3].'</td>
-                        <td>'. $products[$x][4].'</td>
-                        <td>'. $products[$x][5].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $products[$x][0].'" value="Edit"/></td>
+                        <td>'. $productionReception[$x][1].'</td>
+                        <td>'. $productionReception[$x][2].'</td>
+                        <td>'. $productionReception[$x][3].'</td>
+                        <td>'. $productionReception[$x][4].'</td>
+                        <td>'. $productionReception[$x][5].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $productionReception[$x][0].'" value="Edit"/></td>
                     </tr>';
                 }
                 echo '</tbody></table></form>';

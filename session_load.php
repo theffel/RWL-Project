@@ -52,9 +52,7 @@ while ($row = $result->fetch_assoc()){
 $_SESSION['trailers'] = $trailers;
 
 // Store drivers in the session
-$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee 
-	INNER JOIN job_type ON employee.emp_id = job_type.emp_id
-	WHERE emp_type_id = 1";
+$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee INNER JOIN job_type ON employee.emp_id = job_type.emp_id WHERE emp_type_id = 1";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()){        
 	$empId = $row['emp_id'];  
@@ -68,9 +66,7 @@ while ($row = $result->fetch_assoc()){
 $_SESSION['drivers'] = $drivers;
 
 // Store dispatchers in the session
-$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee 
-	INNER JOIN job_type ON employee.emp_id = job_type.emp_id
-	WHERE emp_type_id = 2";
+$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee INNER JOIN job_type ON employee.emp_id = job_type.emp_id WHERE emp_type_id = 2";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()){        
 	$empId = $row['emp_id'];  
@@ -79,10 +75,37 @@ while ($row = $result->fetch_assoc()){
 	$jobId = $row['emp_type_id'];
 	$name = $firstName . " " . $lastName;
 	$dispatchers[] = array($empId, $name, $jobId);
-
 }
 
 $_SESSION['dispatchers'] = $dispatchers;
+
+// Store production managers in the session
+$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee INNER JOIN job_type ON employee.emp_id = job_type.emp_id WHERE emp_type_id = 3";
+$result = $db->query($query);
+while ($row = $result->fetch_assoc()){        
+	$empId = $row['emp_id'];  
+	$firstName = $row['emp_first_name'];
+	$lastName = $row['emp_last_name'];
+	$jobId = $row['emp_type_id'];
+	$name = $firstName . " " . $lastName;
+	$productionManagers[] = array($empId, $name, $jobId);
+}
+
+$_SESSION['productionManagers'] = $productionManagers;
+
+// Store samplers in the session
+$query = "SELECT employee.emp_id, emp_first_name, emp_last_name, emp_type_id FROM employee INNER JOIN job_type ON employee.emp_id = job_type.emp_id WHERE emp_type_id = 4";
+$result = $db->query($query);
+while ($row = $result->fetch_assoc()){        
+	$empId = $row['emp_id'];  
+	$firstName = $row['emp_first_name'];
+	$lastName = $row['emp_last_name'];
+	$jobId = $row['emp_type_id'];
+	$name = $firstName . " " . $lastName;
+	$samplers[] = array($empId, $name, $jobId);
+}
+
+$_SESSION['samplers'] = $samplers;
 
 // Store farms in the session
 $query = "SELECT farm_id, farm_name FROM farm";
