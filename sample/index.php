@@ -65,7 +65,7 @@ include('sample_script.php');
                         ?>
                     </select>                    
                 </div>
-                <label for="rockMaterial" class="control-label col-md-2">Number of Sample(s)</label>
+                <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="numOfSample" value="">
                 </div>
@@ -125,11 +125,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="useableWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="useableWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="unuseableWeight" value="" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="useablePercent" name="useablePercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent" value="" placeholder="%" disabled>
                         </div>
                     </div>
                 </div>
