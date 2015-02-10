@@ -689,7 +689,7 @@ CREATE TABLE IF NOT EXISTS `production_reception` (
   `potato_id` int(2) unsigned NOT NULL,
   `farm_id` int(4) unsigned NOT NULL,
   `load_id_info` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
-  `quanity_recieved` double unsigned NOT NULL COMMENT 'incoming weight',
+  `quantity_recieved` double unsigned NOT NULL COMMENT 'incoming weight',
   `trailer_tandom` tinyint(1) unsigned NOT NULL COMMENT '0 = trailer, 1 = tandom',
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `CFIA_notified` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
