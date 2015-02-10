@@ -847,7 +847,7 @@ CREATE TABLE IF NOT EXISTS `shipping` (
   `ship_date` datetime NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,
   `farm_id` int(4) unsigned NOT NULL,
-  `load_id_info` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
+  `rwl_ticket_num` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
   `weight_shipped` double unsigned NOT NULL,
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `dest_id` int(4) unsigned NOT NULL,
