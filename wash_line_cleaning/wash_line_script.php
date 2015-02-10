@@ -18,6 +18,7 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
 
 // Insert Plant cleaning
 if (isset($_POST['submit'])) {
@@ -80,7 +81,7 @@ for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
 
 		$editLineCleaning[] = array($cleanDate, $equipName, $descript, $name, $empID);
 		$_SESSION['editLineCleaning'] = $editLineCleaning;
-		header ("location:edit_washLine.php?id=" . $_SESSION['wCleanNum'] );
+		header ("location:edit_wash_line.php?id=" . $_SESSION['wCleanNum'] );
 	}
 }
 }

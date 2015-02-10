@@ -14,16 +14,13 @@
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-15
  */
- 
+
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-include('../session_load.php');
 include('plant_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -46,18 +43,14 @@ include('../header.php');
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5) {
         ?>
-
         <h2 class="page-header">Add a Plant Cleaning</h2>
-
         <form class="form-horizontal" name="plantForm" id="plantForm" method="POST" action="index.php">
-
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="equipClean" class="control-label col-md-2">Equipment List</label>
                 <div class="col-md-10">
@@ -70,14 +63,12 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="descClean">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
@@ -90,22 +81,20 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
         <hr>
-
-        <h2 class="page-header">View Plant Cleanings</h2>
+        <h2 class="page-header">Edit Plant Cleanings</h2>
             <?php
             if (!empty($plantCleaning)) {
                 echo '<table class="table">
                         <thead>
                            <tr>
                                 <th>Date</th>
-                                <th>Equipment cleaned</th>
+                                <th>Equipment Cleaned</th>
                                 <th>Description</th>
                                 <th>Name</th>
                             </tr>
@@ -122,10 +111,8 @@ include('../header.php');
                 }
                 echo '</tbody></table>  </form>';
             } else{
-                echo "<p>There are currently no Plant cleaning data to view.</p>";
+                echo "<p>There are currently no plant cleaning data to view.</p>";
             }
-
-
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }

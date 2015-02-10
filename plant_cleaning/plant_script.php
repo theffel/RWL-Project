@@ -18,6 +18,7 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
 
 // Insert Plant cleaning
 if (isset($_POST['submit'])) {
