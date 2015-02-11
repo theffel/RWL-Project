@@ -18,13 +18,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
-
-// Include the sample_script.php file
 include('sample_script.php');
 ?>
     <!-- Page Content -->
@@ -57,7 +53,17 @@ include('sample_script.php');
             <div class="form-group row">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="trailer" value= "<?php echo $_SESSION['editSamples'][0][0]; ?>">
+                    <select class="form-control" name="trailer">
+                        <?php
+                        for ($x = 0; $x < count($trailers); $x++){
+                            if ($trailers[$x][0] == $_SESSION['editSamples'][0][0]) {
+                                echo '<option selected value="' . $trailers[$x][0] . '">' . $trailers[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $trailers[$x][0] . '">' . $trailers[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
                 <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
@@ -82,14 +88,24 @@ include('sample_script.php');
                 </div>
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editSamples'][0][3]; ?>">
+                    <select class="form-control" name="potato">
+                        <?php
+                        for ($x = 0; $x < count($potatoes); $x++){
+                            if ($potatoes[$x][0] == $_SESSION['editSamples'][0][3]) {
+                                echo '<option selected value="' . $potatoes[$x][0] . '">' . $potatoes[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $potatoes[$x][0] . '">' . $potatoes[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editSamples'][0][4]; ?>">                  
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editSamples'][0][4]; ?>">
                 </div>
             </div>
 
@@ -366,7 +382,7 @@ include('sample_script.php');
 
 
 
- 
+
     </div>
     <!-- /.container -->
     <!-- jQuery -->

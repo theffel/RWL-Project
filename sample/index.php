@@ -18,13 +18,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
-
-// Include the sample_script.php file
 include('sample_script.php');
 ?>
     <!-- Page Content -->
@@ -63,7 +59,7 @@ include('sample_script.php');
                             echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
                         }
                         ?>
-                    </select>                    
+                    </select>
                 </div>
                 <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
@@ -95,7 +91,7 @@ include('sample_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">
                 </div>
             </div>
 
@@ -398,7 +394,7 @@ include('sample_script.php');
 
 
 
- 
+
     </div>
     <!-- /.container -->
     <!-- jQuery -->
