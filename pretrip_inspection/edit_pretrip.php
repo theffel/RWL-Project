@@ -219,64 +219,183 @@ include('pretrip_script.php');
             <div class="form-group">
                 <label for="leftSide" class="control-label col-md-2">Left Side</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="leftFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
-                    <input type="checkbox" name="leftSidemarkerLights" value="1"> Sidemarker Lights</input><br />
-                    <input type="checkbox" name="leftReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="leftTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="leftCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <?php
+                    if($_SESSION['editPretrips'][0][22] == 0){                    
+                        echo '<input type="checkbox" name="leftFuelTankCap" value="1" checked> Fuel Tank and Cap</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="leftFuelTankCap" value="0"> Fuel Tank and Cap</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][23] == 0){
+                        echo '<input type="checkbox" name="leftSidemarkerLights" value="1" checked> Sidemarker Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="leftSidemarkerLights" value="0"> Sidemarker Lights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][24] == 0){
+                        echo '<input type="checkbox" name="leftReflectors" value="1" checked> Reflectors</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="leftReflectors" value="0"> Reflectors</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][25] == 0){
+                        echo '<input type="checkbox" name="leftTiresWheels" value="1" checked> Tires and Wheels (Lugs)</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="leftTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][26] == 0){
+                        echo '<input type="checkbox" name="leftCargoTiedowns" value="1" checked> Cargo Tie-downs/or Doors</input>';
+                    } else {
+                        echo '<input type="checkbox" name="leftCargoTiedowns" value="0"> Cargo Tie-downs/or Doors</input>';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="rear" class="control-label col-md-2">Rear</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="rearTailLights" value="1"> Tail Lights</input><br />
-                    <input type="checkbox" name="rearStopLights" value="1"> Stop Lights</input><br />
-                    <input type="checkbox" name="rearTurnSignals" value="1"> Turn Signals and 4-way flasher</input><br />
-                    <input type="checkbox" name="rearClearanceLights" value="1"> Clearance Lights</input><br />
-                    <input type="checkbox" name="rearIdentificationLights" value="1"> Identification Lights</input><br />
-                    <input type="checkbox" name="rearReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="rearTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="rearRearProtection" value="1"> Rear End Protection (Bumper)</input><br />
-                    <input type="checkbox" name="rearCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <?php
+                    if($_SESSION['editPretrips'][0][27] == 0){
+                        echo '<input type="checkbox" name="rearTailLights" value="1" checked> Tail Lights</input><br />'
+                    } else {
+                        echo '<input type="checkbox" name="rearTailLights" value="0"> Tail Lights</input><br />'
+                    }
+                    if($_SESSION['editPretrips'][0][28] == 0){
+                        echo '<input type="checkbox" name="rearStopLights" value="1" checked> Stop Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearStopLights" value="0"> Stop Lights</input><br />';                        
+                    }
+                    if($_SESSION['editPretrips'][0][29] == 0){
+                        echo '<input type="checkbox" name="rearTurnSignals" value="1" checked> Turn Signals and 4-way flasher</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearTurnSignals" value="0"> Turn Signals and 4-way flasher</input><br />';                        
+                    }
+                    if($_SESSION['editPretrips'][0][30] == 0){
+                        echo '<input type="checkbox" name="rearClearanceLights" value="1" checked> Clearance Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearClearanceLights" value="0"> Clearance Lights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][31] == 0){
+                        echo '<input type="checkbox" name="rearIdentificationLights" value="1" checked> Identification Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearIdentificationLights" value="0"> Identification Lights</input><br />';                        
+                    }
+                    if($_SESSION['editPretrips'][0][32] == 0){
+                        echo '<input type="checkbox" name="rearReflectors" value="1" checked> Reflectors</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearReflectors" value="0"> Reflectors</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][33] == 0){
+                        echo '<input type="checkbox" name="rearTiresWheels" value="1" checked> Tires and Wheels (Lugs)</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearReflectors" value="0"> Reflectors</input><br />';                        
+                    }
+                    if($_SESSION['editPretrips'][0][34] == 0){
+                        echo '<input type="checkbox" name="rearRearProtection" value="1" checked> Rear End Protection (Bumper)</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rearReflectors" value="0"> Reflectors</input><br />';                        
+                    }
+                    if($_SESSION['editPretrips'][0][35] == 0){
+                        echo '<input type="checkbox" name="rearCargoTiedowns" value="1" checked> Cargo Tie-downs/or Doors</input>';
+                    } else {
+                        echo '<input type="checkbox" name="rearReflectors" value="0"> Reflectors</input><br />';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="rightSide" class="control-label col-md-2">Right Side</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="rightFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
-                    <input type="checkbox" name="rightSidemarkerLights" value="1"> Sidemarker Lights</input><br />
-                    <input type="checkbox" name="rightReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="rightTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="rightCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <?php
+                    if($_SESSION['editPretrips'][0][36] == 0){
+                        echo '<input type="checkbox" name="rightFuelTankCap" value="1" checked> Fuel Tank and Cap</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rightFuelTankCap" value="0"> Fuel Tank and Cap</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][37] == 0){
+                        echo '<input type="checkbox" name="rightSidemarkerLights" value="1" checked> Sidemarker Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rightSidemarkerLights" value="0"> Sidemarker Lights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][38] == 0){
+                        echo '<input type="checkbox" name="rightReflectors" value="1" checked> Reflectors</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rightReflectors" value="0"> Reflectors</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][39] == 0){
+                        echo '<input type="checkbox" name="rightTiresWheels" value="1" checked> Tires and Wheels (Lugs)</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="rightTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][40] == 0){
+                        echo '<input type="checkbox" name="rightCargoTiedowns" value="1" checked> Cargo Tie-downs/or Doors</input>';
+                    } else {
+                        echo '<input type="checkbox" name="rightTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="onCombinations" class="control-label col-md-2">On Combinations</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="onCombinationsHosesCouplers" value="1"> Hoses and Couplers</input><br />
-                    <input type="checkbox" name="onCombinationsElectricalConnector" value="1"> Electrical Connector</input><br />
-                    <input type="checkbox" name="onCombinationsCouplings" value="1"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>
+                    <?php
+                    if($_SESSION['editPretrips'][0][41] == 0){
+                        echo '<input type="checkbox" name="onCombinationsHosesCouplers" value="1" checked> Hoses and Couplers</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="onCombinationsHosesCouplers" value="0"> Hoses and Couplers</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][42] == 0){
+                        echo '<input type="checkbox" name="onCombinationsElectricalConnector" value="1" checked> Electrical Connector</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="onCombinationsElectricalConnector" value="0"> Electrical Connector</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][43] == 0){
+                        echo '<input type="checkbox" name="onCombinationsCouplings" value="1" checked> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>';
+                    } else {
+                        echo '<input type="checkbox" name="onCombinationsCouplings" value="0"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="onHazMaterials" class="control-label col-md-2">On Vehicles Transporting Hazardous Materials</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="onHazMaterialsMarkingPlacards" value="1"> Marking or Placards</input><br />
-                    <input type="checkbox" name="onHazMaterialsShippingPapers" value="1"> Proper Shipping Papers</input>
+                    <?php
+                    if($_SESSION['editPretrips'][0][44] == 0){
+                        echo '<input type="checkbox" name="onHazMaterialsMarkingPlacards" value="1" checked> Marking or Placards</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="onHazMaterialsMarkingPlacards" value="0"> Marking or Placards</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][45] == 0){
+                        echo '<input type="checkbox" name="onHazMaterialsShippingPapers" value="1" checked> Proper Shipping Papers</input>';
+                    } else {
+                        echo '<input type="checkbox" name="onHazMaterialsShippingPapers" value="0"> Proper Shipping Papers</input>';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="stopEngine" class="control-label col-md-2">Stop Engine</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="1"> Release Trailer Emergency Brakes</input><br />
-                    <input type="checkbox" name="stopEngineApplyBrakesAir" value="1"> Apply service Brakes-Air loss should not exceed:<ul>
+                    <?php
+                    if($_SESSION['editPretrips'][0][46] == 0){
+                        echo '<input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="1" checked> Release Trailer Emergency Brakes</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="0"> Release Trailer Emergency Brakes</input><br />';
+
+                    }
+                    if($_SESSION['editPretrips'][0][47] == 0){
+                        echo '<input type="checkbox" name="stopEngineApplyBrakesAir" value="1" checked> Apply service Brakes-Air loss should not exceed:<ul>
                         <li>3 psi per minute on single vehicles</li>
-                        <li>4 psi per minute on combinations</li>
+                        <li>4 psi per minute on combinations</li>';
+                    } else {
+                        echo '<input type="checkbox" name="stopEngineApplyBrakesAir" value="0"> Apply service Brakes-Air loss should not exceed:<ul>
+                        <li>3 psi per minute on single vehicles</li>
+                        <li>4 psi per minute on combinations</li>';                        
+                    }
+                        ?>
                     </ul></input>
                 </div>
             </div>
