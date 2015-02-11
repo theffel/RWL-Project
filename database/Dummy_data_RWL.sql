@@ -1,28 +1,28 @@
 INSERT INTO `Employee`(`emp_id`, `position_id`, `emp_sin`, `emp_first_name`, `emp_last_name`, 
 `emp_middle_initial`, `emp_address`, `emp_city`, `emp_postal_code`, `emp_phone`, `emp_email`, `emp_gender`, `emp_dob`, 
-`primary_contact_id`, `secondary_contact_id`, `active`, `deleted`, `modified`, `created`) VALUES
+ `active`, `deleted`, `modified`, `created`) VALUES
 ('1', '2', '111111111', 'Testy', 'McTester', 'B', '123 Test lane', 'Testerville', 'C1KK6W', '1234567878', 'iam@home.com',
-'0', '12232015', '1', '2', '1', '0', '12312015', '12052015'),
+'0', '12232015',  '1', '0', '12312015', '12052015'),
 ('2', '1', '222222222', 'John', 'Smith', 'L', '345 Argyle St', 'Summerside', 'C1N1Z6', '9027244477', 'your@myhouse.com',
-'1', '01011970', '1', '2', '1', '0', '12122012', '12122013'),
+'1', '01011970', '1', '0', '12122012', '12122013'),
 ('3', '3', '333333333', 'Debbie', 'Dallas', 'K', '987 sultry lane', 'Tignish', 'c1n1z9', '9029029002', 'iamstarving@buffet.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013'),
+'0', '11111988', '1', '0', '12312012', '12112013'),
 ('4', '3', '444444444', 'Rocky', 'Balboa', 'P', '125 Deltiod St', 'Summerside', 'c1a1z3', '9029029552', 'iambuff@buff.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013'),
+'0', '11111988', '1', '0', '12312012', '12112013'),
 ('5', '2', '555555555', 'Liam', 'Neison', 'M', '344 Iwillgetyou Dr', 'Montague', 'c0b1k8', '9024896582', 'ishootguns@bullets.com',
-'0', '11111988', '1', '2', '1', '0', '12312013', '12112012'),
+'0', '11111988', '1', '0', '12312013', '12112012'),
 ('6', '1', '666666666', 'Margo', 'Kidder', 'W', '77 Super St', 'Charlottetown', 'c1p1k2', '9024364411', 'ilovesteel@iron.com',
-'1', '11111988', '1', '2', '1', '0', '05061999', '12092014'),
+'1', '11111988', '1', '0', '05061999', '12092014'),
 ('7', '2', '777777777', 'Vince', 'Neil', 'D', '123 Rocker Ave', 'Rockville', 'c1n1z9', '9025558877', 'irockhard@devilhorns.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013'),
+'0', '11111988', '1', '0', '12312012', '12112013'),
 ('8', '2', '888888888', 'Johhny', 'Good', 'B', '199 Hicktown', 'Argyle Cr', 'c1n4t5', '9028889966', 'iamstrumming@banjo.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013'),
+'0', '11111988', '1', '0', '12312012', '12112013'),
 ('9', '1', '101010101', 'Diane', 'Lane', 'H', '444 Some St', 'Somewhereville', 'c0f6u4', '9028959988', 'iamkeen@touchthis.com',
-'1', '11111988', '1', '2', '1', '0', '12312014', '09202010'),
+'1', '11111988', '1', '0', '12312014', '09202010'),
 ('10', '1', '999999999', 'Tommy', 'Chong', 'W', '124 Bigbowl Dr', 'Freetown', 'c1b5y5', '9028888888', 'iamstarvingto@munchies.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013'),
+'0', '11111988','1', '0', '12312012', '12112013'),
 ('11', '3', '565656565', 'Rick', 'Simpson', 'H', '987 Godmeds', 'Baltic', 'c7uu6t', '9026698888', 'itheals@concentrates.com',
-'0', '11111988', '1', '2', '1', '0', '12312012', '12112013');
+'0', '11111988', '1', '0', '12312012', '12112013');
 
 
 INSERT INTO `Employee_Emergency_Contact`(`emerg_contact_id`, `emp_id`, `emerg_first_name`, `emerg_last_name`, `emerg_phone`) VALUES
