@@ -46,20 +46,20 @@ include('../header.php');
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {  
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
         <h2 class="page-header">Edit Receipt</h2>
         <form class="form-horizontal" name="fuelForm" id="fuelForm" method="post" action="edit_fuel.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editReceipt'][0][0]; ?>">                  
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editReceipt'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
-                    <select class="form-control" name="employees">
+                    <select class="form-control" name="truck">
                         <?php
                         for ($x = 0; $x < count($trucks); $x++){
                             if ($trucks[$x][0] == $_SESSION['editReceipt'][0][1]) {
@@ -115,6 +115,6 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/device_javascripts/camera_control.js"></script>    
+    <script src="../js/device_javascripts/camera_control.js"></script>
 </body>
 </html>

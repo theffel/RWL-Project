@@ -55,13 +55,33 @@ include('product_script.php');
             <div class="form-group">
                 <label for="farm" class="control-label col-md-2">Farm</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="farm" value="<?php echo $_SESSION['editProductionReception'][0][1]; ?>">
+                    <select class="form-control" name="farm">
+                        <?php
+                        for ($x = 0; $x < count($trucks); $x++){
+                            if ($farms[$x][0] == $_SESSION['editProductionReception'][0][1]) {
+                                echo '<option selected value="' . $farms[$x][0] . '">' . $farms[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $farms[$x][0] . '">' . $farms[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editProductionReception'][0][2]; ?>">
+                    <select class="form-control" name="potato">
+                        <?php
+                        for ($x = 0; $x < count($potatos); $x++){
+                            if ($potatos[$x][0] == $_SESSION['editProductionReception'][0][2]) {
+                                echo '<option selected value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -139,7 +159,17 @@ include('product_script.php');
             <div class="form-group">
                 <label for="CFIANotifiedBy" class="control-label col-md-2">CFIA Notified By</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="quanRecieved" value="<?php echo $_SESSION['editProductionReception'][0][9]; ?>">
+                    <select class="form-control" name="CFIANotifiedBy">
+                        <?php
+                        for ($x = 0; $x < count($productionManagers); $x++){
+                            if ($productionManagers[$x][0] == $_SESSION['editProductionReception'][0][9]) {
+                                echo '<option selected value="' . $productionManagers[$x][0] . '">' . $productionManagers[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $productionManagers[$x][0] . '">' . $productionManagers[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
