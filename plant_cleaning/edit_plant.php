@@ -19,12 +19,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
 include('plant_script.php');
-include('../session_load.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
 <!-- Page Content -->
@@ -45,20 +42,17 @@ include('../header.php');
     $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
     $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
     $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-
-//    print_r( $_SESSION['$editPlantCleaning']);
     // If the user is logged in with the correct employee permissions
-    if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 5) {
+    if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5) {
         ?>
         <h2 class="page-header">Edit Plant Cleaning</h2>
-        <form class="form-horizontal"  name="plantForm" id="plantForm" method="POST" action="edit_plant.php">
+        <form class="form-horizontal" name="plantForm" id="plantForm" method="POST" action="edit_plant.php">
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editPlantCleaning'][0][0]; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="equipClean" class="control-label col-md-2">Equipment List</label>
                 <div class="col-md-10">
@@ -76,14 +70,12 @@ include('../header.php');
                         </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="descClean" value="<?php echo $_SESSION['editPlantCleaning'][0][2];?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
@@ -100,7 +92,6 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="update" value="Update"/>

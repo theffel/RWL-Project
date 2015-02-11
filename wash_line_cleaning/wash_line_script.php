@@ -18,6 +18,7 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
 
 // Insert Plant cleaning
 if (isset($_POST['submit'])) {
@@ -64,8 +65,6 @@ for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
 				  INNER JOIN equiptment_list AS el ON w.equip_id = el.equip_id
 				  INNER JOIN employee AS e ON w.emp_id = e.emp_id
  				  WHERE line_clean_id = " . $_SESSION['wCleanNum'];
-
-		var_dump($query);
 		$result = $db->query($query);
 		$row = $result->fetch_assoc();
 
@@ -80,7 +79,7 @@ for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
 
 		$editLineCleaning[] = array($cleanDate, $equipName, $descript, $name, $empID);
 		$_SESSION['editLineCleaning'] = $editLineCleaning;
-		header ("location:edit_washLine.php?id=" . $_SESSION['wCleanNum'] );
+		header ("location:edit_wash_line.php?id=" . $_SESSION['wCleanNum'] );
 	}
 }
 }
@@ -94,8 +93,8 @@ if (isset($_POST['update'])) {
 			  WHERE line_clean_id = " . $_SESSION['cleanNum'];
 	$result = $db->query($query);
 
-	// kill session var 'editIncomingDeliveries'
-	unset($_SESSION['editIncomingDeliveries']);
+	// kill session var 'editLineCleaning'
+	unset($_SESSION['lineCleaning']);
 	header("location:index.php");
 }
 ?>

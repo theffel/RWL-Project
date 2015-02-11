@@ -18,6 +18,7 @@
 
 // Include php files
 include('../database.php');
+include('../session_load.php');
 
 // Insert Plant cleaning
 if (isset($_POST['submit'])) {
@@ -64,8 +65,6 @@ for ($x = 0; $x < count($_SESSION['plantCleaning']); $x++){
 		  		  INNER JOIN equiptment_list AS el ON p.equip_id = el.equip_id
 				  INNER JOIN employee AS e ON p.emp_id = e.emp_id
  				  WHERE plant_clean_id = " . $_SESSION['cleanNum'];
-
-		var_dump($query);
 		$result = $db->query($query);
 		$row = $result->fetch_assoc();
 
@@ -94,8 +93,8 @@ if (isset($_POST['update'])) {
 			  WHERE plant_clean_id = " . $_SESSION['cleanNum'];
 	$result = $db->query($query);
 
-	// kill session var 'editIncomingDeliveries'
-	unset($_SESSION['editIncomingDeliveries']);
+	// kill session var 'editPlantCleaning'
+	unset($_SESSION['plantCleaning']);
 	header("location:index.php");
 }
 ?>

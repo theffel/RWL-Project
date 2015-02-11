@@ -50,7 +50,7 @@ include('../header.php');
 
         <form class="form-horizontal">
 
-           <!-- <div class="form-group">
+           <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck #</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="truck" placeholder="">
@@ -90,7 +90,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="farm" placeholder="">
                 </div>
-            </div>-->
+            </div>
 
             <div class="form-group">
                 <label for="arrivalTime" class="control-label col-md-2">Arrival Time</label>

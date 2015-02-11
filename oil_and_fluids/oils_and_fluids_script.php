@@ -21,7 +21,7 @@ include('../session_load.php');
 
 // Insert oils and fluids
 if (isset($_POST['submit'])) {
-	$date = $db->real_escape_string($_POST['date']);	
+	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$engineOilLiters = $db->real_escape_string($_POST['engineOilLiters']);
 	$hydraulicOilLiters = $db->real_escape_string($_POST['hydraulicOilLiters']);
@@ -40,7 +40,7 @@ if (!empty($result)) {
 	while ($row = $result->fetch_assoc()) {
 		$maintainId = $row['maintain_id'];
     	$date = $row['change_date'];
-    	$truck = $row['truck_num']; 
+    	$truck = $row['truck_num'];
     	$engineOilLiters = $row['engine_oil_litres'];
     	$hydraulicOilLiters = $row['hyd_oil_litres'];
     	$transFluidLiters = $row['trans_fluid_litres'];
@@ -77,17 +77,12 @@ if (isset($_POST['update'])) {
 	$hydraulicOilLiters = $db->real_escape_string($_POST['hydraulicOilLiters']);
 	$transFluidLiters = $db->real_escape_string($_POST['transFluidLiters']);
 	$coolantLitres = $db->real_escape_string($_POST['coolantLitres']);
-	
-	$query = "SELECT truck_id FROM truck WHERE truck_num = '" . $truck . "'";
+
+	$query = "UPDATE maintenance SET truck_id = " . $truck . ", change_date = '" . $date . "', engine_oil_litres =" . $engineOilLiters . ", hyd_oil_litres = " . $hydraulicOilLiters . ", trans_fluid_litres = " . $transFluidLiters . ", coolant_litres = " . $coolantLitres . " WHERE maintain_id = " . $_SESSION['maintainNum'];
 	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$truckId = $row['truck_id'];
-	
-	$query = "UPDATE maintenance SET truck_id = " . $truckId . ", change_date = '" . $date . "', engine_oil_litres =" . $engineOilLiters . ", hyd_oil_litres = " . $hydraulicOilLiters . ", trans_fluid_litres = " . $transFluidLiters . ", coolant_litres = " . $coolantLitres . " WHERE maintain_id = " . $_SESSION['maintainNum'];
-	$result = $db->query($query);
-	
+
 	// kill session var 'oilsAndFluids'
 	unset($_SESSION['oilsAndFluids']);
 	header("location:index.php");
-} 
+}
 ?>

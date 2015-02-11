@@ -27,10 +27,10 @@ include('../session_load.php');
 $empId = (!empty($_SESSION['empId'])) ? $_SESSION['empId'] : "";
 
 // Insert attendance - start punch clock for employee
-if (isset($_POST['punchIn'])) {		
+if (isset($_POST['punchIn'])) {
 	$query = "INSERT INTO attendance (time_in, emp_id) 	VALUES ('" . $dateTime . "'," . $empId . ")";
 	$result = $db->query($query);
-		
+
 	// load session with attendance id
     $query = "SELECT attend_id, time_out FROM attendance WHERE time_in LIKE '". $currentDate . "%' AND emp_id = " . $empId . " ORDER BY time_out ASC";
 
@@ -41,14 +41,14 @@ if (isset($_POST['punchIn'])) {
 		$row = $result->fetch_assoc();
 		$attendanceId = $row['attend_id'];
 	}
-	
+
 	$_SESSION['attendanceId'] = $attendanceId;
 }
 
 // Insert attendance - end punch clock for employee
 if (isset($_POST['punchOut'])) {
 	$query = "UPDATE attendance SET time_out = '" .$dateTime . "' WHERE attend_id=" . $_SESSION['attendanceId'];
-	$result = $db->query($query); 
+	$result = $db->query($query);
     $_SESSION['attendanceId'] = 0;
 }
 
@@ -62,7 +62,7 @@ if (isset($_POST['startBreak'])) {
 	$result = $db->query($query);
 	if (!empty($result)) {
 		$row = $result->fetch_assoc();
-		$breakId = $row['break_id'];    
+		$breakId = $row['break_id'];
 		$_SESSION['breakId'] = $breakId;
 	}
 }
@@ -79,16 +79,15 @@ $result = $db->query($query);
 
 if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
-    	$empTypeId = $row['emp_type_id'];   
+    	$empTypeId = $row['emp_type_id'];
     	$typeDesc = $row['type_description'];
-		$typeAltDesc = $row['type_alt_description'];   
+		$typeAltDesc = $row['type_alt_description'];
 		$jobTypes[] = array($empTypeId, $typeDesc, $typeAltDesc);
 	}
 }
-
 $_SESSION['jobTypes'] = $jobTypes;
 
-/* loop over array to set employee type. Done this way if another employee type is added to database will not effect employee type selection in time and attendence */   
+/* loop over array to set employee type. Done this way if another employee type is added to database will not effect employee type selection in time and attendence */
 for ($x = 0; $x < count($_SESSION['jobTypes']); $x++){
     if (isset($_POST[$jobTypes[$x][2]])) {
         $_SESSION['employeeType'] = $jobTypes[$x][0];

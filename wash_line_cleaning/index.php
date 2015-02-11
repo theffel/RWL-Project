@@ -18,12 +18,9 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include the php files
 include('../database.php');
-include('../session_load.php');
-include('washLine_script.php');
-
-// Include the header.php file
+include('wash_line_script.php');
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -43,7 +40,6 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
         ?>
@@ -55,7 +51,6 @@ include('../header.php');
                     <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="equipClean" class="control-label col-md-2">Equipment Cleaned</label>
                 <div class="col-md-10">
@@ -68,14 +63,12 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="descClean">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
@@ -88,22 +81,20 @@ include('../header.php');
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
         <hr>
-        <h2 class="page-header">View Wash Line Cleanings</h2>
-
+        <h2 class="page-header">Edit Wash Line Cleanings</h2>
             <?php
             if (!empty($lineCleaning)) {
                 echo '<table class="table">
                         <thead>
                            <tr>
                                 <th>Date</th>
-                                <th>Equipment cleaned</th>
+                                <th>Equipment Cleaned</th>
                                 <th>Description</th>
                                 <th>Name</th>
                             </tr>
@@ -118,9 +109,9 @@ include('../header.php');
                         <td><input type="submit" class="btn btn-primary" name="'. $lineCleaning[$x][0].'" value="Edit"/></td>
                     </tr>';
                 }
-                echo '</tbody></table>  </form>';
+                echo '</tbody></table></form>';
             } else{
-                echo "<p>There are currently no Plant cleaning data to view.</p>";
+                echo "<p>There are currently no wash line cleaning data to view.</p>";
             }
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";

@@ -15,11 +15,11 @@
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-23
  */
- 
+
 // Start the session
 session_start();
 
-// Include the php files
+// Include php files
 include('../database.php');
 include('pickup_script.php');
 include('../header.php');
@@ -69,7 +69,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-5">
-                            <select class="form-control" name="driver">                                
+                            <select class="form-control" name="driver">
                                 <?php
                                 for ($x = 0; $x < count($drivers); $x++){
                                     echo '<option value="' . $drivers[$x][0] .'">' . $drivers[$x][1] .'</option>';
@@ -115,7 +115,7 @@ include('../header.php');
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <h3 class="page-header">Farm</h3>
             <div class="form-group">
                 <label for="farm" class="control-label col-md-2">Farm</label>
@@ -182,39 +182,39 @@ include('../header.php');
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="farmArrivalTime" name="farmArrivalTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                             <button type="button" class="btn btn-primary" value="farmArrivalTime" name="farmArrivalTimeBtn" onclick="getTime(this.value)" >&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="loadTime" class="control-label col-md-2">Load Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="loadTime" name="loadTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                         <button type="button" class="btn btn-primary" name="loadTimeBtn" value="loadTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Load Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="farmDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="farmDepartureTime" name="farmDepartureTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                         <button type="button" class="btn btn-primary" name="farmDepartureTimeBtn" value="farmDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <h3 class="page-header">Potato Solutions</h3>
             <div class="form-group">
                 <label for="rwlArrivalTime" class="control-label col-md-2">Arrival Time</label>
@@ -222,39 +222,39 @@ include('../header.php');
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="rwlArrivalTime" name="rwlArrivalTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                         <button type="button" class="btn btn-primary" name="rwlArrivalTimeBtn" value="rwlArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="rwlUnloadTime" class="control-label col-md-2">Unload Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="rwlUnloadTime" name="rwlUnloadTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                         <button type="button" class="btn btn-primary" name="rwlUnloadTimeBtn" value="rwlUnloadTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;Unload Time&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
-                        </div>  
+                        </div>
                         <div class="col-md-1">
                         <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <hr>
             <div class="form-group">
                 <label for="ticketNumber" class="control-label col-md-2">Ticket Number</label>

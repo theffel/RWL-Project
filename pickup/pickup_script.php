@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert pickup
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submit'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$driver = $db->real_escape_string($_POST['driver']);
 	$dispatcher = $db->real_escape_string($_POST['dispatcher']);
@@ -42,15 +42,15 @@ if (isset($_POST['submit'])) {
 	$ticketNumber = $db->real_escape_string($_POST['ticketNumber']);
 	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
 	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
-	
-	$query = "INSERT INTO pick_up (pd_date, driver_id, dispatcher_id, trailer_id, truck_id, farm_id, warehouse_id, bin_id, bin_marker, field_id, arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight, potato_id, emp_id) 
+
+	$query = "INSERT INTO pick_up (pd_date, driver_id, dispatcher_id, trailer_id, truck_id, farm_id, warehouse_id, bin_id, bin_marker, field_id, arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight, potato_id, emp_id)
 				VALUES ('" . $date . "'," . $driver . "," . $dispatcher . "," . $trailer . "," . $truck . "," . $farm . "," . $warehouse . "," . $bin . "," . $binMarker . "," . $field . ",'" . $farmArrivalTime . "','" . $loadTime . "','" . $farmDepartureTime . "','" . $rwlArrivalTime . "','" . $rwlUnloadTime . "','" . $rwlDepartureTime . "'," . $ticketNumber . "," . $grossWeight . "," . $tareWeight . "," . $potato . "," . $empId . ")";
 	$result = $db->query($query);
 }
 
 // Load array with incoming deliveries for day by employee
-$query = "SELECT pickup_id, pd_date, truck_num, trailer_num, farm_name, warehouse_name 
-			FROM pick_up INNER JOIN truck ON pick_up.truck_id = truck.truck_id 
+$query = "SELECT pickup_id, pd_date, truck_num, trailer_num, farm_name, warehouse_name
+			FROM pick_up INNER JOIN truck ON pick_up.truck_id = truck.truck_id
 						INNER JOIN trailer ON pick_up.trailer_id = trailer.trailer_id
 						INNER JOIN farm ON pick_up.farm_id = farm.farm_id
 						INNER JOIN warehouse ON pick_up.warehouse_id = warehouse.warehouse_id
@@ -61,41 +61,40 @@ if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
 		$pickupId = $row['pickup_id'];
 		$date = $row['pd_date'];
-		$truck = $row['truck_num']; 
+		$truck = $row['truck_num'];
 		$trailer = $row['trailer_num'];
-		$farm = $row['farm_name'];   
-		$warehouse = $row['warehouse_name']; 
+		$farm = $row['farm_name'];
+		$warehouse = $row['warehouse_name'];
 		$incomingDeliveries[] = array($pickupId, $date, $truck, $trailer, $farm, $warehouse);
 		$_SESSION['incomingDeliveries'] = $incomingDeliveries;
 	}
 
-	// Select incoming deliveries 
-	for ($x = 0; $x < count($_SESSION['incomingDeliveries']); $x++){	
+	// Select incoming deliveries
+	for ($x = 0; $x < count($_SESSION['incomingDeliveries']); $x++){
 		if (isset($_POST[$incomingDeliveries[$x][0]])) {
 			$_SESSION['deliveryNum'] = $incomingDeliveries[$x][0];
-			$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight 
+			$query = "SELECT arrive_time_farm, load_time, depart_time_farm, arrive_time_rwl, unload_time, depart_time_rwl, ticket_num, gross_weight, tare_weight
 				FROM pick_up WHERE pickup_id = " . $_SESSION['deliveryNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$arriveTimeFarm = $row['arrive_time_farm'];
 			$loadTime = $row['load_time'];
-			$departTimeFarm = $row['depart_time_farm']; 
+			$departTimeFarm = $row['depart_time_farm'];
 			$arriveTimeRwl = $row['arrive_time_rwl'];
-			$unloadTime = $row['unload_time'];   
-			$departTimeRwl = $row['depart_time_rwl']; 
-			$ticketNum = $row['ticket_num'];   
-			$grossWeight = $row['gross_weight']; 
-			$tareWeight = $row['tare_weight'];   
+			$unloadTime = $row['unload_time'];
+			$departTimeRwl = $row['depart_time_rwl'];
+			$ticketNum = $row['ticket_num'];
+			$grossWeight = $row['gross_weight'];
+			$tareWeight = $row['tare_weight'];
 			$editIncomingDeliveries[] = array($arriveTimeFarm, $loadTime, $departTimeFarm, $arriveTimeRwl, $unloadTime, $departTimeRwl, $ticketNum,
-				$grossWeight, $tareWeight); 
+				$grossWeight, $tareWeight);
 			$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
 			header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
 		}
-
 	}
 }
 
-if (isset($_POST['update'])) {	
+if (isset($_POST['update'])) {
 	$farmArrivalTime = $db->real_escape_string($_POST['farmArrivalTime']);
 	$loadTime = $db->real_escape_string($_POST['loadTime']);
 	$farmDepartureTime = $db->real_escape_string($_POST['farmDepartureTime']);
@@ -105,16 +104,16 @@ if (isset($_POST['update'])) {
 	$ticketNumber = $db->real_escape_string($_POST['ticketNumber']);
 	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
 	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
-	
+
 	$query = "UPDATE pick_up SET arrive_time_farm = '" . $farmArrivalTime . "', load_time = '" . $loadTime . "',
 				depart_time_farm = '" . $farmDepartureTime . "', arrive_time_rwl = '" . $rwlArrivalTime . "',
 				unload_time = '" . $rwlUnloadTime . "', depart_time_rwl = '" . $rwlDepartureTime . "',
 				ticket_num = " . $ticketNumber . ", gross_weight = " . $grossWeight . ", tare_weight = " . $tareWeight . "
 				WHERE pickup_id = " . $_SESSION['deliveryNum'];
 	$result = $db->query($query);
-	
-	// kill session var 'editIncomingDeliveries'
-	unset($_SESSION['editIncomingDeliveries']);
+
+	// kill session var 'incomingDeliveries'
+	unset($_SESSION['incomingDeliveries']);
 	header("location:index.php");
-} 
+}
 ?>

@@ -15,16 +15,13 @@
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-23
  */
- 
+
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-include('../session_load.php');
-include('washLine_script.php');
-
-// Include the header.php file
+include('wash_line_script.php');
 include('../header.php');
 ?>
     <!-- Page Content -->
@@ -35,7 +32,7 @@ include('../header.php');
                 <h1 class="page-header">Wash Line Cleaning</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a></li>
-                    <li><a href="index.php">Wash line Cleaning</a></li>
+                    <li><a href="index.php">Wash Line Cleaning</a></li>
                     <li class="active">Edit</li>
                 </ol>
             </div>
@@ -45,27 +42,23 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-
-//        print_r( $_SESSION['editLineCleaning']);
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 5) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
             ?>
             <h2 class="page-header">Edit Plant Cleaning</h2>
-            <form class="form-horizontal"  name="plantForm" id="plantForm" method="POST" action="edit_washLine.php">
+            <form class="form-horizontal"  name="plantForm" id="plantForm" method="POST" action="edit_wash_line.php">
                 <div class="form-group">
                     <label for="date" class="control-label col-md-2">Date</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editLineCleaning'][0][0]; ?>">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="equipClean" class="control-label col-md-2">Equipment List</label>
                     <div class="col-md-10">
                         <select class="form-control" name="equipment">
                             <?php
                             for ($x = 0; $x < count($equipment); $x++){
-
                                 if (strcmp($equipment[$x][1], $_SESSION['editLineCleaning'][0][1]) == 0) {
                                     echo '<option selected value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                                 } else {
@@ -76,14 +69,12 @@ include('../header.php');
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="descClean" value="<?php echo $_SESSION['editLineCleaning'][0][2];?>">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                     <div class="col-md-10">
@@ -100,7 +91,6 @@ include('../header.php');
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" class="btn btn-primary" name="update" value="Update"/>
@@ -120,6 +110,5 @@ include('../header.php');
 <script src="../js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/device_javascripts/camera_control.js"></script>
 </body>
 </html>

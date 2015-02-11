@@ -59,31 +59,35 @@
 					else{			
 						echo "Error: " . $query . "<br>" . $db->error;
 						$db->close();
+						exit;
 					}
 				}
 				else{			
 					echo "Error: " . $query . "<br>" . $db->error;
 					$db->close();
+					exit;
 				}
 				
 			}
 			else{			
 				echo "Error: " . $query . "<br>" . $db->error;
 				$db->close();
+				exit;
 			}
 				
 		}
 		
 		// get submit from add warehouse
-		else if (isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehousePhoneNum'])) {
+		else if (isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehouseProvince']) && isset($_POST['warehousePhoneNum'])) {
 			$farmId = $_GET["id"];
 			$warehouseName = ($_POST['warehouseName']);
 			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
+			$warehouseProvince = ($_POST['warehouseProvince']);
 			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
-
+			
 
 			// Create query
-			$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_phone, created) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}',  '{$warehousePhoneNum}', CURRENT_TIMESTAMP)";
+			$query = "INSERT INTO `warehouse` (farm_id, warehouse_name, warehouse_civic_address, warehouse_prov, warehouse_phone, created) VALUES ('{$farmId}', '{$warehouseName}', '{$warehouseCivAddress}', '{$warehouseProvince}',  '{$warehousePhoneNum}', CURRENT_TIMESTAMP)";
 				
 			if ($db->query($query) === TRUE) {
 				$db->close();
@@ -93,6 +97,7 @@
 			} else {
 				echo "Error: " . $query . "<br>" . $db->error;
 				$db->close();
+				exit;
 			}			
 		}
 				
@@ -114,6 +119,7 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}
 		}
 							
@@ -135,11 +141,12 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}
 		}			
 									
 		//add employee
-		else if (isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePrimaryECFN']) && isset($_POST['employeePrimaryECLN']) && isset($_POST['employeePrimaryECPhoneNum'])){
+		else if (isset($_POST['employeePosId']) && isset($_POST['employeeSIN']) && isset($_POST['employeeFN']) && isset($_POST['employeeLN']) && isset($_POST['employeeMN']) && isset($_POST['employeeAddress']) && isset($_POST['employeeCity']) && isset($_POST['employeePC']) && isset($_POST['employeePhoneNum']) && isset($_POST['employeeEmail']) && isset($_POST['employeeGender']) && isset($_POST['employeeDOB']) && isset($_POST['employeePrimaryECFN']) && isset($_POST['employeePrimaryECLN']) && isset($_POST['employeePrimaryECPhoneNum']) && isset($_POST['employeeSecondaryECFN']) && isset($_POST['employeeSecondaryECLN']) && isset($_POST['employeeSecondaryECPhoneNum'])){
 			$employeePosId = $_POST['employeePosId'];
 			$employeeSIN = $_POST['employeeSIN'];
 			$employeeFN = $_POST['employeeFN'];
@@ -155,6 +162,9 @@
 			$employeePrimaryECFN = $_POST['employeePrimaryECFN'];
 			$employeePrimaryECLN = $_POST['employeePrimaryECLN'];
 			$employeePrimaryECPhoneNum = $_POST['employeePrimaryECPhoneNum'];
+			$employeeSecondaryECFN = $_POST['employeeSecondaryECFN'];
+			$employeeSecondaryECLN = $_POST['employeeSecondaryECLN'];
+			$employeeSecondaryECPhoneNum = $_POST['employeeSecondaryECPhoneNum'];
 						
 
 			// Create query
@@ -165,27 +175,31 @@
 				$queryEmp = "select emp_id from employee where created = CURRENT_TIMESTAMP limit 1";
 				$emp = $db->query($queryEmp)->fetch_assoc();
 				$empId = $emp['emp_id'];
-				
-				//add primary emergency contact
-				$queryPEC = "INSERT INTO `employee_emergency_contact` (emerg_contact_id, emp_id, emerg_first_name, emerg_last_name, emerg_phone) VALUES ('1','{$empId}', '{$employeePrimaryECFN}', '{$employeePrimaryECLN}', '{$employeePrimaryECPhoneNum}')";
-				if ($db->query($queryPEC) === TRUE) {
-				
-					//add secondary emergency contact
-					if(isset($_POST['employeeSecondaryECFN']) && isset($_POST['employeeSecondaryECLN']) && isset($_POST['employeeSecondaryECPhoneNum'])){
-						$employeeSecondaryECFN = $_POST['employeeSecondaryECFN'];
-						$employeeSecondaryECLN = $_POST['employeeSecondaryECLN'];
-						$employeeSecondaryECPhoneNum = $_POST['employeeSecondaryECPhoneNum'];
+				if($empId > 0){
+					//add primary emergency contact
+					$queryPEC = "INSERT INTO `employee_emergency_contact` (emerg_contact_id, emp_id, emerg_first_name, emerg_last_name, emerg_phone) VALUES ('1','{$empId}', '{$employeePrimaryECFN}', '{$employeePrimaryECLN}', '{$employeePrimaryECPhoneNum}')";
+					if ($db->query($queryPEC) === TRUE) {
+					
+						//add secondary emergency contact
 						$querySEC = "INSERT INTO `employee_emergency_contact` (emerg_contact_id, emp_id, emerg_first_name, emerg_last_name, emerg_phone) VALUES ('2', '{$empId}', '{$employeeSecondaryECFN}', '{$employeeSecondaryECLN}', '{$employeeSecondaryECPhoneNum}')";
 						if ($db->query($querySEC) === false) {
-							echo "Error: " . $query . "<br>" . $db->error;
+							echo "Error: " . $querySEC . "<br>" . $db->error;
 							$db->close();
+							exit;
 						}
+						
+						
 					}
-					
+					else {
+						echo "Error: " . $queryPEC . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
 				}
 				else {
-					echo "Error: " . $query . "<br>" . $db->error;
+					echo "Error: " . $queryEmp . "<br>" . $db->error;
 					$db->close();
+					exit;
 				}
 				echo "New record created successfully";
 				$db->close();
@@ -196,6 +210,7 @@
 			else {
 				echo "Error: " . $query . "<br>" . $db->error;
 				$db->close();
+				exit;
 			}
 		}
 						
@@ -220,6 +235,7 @@
 			else {
 				echo "Error: " . $query . "<br>" . $db->error;
 				$db->close();
+				exit;
 			}
 		}
 					
@@ -242,6 +258,7 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}					
 		}
 			
@@ -264,6 +281,7 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}					
 		}
 			
@@ -287,6 +305,7 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}	
 		}
 
@@ -310,6 +329,7 @@
 			else{
 			echo "Error: " . $query . "<br>" . $db->error;
 			$db->close();
+			exit;
 			}	
 		}
 			

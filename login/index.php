@@ -15,10 +15,8 @@
  * @since       2015-01-12
  */
 
-// Include the database.php file
+// Include php files
 include('login_script.php');
-
-// Include the header.php file
 include('../header.php');
 ?>
 <!-- Page Content -->

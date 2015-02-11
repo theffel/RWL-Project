@@ -16,8 +16,9 @@
  * @since       2015-01-2r
  */
 
+// Include database.php
 include('../database.php');
-	
+
 $warehouseId = intval($_GET['q']);
 $query = "SELECT bin_id, bin_name FROM warehouse_bin WHERE warehouse_id=" . $warehouseId;
 $result = $db->query($query);

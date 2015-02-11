@@ -18,9 +18,13 @@
 // Start the session
 session_start();
 
-// Include php files
+// Include the database.php file
 include('../database.php');
+
+// Include the header.php file
 include('../header.php');
+
+// Include the sample_script.php file
 include('sample_script.php');
 ?>
     <!-- Page Content -->
@@ -53,17 +57,11 @@ include('sample_script.php');
             <div class="form-group row">
                 <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="trailer">
-                        <?php
-                        for ($x = 0; $x < count($trailers); $x++){
-                            echo '<option value="' . $trailers[$x][0] .'">' . $trailers[$x][1] .'</option>';
-                        }
-                        ?>
-                    </select>
+                    <input type="text" class="form-control" name="trailer" value= "<?php echo $_SESSION['editSamples'][0][0]; ?>">
                 </div>
                 <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="numOfSample" value="">
+                    <input type="text" class="form-control" name="numOfSample" value="<?php echo $_SESSION['editSamples'][0][1]; ?>">
                 </div>
             </div>
 
@@ -71,27 +69,27 @@ include('sample_script.php');
                 <label for="incomingOutgoing" class="control-label col-md-2">Incoming / Outgoing</label>
                 <div class="col-md-4">
                     <ul class="list-inline">
-                        <li><input type="radio" name="incomingOutgoing" value="0"> Incoming</li>
-                        <li><input type="radio" name="incomingOutgoing" value="1"> Outgoing</li>
+                        <?php
+                        if ($_SESSION['editSamples'][0][2] == 0 ) {
+                            echo '<li><input type="radio" name="incomingOutgoing" value="0" checked> Incoming</li>';
+                            echo '<li><input type="radio" name="incomingOutgoing" value="1"> Outgoing</li>';
+                        } else {
+                            echo '<li><input type="radio" name="incomingOutgoing" value="0" > Incoming</li>';
+                            echo '<li><input type="radio" name="incomingOutgoing" value="1" checked> Outgoing</li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="potato" id="potato">
-                        <option value="" disabled selected style="display:none;"></option>
-                        <?php
-                            for ($x = 0; $x < count($potatoes); $x++){
-                            echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
-                            }
-                        ?>
-                    </select>
+                    <input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editSamples'][0][3]; ?>">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">
+                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editSamples'][0][4]; ?>">                  
                 </div>
             </div>
 
@@ -103,7 +101,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="totalWeight" class="col-md-1 control-label">Sample Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="totalWeight" value="" onchange="setSampleWeight(this.value)">
+                            <input type="text" class="form-control" name="totalWeight" value="<?php echo $_SESSION['editSamples'][0][5]; ?>" onchange="setSampleWeight(this.value)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -121,7 +119,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="useableWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="unuseableWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="unuseableWeight" value="<?php echo $_SESSION['editSamples'][0][6]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -137,7 +135,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="rotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="rotWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="rotWeight" value="<?php echo $_SESSION['editSamples'][0][7]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="rotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -153,7 +151,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="internalWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="internalWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="internalWeight" value="<?php echo $_SESSION['editSamples'][0][8]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="internalPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -171,7 +169,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="pitRotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="pitrotWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="pitrotWeight" value="<?php echo $_SESSION['editSamples'][0][9]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="pitRotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -187,7 +185,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="wirewormWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="wirewormWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="wirewormWeight" value="<?php echo $_SESSION['editSamples'][0][10]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="wirewormPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -205,7 +203,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="jellyEndWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="jellyendWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="jellyendWeight" value="<?php echo $_SESSION['editSamples'][0][11]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="jellyEndPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -221,7 +219,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="otherWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="otherWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="otherWeight" value="<?php echo $_SESSION['editSamples'][0][12]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="otherPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -239,7 +237,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="hollowHeartWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="hollowheartWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="hollowheartWeight" value="<?php echo $_SESSION['editSamples'][0][13]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="hollowHeartPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -255,7 +253,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="scabWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="scabWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="scabWeight" value="<?php echo $_SESSION['editSamples'][0][14]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="scabPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -271,7 +269,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="sunburnWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="sunburnWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="sunburnWeight" value="<?php echo $_SESSION['editSamples'][0][15]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="sunburnPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -289,7 +287,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="mechBruiseWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="mechbruiseWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="mechbruiseWeight" value="<?php echo $_SESSION['editSamples'][0][16]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="mechBruisePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -305,7 +303,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="smallsWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="smallsWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="smallsWeight" value="<?php echo $_SESSION['editSamples'][0][17]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="smallsPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -321,7 +319,7 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="10ozWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="tenozsWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="tenozsWeight" value="<?php echo $_SESSION['editSamples'][0][18]; ?>" onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="10ozPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
@@ -334,57 +332,31 @@ include('sample_script.php');
             <div class="form-group">
                 <label for="airWeight" class="control-label col-md-2">Air Weight</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="airWeight">
+                    <input type="text" class="form-control" name="airWeight" value="<?php echo $_SESSION['editSamples'][0][19]; ?>">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="waterWeight" class="control-label col-md-2">Water Weight</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="waterWeight">
+                    <input type="text" class="form-control" name="waterWeight" value="<?php echo $_SESSION['editSamples'][0][20]; ?>">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="rockMaterial" class="control-label col-md-2">Rock & Foreign Material</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="rockWeight">
+                    <input type="text" class="form-control" name="rockWeight" value="<?php echo $_SESSION['editSamples'][0][21]; ?>">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
         <hr>
-
-        <h2 class="page-header">Edit Samples</h2>
         <?php
-            if (!empty($samples)) {
-                echo '<table class="table">
-                        <thead>
-                           <tr>
-                                <th>Date</th>
-                                <th>Trailer</th>
-                                <th>Number</th>
-                                <th>Potato</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
-                for ($x = 0; $x < count($samples); $x++) {
-                    echo '<tr>
-                        <td>'. $samples[$x][1].'</td>
-                        <td>'. $samples[$x][2].'</td>
-                        <td>'. $samples[$x][3].'</td>
-                        <td>'. $samples[$x][4].'</td>
-                        <td><input type="submit" class="btn btn-primary" name="'. $samples[$x][0].'" value="Edit"/></td>
-                    </tr>';
-                }
-                echo '</tbody></table></form>';
-            } else {
-                echo "<p>There are currently no samples to view.</p>";
-            }
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
@@ -394,7 +366,7 @@ include('sample_script.php');
 
 
 
-
+ 
     </div>
     <!-- /.container -->
     <!-- jQuery -->

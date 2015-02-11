@@ -37,6 +37,8 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin_emp_list.php">Employee List</a>
+                    </li>
                     <li class="active">Add employee</li>
                 </ol>
             </div>
@@ -55,7 +57,7 @@ include('header.php');
 
 					<!--employee position ID-->
 					<div class="form-group">
-						<label for="inputEmployeePositionId" class="control-label col-xs-2">Employee position Id</label>
+						<label for="inputEmployeePositionId" class="control-label col-xs-2">Position Id</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePosId" id="employeePosId" placeholder="##" required data-validation-required-message="Please enter the designated employee position ID.">
 						</div>
@@ -63,7 +65,7 @@ include('header.php');
 					
 					<!--employee SIN-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Social Insurance Number</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Social Insurance Number</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeSIN" id="employeeSIN" placeholder="#########" required data-validation-required-message="Please enter the designated employees SIN.">
 						</div>
@@ -71,7 +73,7 @@ include('header.php');
 					
 					<!--employee FN-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee First Name</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">First Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeFN" id="employeeFN" required data-validation-required-message="Please enter the designated employees first name.">
 						</div>
@@ -79,7 +81,7 @@ include('header.php');
 					
 					<!--employee LN-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Last Name</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Last Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeLN" id="employeeLN" required data-validation-required-message="Please enter the designated employees last name.">
 						</div>
@@ -87,7 +89,7 @@ include('header.php');
 					
 					<!--employee MN-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Middle Initial</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Middle Initial</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeMN" id="employeeMN" placeholder="M." required data-validation-required-message="Please enter the designated employees middle initial.">
 						</div>
@@ -95,7 +97,7 @@ include('header.php');
 					
 					<!--employee Address-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Address</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Address</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeAddress" id="employeeAddress" required data-validation-required-message="Please enter the designated employees address.">
 						</div>
@@ -103,7 +105,7 @@ include('header.php');
 					
 					<!--employee City-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee City</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">City</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeCity" id="employeeCity" required data-validation-required-message="Please enter the designated employee City.">
 						</div>
@@ -111,7 +113,7 @@ include('header.php');
 					
 					<!--employee PC-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Postal Code</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Postal Code</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePC" id="employeePC" placeholder="A#A#A#" required data-validation-required-message="Please enter the designated employee postal code.">
 						</div>
@@ -119,7 +121,7 @@ include('header.php');
 					
 					<!--employee PhoneNum-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Phone Number</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Phone Number</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePhoneNum" id="employeePhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the designated employee phone#.">
 						</div>
@@ -127,7 +129,7 @@ include('header.php');
 					
 					<!--employee Email-->
 					<div class="form-group">
-						<label for="inputEmployeeEmail" class="control-label col-xs-2">Employee Email</label>
+						<label for="inputEmployeeEmail" class="control-label col-xs-2">Email</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeEmail" id="employeeEmail" required data-validation-required-message="Please enter the designated employee Email.">
 						</div>
@@ -135,23 +137,28 @@ include('header.php');
 					
 					<!--employee Gender-->
 					<div class="form-group">
-						<label for="inputEmployeeGender" class="control-label col-xs-2">Employee Gender</label>
+						<label for="inputEmployeeGender" class="control-label col-xs-2">Gender</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeGender" id="employeeGender" placeholder="0-male 1-female"  required data-validation-required-message="Please enter the designated employee Gender.">
+							<select name="employeeGender" id="employeeGender" form="addemployeeForm">
+								<option value="0" selected>Male</option>
+								<option value="1">Female</option>
+							</select>
 						</div>
 					</div>
 					
 					<!--employee DOB-->
 					<div class="form-group">
-						<label for="inputemployeeId" class="control-label col-xs-2">Employee Date of Birth</label>
+						<label for="inputemployeeId" class="control-label col-xs-2">Date of Birth</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeeDOB" id="employeeDOB" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the designated employee date of birth.">
 						</div>
 					</div>
 					
+					<hr />
+					
 					<!--Primary employee emergency contact FN-->
 					<div class="form-group">
-						<label for="inputemployeePrimaryECFN" class="control-label col-xs-2">Employee Primary Emergency contact First Name</label>
+						<label for="inputemployeePrimaryECFN" class="control-label col-xs-2">Primary Emergency contact First Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePrimaryECFN" id="employeePrimaryECFN" required data-validation-required-message="Please enter the designated employees emergency contacts first name.">
 						</div>
@@ -159,7 +166,7 @@ include('header.php');
 					
 					<!--Primary employee emergency contact LN-->
 					<div class="form-group">
-						<label for="inputemployeePrimaryECLN" class="control-label col-xs-2">Employee Primary Emergency contact Last Name</label>
+						<label for="inputemployeePrimaryECLN" class="control-label col-xs-2">Primary Emergency contact Last Name</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePrimaryECLN" id="employeePrimaryECLN" required data-validation-required-message="Please enter the designated employees emergency contacts last name.">
 						</div>
@@ -167,33 +174,35 @@ include('header.php');
 
 					<!--Primary employee emergency contact PhoneNum-->
 					<div class="form-group">
-						<label for="inputemployeePrimaryECPN" class="control-label col-xs-2">Employee Primary Emergency contact Phone Number</label>
+						<label for="inputemployeePrimaryECPN" class="control-label col-xs-2">Primary Emergency contact Phone Number</label>
 						<div class="col-xs-10">
 							<input type="text" class="form-control" name="employeePrimaryECPhoneNum" id="employeePrimaryECPhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the designated employees emergency contacts phone#.">
 						</div>
 					</div>
 					
+					<hr />
+					
 					<!--Secondary employee emergency contact FN-->
 					<div class="form-group">
-						<label for="inputemployeeSecondaryECFN" class="control-label col-xs-2">Employee Secondary Emergency contact First Name</label>
+						<label for="inputemployeeSecondaryECFN" class="control-label col-xs-2">Secondary Emergency contact First Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeSecondaryECFN" id="employeeSecondaryECFN" required data-validation-required-message="Please enter the designated employees emergency contacts first name.">
+							<input type="text" class="form-control" name="employeeSecondaryECFN" id="employeeSecondaryECFN">
 						</div>
 					</div>
 					
 					<!--Secondary employee emergency contact LN-->
 					<div class="form-group">
-						<label for="inputemployeeSecondaryECLN" class="control-label col-xs-2">Employee Secondary Emergency contact Last Name</label>
+						<label for="inputemployeeSecondaryECLN" class="control-label col-xs-2">Secondary Emergency contact Last Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeSecondaryECLN" id="employeeSecondaryECLN" required data-validation-required-message="Please enter the designated employees emergency contacts last name.">
+							<input type="text" class="form-control" name="employeeSecondaryECLN" id="employeeSecondaryECLN">
 						</div>
 					</div>
 
 					<!--Secondary employee emergency contact PhoneNum-->
 					<div class="form-group">
-						<label for="inputemployeeSecondaryECPN" class="control-label col-xs-2">Employee Secondary Emergency contact Phone Number</label>
+						<label for="inputemployeeSecondaryECPN" class="control-label col-xs-2">Secondary Emergency contact Phone Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeSecondaryECPhoneNum" id="employeeSecondaryECPhoneNum" placeholder="902#######" required data-validation-required-message="Please enter the designated employees emergency contacts phone#.">
+							<input type="text" class="form-control" name="employeeSecondaryECPhoneNum" id="employeeSecondaryECPhoneNum" placeholder="902#######">
 						</div>
 					</div>
 			

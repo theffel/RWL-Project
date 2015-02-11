@@ -20,8 +20,8 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert product reception
-if (isset($_POST['submit'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
+if (isset($_POST['submit'])) {
+	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$potato = $db->real_escape_string($_POST['potato']);
 	$loadIDInfo = $db->real_escape_string($_POST['loadIDInfo']);
@@ -46,10 +46,10 @@ if (!empty($result)) {
 	while ($row = $result->fetch_assoc()) {
 		$receptionId = $row['reception_id'];
     	$date = $row['reception_date'];
-    	$potato = $row['potato_name']; 
+    	$potato = $row['potato_name'];
     	$farm = $row['farm_name'];
-    	$loadIDInfo = $row['load_info_id'];   
-    	$quantity = $row['quantity_recieved'];  
+    	$loadIDInfo = $row['load_info_id'];
+    	$quantity = $row['quantity_recieved'];
     	$productionReception[] = array($receptionId, $date, $potato, $farm, $loadIDInfo, $quantity);
     	$_SESSION['productionReception'] = $productionReception;
 	}
@@ -73,7 +73,7 @@ if (!empty($result)) {
     		$CFIANotifiedBy = $row['notified_by'];
     		$movementCert = $row['movement_certificate'];
     		$accepted = $row['accepted'];
-			$editProductionReception[] = array($date, $farm, $potato, $loadIDInfo, $quantity, $bulkOther, $washed, $cleanliness, $CFIANotified, $CFIANotifiedBy, $movementCert, $accepted); 
+			$editProductionReception[] = array($date, $farm, $potato, $loadIDInfo, $quantity, $bulkOther, $washed, $cleanliness, $CFIANotified, $CFIANotifiedBy, $movementCert, $accepted);
 			$_SESSION['editProductionReception'] = $editReceipt;
 			header("location:edit_product.php?id=" . $_SESSION['receptionNum'] );
 		}
@@ -81,8 +81,8 @@ if (!empty($result)) {
 }
 
 // Update product reception
-if (isset($_POST['update'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
+if (isset($_POST['update'])) {
+	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$potato = $db->real_escape_string($_POST['potato']);
 	$loadIDInfo = $db->real_escape_string($_POST['loadIDInfo']);
@@ -94,20 +94,10 @@ if (isset($_POST['update'])) {
 	$CFIANotifiedBy = $db->real_escape_string($_POST['CFIANotifiedBy']);
 	$movementCert = $db->real_escape_string($_POST['movementCert']);
 	$accepted = $db->real_escape_string($_POST['accepted']);
-	
-	$query = "SELECT farm_id FROM farm WHERE farm_name = '" . $farm . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$farmId = $row['farm_id'];
 
-	$query = "SELECT potato_id FROM potato WHERE potato_name = '" . $potato . "'";
+	$query = "UPDATE production_reception SET reception_date = '" . $date . "', potato_id = " . $potato . ", farm_id =" . $farm . ", load_info_id = " . $loadIDInfo . ", quantity_recieved = " . $quanRecieved . ", washed = " . $washed . ", trailer_tandom = " . $bulkOther . ", CFIA_notified = " . $CFIANotified . ", notified_by = " . $CFIANotifiedBy . ", movement_certificate = " . $movementCert . ", accepted = " . $accepted . ", cleanliness = " . $cleanliness . " WHERE reception_id = " . $_SESSION['receptionNum'];
 	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$potatoId = $row['potato_id'];
-	
-	$query = "UPDATE production_reception SET reception_date = '" . $date . "', potato_id = " . $potatoId . ", farm_id =" . $farmId . ", load_info_id = " . $loadIDInfo . ", quantity_recieved = " . $quanRecieved . ", washed = " . $washed . ", trailer_tandom = " . $bulkOther . ", CFIA_notified = " . $CFIANotified . ", notified_by = " . $CFIANotifiedBy . ", movement_certificate = " . $movementCert . ", accepted = " . $accepted . ", cleanliness = " . $cleanliness . " WHERE reception_id = " . $_SESSION['receptionNum'];
-	$result = $db->query($query);
-	
+
 	// kill session var 'productionReception'
 	unset($_SESSION['productionReception']);
 	header("location:index.php");
