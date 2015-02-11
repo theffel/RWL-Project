@@ -8,6 +8,7 @@
  * @category    CategoryName
  * @package     PackageName
  * @author      Zachary Theriault
+ * @author      Stirling Giddings
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     x.xx
