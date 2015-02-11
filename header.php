@@ -65,6 +65,7 @@
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
                                                 echo '<a href="'. ROOT . '/delivery">Delivery</a>';
                                             } if ($employeeType == 3) { // Production manager
+                                                echo '<a href="'. ROOT . '/change_farm">Change Farm</a>';
                                                 echo '<a href="'. ROOT . '/downtime">Downtime</a>';
                                                 echo '<a href="'. ROOT . '/waste_disposal">Waste Disposal</a>';
                                             } if ($employeeType == 3 || $employeeType == 2 || $employeeType == 5) { // Production manager, dispatcher or line worker
