@@ -91,7 +91,6 @@ if (!empty($result)) {
 			$_SESSION['editIncomingDeliveries'] = $editIncomingDeliveries;
 			header ("location:edit_pickup.php?id=" . $_SESSION['deliveryNum'] );
 		}
-
 	}
 }
 
@@ -113,8 +112,8 @@ if (isset($_POST['update'])) {
 				WHERE pickup_id = " . $_SESSION['deliveryNum'];
 	$result = $db->query($query);
 
-	// kill session var 'editIncomingDeliveries'
-	unset($_SESSION['editIncomingDeliveries']);
+	// kill session var 'incomingDeliveries'
+	unset($_SESSION['incomingDeliveries']);
 	header("location:index.php");
 }
 ?>
