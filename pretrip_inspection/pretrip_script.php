@@ -227,6 +227,36 @@ if (isset($_POST['submit'])) {
 		$rearCargoTiedowns = 0;
 	}
 
+	if (isset($_POST['rightFuelTankCap'])) {
+		$rightFuelTankCap = $db->real_escape_string($_POST['rightFuelTankCap']);
+	} else {
+		$rightFuelTankCap = 0;
+	}
+
+	if (isset($_POST['rightSidemarkerLights'])) {
+		$rightSidemarkerLights = $db->real_escape_string($_POST['rightSidemarkerLights']);
+	} else {
+		$rightSidemarkerLights = 0;
+	}
+
+	if (isset($_POST['rightReflectors'])) {
+		$rightReflectors = $db->real_escape_string($_POST['rightReflectors']);
+	} else {
+		$rightReflectors = 0;
+	}
+
+	if (isset($_POST['rightTiresWheels'])) {
+		$rightTiresWheels = $db->real_escape_string($_POST['rightTiresWheels']);
+	} else {
+		$rightTiresWheels = 0;
+	}
+	
+	if (isset($_POST['rightCargoTiedowns'])) {
+		$rightCargoTiedowns = $db->real_escape_string($_POST['rightCargoTiedowns']);
+	} else {
+		$rightCargoTiedowns = 0;
+	}
+
 	if (isset($_POST['onCombinationsHosesCouplers'])) {
 		$onCombinationsHosesCouplers = $db->real_escape_string($_POST['onCombinationsHosesCouplers']);
 	} else {
@@ -270,55 +300,73 @@ if (isset($_POST['submit'])) {
 	}
 
 	
-	$query = INSERT INTO `pretrip_inspection`(`emp_id`, `inspect_date`, `truck_id`, `trailer_id`, `park_break`, `cleanliness`,
-				 `oil_pressure`, `air_pressure`, `low_air_warn`, `inst_pannel`, `horn`, `wiper_washer`, `heat_defrost`, `mirrors`, 
-				 `steering_wheel`, `emerg_trailer_breaks`, `fire_extinguisher_warning_device`, `headlights`, `clearence_lights`, 
-				 `identfy_lights`, `turn_signals_4way_flashers`, `wheel_lug_front`, `fuel_tank_cap_left`, `sidemarker_lights_left`,
-				 `reflectors_left`, `wheel_lug_left`, `cargo_tiedowns_doors_left`, `tail_lights`, `stop_lights`, 
-				 `turn_signals_4way_flashers_rear`, `clearence_lights_rear`, `identfy_lights_rear`, `reflectors_rear`, `wheel_lug_rear`,
-				 `bumper`, `cargo_tiedowns_doors_rear`, `fuel_tank_cap_right`, `sidemarker_lights_right`, `reflectors_right`, `wheel_lug_right`,
-				 `cargo_tiedowns_doors_right`, `hoses_couplers`, `electrical_connector`, `couplings`, `marking_placecards`, `proper_ship_papers`,
-				 `release_trailer_emerg_breaks`, `apply_service_breaks`) 
-			VALUES ( . $empId . ", '" . $date . "'," . $truck . ", " . $trailer . ",)";
+	$query = "INSERT INTO pretrip_inspection(emp_id, inspect_date, truck_id, trailer_id, park_break, cleanliness,
+				 oil_pressure, air_pressure, low_air_warn, inst_pannel, horn, wiper_washer, heat_defrost, mirrors, 
+				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, headlights, clearence_lights, 
+				 identfy_lights, turn_signals_4way_flashers, wheel_lug_front, fuel_tank_cap_left, sidemarker_lights_left,
+				 reflectors_left, wheel_lug_left, cargo_tiedowns_doors_left, tail_lights, stop_lights, 
+				 turn_signals_4way_flashers_rear, clearence_lights_rear, identfy_lights_rear, reflectors_rear, wheel_lug_rear,
+				 bumper, cargo_tiedowns_doors_rear, fuel_tank_cap_right, sidemarker_lights_right, reflectors_right, wheel_lug_right,
+				 cargo_tiedowns_doors_right, hoses_couplers, electrical_connector, couplings, marking_placecards, proper_ship_papers,
+				 release_trailer_emerg_breaks, apply_service_breaks) 
+			VALUES ( ". $empId . ", '" . $date . "'," . $truck . ", " . $trailer . ",". $parkingBrake . ", ". $cleanliness . ",
+				" . $engineOilPressure . ",". $engineAirPressure . ", ". $engineLowAir . ", ". $engineInstrumentPanel . ", " . $engineHorn . ",
+				" . $engineWindshieldWiper . "," . $engineHeaterDefroster . ", ". $engineMirrors . ", ". $engineSteeringWheel . ",
+				" . $engineTrailerBrakesEmergency . ",".  $engineAllLights . ", " . $engineFireExtinguisher . ", " . $frontHeadlights . ",
+				" . $frontClearanceLights . ", " . $frontIdentificationLights . "," . $frontTurnSignals . ", " . $frontTiresWheels . ", 
+				" . $leftFuelTankCap . ", " . $leftSidemarkerLights . "," . $leftReflectors . ", " . $leftTiresWheels . ", ". $leftCargoTiedowns . ",
+				" . $rearTailLights . ", " . $rearStopLights . "," . $rearTurnSignals . ", " . $rearClearanceLights . ",
+				" . $rearIdentificationLights . ", " . $rearReflectors . "," . $rearTiresWheels . ", " . $rearRearProtection . ", 
+				" . $rearCargoTiedowns . ", " . $rightFuelTankCap . ", " . $rightSidemarkerLights . "," . $rightReflectors . ", 
+				" . $rightTiresWheels . ", " . $rightCargoTiedowns . ", " . $onCombinationsHosesCouplers . ",
+				" . $onCombinationsElectricalConnector . ", " . $onCombinationsCouplings . ", " . $onHazMaterialsMarkingPlacards . ", 
+				" . $onHazMaterialsShippingPapers . ", " . $stopEngineReleaseTrailerBrakes . ", " . $stopEngineApplyBrakesAir . ")";
+
 	$result = $db->query($query);
 
 }
 
 
-// Load array with incoming deliveries for day by employee
-$query = "SELECT sample_id, sample_date, trailer_num, num_sample_per_load, potato_name FROM sample 
-						INNER JOIN trailer ON sample.trailer_id = trailer.trailer_id
-						INNER JOIN potato ON sample.potato_id = potato.potato_id						
-			WHERE sample_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY sample_date DESC";
+// Load array with pretrips for day by employee
+$query = "SELECT pretrip_id, inspect_date, trailer_num, truck_num FROM pretrip_inspection
+						INNER JOIN trailer ON pretrip_inspection.trailer_id = trailer.trailer_id
+						INNER JOIN truck ON pretrip_inspection.truck_id = truck.truck_id						
+			WHERE inspect_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY inspect_date DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
 	while ($row = $result->fetch_assoc()){
-		$sampleId = $row['sample_id'];
-		$date = $row['sample_date'];
+		$pretripId = $row['pretrip_id'];
+		$date = $row['inspect_date'];
+		$truck = $row['truck_num'];
 		$trailer = $row['trailer_num'];
-		$potato = $row['potato_name'];   
-		$numSample = $row['num_sample_per_load']; 
-		$samples[] = array($sampleId, $date, $trailer, $numSample, $potato);
-		$_SESSION['samples'] = $samples;
+		$pretrips[] = array($pretripId, $date, $truck, $trailer);
+		$_SESSION['pretrips'] = $pretrips;
 	}
 
-	// Select incoming deliveries 
-	for ($x = 0; $x < count($_SESSION['samples']); $x++){	
-		if (isset($_POST[$samples[$x][0]])) {
-			$_SESSION['sampleNum'] = $samples[$x][0];
-			$query = "SELECT num_sample_per_load, sample_date, unuseable_weight, rot_weight, internal_weight, pit_rot_weight,
-						wireworm_weight, jelly_end_weight, scab_weight, hollow_heart_weight, sunburn_weight, mech_bruise_weight, smalls_weight,
-						ten_oz_weight, air_weight, water_weight, rock_foreign_weight, total_sample_weight, other_weight, trailer_num, potato_name,
-						in_out FROM sample 
-						INNER JOIN trailer ON sample.trailer_id = trailer.trailer_id
-						INNER JOIN potato ON sample.potato_id = potato.potato_id
-						WHERE sample_id = " . $_SESSION['sampleNum'];
+	// Select pretrips
+	for ($x = 0; $x < count($_SESSION['pretrips']); $x++){	
+		if (isset($_POST[$pretrips[$x][0]])) {
+			$_SESSION['pretripNum'] = $pretrips[$x][0];
+			$query = "SELECT inspect_date, truck_num, trailer_num, park_break, cleanliness,
+				 oil_pressure, air_pressure, low_air_warn, inst_pannel, horn, wiper_washer, heat_defrost, mirrors, 
+				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, headlights, clearence_lights, 
+				 identfy_lights, turn_signals_4way_flashers, wheel_lug_front, fuel_tank_cap_left, sidemarker_lights_left,
+				 reflectors_left, wheel_lug_left, cargo_tiedowns_doors_left, tail_lights, stop_lights, 
+				 turn_signals_4way_flashers_rear, clearence_lights_rear, identfy_lights_rear, reflectors_rear, wheel_lug_rear,
+				 bumper, cargo_tiedowns_doors_rear, fuel_tank_cap_right, sidemarker_lights_right, reflectors_right, wheel_lug_right,
+				 cargo_tiedowns_doors_right, hoses_couplers, electrical_connector, couplings, marking_placecards, proper_ship_papers,
+				 release_trailer_emerg_breaks, apply_service_breaks FROM sample 
+						INNER JOIN trailer ON pretrip_inspection.trailer_id = trailer.trailer_id
+						INNER JOIN truck ON pretrip_inspection.truck_id = truck.truck_id		
+						WHERE pretrip_id = " . $_SESSION['pretripNum'];
 				
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
+			$inspectDate = $row['inspect_date'];
+			$truck = $row['truck_num'];			
 			$trailer = $row['trailer_num'];
-			$incomingOutgoing = $row['in_out'] ;
+			$parkBreak = $row['park_break'] ;
 			$numOfSample = $row['num_sample_per_load'];
 			$potato = $row['potato_name'];
 			$date = $row['sample_date'];
@@ -372,15 +420,7 @@ if (isset($_POST['update'])) {
 	$waterWeight = $db->real_escape_string($_POST['waterWeight']);	
 	$rockMaterial = $db->real_escape_string($_POST['rockWeight']);
 
-	$query = "SELECT trailer_id FROM trailer WHERE trailer_num = '" . $trailer . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$trailerId = $row['trailer_id'];
 
-	$query = "SELECT potato_id FROM potato WHERE potato_name = '" . $potato . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$potatoId = $row['potato_id'];
 	
 	$query = "UPDATE sample SET num_sample_per_load = " . $numOfSample . ", sample_date = '" . $sample_date . "', 
 		unuseable_weight = " . $unuseableWeight . ", rot_weight = " . $rotWeight . ", internal_weight = " . $internalWeight . ",

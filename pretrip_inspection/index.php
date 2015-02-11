@@ -18,13 +18,10 @@
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
-
-include('pretrip_script.php')
+include('pretrip_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -43,6 +40,7 @@ include('pretrip_script.php')
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $pretrips = (!empty($_SESSION['pretrips'])) ? $_SESSION['pretrips'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
@@ -198,16 +196,32 @@ include('pretrip_script.php')
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
                 </div>
             </div>
-
-        </form>
-
         <hr>
-
-        <h2 class="page-header">View Inspections</h2>
-        <p>There are currently no inspection to view.</p>
+        <h2 class="page-header">Edit Inspection</h2>
         <?php
-        }
-        else {
+            if (!empty($pretrips)) {
+                echo '<table class="table">
+                        <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Truck</th>
+                                <th>Trailer</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                for ($x = 0; $x < count($pretrips); $x++) {
+                    echo '<tr>
+                        <td>'. $pretrips[$x][1].'</td>
+                        <td>'. $pretrips[$x][2].'</td>
+                        <td>'. $pretrips[$x][3].'</td>
+                        <td><input type="submit" class="btn btn-primary" name="'. $pretrips[$x][0].'" value="Edit"/></td>
+                    </tr>';
+                }
+                echo '</tbody></table></form>';
+            } else {
+                echo "<p>There are currently no pre-trip inspections to view.</p>";
+            }
+        } else {
             echo "<h2>You do not have permission to view this page.</h2>";
         }
         // Include the footer.php file
