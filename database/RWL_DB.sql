@@ -768,6 +768,8 @@ CREATE TABLE IF NOT EXISTS `rwl` (
 CREATE TABLE IF NOT EXISTS `rwl_bin` (
   `rwl_bin_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
   `farm_id` int(4) unsigned NOT NULL,
+  `emp_id` int(3) unsigned NOT NULL,
+  `change_date` datetime NOT NULL,
   `weight` double unsigned NOT NULL,
   `by_product` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `bin_marker` int(3) unsigned NOT NULL,
