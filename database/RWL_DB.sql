@@ -612,7 +612,8 @@ CREATE TABLE IF NOT EXISTS `pretrip_inspection` (
   `steering_wheel` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `emerg_trailer_breaks` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `fire_extinguisher_warning_device` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
-  `headlights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `engine_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `head_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `clearence_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `identfy_lights` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `turn_signals_4way_flashers` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
@@ -690,8 +691,8 @@ CREATE TABLE IF NOT EXISTS `production_reception` (
   `quantity_recieved` double unsigned NOT NULL COMMENT 'incoming weight',
   `trailer_tandom` tinyint(1) unsigned NOT NULL COMMENT '0 = trailer, 1 = tandom',
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
-  `CFIA_notified` tinyint(1) unsigned NOT NULL,
-  `notified_by` varchar(25) COLLATE utf8_unicode_ci NOT NULL  COMMENT 'CFIA notified by',
+  `CFIA_notified` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `notified_by` varchar(25) COLLATE utf8_unicode_ci NOT NULL COMMENT 'CFIA notified by',
   `cleanliness` int(2) unsigned NOT NULL,
   `emp_id` int(3) unsigned NOT NULL,
   `movement_certificate` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
@@ -766,7 +767,9 @@ CREATE TABLE IF NOT EXISTS `rwl` (
 
 CREATE TABLE IF NOT EXISTS `rwl_bin` (
   `rwl_bin_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `farm_id` int(4) unsigned NOT NULL,
   `weight` double unsigned NOT NULL,
+  `by_product` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `bin_marker` int(3) unsigned NOT NULL,
   PRIMARY KEY (`rwl_bin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
@@ -844,15 +847,26 @@ CREATE TABLE IF NOT EXISTS `sample` (
 
 CREATE TABLE IF NOT EXISTS `shipping` (
   `ship_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
-  `ship_date` datetime NOT NULL,
+  `load_begin` datetime NOT NULL,
+  `load_end` datetime NOT NULL,
+  `depart_rwl` datetime NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,
   `farm_id` int(4) unsigned NOT NULL,
-  `load_id_info` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
+  `trailer_id` int(3) unsigned NOT NULL,
+  `truck_id` int(3) unsigned NOT NULL,   
+  `rwl_ticket_num` int(6) unsigned NOT NULL COMMENT 'RWL ticket number',
   `weight_shipped` double unsigned NOT NULL,
   `washed` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `dest_id` int(4) unsigned NOT NULL,
+  `arrival` datetime NOT NULL,
+  `unload_begin` datetime NOT NULL,
+  `umload_end` datetime NOT NULL,
+  `depart_processor` datetime NOT NULL,
+  `proc_ticket_num` int(6) unsigned NOT NULL COMMENT 'processor ticket number',
+  `gross_weight` double unsigned NOT NULL,
+  `tare_weight` double unsigned NOT NULL,
   `truck_cleaned` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
-  `accepted` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
+  `rejected` tinyint(1) unsigned NOT NULL COMMENT '0 = yes, 1 = no',
   `emp_id` int(3) unsigned NOT NULL,
   PRIMARY KEY (`ship_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;

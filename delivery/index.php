@@ -41,6 +41,8 @@ include('../header.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $shipDetails = (!empty($_SESSION['shipDetails'])) ? $_SESSION['shipDetails'] : ""; 
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 2 || $employeeType == 3) {
         ?>
@@ -48,7 +50,7 @@ include('../header.php');
 
         <form class="form-horizontal">
 
-            <div class="form-group">
+           <!-- <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck #</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="truck" placeholder="">
@@ -88,7 +90,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="farm" placeholder="">
                 </div>
-            </div>
+            </div>-->
 
             <div class="form-group">
                 <label for="arrivalTime" class="control-label col-md-2">Arrival Time</label>
