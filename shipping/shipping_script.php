@@ -53,34 +53,35 @@ if (isset($_POST['submit'])) {
 }
 
 // Load array with shipping info for day by employee
-$query = "SELECT ship_id, ship_date, potato_name, farm_name, trailer_num, weight_shipped, dest_name 
+$query = "SELECT ship_id, load_begin, potato_name, farm_name, trailer_num, weight_shipped, dest_name 
 			FROM shipping INNER JOIN potato ON shipping.potato_id = potato.potato_id 
 						INNER JOIN trailer ON shipping.trailer_id = trailer.trailer_id
 						INNER JOIN farm ON shipping.farm_id = farm.farm_id
 						INNER JOIN destination ON shipping.dest_id = destination.dest_id
-			WHERE ship_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY ship_date DESC";
+			WHERE load_begin LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY load_begin DESC";
 
 $result = $db->query($query);
 
 if (!empty($result)) {
 	while ($row = $result->fetch_assoc()) {
 		$shipId = $row['ship_id'];
-    	$date = $row['ship_date'];
+    	$rwlLoadBegin = $row['load_begin'];
     	$potato = $row['potato_name']; 
     	$farm = $row['farm_name'];
     	$trailer = $row['trailer_num'];   
     	$weight = $row['weight_shipped'];
     	$destination = $row['dest_name'];   
-    	$shipDetails[] = array($shipId, $date, $potato, $farm, $trailer, $weight, $destination);
+    	$shipDetails[] = array($shipId, $rwlLoadBegin, $potato, $farm, $trailer, $weight, $destination);
     	$_SESSION['shipDetails'] = $shipDetails;
 	}
 
 
-	// Select fuel receipts
+	// Select shipping details
 	for ($x = 0; $x < count($_SESSION['shipDetails']); $x++) {
 		if (isset($_POST[$shipDetails[$x][0]])) {
 			$_SESSION['shipNum'] = $shipDetails[$x][0];
-			$query = "SELECT ship_date, potato_name, farm_name, trailer_num, rwl_ticket_num, weight_shipped, washed, dest_name 
+			$query = "SELECT load_begin, load_end, depart_rwl, rwl_ticket_num, weight_shipped, washed,
+			 			arrival, unload_begin, unload_end, depart_processor, proc_ticket_num, gross_weight, tare_weight, rejected
 			FROM shipping INNER JOIN potato ON shipping.potato_id = potato.potato_id 
 						INNER JOIN trailer ON shipping.trailer_id = trailer.trailer_id
 						INNER JOIN farm ON shipping.farm_id = farm.farm_id
@@ -89,23 +90,33 @@ if (!empty($result)) {
 
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
-			$date = $row['ship_date'];
-	    	$potato = $row['potato_name']; 
-	    	$farm = $row['farm_name'];
-	    	$trailer = $row['trailer_num']; 
+			$rwlLoadBegin = $row['load_begin'];
+			$rwlLoadEnd = $row['load_end'];
+			$rwlDepartureTime = $row['depart_rwl'];
+	    	//$potato = $row['potato_name']; 
+	    	//$farm = $row['farm_name'];
 	    	$rwlTicNum = $row['rwl_ticket_num'];   
 	    	$weight = $row['weight_shipped'];
 	    	$washed = $row['washed'];
-	    	$destination = $row['dest_name'];   
-	    	$editShipping[] = array($date, $potato, $farm, $trailer, $rwlTicNum, $weight, $washed, 
-	    		$destination); 
+	    	//$destination = $row['dest_name'];
+	    	$procArrivalTime = $row['arrival'];
+	    	$procUnloadBegin = $row['unload_begin'];
+	    	$procUnloadEnd = $row['unload_end'];
+	    	$procDepartureTime = $row['depart_processor'];
+	    	$procTicNum = $row['proc_ticket_num'];
+	    	$grossWeight = $row['gross_weight'];
+	    	$tareWeight = $row['tare_weight'];
+	    	$rejected = $row['rejected'];   
+	    	$editShipping[] = array($rwlLoadBegin, $rwlLoadEnd, $rwlDepartureTime, $rwlTicNum, $weight, $washed, 
+	    		 $procArrivalTime, $procUnloadBegin, $procUnloadEnd, $procDepartureTime, $procTicNum, 
+	    		$grossWeight, $tareWeight, $rejected); 
 			$_SESSION['editShipping'] = $editShipping;
 			header("location:edit_shipping.php?id=" . $_SESSION['shipNum'] );
 		}
 	}
 }
 
-// Update fuel
+// Update shipping
 if (isset($_POST['update'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$potato = $db->real_escape_string($_POST['potato']);
@@ -137,11 +148,13 @@ if (isset($_POST['update'])) {
 	$destId = $row['dest_id'];
 
 	
-	$query = "UPDATE shipping SET ship_date = '" . $date . "', potato_id = " . $potatoId . ", farm_id =" . $farmId . ", trailer_id = " . $trailerId . ", rwl_ticket_num = " . $rwlTicNum . ", weight_shipped = " . $weight . ", washed = " . $washed . ", dest_id = " . $destId . " WHERE ship_id = " . $_SESSION['shipNum'];
+	$query = "UPDATE shipping SET ship_date = '" . $date . "', potato_id = " . $potatoId . ", farm_id =" . $farmId . ", 
+	trailer_id = " . $trailerId . ", rwl_ticket_num = " . $rwlTicNum . ", weight_shipped = " . $weight . ", washed = " . $washed . ", 
+	dest_id = " . $destId . " WHERE ship_id = " . $_SESSION['shipNum'];
 
 	$result = $db->query($query);
 	
-	// kill session var 'fuelReceipts'
+	// kill session var 'shipDetails'
 	unset($_SESSION['shipDetails']);
 	header("location:index.php");
 } 

@@ -86,7 +86,7 @@ include('shipping_script.php');
                             <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
+                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Depart&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -144,14 +144,27 @@ include('shipping_script.php');
             <div class="form-group">
                 <label for="dispatcher" class="control-label col-md-2">Dispatcher</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="dispatcher" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="driver" class="control-label col-md-2">Driver</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="driver" placeholder="">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <select class="form-control" name="dispatcher">
+                                <?php
+                                for ($x = 0; $x < count($dispatchers); $x++){
+                                    echo '<option value="' . $dispatchers[$x][0] .'">' . $dispatchers[$x][1] .'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <label for="driver" class="control-label col-md-2">Driver</label>
+                        <div class="col-md-5">
+                            <select class="form-control" name="driver">
+                                <?php
+                                for ($x = 0; $x < count($drivers); $x++){
+                                    echo '<option value="' . $drivers[$x][0] .'">' . $drivers[$x][1] .'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>           
             <div class="form-group">
@@ -229,14 +242,14 @@ include('shipping_script.php');
             </div>
 
             <div class="form-group">
-                <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
+                <label for="procDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
                     <div class="form-group row">
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
+                            <input type="text" class="form-control" id="procDepartureTime" name="procDepartureTime" value="">
                         </div>  
                         <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Depart&nbsp;</button>
+                        <button type="button" class="btn btn-primary" name="procDepartureTimeBtn" value="procDepartureTime" onclick="getTime(this.value)">Depart&nbsp;</button>
                         </div>
                     </div>
                 </div>
@@ -262,6 +275,15 @@ include('shipping_script.php');
                     <input type="text" class="form-control" name="tareWeight" placeholder="">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="rejected" class="control-label col-md-2">Rejected</label>
+                <div class="col-md-10">
+                    <ul class="list-inline">
+                        <li><input type="radio" name="rejected" value="0"> Yes</li>
+                        <li><input type="radio" name="rejected" value="1"> No</li>
+                    </ul>
+                </div>
+            </div>            
 <!--            <div class="form-group">
                 <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
                 <div class="col-md-10">

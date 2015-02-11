@@ -49,39 +49,34 @@ include('shipping_script.php');
         <h2 class="page-header">Edit a Shipment</h2>
         <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="edit_shipping.php">
             <div class="form-group">
-                <label for="date" class="control-label col-md-2">Load Date</label>
+                <label for="rwlLoadBegin" class="control-label col-md-2">Load Time Begin</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $_SESSION['editShipping'][0][0]; ?>">
+                    <input type="text" class="form-control" name="rwlLoadBegin" value="<?php echo $_SESSION['editShipping'][0][0]; ?>">
                 </div>
             </div>
             <div class="form-group">
-                <label for="potato" class="control-label col-md-2">Potato</label>
+                <label for="rwlLoadEnd" class="control-label col-md-2">Load Time End</label>
                 <div class="col-md-10">
-                	<input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editShipping'][0][1]; ?>">
+                    <input type="text" class="form-control" name="rwlLoadEnd" value="<?php echo $_SESSION['editShipping'][0][1]; ?>">
                 </div>
             </div>
             <div class="form-group">
-                <label for="potProd" class="control-label col-md-2">Potato Producer</label>
+                <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
                 <div class="col-md-10">
-                	<input type="text" class="form-control" name="farm" value="<?php echo $_SESSION['editShipping'][0][2]; ?>">
+                    <input type="text" class="form-control" name="rwlDepartureTime" value="<?php echo $_SESSION['editShipping'][0][2]; ?>">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="trailer" class="control-label col-md-2">Trailer</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="trailer" value="<?php echo $_SESSION['editShipping'][0][3]; ?>">
-                </div>             
-            </div>            
+                        
             <div class="form-group">
                 <label for="loadIDInfo" class="control-label col-md-2">RWL Ticket Number</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="loadIDInfo" value="<?php echo $_SESSION['editShipping'][0][4]; ?>">
+                    <input type="text" class="form-control" name="loadIDInfo" value="<?php echo $_SESSION['editShipping'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label for="weight" class="control-label col-md-2">Weight Shipped</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="weight" value="<?php echo $_SESSION['editShipping'][0][5]; ?>">
+                    <input type="text" class="form-control" name="weight" value="<?php echo $_SESSION['editShipping'][0][4]; ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -89,7 +84,7 @@ include('shipping_script.php');
                 <div class="col-md-10">
                     <ul class="list-inline">
                         <?php
-							if ($_SESSION['editShipping'][0][6] == 0) {
+							if ($_SESSION['editShipping'][0][5] == 0) {
 							echo '<li><input type="radio" name="washed" value="0" checked> Yes</li>';
 							echo '<li><input type="radio" name="washed" value="1"> No</li>';
 							} else {
@@ -101,11 +96,64 @@ include('shipping_script.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="destination" class="control-label col-md-2">Destination</label>
+                <label for="procArrivalTime" class="control-label col-md-2">Arrival Time</label>
                 <div class="col-md-10">
-                	<input type="text" class="form-control" name="destination" value="<?php echo $_SESSION['editShipping'][0][7]; ?>">
+                    <input type="text" class="form-control" name="procArrivalTime" value="<?php echo $_SESSION['editShipping'][0][6]; ?>">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="procUnloadBegin" class="control-label col-md-2">Unload Time Begin</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="procUnloadBegin" value="<?php echo $_SESSION['editShipping'][0][7]; ?>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="procUnloadEnd" class="control-label col-md-2">Unload Time End</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" name="procUnloadEnd" value="<?php echo $_SESSION['editShipping'][0][8]; ?>">
+                </div>             
+            </div>
+            <div class="form-group">
+                <label for="procDepartureTime" class="control-label col-md-2">Departure Time</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" name="procDepartureTime" value="<?php echo $_SESSION['editShipping'][0][9]; ?>">
+                </div>             
+            </div>
+            <div class="form-group">
+                <label for="procTicNum" class="control-label col-md-2">Processor Ticket Number</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" name="procTicNum" value="<?php echo $_SESSION['editShipping'][0][10]; ?>">
+                </div>             
+            </div>
+            <div class="form-group">
+                <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" name="grossWeight" value="<?php echo $_SESSION['editShipping'][0][11]; ?>">
+                </div>             
+            </div>
+            <div class="form-group">
+                <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" name="tareWeight" value="<?php echo $_SESSION['editShipping'][0][12]; ?>">
+                </div>             
+            </div>
+            <div class="form-group">
+                <label for="rejected" class="control-label col-md-2">Rejected</label>
+                <div class="col-md-10">
+                    <ul class="list-inline">
+                        <?php
+                            if ($_SESSION['editShipping'][0][13] == 0) {
+                            echo '<li><input type="radio" name="rejected" value="0" checked> Yes</li>';
+                            echo '<li><input type="radio" name="rejected" value="1"> No</li>';
+                            } else {
+                            echo '<li><input type="radio" name="rejected" value="0"> Yes</li>';
+                            echo '<li><input type="radio" name="rejected" value="1" checked> No</li>';
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+            
 <!--            <div class="form-group">
                 <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
                 <div class="col-md-10">
