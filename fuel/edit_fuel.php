@@ -62,7 +62,7 @@ include('../header.php');
                     <select class="form-control" name="truck">
                         <?php
                         for ($x = 0; $x < count($trucks); $x++){
-                            if ($trucks[$x][0] == $_SESSION['editReceipt'][0][1]) {
+                            if ($trucks[$x][1] == $_SESSION['editReceipt'][0][1]) {
                                 echo '<option selected value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';
                             } else {
                                 echo '<option value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';

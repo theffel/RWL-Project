@@ -59,7 +59,6 @@ include('../header.php');
                         <select class="form-control" name="equipment">
                             <?php
                             for ($x = 0; $x < count($equipment); $x++){
-
                                 if (strcmp($equipment[$x][1], $_SESSION['editPlantCleaning'][0][1]) == 0) {
                                     echo '<option selected value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                                 } else {
@@ -82,7 +81,7 @@ include('../header.php');
                     <select class="form-control" name="employees">
                         <?php
                         for ($x = 0; $x < count($employee); $x++){
-                            if ($employee[$x][0] == $_SESSION['editPlantCleaning'][0][4]) {
+                            if ($employee[$x][1] == $_SESSION['editPlantCleaning'][0][4]) {
                                 echo '<option selected value="' . $employee[$x][0] . '">' . $employee[$x][1] . '</option>';
                             } else {
                                 echo '<option value="' . $employee[$x][0] . '">' . $employee[$x][1] . '</option>';
