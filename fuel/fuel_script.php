@@ -81,12 +81,7 @@ if (isset($_POST['update'])) {
 	$cost = $db->real_escape_string($_POST['cost']);
 	$location = $db->real_escape_string($_POST['location']);
 	
-	$query = "SELECT truck_id FROM truck WHERE truck_num = '" . $truck . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$truckId = $row['truck_id'];
-	
-	$query = "UPDATE fuel SET truck_id = " . $truckId . ", purchase_date = '" . $date . "', mileage =" . $mileage . ", litres = " . $litres . ", cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
+	$query = "UPDATE fuel SET truck_id = " . $truck . ", purchase_date = '" . $date . "', mileage =" . $mileage . ", litres = " . $litres . ", cost = " . $cost . ", location = '" . $location . "' WHERE fuel_id = " . $_SESSION['receiptNum'];
 	$result = $db->query($query);
 	
 	// kill session var 'fuelReceipts'

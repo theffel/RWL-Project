@@ -43,7 +43,7 @@ include('../header.php');
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 5) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
             ?>
             <h2 class="page-header">Edit Plant Cleaning</h2>
             <form class="form-horizontal"  name="plantForm" id="plantForm" method="POST" action="edit_wash_line.php">

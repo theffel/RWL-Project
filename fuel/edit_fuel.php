@@ -59,7 +59,17 @@ include('../header.php');
             <div class="form-group">
                 <label for="truck" class="control-label col-md-2">Truck</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="truck" value= "<?php echo $_SESSION['editReceipt'][0][1]; ?>">
+                    <select class="form-control" name="employees">
+                        <?php
+                        for ($x = 0; $x < count($trucks); $x++){
+                            if ($trucks[$x][0] == $_SESSION['editReceipt'][0][1]) {
+                                echo '<option selected value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

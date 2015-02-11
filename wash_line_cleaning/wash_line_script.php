@@ -94,7 +94,7 @@ if (isset($_POST['update'])) {
 	$result = $db->query($query);
 
 	// kill session var 'editLineCleaning'
-	unset($_SESSION['editLineCleaning']);
+	unset($_SESSION['lineCleaning']);
 	header("location:index.php");
 }
 ?>
