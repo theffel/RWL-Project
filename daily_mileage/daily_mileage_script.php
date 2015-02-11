@@ -57,9 +57,7 @@ if (!empty($result)) {
 	for ($x = 0; $x < count($_SESSION['dailyMileage']); $x++){
 		if (isset($_POST[$dailyMileage[$x][0]])) {
 			$_SESSION['mileageNum'] = $dailyMileage[$x][0];
-			$query = "SELECT truck_num, start_date, starting_km, pei_km, nb_km, ns_km, litres_fuel, finish_km
-				FROM daily_mileage INNER JOIN truck ON daily_mileage.truck_id = truck.truck_id
-				WHERE mileage_id = " . $_SESSION['mileageNum'];
+			$query = "SELECT truck_num, start_date, starting_km, pei_km, nb_km, ns_km, litres_fuel, finish_km FROM daily_mileage INNER JOIN truck ON daily_mileage.truck_id = truck.truck_id WHERE mileage_id = " . $_SESSION['mileageNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$date = $row['start_date'];
@@ -90,7 +88,6 @@ if (isset($_POST['update'])) {
 
 	$query = "UPDATE daily_mileage SET truck_id = " . $truck . ", start_date = '" . $date . "', starting_km = " . $startKmTruck . ", pei_km = " . $peiKm . ", nb_km = " . $nbKm . ", ns_km = " . $nsKm . ", litres_fuel = " . $litresFuelTank . ", finish_km = " . $finishKm . " WHERE mileage_id = " . $_SESSION['mileageNum'];
 	$result = $db->query($query);
-	var_dump($query);
 
 	// kill session var 'dailyMileage'
 	unset($_SESSION['dailyMileage']);
