@@ -12,30 +12,26 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-16
+ * @since       2015-01-13
  */
 
 // Start the session
 session_start();
 
-// Include the database.php file
+// Include php files
 include('../database.php');
-
-// Include the header.php file
 include('../header.php');
-
-// Include the sample_script.php file
-include('sample_script.php');
+include('pretrip_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Sample</h1>
+                <h1 class="page-header">Pre-Trip Inspection</h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active">Sample</li>
+                    <li class="active">Pre-Trip Inspection</li>
                 </ol>
             </div>
         </div>
@@ -44,309 +40,244 @@ include('sample_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
-        $trailers = (!empty($_SESSION['trailers'])) ? $_SESSION['trailers'] : "";
-        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
-
+        $pretrips = (!empty($_SESSION['pretrips'])) ? $_SESSION['pretrips'] : "";
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 4) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>
-        <h2 class="page-header">Add a Sample</h2>
+        <h2 class="page-header">Add an Inspection</h2>
 
-        <form class="form-horizontal" name="sampleForm" id="sampleForm" method="post" action="index.php">
-
-            <div class="form-group row">
-                <label for="trailer" class="control-label col-md-2">Trailer #</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="trailer" value= "<?php echo $_SESSION['editSamples'][0][0]; ?>">
-                </div>
-                <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="numOfSample" value="<?php echo $_SESSION['editSamples'][0][1]; ?>">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="incomingOutgoing" class="control-label col-md-2">Incoming / Outgoing</label>
-                <div class="col-md-4">
-                    <ul class="list-inline">
-                        <?php
-                        if ($_SESSION['editSamples'][0][2] == 0 ) {
-                            echo '<li><input type="radio" name="incomingOutgoing" value="0" checked> Incoming</li>';
-                            echo '<li><input type="radio" name="incomingOutgoing" value="1"> Outgoing</li>';
-                        } else {
-                            echo '<li><input type="radio" name="incomingOutgoing" value="0" > Incoming</li>';
-                            echo '<li><input type="radio" name="incomingOutgoing" value="1" checked> Outgoing</li>';
-                        }
-                        ?>
-                    </ul>
-                </div>
-                <label for="potato" class="control-label col-md-2">Potato</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" name="potato" value="<?php echo $_SESSION['editSamples'][0][3]; ?>">
-                </div>
-            </div>
-
+        <form class="form-horizontal" name="insepectionForm" id="insepectionForm" method="post" action="index.php">
+          
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $_SESSION['editSamples'][0][4]; ?>">                  
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="form-group">
-                <label for="total" class="control-label col-md-2">Total</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="totalWeight" class="col-md-1 control-label">Sample Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="totalWeight" value="<?php echo $_SESSION['editSamples'][0][5]; ?>" onchange="setSampleWeight(this.value)">
-                        </div>
-                        <label for="useablePercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="totalPercent" name="totalPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="form-group">
-                <label for="unusable" class="control-label col-md-2">Unusable</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="useableWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="unuseableWeight" value="<?php echo $_SESSION['editSamples'][0][6]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="useablePercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="rot" class="control-label col-md-2">Rot</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="rotWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="rotWeight" value="<?php echo $_SESSION['editSamples'][0][7]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="rotPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="rotPercent" name="rotPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                <label for="tractor" class="control-label col-md-2">Truck</label>
+                <div class="col-md-10">    
+                    <select class="form-control" name="truck">
+                         <?php
+                        for ($x = 0; $x < count($trucks); $x++){
+                            if ($trucks[$x][1] == $_SESSION['editPretrips'][0][1]) {
+                                echo '<option selected value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $trucks[$x][0] . '">' . $trucks[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="internal" class="control-label col-md-2">Internal</label>
+                <label for="trailer" class="control-label col-md-2">Trailer</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="internalWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="internalWeight" value="<?php echo $_SESSION['editSamples'][0][8]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="internalPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="internalPercent" name="internalPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pit Rot naming conventions changed for reusable code in custom.js to pitrot instead of pitRot-->
-
-            <div class="form-group">
-                <label for="pitRot" class="control-label col-md-2">Pit Rot</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="pitRotWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="pitrotWeight" value="<?php echo $_SESSION['editSamples'][0][9]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="pitRotPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                    <select class="form-control" name="trailer">
+                        <?php
+                        for ($x = 0; $x < count($trailers); $x++){
+                            if ($trailers[$x][1] == $_SESSION['editPretrips'][0][1]) {
+                                echo '<option selected value="' . $trailers[$x][0] . '">' . $trailers[$x][1] . '</option>';
+                            } else {
+                                echo '<option value="' . $trailers[$x][0] . '">' . $trailers[$x][1] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>  
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="wireworm" class="control-label col-md-2">Wireworm</label>
+                <label for="inside" class="control-label col-md-2">Inside</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="wirewormWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="wirewormWeight" value="<?php echo $_SESSION['editSamples'][0][10]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="wirewormPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Jelly End naming conventions changed for reusable code in custom.js to jellyend instead of jellyEnd   -->
-
-            <div class="form-group">
-                <label for="jellyEnd" class="control-label col-md-2">Jelly End</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="jellyEndWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="jellyendWeight" value="<?php echo $_SESSION['editSamples'][0][11]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="jellyEndPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                <?php
+                if($_SESSION['editPretrips'][0][3] == 0){
+                    echo '<input type="checkbox" name="parkingBrake" value="1" checked> Parking Brake (Apply)</input>';
+                } else {
+                    echo '<input type="checkbox" name="parkingBrake" value="0"> Parking Brake (Apply)</input>';
+                }
+                ?>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="other" class="control-label col-md-2">Other</label>
+                <label for="cleanliness" class="control-label col-md-2">Cleanliness</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="otherWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="otherWeight" value="<?php echo $_SESSION['editSamples'][0][12]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="otherPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="otherPercent" name="otherPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hollow Heart naming conventions changed for reusable code in custom.js to hollowheart instead of hollowHeart-->
-
-            <div class="form-group">
-                <label for="hollowHeart" class="control-label col-md-2">Hollow Heart</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="hollowHeartWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="hollowheartWeight" value="<?php echo $_SESSION['editSamples'][0][13]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="hollowHeartPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                <?php
+                if($_SESSION['editPretrips'][0][4] == 0){
+                    echo '<input type="checkbox" name="cleanliness" value="1" cehcked> Cleanliness</input>';
+                } else {
+                    echo '<input type="checkbox" name="cleanliness" value="0"> Cleanliness</input>';
+                }
+                ?>                    
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="scab" class="control-label col-md-2">Scab</label>
+                <label for="startEngine" class="control-label col-md-2">Start Engine</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="scabWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="scabWeight" value="<?php echo $_SESSION['editSamples'][0][14]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="scabPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="scabPercent" name="scabPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                    <?php
+                    if($_SESSION['editPretrips'][0][5] == 0){
+                        echo '<input type="checkbox" name="engineOilPressure" value="1" checked> Oil Pressure (Light or Gauge)</input><br />';
+                    }else{
+                        echo '<input type="checkbox" name="engineOilPressure" value="0"> Oil Pressure (Light or Gauge)</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][6] == 0){
+                        echo '<input type="checkbox" name="engineAirPressure" value="1" checked> Air Pressure or Vacuum (Gauge)</input><br />';
+                    }else{
+                        echo '<input type="checkbox" name="engineAirPressure" value="0"> Air Pressure or Vacuum (Gauge)</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][7] == 0){
+                        echo '<input type="checkbox" name="engineLowAir" value="1" checked> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />';
+                    }else{
+                        echo '<input type="checkbox" name="engineLowAir" value="0"> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][8] == 0){
+                        echo '<input type="checkbox" name="engineInstrumentPanel" value="1" checked> Instrument Panel (Telltale lights or buzzers)</input><br />'
+                    } else {
+                        echo '<input type="checkbox" name="engineInstrumentPanel" value="0"> Instrument Panel (Telltale lights or buzzers)</input><br />'
+                    }
+                    if($_SESSION['editPretrips'][0][9] == 0){
+                        echo '<input type="checkbox" name="engineHorn" value="1" checked> Horn</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineHorn" value="0"> Horn</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][10] == 0){
+                        echo '<input type="checkbox" name="engineWindshieldWiper" value="1" checked> Windshield Wiper and Washer</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineWindshieldWiper" value="0"> Windshield Wiper and Washer</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][11] == 0){
+                        echo '<input type="checkbox" name="engineHeaterDefroster" value="1" checked> Heater - Defroster</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineHeaterDefroster" value="0"> Heater - Defroster</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][12] == 0){
+                        echo '<input type="checkbox" name="engineMirrors" value="1" checked> Mirrors</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineMirrors" value="0"> Mirrors</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][13] == 0){
+                        echo '<input type="checkbox" name="engineSteeringWheel" value="1" checked> Steering Wheel (Excess play)</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineSteeringWheel" value="0"> Steering Wheel (Excess play)</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][14] == 0){
+                        echo '<input type="checkbox" name="engineTrailerBrakesEmergency" value="1" checked> Apply Trailer Brakes in Emergency</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineTrailerBrakesEmergency" value="0"> Apply Trailer Brakes in Emergency</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][15] == 0){
+                        echo '<input type="checkbox" name="engineAllLights" value="1" checked> Turn on all lights including 4-way flasher</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="engineAllLights" value="0"> Turn on all lights including 4-way flasher</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][16] == 0){
+                        echo '<input type="checkbox" name="engineFireExtinguisher" value="1" checked> Fire Extinguisher and Warning Devices</input>';
+                    } else{
+                        echo '<input type="checkbox" name="engineFireExtinguisher" value="0"> Fire Extinguisher and Warning Devices</input>';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="sunburn" class="control-label col-md-2">Sunburn</label>
+                <label for="front" class="control-label col-md-2">Front</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="sunburnWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="sunburnWeight" value="<?php echo $_SESSION['editSamples'][0][15]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="sunburnPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mech Bruise naming conventions changed for reusable code in custom.js to mechbruise instead of mechBruise-->
-
-            <div class="form-group">
-                <label for="mechBruise" class="control-label col-md-2">Mech Bruise</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="mechBruiseWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="mechbruiseWeight" value="<?php echo $_SESSION['editSamples'][0][16]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="mechBruisePercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="smalls" class="control-label col-md-2">Smalls</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="smallsWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="smallsWeight" value="<?php echo $_SESSION['editSamples'][0][17]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="smallsPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                    <?php
+                    if($_SESSION['editPretrips'][0][17] == 0){                    
+                        echo '<input type="checkbox" name="frontHeadlights" value="1" checked> Headlights</input><br />';
+                    } else {
+                       echo '<input type="checkbox" name="frontHeadlights" value="0"> Headlights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][18] == 0){
+                        echo '<input type="checkbox" name="frontClearanceLights" value="1"> Clearance Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="frontClearanceLights" value="1"> Clearance Lights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][19] == 0){
+                        echo '<input type="checkbox" name="frontIdentificationLights" value="1" checked> Identification Lights</input><br />';
+                    } else {
+                        echo '<input type="checkbox" name="frontIdentificationLights" value="0"> Identification Lights</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][20] == 0){
+                       echo '<input type="checkbox" name="frontTurnSignals" value="1" checked> Turn Signals and 4-way flasher</input><br />';
+                    } else {
+                       echo '<input type="checkbox" name="frontTurnSignals" value="0"> Turn Signals and 4-way flasher</input><br />';
+                    }
+                    if($_SESSION['editPretrips'][0][21] == 0){
+                        echo '<input type="checkbox" name="frontTiresWheels" value="1" checked> Tires and Wheels (Lugs)</input>';
+                    } else {
+                        echo '<input type="checkbox" name="frontTiresWheels" value="0"> Tires and Wheels (Lugs)</input>';
+                    }
+                    ?>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="10oz" class="control-label col-md-2">10oz</label>
+                <label for="leftSide" class="control-label col-md-2">Left Side</label>
                 <div class="col-md-10">
-                    <div class="form-group row">
-                        <label for="10ozWeight" class="col-md-1 control-label">Weight</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" name="tenozsWeight" value="<?php echo $_SESSION['editSamples'][0][18]; ?>" onchange="calculatePercent(this.value, this.name)">
-                        </div>
-                        <label for="10ozPercent" class="col-md-1 control-label">Percent</label>
-                        <div class="col-md-5">
-                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent" value="" placeholder="%" disabled>
-                        </div>
-                    </div>
+                    <input type="checkbox" name="leftFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
+                    <input type="checkbox" name="leftSidemarkerLights" value="1"> Sidemarker Lights</input><br />
+                    <input type="checkbox" name="leftReflectors" value="1"> Reflectors</input><br />
+                    <input type="checkbox" name="leftTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="leftCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="airWeight" class="control-label col-md-2">Air Weight</label>
+                <label for="rear" class="control-label col-md-2">Rear</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="airWeight" value="<?php echo $_SESSION['editSamples'][0][19]; ?>">
+                    <input type="checkbox" name="rearTailLights" value="1"> Tail Lights</input><br />
+                    <input type="checkbox" name="rearStopLights" value="1"> Stop Lights</input><br />
+                    <input type="checkbox" name="rearTurnSignals" value="1"> Turn Signals and 4-way flasher</input><br />
+                    <input type="checkbox" name="rearClearanceLights" value="1"> Clearance Lights</input><br />
+                    <input type="checkbox" name="rearIdentificationLights" value="1"> Identification Lights</input><br />
+                    <input type="checkbox" name="rearReflectors" value="1"> Reflectors</input><br />
+                    <input type="checkbox" name="rearTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="rearRearProtection" value="1"> Rear End Protection (Bumper)</input><br />
+                    <input type="checkbox" name="rearCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="waterWeight" class="control-label col-md-2">Water Weight</label>
+                <label for="rightSide" class="control-label col-md-2">Right Side</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="waterWeight" value="<?php echo $_SESSION['editSamples'][0][20]; ?>">
+                    <input type="checkbox" name="rightFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
+                    <input type="checkbox" name="rightSidemarkerLights" value="1"> Sidemarker Lights</input><br />
+                    <input type="checkbox" name="rightReflectors" value="1"> Reflectors</input><br />
+                    <input type="checkbox" name="rightTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="rightCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="rockMaterial" class="control-label col-md-2">Rock & Foreign Material</label>
+                <label for="onCombinations" class="control-label col-md-2">On Combinations</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="rockWeight" value="<?php echo $_SESSION['editSamples'][0][21]; ?>">
+                    <input type="checkbox" name="onCombinationsHosesCouplers" value="1"> Hoses and Couplers</input><br />
+                    <input type="checkbox" name="onCombinationsElectricalConnector" value="1"> Electrical Connector</input><br />
+                    <input type="checkbox" name="onCombinationsCouplings" value="1"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="onHazMaterials" class="control-label col-md-2">On Vehicles Transporting Hazardous Materials</label>
+                <div class="col-md-10">
+                    <input type="checkbox" name="onHazMaterialsMarkingPlacards" value="1"> Marking or Placards</input><br />
+                    <input type="checkbox" name="onHazMaterialsShippingPapers" value="1"> Proper Shipping Papers</input>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="stopEngine" class="control-label col-md-2">Stop Engine</label>
+                <div class="col-md-10">
+                    <input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="1"> Release Trailer Emergency Brakes</input><br />
+                    <input type="checkbox" name="stopEngineApplyBrakesAir" value="1"> Apply service Brakes-Air loss should not exceed:<ul>
+                        <li>3 psi per minute on single vehicles</li>
+                        <li>4 psi per minute on combinations</li>
+                    </ul></input>
                 </div>
             </div>
 
@@ -355,7 +286,7 @@ include('sample_script.php');
                     <input type="submit" class="btn btn-primary" name="update" value="Update"/>
                 </div>
             </div>
-        <hr>
+        </form>
         <?php
         } else {
             echo "<h2>You do not have permission to view this page.</h2>";
@@ -363,17 +294,11 @@ include('sample_script.php');
         // Include the footer.php file
         include('../footer.php');
         ?>
-
-
-
- 
     </div>
     <!-- /.container -->
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
-        <!-- Custom JavaScript -->
-    <script src="../js/custom_js.js"></script>
 </body>
 </html>

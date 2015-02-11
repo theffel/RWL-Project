@@ -32,271 +32,271 @@ if (isset($_POST['submit'])) {
 	if (isset($_POST['parkingBrake'])) {
 		$parkingBrake = $db->real_escape_string($_POST['parkingBrake']);
 	} else {
-		$parkingBrake = 0;
+		$parkingBrake = 1;
 	}
 
 	if (isset($_POST['cleanliness'])) {
 		$cleanliness = $db->real_escape_string($_POST['cleanliness']);
 	} else {
-		$cleanliness = 0;
+		$cleanliness = 1;
 	}
 
 	if (isset($_POST['engineOilPressure'])) {
 		$engineOilPressure = $db->real_escape_string($_POST['engineOilPressure']);
 	} else {
-		$engineOilPressure = 0;
+		$engineOilPressure = 1;
 	}
 
 	if (isset($_POST['engineAirPressure'])) {
 		$engineAirPressure = $db->real_escape_string($_POST['engineAirPressure']);
 	} else {
-		$engineAirPressure = 0;
+		$engineAirPressure = 1;
 	}
 
 	if (isset($_POST['engineLowAir'])) {
 		$engineLowAir = $db->real_escape_string($_POST['engineLowAir']);
 	} else {
-		$engineLowAir = 0;
+		$engineLowAir = 1;
 	}
 
 	if (isset($_POST['engineInstrumentPanel'])) {
 		$engineInstrumentPanel = $db->real_escape_string($_POST['engineInstrumentPanel']);
 	} else {
-		$engineInstrumentPanel = 0;
+		$engineInstrumentPanel = 1;
 	}
 
 	if (isset($_POST['engineHorn'])) {
 		$engineHorn = $db->real_escape_string($_POST['engineHorn']);
 	} else {
-		$engineHorn = 0;
+		$engineHorn = 1;
 	}
 
 	if (isset($_POST['engineWindshieldWiper'])) {
 		$engineWindshieldWiper = $db->real_escape_string($_POST['engineWindshieldWiper']);
 	} else {
-		$engineWindshieldWiper = 0;
+		$engineWindshieldWiper = 1;
 	}
 
 	if (isset($_POST['engineHeaterDefroster'])) {
 		$engineHeaterDefroster = $db->real_escape_string($_POST['engineHeaterDefroster']);
 	} else {
-		$engineHeaterDefroster = 0;
+		$engineHeaterDefroster = 1;
 	}
 
 	if (isset($_POST['engineMirrors'])) {
 		$engineMirrors = $db->real_escape_string($_POST['engineMirrors']);
 	} else {
-		$engineMirrors = 0;
+		$engineMirrors = 1;
 	}
 
 	if (isset($_POST['engineSteeringWheel'])) {
 		$engineSteeringWheel = $db->real_escape_string($_POST['engineSteeringWheel']);
 	} else {
-		$engineSteeringWheel = 0;
+		$engineSteeringWheel = 1;
 	}
 
 	if (isset($_POST['engineTrailerBrakesEmergency'])) {
 		$engineTrailerBrakesEmergency = $db->real_escape_string($_POST['engineTrailerBrakesEmergency']);
 	} else {
-		$engineTrailerBrakesEmergency = 0;
+		$engineTrailerBrakesEmergency = 1;
 	}
 
 	if (isset($_POST['engineAllLights'])) {
 		$engineAllLights = $db->real_escape_string($_POST['engineAllLights']);
 	} else {
-		$engineAllLights = 0;
+		$engineAllLights = 1;
 	}
 
 	if (isset($_POST['engineFireExtinguisher'])) {
 		$engineFireExtinguisher = $db->real_escape_string($_POST['engineFireExtinguisher']);
 	} else {
-		$engineFireExtinguisher = 0;
+		$engineFireExtinguisher = 1;
 	}
 
 	if (isset($_POST['frontHeadlights'])) {
 		$frontHeadlights = $db->real_escape_string($_POST['frontHeadlights']);
 	} else {
-		$frontHeadlights = 0;
+		$frontHeadlights = 1;
 	}
 
 	if (isset($_POST['frontClearanceLights'])) {
 		$frontClearanceLights = $db->real_escape_string($_POST['frontClearanceLights']);
 	} else {
-		$frontClearanceLights = 0;
+		$frontClearanceLights = 1;
 	}
 
 	if (isset($_POST['frontIdentificationLights'])) {
 		$frontIdentificationLights = $db->real_escape_string($_POST['frontIdentificationLights']);
 	} else {
-		$frontIdentificationLights = 0;
+		$frontIdentificationLights = 1;
 	}
 
 	if (isset($_POST['frontTurnSignals'])) {
 		$frontTurnSignals = $db->real_escape_string($_POST['frontTurnSignals']);
 	} else {
-		$frontTurnSignals = 0;
+		$frontTurnSignals = 1;
 	}
 
 	if (isset($_POST['frontTiresWheels'])) {
 		$frontTiresWheels = $db->real_escape_string($_POST['frontTiresWheels']);
 	} else {
-		$frontTiresWheels = 0;
+		$frontTiresWheels = 1;
 	}
 
 	if (isset($_POST['leftFuelTankCap'])) {
 		$leftFuelTankCap = $db->real_escape_string($_POST['leftFuelTankCap']);
 	} else {
-		$leftFuelTankCap = 0;
+		$leftFuelTankCap = 1;
 	}
 
 	if (isset($_POST['leftSidemarkerLights'])) {
 		$leftSidemarkerLights = $db->real_escape_string($_POST['leftSidemarkerLights']);
 	} else {
-		$leftSidemarkerLights = 0;
+		$leftSidemarkerLights = 1;
 	}
 
 	if (isset($_POST['leftReflectors'])) {
 		$leftReflectors = $db->real_escape_string($_POST['leftReflectors']);
 	} else {
-		$leftReflectors = 0;
+		$leftReflectors = 1;
 	}
 
 	if (isset($_POST['leftTiresWheels'])) {
 		$leftTiresWheels = $db->real_escape_string($_POST['leftTiresWheels']);
 	} else {
-		$leftTiresWheels = 0;
+		$leftTiresWheels = 1;
 	}
 
 	if (isset($_POST['leftCargoTiedowns'])) {
 		$leftCargoTiedowns = $db->real_escape_string($_POST['leftCargoTiedowns']);
 	} else {
-		$leftCargoTiedowns = 0;
+		$leftCargoTiedowns = 1;
 	}
 
 	if (isset($_POST['rearTailLights'])) {
 		$rearTailLights = $db->real_escape_string($_POST['rearTailLights']);
 	} else {
-		$rearTailLights = 0;
+		$rearTailLights = 1;
 	}
 
 	if (isset($_POST['rearStopLights'])) {
 		$rearStopLights = $db->real_escape_string($_POST['rearStopLights']);
 	} else {
-		$rearStopLights = 0;
+		$rearStopLights = 1;
 	}
 
 	if (isset($_POST['rearTurnSignals'])) {
 		$rearTurnSignals = $db->real_escape_string($_POST['rearTurnSignals']);
 	} else {
-		$rearTurnSignals = 0;
+		$rearTurnSignals = 1;
 	}
 
 	if (isset($_POST['rearClearanceLights'])) {
 		$rearClearanceLights = $db->real_escape_string($_POST['rearClearanceLights']);
 	} else {
-		$rearClearanceLights = 0;
+		$rearClearanceLights = 1;
 	}
 
 	if (isset($_POST['rearIdentificationLights'])) {
 		$rearIdentificationLights = $db->real_escape_string($_POST['rearIdentificationLights']);
 	} else {
-		$rearIdentificationLights = 0;
+		$rearIdentificationLights = 1;
 	}
 
 	if (isset($_POST['rearReflectors'])) {
 		$rearReflectors = $db->real_escape_string($_POST['rearReflectors']);
 	} else {
-		$rearReflectors = 0;
+		$rearReflectors = 1;
 	}
 
 	if (isset($_POST['rearTiresWheels'])) {
 		$rearTiresWheels = $db->real_escape_string($_POST['rearTiresWheels']);
 	} else {
-		$rearTiresWheels = 0;
+		$rearTiresWheels = 1;
 	}
 
 	if (isset($_POST['rearRearProtection'])) {
 		$rearRearProtection = $db->real_escape_string($_POST['rearRearProtection']);
 	} else {
-		$rearRearProtection = 0;
+		$rearRearProtection = 1;
 	}
 
 	if (isset($_POST['rearCargoTiedowns'])) {
 		$rearCargoTiedowns = $db->real_escape_string($_POST['rearCargoTiedowns']);
 	} else {
-		$rearCargoTiedowns = 0;
+		$rearCargoTiedowns = 1;
 	}
 
 	if (isset($_POST['rightFuelTankCap'])) {
 		$rightFuelTankCap = $db->real_escape_string($_POST['rightFuelTankCap']);
 	} else {
-		$rightFuelTankCap = 0;
+		$rightFuelTankCap = 1;
 	}
 
 	if (isset($_POST['rightSidemarkerLights'])) {
 		$rightSidemarkerLights = $db->real_escape_string($_POST['rightSidemarkerLights']);
 	} else {
-		$rightSidemarkerLights = 0;
+		$rightSidemarkerLights = 1;
 	}
 
 	if (isset($_POST['rightReflectors'])) {
 		$rightReflectors = $db->real_escape_string($_POST['rightReflectors']);
 	} else {
-		$rightReflectors = 0;
+		$rightReflectors = 1;
 	}
 
 	if (isset($_POST['rightTiresWheels'])) {
 		$rightTiresWheels = $db->real_escape_string($_POST['rightTiresWheels']);
 	} else {
-		$rightTiresWheels = 0;
+		$rightTiresWheels = 1;
 	}
 	
 	if (isset($_POST['rightCargoTiedowns'])) {
 		$rightCargoTiedowns = $db->real_escape_string($_POST['rightCargoTiedowns']);
 	} else {
-		$rightCargoTiedowns = 0;
+		$rightCargoTiedowns = 1;
 	}
 
 	if (isset($_POST['onCombinationsHosesCouplers'])) {
 		$onCombinationsHosesCouplers = $db->real_escape_string($_POST['onCombinationsHosesCouplers']);
 	} else {
-		$onCombinationsHosesCouplers = 0;
+		$onCombinationsHosesCouplers = 1;
 	}
 
 	if (isset($_POST['onCombinationsElectricalConnector'])) {
 		$onCombinationsElectricalConnector = $db->real_escape_string($_POST['onCombinationsElectricalConnector']);
 	} else {
-		$onCombinationsElectricalConnector = 0;
+		$onCombinationsElectricalConnector = 1;
 	}
 
 	if (isset($_POST['onCombinationsCouplings'])) {
 		$onCombinationsCouplings = $db->real_escape_string($_POST['onCombinationsCouplings']);
 	} else {
-		$onCombinationsCouplings = 0;
+		$onCombinationsCouplings = 1;
 	}
 
 	if (isset($_POST['onHazMaterialsMarkingPlacards'])) {
 		$onHazMaterialsMarkingPlacards = $db->real_escape_string($_POST['onHazMaterialsMarkingPlacards']);
 	} else {
-		$onHazMaterialsMarkingPlacards = 0;
+		$onHazMaterialsMarkingPlacards = 1;
 	}
 
 	if (isset($_POST['onHazMaterialsShippingPapers'])) {
 		$onHazMaterialsShippingPapers = $db->real_escape_string($_POST['onHazMaterialsShippingPapers']);
 	} else {
-		$onHazMaterialsShippingPapers = 0;
+		$onHazMaterialsShippingPapers = 1;
 	}
 
 	if (isset($_POST['stopEngineReleaseTrailerBrakes'])) {
 		$stopEngineReleaseTrailerBrakes = $db->real_escape_string($_POST['stopEngineReleaseTrailerBrakes']);
 	} else {
-		$stopEngineReleaseTrailerBrakes = 0;
+		$stopEngineReleaseTrailerBrakes = 1;
 	}
 
 	if (isset($_POST['stopEngineApplyBrakesAir'])) {
 		$stopEngineApplyBrakesAir = $db->real_escape_string($_POST['stopEngineApplyBrakesAir']);
 	} else {
-		$stopEngineApplyBrakesAir = 0;
+		$stopEngineApplyBrakesAir = 1;
 	}
 
 	
@@ -356,86 +356,374 @@ if (!empty($result)) {
 				 turn_signals_4way_flashers_rear, clearence_lights_rear, identfy_lights_rear, reflectors_rear, wheel_lug_rear,
 				 bumper, cargo_tiedowns_doors_rear, fuel_tank_cap_right, sidemarker_lights_right, reflectors_right, wheel_lug_right,
 				 cargo_tiedowns_doors_right, hoses_couplers, electrical_connector, couplings, marking_placecards, proper_ship_papers,
-				 release_trailer_emerg_breaks, apply_service_breaks FROM sample 
+				 release_trailer_emerg_breaks, apply_service_breaks FROM pretrip_inspection
 						INNER JOIN trailer ON pretrip_inspection.trailer_id = trailer.trailer_id
 						INNER JOIN truck ON pretrip_inspection.truck_id = truck.truck_id		
 						WHERE pretrip_id = " . $_SESSION['pretripNum'];
-				
+
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$inspectDate = $row['inspect_date'];
 			$truck = $row['truck_num'];			
 			$trailer = $row['trailer_num'];
 			$parkBreak = $row['park_break'] ;
-			$numOfSample = $row['num_sample_per_load'];
-			$potato = $row['potato_name'];
-			$date = $row['sample_date'];
-			$totalWeight = $row['total_sample_weight'];
-			$useableWeight = $row['unuseable_weight'];	
-			$rotWeight = $row['rot_weight'];
-			$pitrotWeight = $row['pit_rot_weight'];	
-			$internalWeight = $row['internal_weight'];	
-			$wirewormWeight = $row['wireworm_weight'];	
-			$jellyEndWeight = $row['jelly_end_weight'];
-			$otherWeight = $row['other_weight'];	
-			$hollowHeartWeight = $row['hollow_heart_weight'];	
-			$scabWeight = $row['scab_weight'];	
-			$sunburnWeight = $row['sunburn_weight'];	
-			$mechBruiseWeight = $row['mech_bruise_weight'];	
-			$smallsWeight = $row['smalls_weight'];
-			$tenozsWeight = $row['ten_oz_weight'];	
-			$airWeight = $row['air_weight'];	
-			$waterWeight = $row['water_weight'];	
-			$rockMaterial = $row['rock_foreign_weight'];   
-			$editSamples[] = array($trailer, $numSample, $incomingOutgoing, $potato, $date, $totalWeight, $useableWeight, $rotWeight,
-				$pitrotWeight, $internalWeight, $wirewormWeight, $jellyEndWeight, $otherWeight, $hollowHeartWeight, $scabWeight,
-				$sunburnWeight, $mechBruiseWeight, $smallsWeight, $tenozsWeight, $airWeight, $waterWeight, $rockMaterial); 
-			$_SESSION['editSamples'] = $editSamples;
-			header ("location:edit_sample.php?id=" . $_SESSION['sampleNum'] );
+			$cleanliness = $row['cleanliness'];
+			$oilPressure = $row['oil_pressure'];
+			$airPressure = $row['air_pressure'];
+			$lowAirWarn = $row['low_air_warn'];
+			$instPannel = $row['inst_pannel'];	
+			$horn = $row['horn'];
+			$wiperWasher = $row['wiper_washer'];	
+			$heatDefrost = $row['heat_defrost'];	
+			$mirrors = $row['mirrors'];	
+			$steeringWheel = $row['steering_wheel'];
+			$emergTrailerBreaks = $row['emerg_trailer_breaks'];	
+			$engineLights = $row['engine_lights'];	
+			$fireExtinguisher = $row['fire_extinguisher_warning_device'];	
+			$headlights = $row['headlights'];	
+			$clearenceLights = $row['clearence_lights'];	
+			$identfyLights = $row['identfy_lights'];
+			$turnSignals = $row['turn_signals_4way_flashers'];	
+			$wheelLugFront = $row['wheel_lug_front'];	
+			$fuelTankCapLeft = $row['fuel_tank_cap_left'];	
+			$sidemarkerLightsLeft = $row['sidemarker_lights_left']; 
+			$reflectorsLeft = $row['reflectors_left'];
+			$wheelLugLeft = $row['wheel_lug_left'];			
+			$cargoTiedownsLeft = $row['cargo_tiedowns_doors_left'];
+			$tailLights = $row['tail_lights'] ;
+			$stopLights = $row['stop_lights'];
+			$turnSignalsRear = $row['turn_signals_4way_flashers_rear'];
+			$clearenceLightsRear = $row['clearence_lights_rear'];
+			$identfyLightsRear = $row['identfy_lights_rear'];
+			$reflectorsRear = $row['reflectors_rear'];	
+			$wheelLugRear = $row['wheel_lug_rear'];
+			$bumper = $row['bumper'];	
+			$cargoTiedownsRear = $row['cargo_tiedowns_doors_rear'];	
+			$fuelTankRight = $row['fuel_tank_cap_right'];	
+			$sidemarkerLightsRight = $row['sidemarker_lights_right'];
+			$reflectorsRight = $row['reflectors_right'];	
+			$wheelLugRight = $row['wheel_lug_right'];	
+			$cargoTiedownsRight = $row['cargo_tiedowns_doors_right'];	
+			$hosesCouplers = $row['hoses_couplers'];	
+			$electricalConnector = $row['electrical_connector'];	
+			$couplings = $row['couplings'];
+			$markingPlacecards = $row['marking_placecards'];	
+			$properShipPapers = $row['proper_ship_papers'];	
+			$releaseTrailerBreaks = $row['release_trailer_emerg_breaks'];	
+			$applyServiceBreaks = $row['apply_service_breaks']; 			
+
+			$editPretrips[] = array($inspectDate, $truck, $trailer, $parkBreak, $cleanliness, $oilPressure, $airPressure, $lowAirWarn,
+				$instPannel, $horn, $wiperWasher, $heatDefrost, $mirrors, $steeringWheel, $emergTrailerBreaks, $engineLights,
+				$fireExtinguisher, $headlights, $clearenceLights, $identfyLights, $turnSignals, $wheelLugFront, $fuelTankCapLeft,
+				$sidemarkerLightsLeft, $reflectorsLeft, $reflectorsLeft, $wheelLugLeft, $cargoTiedownsLeft, $tailLights, $stopLights,
+				$turnSignalsRear, $clearenceLightsRear, $identfyLightsRear, $reflectorsRear, $wheelLugRear, $bumper, $cargoTiedownsRear, 
+				$fuelTankRight, $sidemarkerLightsRight, $reflectorsRight, $wheelLugRight, $cargoTiedownsRight, $hosesCouplers, 
+				$electricalConnector, $couplings, $markingPlacecards, $properShipPapers, $releaseTrailerBreaks, $applyServiceBreaks); 
+			$_SESSION['editPretrips'] = $editPretrips;
+			header ("location:edit_pretrip.php?id=" . $_SESSION['pretripNum'] );
 		}
 	}
 }
 
 if (isset($_POST['update'])) {	
-	$trailer = $db->real_escape_string($_POST['trailer']);
-	$incomingOutgoing = $db->real_escape_string($_POST['incomingOutgoing']);
-	$numOfSample = $db->real_escape_string($_POST['numOfSample']);
-	$potato = $db->real_escape_string($_POST['potato']);
-	$sample_date = $db->real_escape_string($_POST['date']);
-	$totalWeight = $db->real_escape_string($_POST['totalWeight']);
-	$unuseableWeight = $db->real_escape_string($_POST['unuseableWeight']);	
-	$rotWeight = $db->real_escape_string($_POST['rotWeight']);
-	$pitrotWeight = $db->real_escape_string($_POST['pitrotWeight']);	
-	$internalWeight = $db->real_escape_string($_POST['internalWeight']);	
-	$wirewormWeight = $db->real_escape_string($_POST['wirewormWeight']);	
-	$jellyEndWeight = $db->real_escape_string($_POST['jellyendWeight']);
-	$otherWeight = $db->real_escape_string($_POST['otherWeight']);	
-	$hollowHeartWeight = $db->real_escape_string($_POST['hollowheartWeight']);	
-	$scabWeight = $db->real_escape_string($_POST['scabWeight']);	
-	$sunburnWeight = $db->real_escape_string($_POST['sunburnWeight']);	
-	$mechBruiseWeight = $db->real_escape_string($_POST['mechbruiseWeight']);	
-	$smallsWeight = $db->real_escape_string($_POST['smallsWeight']);
-	$tenozsWeight = $db->real_escape_string($_POST['tenozsWeight']);	
-	$airWeight = $db->real_escape_string($_POST['airWeight']);	
-	$waterWeight = $db->real_escape_string($_POST['waterWeight']);	
-	$rockMaterial = $db->real_escape_string($_POST['rockWeight']);
+	$date = $db->real_escape_string($_POST['date']);
+	$truck = $db->real_escape_string($_POST['truck']);
+	$trailer = $db->real_escape_string($_POST['trailer']);	
+	if (isset($_POST['parkingBrake'])) {
+		$parkingBrake = $db->real_escape_string($_POST['parkingBrake']);
+	} else {
+		$parkingBrake = 1;
+	}
 
+	if (isset($_POST['cleanliness'])) {
+		$cleanliness = $db->real_escape_string($_POST['cleanliness']);
+	} else {
+		$cleanliness = 1;
+	}
 
+	if (isset($_POST['engineOilPressure'])) {
+		$engineOilPressure = $db->real_escape_string($_POST['engineOilPressure']);
+	} else {
+		$engineOilPressure = 1;
+	}
+
+	if (isset($_POST['engineAirPressure'])) {
+		$engineAirPressure = $db->real_escape_string($_POST['engineAirPressure']);
+	} else {
+		$engineAirPressure = 1;
+	}
+
+	if (isset($_POST['engineLowAir'])) {
+		$engineLowAir = $db->real_escape_string($_POST['engineLowAir']);
+	} else {
+		$engineLowAir = 1;
+	}
+
+	if (isset($_POST['engineInstrumentPanel'])) {
+		$engineInstrumentPanel = $db->real_escape_string($_POST['engineInstrumentPanel']);
+	} else {
+		$engineInstrumentPanel = 1;
+	}
+
+	if (isset($_POST['engineHorn'])) {
+		$engineHorn = $db->real_escape_string($_POST['engineHorn']);
+	} else {
+		$engineHorn = 1;
+	}
+
+	if (isset($_POST['engineWindshieldWiper'])) {
+		$engineWindshieldWiper = $db->real_escape_string($_POST['engineWindshieldWiper']);
+	} else {
+		$engineWindshieldWiper = 1;
+	}
+
+	if (isset($_POST['engineHeaterDefroster'])) {
+		$engineHeaterDefroster = $db->real_escape_string($_POST['engineHeaterDefroster']);
+	} else {
+		$engineHeaterDefroster = 1;
+	}
+
+	if (isset($_POST['engineMirrors'])) {
+		$engineMirrors = $db->real_escape_string($_POST['engineMirrors']);
+	} else {
+		$engineMirrors = 1;
+	}
+
+	if (isset($_POST['engineSteeringWheel'])) {
+		$engineSteeringWheel = $db->real_escape_string($_POST['engineSteeringWheel']);
+	} else {
+		$engineSteeringWheel = 1;
+	}
+
+	if (isset($_POST['engineTrailerBrakesEmergency'])) {
+		$engineTrailerBrakesEmergency = $db->real_escape_string($_POST['engineTrailerBrakesEmergency']);
+	} else {
+		$engineTrailerBrakesEmergency = 1;
+	}
+
+	if (isset($_POST['engineAllLights'])) {
+		$engineAllLights = $db->real_escape_string($_POST['engineAllLights']);
+	} else {
+		$engineAllLights = 1;
+	}
+
+	if (isset($_POST['engineFireExtinguisher'])) {
+		$engineFireExtinguisher = $db->real_escape_string($_POST['engineFireExtinguisher']);
+	} else {
+		$engineFireExtinguisher = 1;
+	}
+
+	if (isset($_POST['frontHeadlights'])) {
+		$frontHeadlights = $db->real_escape_string($_POST['frontHeadlights']);
+	} else {
+		$frontHeadlights = 1;
+	}
+
+	if (isset($_POST['frontClearanceLights'])) {
+		$frontClearanceLights = $db->real_escape_string($_POST['frontClearanceLights']);
+	} else {
+		$frontClearanceLights = 1;
+	}
+
+	if (isset($_POST['frontIdentificationLights'])) {
+		$frontIdentificationLights = $db->real_escape_string($_POST['frontIdentificationLights']);
+	} else {
+		$frontIdentificationLights = 1;
+	}
+
+	if (isset($_POST['frontTurnSignals'])) {
+		$frontTurnSignals = $db->real_escape_string($_POST['frontTurnSignals']);
+	} else {
+		$frontTurnSignals = 1;
+	}
+
+	if (isset($_POST['frontTiresWheels'])) {
+		$frontTiresWheels = $db->real_escape_string($_POST['frontTiresWheels']);
+	} else {
+		$frontTiresWheels = 1;
+	}
+
+	if (isset($_POST['leftFuelTankCap'])) {
+		$leftFuelTankCap = $db->real_escape_string($_POST['leftFuelTankCap']);
+	} else {
+		$leftFuelTankCap = 1;
+	}
+
+	if (isset($_POST['leftSidemarkerLights'])) {
+		$leftSidemarkerLights = $db->real_escape_string($_POST['leftSidemarkerLights']);
+	} else {
+		$leftSidemarkerLights = 1;
+	}
+
+	if (isset($_POST['leftReflectors'])) {
+		$leftReflectors = $db->real_escape_string($_POST['leftReflectors']);
+	} else {
+		$leftReflectors = 1;
+	}
+
+	if (isset($_POST['leftTiresWheels'])) {
+		$leftTiresWheels = $db->real_escape_string($_POST['leftTiresWheels']);
+	} else {
+		$leftTiresWheels = 1;
+	}
+
+	if (isset($_POST['leftCargoTiedowns'])) {
+		$leftCargoTiedowns = $db->real_escape_string($_POST['leftCargoTiedowns']);
+	} else {
+		$leftCargoTiedowns = 1;
+	}
+
+	if (isset($_POST['rearTailLights'])) {
+		$rearTailLights = $db->real_escape_string($_POST['rearTailLights']);
+	} else {
+		$rearTailLights = 1;
+	}
+
+	if (isset($_POST['rearStopLights'])) {
+		$rearStopLights = $db->real_escape_string($_POST['rearStopLights']);
+	} else {
+		$rearStopLights = 1;
+	}
+
+	if (isset($_POST['rearTurnSignals'])) {
+		$rearTurnSignals = $db->real_escape_string($_POST['rearTurnSignals']);
+	} else {
+		$rearTurnSignals = 1;
+	}
+
+	if (isset($_POST['rearClearanceLights'])) {
+		$rearClearanceLights = $db->real_escape_string($_POST['rearClearanceLights']);
+	} else {
+		$rearClearanceLights = 1;
+	}
+
+	if (isset($_POST['rearIdentificationLights'])) {
+		$rearIdentificationLights = $db->real_escape_string($_POST['rearIdentificationLights']);
+	} else {
+		$rearIdentificationLights = 1;
+	}
+
+	if (isset($_POST['rearReflectors'])) {
+		$rearReflectors = $db->real_escape_string($_POST['rearReflectors']);
+	} else {
+		$rearReflectors = 1;
+	}
+
+	if (isset($_POST['rearTiresWheels'])) {
+		$rearTiresWheels = $db->real_escape_string($_POST['rearTiresWheels']);
+	} else {
+		$rearTiresWheels = 1;
+	}
+
+	if (isset($_POST['rearRearProtection'])) {
+		$rearRearProtection = $db->real_escape_string($_POST['rearRearProtection']);
+	} else {
+		$rearRearProtection = 1;
+	}
+
+	if (isset($_POST['rearCargoTiedowns'])) {
+		$rearCargoTiedowns = $db->real_escape_string($_POST['rearCargoTiedowns']);
+	} else {
+		$rearCargoTiedowns = 1;
+	}
+
+	if (isset($_POST['rightFuelTankCap'])) {
+		$rightFuelTankCap = $db->real_escape_string($_POST['rightFuelTankCap']);
+	} else {
+		$rightFuelTankCap = 1;
+	}
+
+	if (isset($_POST['rightSidemarkerLights'])) {
+		$rightSidemarkerLights = $db->real_escape_string($_POST['rightSidemarkerLights']);
+	} else {
+		$rightSidemarkerLights = 1;
+	}
+
+	if (isset($_POST['rightReflectors'])) {
+		$rightReflectors = $db->real_escape_string($_POST['rightReflectors']);
+	} else {
+		$rightReflectors = 1;
+	}
+
+	if (isset($_POST['rightTiresWheels'])) {
+		$rightTiresWheels = $db->real_escape_string($_POST['rightTiresWheels']);
+	} else {
+		$rightTiresWheels = 1;
+	}
 	
-	$query = "UPDATE sample SET num_sample_per_load = " . $numOfSample . ", sample_date = '" . $sample_date . "', 
-		unuseable_weight = " . $unuseableWeight . ", rot_weight = " . $rotWeight . ", internal_weight = " . $internalWeight . ",
-		pit_rot_weight = " . $pitrotWeight . ", wireworm_weight = " . $wirewormWeight . ", jelly_end_weight = " . $jellyEndWeight . ",
-		scab_weight = " . $scabWeight . ", hollow_heart_weight = " . $hollowHeartWeight . ", sunburn_weight = " . $sunburnWeight . ",
-		mech_bruise_weight = " . $mechBruiseWeight . ", smalls_weight = " . $smallsWeight . ", ten_oz_weight = " . $tenozsWeight . ",
-		air_weight = " . $airWeight . ", water_weight = " . $waterWeight . ", rock_foreign_weight = " . $rockMaterial . ",
-		total_sample_weight = " . $totalWeight . ", other_weight = " . $otherWeight . ", in_out = " . $incomingOutgoing . ",
-		trailer_id = " . $trailerId . ", potato_id = " . $potatoId . ", emp_id = " . $empId ."
-				WHERE sample_id = " . $_SESSION['sampleNum'];  
+	if (isset($_POST['rightCargoTiedowns'])) {
+		$rightCargoTiedowns = $db->real_escape_string($_POST['rightCargoTiedowns']);
+	} else {
+		$rightCargoTiedowns = 1;
+	}
 
+	if (isset($_POST['onCombinationsHosesCouplers'])) {
+		$onCombinationsHosesCouplers = $db->real_escape_string($_POST['onCombinationsHosesCouplers']);
+	} else {
+		$onCombinationsHosesCouplers = 1;
+	}
+
+	if (isset($_POST['onCombinationsElectricalConnector'])) {
+		$onCombinationsElectricalConnector = $db->real_escape_string($_POST['onCombinationsElectricalConnector']);
+	} else {
+		$onCombinationsElectricalConnector = 1;
+	}
+
+	if (isset($_POST['onCombinationsCouplings'])) {
+		$onCombinationsCouplings = $db->real_escape_string($_POST['onCombinationsCouplings']);
+	} else {
+		$onCombinationsCouplings = 1;
+	}
+
+	if (isset($_POST['onHazMaterialsMarkingPlacards'])) {
+		$onHazMaterialsMarkingPlacards = $db->real_escape_string($_POST['onHazMaterialsMarkingPlacards']);
+	} else {
+		$onHazMaterialsMarkingPlacards = 1;
+	}
+
+	if (isset($_POST['onHazMaterialsShippingPapers'])) {
+		$onHazMaterialsShippingPapers = $db->real_escape_string($_POST['onHazMaterialsShippingPapers']);
+	} else {
+		$onHazMaterialsShippingPapers = 1;
+	}
+
+	if (isset($_POST['stopEngineReleaseTrailerBrakes'])) {
+		$stopEngineReleaseTrailerBrakes = $db->real_escape_string($_POST['stopEngineReleaseTrailerBrakes']);
+	} else {
+		$stopEngineReleaseTrailerBrakes = 1;
+	}
+
+	if (isset($_POST['stopEngineApplyBrakesAir'])) {
+		$stopEngineApplyBrakesAir = $db->real_escape_string($_POST['stopEngineApplyBrakesAir']);
+	} else {
+		$stopEngineApplyBrakesAir = 1;
+	}
+	
+	$query = "UPDATE pretrip_inspection SET emp_id = " . $empId .", inspect_date = '" . $date . "', truck_id = " . $truck .",
+				 trailer_id = " . $trailer .", park_break = " . $parkingBrake .", cleanliness = " . $cleanliness .",
+				 oil_pressure = " . $engineOilPressure .", air_pressure = " . $engineAirPressure .", low_air_warn = " . $engineLowAir .",
+				 inst_pannel = " . $engineInstrumentPanel .", horn = " . $engineHorn .", wiper_washer = " . $engineWindshieldWiper .", 
+				 heat_defrost = " . $engineHeaterDefroster .", mirrors = " . $engineMirrors .", steering_wheel = " . $engineSteeringWheel .", 
+				 emerg_trailer_breaks = " . $engineTrailerBrakesEmergency .", engine_lights = " . $engineAllLights .",
+				 fire_extinguisher_warning_device  = " . $engineFireExtinguisher .", headlights = " . $frontHeadlights .", 
+				 clearence_lights = " . $frontClearanceLights .", identfy_lights = " . $frontIdentificationLights .", 
+				 turn_signals_4way_flashers = " . $frontTurnSignals .", wheel_lug_front = " . $frontTiresWheels .", fuel_tank_cap_left = " . $leftFuelTankCap .", 
+				 sidemarker_lights_left = " . $leftSidemarkerLights .", reflectors_left = " . $leftReflectors .", wheel_lug_left = " . $leftTiresWheels .", 
+				 cargo_tiedowns_doors_left = " . $leftCargoTiedowns .", tail_lights = " . $rearTailLights .", stop_lights = " . $rearStopLights .", 
+				 turn_signals_4way_flashers_rear = " . $rearTurnSignals .", clearence_lights_rear = " . $rearClearanceLights .", 
+				 identfy_lights_rear = " . $rearIdentificationLights .", reflectors_rear = " . $rearReflectors .", wheel_lug_rear = " . $rearTiresWheels .",
+				 bumper = " . $rearRearProtection .", cargo_tiedowns_doors_rear = " . $rearCargoTiedowns .", fuel_tank_cap_right = " . $rightFuelTankCap .",
+				 sidemarker_lights_right = " . $rightSidemarkerLights .", reflectors_right = " . $rightReflectors .", wheel_lug_right = " . $rightTiresWheels .",
+				 cargo_tiedowns_doors_right = " . $rightCargoTiedowns .", hoses_couplers = " . $onCombinationsHosesCouplers .",
+				 electrical_connector = " . $onCombinationsElectricalConnector .", couplings = " . $onCombinationsCouplings .", marking_placecards = " . $onHazMaterialsMarkingPlacards .",
+				 proper_ship_papers = " . $onHazMaterialsShippingPapers .", release_trailer_emerg_breaks = " . $stopEngineReleaseTrailerBrakes .", 
+				 apply_service_breaks = " . $stopEngineApplyBrakesAir ."	
+			   WHERE pretrip_id = " . $_SESSION['pretripNum'];  
+			  
 	$result = $db->query($query);
 	
-	// kill session var 'editIncomingDeliveries'
-	unset($_SESSION['editIncomingDeliveries']);
+	// kill session var 'pretrips'
+	unset($_SESSION['pretrips']);
 	header("location:index.php");
 } 
 ?>

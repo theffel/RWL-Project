@@ -86,105 +86,105 @@ include('pretrip_script.php');
             <div class="form-group">
                 <label for="inside" class="control-label col-md-2">Inside</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="parkingBrake" value="1"> Parking Brake (Apply)</input>
+                    <input type="checkbox" name="parkingBrake" value="0"> Parking Brake (Apply)</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="cleanliness" class="control-label col-md-2">Cleanliness</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="cleanliness" value="1"> Cleanliness</input>
+                    <input type="checkbox" name="cleanliness" value="0"> Cleanliness</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="startEngine" class="control-label col-md-2">Start Engine</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="engineOilPressure" value="1"> Oil Pressure (Light or Gauge)</input><br />
-                    <input type="checkbox" name="engineAirPressure" value="1"> Air Pressure or Vacuum (Gauge)</input><br />
-                    <input type="checkbox" name="engineLowAir" value="1"> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />
-                    <input type="checkbox" name="engineInstrumentPanel" value="1"> Instrument Panel (Telltale lights or buzzers)</input><br />
-                    <input type="checkbox" name="engineHorn" value="1"> Horn</input><br />
-                    <input type="checkbox" name="engineWindshieldWiper" value="1"> Windshield Wiper and Washer</input><br />
-                    <input type="checkbox" name="engineHeaterDefroster" value="1"> Heater - Defroster</input><br />
-                    <input type="checkbox" name="engineMirrors" value="1"> Mirrors</input><br />
-                    <input type="checkbox" name="engineSteeringWheel" value="1"> Steering Wheel (Excess play)</input><br />
-                    <input type="checkbox" name="engineTrailerBrakesEmergency" value="1"> Apply Trailer Brakes in Emergency</input><br />
-                    <input type="checkbox" name="engineAllLights" value="1"> Turn on all lights including 4-way flasher</input><br />
-                    <input type="checkbox" name="engineFireExtinguisher" value="1"> Fire Extinguisher and Warning Devices</input>
+                    <input type="checkbox" name="engineOilPressure" value="0"> Oil Pressure (Light or Gauge)</input><br />
+                    <input type="checkbox" name="engineAirPressure" value="0"> Air Pressure or Vacuum (Gauge)</input><br />
+                    <input type="checkbox" name="engineLowAir" value="0"> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />
+                    <input type="checkbox" name="engineInstrumentPanel" value="0"> Instrument Panel (Telltale lights or buzzers)</input><br />
+                    <input type="checkbox" name="engineHorn" value="0"> Horn</input><br />
+                    <input type="checkbox" name="engineWindshieldWiper" value="0"> Windshield Wiper and Washer</input><br />
+                    <input type="checkbox" name="engineHeaterDefroster" value="0"> Heater - Defroster</input><br />
+                    <input type="checkbox" name="engineMirrors" value="0"> Mirrors</input><br />
+                    <input type="checkbox" name="engineSteeringWheel" value="0"> Steering Wheel (Excess play)</input><br />
+                    <input type="checkbox" name="engineTrailerBrakesEmergency" value="0"> Apply Trailer Brakes in Emergency</input><br />
+                    <input type="checkbox" name="engineAllLights" value="0"> Turn on all lights including 4-way flasher</input><br />
+                    <input type="checkbox" name="engineFireExtinguisher" value="0"> Fire Extinguisher and Warning Devices</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="front" class="control-label col-md-2">Front</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="frontHeadlights" value="1"> Headlights</input><br />
-                    <input type="checkbox" name="frontClearanceLights" value="1"> Clearance Lights</input><br />
-                    <input type="checkbox" name="frontIdentificationLights" value="1"> Identification Lights</input><br />
-                    <input type="checkbox" name="frontTurnSignals" value="1"> Turn Signals and 4-way flasher</input><br />
-                    <input type="checkbox" name="frontTiresWheels" value="1"> Tires and Wheels (Lugs)</input>
+                    <input type="checkbox" name="frontHeadlights" value="0"> Headlights</input><br />
+                    <input type="checkbox" name="frontClearanceLights" value="0"> Clearance Lights</input><br />
+                    <input type="checkbox" name="frontIdentificationLights" value="0"> Identification Lights</input><br />
+                    <input type="checkbox" name="frontTurnSignals" value="0"> Turn Signals and 4-way flasher</input><br />
+                    <input type="checkbox" name="frontTiresWheels" value="0"> Tires and Wheels (Lugs)</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="leftSide" class="control-label col-md-2">Left Side</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="leftFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
-                    <input type="checkbox" name="leftSidemarkerLights" value="1"> Sidemarker Lights</input><br />
-                    <input type="checkbox" name="leftReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="leftTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="leftCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <input type="checkbox" name="leftFuelTankCap" value="0"> Fuel Tank and Cap</input><br />
+                    <input type="checkbox" name="leftSidemarkerLights" value="0"> Sidemarker Lights</input><br />
+                    <input type="checkbox" name="leftReflectors" value="0"> Reflectors</input><br />
+                    <input type="checkbox" name="leftTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="leftCargoTiedowns" value="0"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="rear" class="control-label col-md-2">Rear</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="rearTailLights" value="1"> Tail Lights</input><br />
-                    <input type="checkbox" name="rearStopLights" value="1"> Stop Lights</input><br />
-                    <input type="checkbox" name="rearTurnSignals" value="1"> Turn Signals and 4-way flasher</input><br />
-                    <input type="checkbox" name="rearClearanceLights" value="1"> Clearance Lights</input><br />
-                    <input type="checkbox" name="rearIdentificationLights" value="1"> Identification Lights</input><br />
-                    <input type="checkbox" name="rearReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="rearTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="rearRearProtection" value="1"> Rear End Protection (Bumper)</input><br />
-                    <input type="checkbox" name="rearCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <input type="checkbox" name="rearTailLights" value="0"> Tail Lights</input><br />
+                    <input type="checkbox" name="rearStopLights" value="0"> Stop Lights</input><br />
+                    <input type="checkbox" name="rearTurnSignals" value="0"> Turn Signals and 4-way flasher</input><br />
+                    <input type="checkbox" name="rearClearanceLights" value="0"> Clearance Lights</input><br />
+                    <input type="checkbox" name="rearIdentificationLights" value="0"> Identification Lights</input><br />
+                    <input type="checkbox" name="rearReflectors" value="0"> Reflectors</input><br />
+                    <input type="checkbox" name="rearTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="rearRearProtection" value="0"> Rear End Protection (Bumper)</input><br />
+                    <input type="checkbox" name="rearCargoTiedowns" value="0"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="rightSide" class="control-label col-md-2">Right Side</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="rightFuelTankCap" value="1"> Fuel Tank and Cap</input><br />
-                    <input type="checkbox" name="rightSidemarkerLights" value="1"> Sidemarker Lights</input><br />
-                    <input type="checkbox" name="rightReflectors" value="1"> Reflectors</input><br />
-                    <input type="checkbox" name="rightTiresWheels" value="1"> Tires and Wheels (Lugs)</input><br />
-                    <input type="checkbox" name="rightCargoTiedowns" value="1"> Cargo Tie-downs/or Doors</input>
+                    <input type="checkbox" name="rightFuelTankCap" value="0"> Fuel Tank and Cap</input><br />
+                    <input type="checkbox" name="rightSidemarkerLights" value="0"> Sidemarker Lights</input><br />
+                    <input type="checkbox" name="rightReflectors" value="0"> Reflectors</input><br />
+                    <input type="checkbox" name="rightTiresWheels" value="0"> Tires and Wheels (Lugs)</input><br />
+                    <input type="checkbox" name="rightCargoTiedowns" value="0"> Cargo Tie-downs/or Doors</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="onCombinations" class="control-label col-md-2">On Combinations</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="onCombinationsHosesCouplers" value="1"> Hoses and Couplers</input><br />
-                    <input type="checkbox" name="onCombinationsElectricalConnector" value="1"> Electrical Connector</input><br />
-                    <input type="checkbox" name="onCombinationsCouplings" value="1"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>
+                    <input type="checkbox" name="onCombinationsHosesCouplers" value="0"> Hoses and Couplers</input><br />
+                    <input type="checkbox" name="onCombinationsElectricalConnector" value="0"> Electrical Connector</input><br />
+                    <input type="checkbox" name="onCombinationsCouplings" value="0"> Couplings (Fifth wheel, tow bar, safety chains, locking devices)</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="onHazMaterials" class="control-label col-md-2">On Vehicles Transporting Hazardous Materials</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="onHazMaterialsMarkingPlacards" value="1"> Marking or Placards</input><br />
-                    <input type="checkbox" name="onHazMaterialsShippingPapers" value="1"> Proper Shipping Papers</input>
+                    <input type="checkbox" name="onHazMaterialsMarkingPlacards" value="0"> Marking or Placards</input><br />
+                    <input type="checkbox" name="onHazMaterialsShippingPapers" value="0"> Proper Shipping Papers</input>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="stopEngine" class="control-label col-md-2">Stop Engine</label>
                 <div class="col-md-10">
-                    <input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="1"> Release Trailer Emergency Brakes</input><br />
-                    <input type="checkbox" name="stopEngineApplyBrakesAir" value="1"> Apply service Brakes-Air loss should not exceed:<ul>
+                    <input type="checkbox" name="stopEngineReleaseTrailerBrakes" value="0"> Release Trailer Emergency Brakes</input><br />
+                    <input type="checkbox" name="stopEngineApplyBrakesAir" value="0"> Apply service Brakes-Air loss should not exceed:<ul>
                         <li>3 psi per minute on single vehicles</li>
                         <li>4 psi per minute on combinations</li>
                     </ul></input>
