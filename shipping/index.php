@@ -50,12 +50,47 @@ include('shipping_script.php');
         ?>
         <h2 class="page-header">Add a Shipment</h2>
         <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="index.php">
+           <h2 class="page-header">RWL</h2>
             <div class="form-group">
-                <label for="date" class="control-label col-md-2">Load Date</label>
+
+                <label for="rwlLoadBegin" class="control-label col-md-2">Load Time Begin</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="rwlLoadBegin" name="rwlLoadBegin" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="rwlLoadBeginBtn" value="rwlLoadBegin" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Begin&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div> 
+            <div class="form-group">
+                <label for="rwlLoadEnd" class="control-label col-md-2">Load Time End</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="rwlLoadEnd" name="rwlLoadEnd" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="rwlLoadEndBtn" value="rwlLoadEnd" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;End&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Departure Time&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
             <div class="form-group">
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-10">
@@ -83,7 +118,19 @@ include('shipping_script.php');
                 </div>
             </div>
             <div class="form-group">
-                <label for="trailer" class="control-label col-md-2">Trailer</label>
+                <label for="truck" class="control-label col-md-2">Truck #</label>
+                <div class="col-md-10">
+                    <select class="form-control" name="truck">
+                        <?php
+                        for ($x = 0; $x < count($trucks); $x++){
+                            echo '<option value="' . $trucks[$x][0] .'">' . $trucks[$x][1] .'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="trailer" class="control-label col-md-2">Trailer #</label>
                 <div class="col-md-10">
                     <select class="form-control" name="trailer">
                         <?php
@@ -93,11 +140,24 @@ include('shipping_script.php');
                         ?>
                     </select>
                 </div>             
-            </div>            
+            </div> 
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-md-2">RWL Ticket Number</label>
+                <label for="dispatcher" class="control-label col-md-2">Dispatcher</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="loadIDInfo">
+                    <input type="text" class="form-control" name="dispatcher" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="driver" class="control-label col-md-2">Driver</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="driver" placeholder="">
+                </div>
+            </div>           
+            <div class="form-group">
+                <label for="rwlTicNum" class="control-label col-md-2">RWL Ticket Number</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="rwlTicNum">
                 </div>
             </div>
             <div class="form-group">
@@ -125,6 +185,81 @@ include('shipping_script.php');
                         }
                         ?>
                     </select>
+                </div>
+            </div>
+            <h2 class="page-header">Processor</h2>
+            <div class="form-group">
+                <label for="procArrivalTime" class="control-label col-md-2">Arrival Time</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="procArrivalTime" name="procArrivalTime" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="procArrivalTimeBtn" value="procArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="procUnloadBegin" class="control-label col-md-2">Unload Time Begin</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="procUnloadBegin" name="procUnloadBegin" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="procUnloadBeginBtn" value="procUnloadBegin" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;Begin&nbsp;&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="procUnloadEnd" class="control-label col-md-2">Unload Time End</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="procUnloadEnd" name="procUnloadEnd" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="procUnloadEndBtn" value="procUnloadEnd" onclick="getTime(this.value)">End&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="rwlDepartureTime" class="control-label col-md-2">Departure Time</label>
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="rwlDepartureTime" name="rwlDepartureTime" value="">
+                        </div>  
+                        <div class="col-md-1">
+                        <button type="button" class="btn btn-primary" name="rwlDepartureTimeBtn" value="rwlDepartureTime" onclick="getTime(this.value)">Depart&nbsp;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="procTicNum" class="control-label col-md-2">Processor Ticket Number</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="procTicNum" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="grossWeight" placeholder="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="tareWeight" placeholder="">
                 </div>
             </div>
 <!--            <div class="form-group">
@@ -184,5 +319,7 @@ include('shipping_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="../js/custom_js.js"></script>
 </body>
 </html>
