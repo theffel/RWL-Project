@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 	$byproduct = $db->real_escape_string($_POST['byproduct']);
 	$binMarker = $db->real_escape_string($_POST['binMarker']);
 
-	$query = "INSERT INTO rwl_bin (change_date, farm_id, weight, by_product, bin_marker, emp_id) VALUES ('" .$dateTime . "', ". $farm . ", " . $weight . ", " . $byproduct . ", " . $binMarker . " ," . $empId . ")";
+	$query = "INSERT INTO rwl_bin (change_date, farm_id, weight, by_product, bin_marker, emp_id) VALUES ('" .$dateTime . "', ". $farm . ", " . $weight . ", '" . $byproduct . "', " . $binMarker . " ," . $empId . ")";
 	$result = $db->query($query);
 }
 
@@ -74,7 +74,7 @@ if (isset($_POST['update'])) {
 	$byproduct = $db->real_escape_string($_POST['byproduct']);
 	$binMarker = $db->real_escape_string($_POST['binMarker']);
 
-	$query = "UPDATE rwl_bin SET change_date = '" . $dateTime . "', farm_id =" . $farm . ", weight = " . $weight . ", by_product = " . $byproduct . ", bin_marker = " . $binMarker . " WHERE rwl_bin_id = " . $_SESSION['changeNum'];
+	$query = "UPDATE rwl_bin SET change_date = '" . $dateTime . "', farm_id =" . $farm . ", weight = " . $weight . ", by_product = '" . $byproduct . "', bin_marker = " . $binMarker . " WHERE rwl_bin_id = " . $_SESSION['changeNum'];
 	$result = $db->query($query);
 
 	// kill session var 'changeFarms'
