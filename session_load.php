@@ -139,7 +139,7 @@ while ($row = $result->fetch_assoc()){
 $_SESSION['employees'] = $employee;
 
 //get all equipment list
-$query = "SELECT equip_id, equip_name FROM equiptment_list";
+$query = "SELECT equip_id, equip_name FROM equipment_list";
 $result = $db->query($query);
 while ($row = $result->fetch_assoc()){
 	$equipID = $row['equip_id'];
