@@ -59,6 +59,7 @@ include('../header.php');
                         <select class="form-control" name="equipment">
                             <?php
                             for ($x = 0; $x < count($equipment); $x++){
+                                echo $equipment[$x][1]." ".$_SESSION['editPlantCleaning'][0][1];
                                 if (strcmp($equipment[$x][1], $_SESSION['editPlantCleaning'][0][1]) == 0) {
                                     echo '<option selected value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                                 } else {
