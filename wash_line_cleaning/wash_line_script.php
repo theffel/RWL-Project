@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
 
 //select plant cleaning data for view
 $query = "SELECT w.line_clean_id, w.line_clean_date, w.equip_id, el.equip_name, w.clean_descript, e.emp_first_name, e.emp_last_name, w.emp_id FROM wash_line_cleaning AS w
-		  INNER JOIN equiptment_list AS el ON w.equip_id = el.equip_id
+		  INNER JOIN equipment_list AS el ON w.equip_id = el.equip_id
 		  INNER JOIN employee AS e ON w.emp_id = e.emp_id";
 $result = $db->query($query);
 
@@ -62,7 +62,7 @@ for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
 	if (isset($_POST[$lineCleaning[$x][0]])) {
 		$_SESSION['wCleanNum'] = $lineCleaning[$x][0];
 		$query = "SELECT w.line_clean_id, w.line_clean_date, w.equip_id, el.equip_name, w.clean_descript, e.emp_first_name, e.emp_last_name, w.emp_id FROM wash_line_cleaning AS w
-				  INNER JOIN equiptment_list AS el ON w.equip_id = el.equip_id
+				  INNER JOIN equipment_list AS el ON w.equip_id = el.equip_id
 				  INNER JOIN employee AS e ON w.emp_id = e.emp_id
  				  WHERE line_clean_id = " . $_SESSION['wCleanNum'];
 		$result = $db->query($query);
