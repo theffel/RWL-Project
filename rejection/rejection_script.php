@@ -46,7 +46,12 @@ if (!empty($result)) {
     	$farm = $row['farm_name'];
     	$quantReturned = $row['quanity_returned'];
     	$prodReturned = $row['returned_to'];
-    	$rejections[] = array($rejectId, $date, $potato, $farm, $quantReturned, $prodReturned);
+    	if ($prodReturned == 0) {
+			$returnedName = "Processor";
+		} else {
+			$returnedName = "Producer";
+		}
+    	$rejections[] = array($rejectId, $date, $potato, $farm, $returnedName, $prodReturned);
     	$_SESSION['rejections'] = $rejections;
 	}
 
