@@ -181,12 +181,20 @@ optgroup {
   font-weight: bold;
 }
 table {
-  border-spacing: 0;
-  border-collapse: collapse;
+   border-spacing: 0;
+   border-collapse: collapse;
+ }
+
+th {
+  background-color: lightgrey;
 }
 td,
 th {
-  padding: 0;
+  padding: 15px;
+}
+td {
+  height: 25px;
+  vertical-align: middle;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
