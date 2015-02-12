@@ -28,37 +28,51 @@ if (isset($_POST['Attendance'])) {
 	$query = "SELECT a.emp_id, e.emp_first_name, e.emp_last_name, a.time_in, a.time_out
 			  FROM attendance as a INNER JOIN employee as e ON a.emp_id = e.emp_id
     		  WHERE a.time_in LIKE '" . $currentDate . "%'
-    		  ORDER BY e.emp_first_name DESC";
+    		  ORDER BY e.emp_first_name DESC ";
 	$result = $db->query($query);
-
+	
+	
+	
 	if ($result != null) {
 		while ($row = $result->fetch_assoc()) {
+			
+			// should have 3 ppl 
+			
 			$empFName = $row['emp_first_name'];
 			$empLName = $row['emp_last_name'];
 			$timeIn = $row['time_in'];
 			$timeOut = $row['time_out'];
 			$empID = $row['emp_id'];
+	
+			//create associative array to hold attendance details - key by empID ex. 1 or 2 or 3
+			// add all details
+			$attendance[$empID] = array("name" => $empFName ." ". $empLName,
+									"id" => $empID,
+									"timeIn" => $timeIn,
+									"timeOut" => $timeOut,
+									"breakTimes" => array()
+									);		
 
 			//query for break data of emp_id from above
-			$query = "SELECT start_break, end_break
+			$query1 = "SELECT start_break, end_break
 					  FROM break
-    				  WHERE emp_id = ".$empID." AND start_break LIKE '".$currentDate."%'";
+    				  WHERE emp_id = ".$empID." AND start_break LIKE '".$currentDate."%' ORDER BY start_break";
+			
+			$result1 = $db->query($query1);
 
-			$result = $db->query($query);
-
-			while ($row = $result->fetch_assoc()) {
-				$startTime = $row['start_break'];
-				$endTime = $row['end_break'];
-
-				$break[][] = array($startTime, $endTime);
-				$_SESSION['break'] = $break;
+			while ($row1 = $result1->fetch_assoc()) {
+				
+				$startTime = "SB: ".$row1['start_break'];
+				$endTime = "EB: ".$row1['end_break'];
+			
+			// this pushes all breaks times for each user into the appropriate array spot (array created above)
+				array_push($attendance[$empID]["breakTimes"], $startTime,$endTime);
+				
 			}
-
-			$attendance[][] = array($empFName, $empLName, $timeIn, $timeOut);
-			$_SESSION['attendance'] = $attendance;
 		}
+		//var_dump($attendance);
+		
 	}
-
 
 } else {
 	// Work result part

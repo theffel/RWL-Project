@@ -83,59 +83,37 @@ include('../header.php');
                             End Break 2
                         </th>
                     </tr>
-                    <tr>
-                        <?php
-                            if (empty($_SESSION['attendance'])){
-                                echo "";
-                            } else {
-                                $attendanceData = $_SESSION['attendance'];
-                            }
-
-                            if (empty($_SESSION['break'])) {
-                                echo "";
-                            } else {
-                                $breakData = $_SESSION['break'];
-                            }
-//
-//                            print_r($attendanceData);
-//                            echo "<br>";
-//                            print_r($breakData); echo "<br>";
-                            if (empty($attendanceData)){
-                                echo "";
-                            } else {
-                                for ($x = 0; $x < count($_SESSION['attendance']); $x++) {
-                                    for ($i = 0; $i < count($_SESSION['attendance'][$x]); $i++) {
-                                        echo "<td>";
-                                        echo $attendanceData[$x][$i][0] . " " . $attendanceData[$x][$i][1];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $attendanceData[$x][$i][2];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $attendanceData[$x][$i][3];
-                                        echo "</td>";
-                                    }
-                                }
-                            }
-
-                            if (empty($breakData)) {
-                                echo "";
-                            } else {
-                                for ($x = 0; $x < count($_SESSION['break']); $x++) {
-                                    for ($i = 0; $i < count($_SESSION['break'][$x]); $i++) {
-                                        echo "<td>";
-                                        echo $breakData[$x][$i][0];
-                                        echo "</td>";
-                                        echo "<td>";
-                                        echo $breakData[$x][$i][1];
-                                        echo "</td>";
-                                    }
-                                }
-                            }
-                        ?>
-                    </tr>
-
+                    
+                       <?php
+						// if there are people to deal with 
+                        if (count($attendance)>0) {
+							// for each person in the attendance array
+							foreach($attendance as $emp) {
+								//echo out their details
+								echo "<tr><td>".$emp["name"]."</td><td>".$emp["timeIn"]."</td><td>".$emp["timeOut"]."</td>";
+								
+								// for each breaktime they have, make a new column and fill it up
+								// NOTE: If they  have more than 3 breaks (in and out), it will just continue to make
+								// columns across the page - Perhaps you are ok with this? It is more of a business rule
+								// thing...
+								if (count($emp["breakTimes"]) > 0) {
+									foreach ($emp["breakTimes"] as $indBreak) {
+										echo "<td>".$indBreak."</td>";
+									}
+									// now that all breaks columns are written, close the row
+									echo "</tr>";
+								} else {
+									// if they don't have any breaktimes, close the row
+									echo "</tr>";
+								}
+								
+							}     
+							
+						}// end if ppl							
+					?>
+						
                 </table>
+				 
             </div>
         </div>
         </br>
