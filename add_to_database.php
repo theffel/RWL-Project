@@ -238,7 +238,58 @@
 				exit;
 			}
 		}
+		
+		// get submit from add driver page
+		else if (isset($_POST['empId']) && isset($_POST['driverLicNum']) && isset($_POST['driverLicED']) && isset($_POST['driverLicTId']) && isset($_POST['medicalClear']) && isset($_POST['medicalED'])) {
+			$empId = ($_POST['empId']);
+			$driverLicNum = ($_POST['driverLicNum']);
+			$driverLicED = ($_POST['driverLicED']);
+			$driverLicTId = ($_POST['driverLicTId']);
+			$medicalClear = ($_POST['medicalClear']);
+			$medicalED = ($_POST['medicalED']);
+
+			// Create query
+			$queryL = "INSERT INTO `licence` (emp_id, lic_num, lic_expiry_date, lic_type_id) VALUES ('{$empId}', '{$driverLicNum}',  '{$driverLicED}', '{$driverLicTId}')";
 					
+			if ($db->query($queryL) === TRUE) {
+				$queryM = "INSERT INTO `medical` (emp_id, cleared_no, medical_expiry_date) VALUES ('{$empId}', '{$medicalClear}',  '{$medicalED}')";
+				if ($db->query($queryM) === TRUE) {
+					//fetch licence Id
+					$queryLId = "select lic_id from `licence` where emp_id = '{$empId}' Limit 1";
+					$lic = $db->query($queryLId)->fetch_assoc();
+					$licId = $lic['lic_id'];
+					
+					//fetch medical Id
+					$queryMId = "select medical_id from `medical` where emp_id = '{$empId}' Limit 1";
+					$med = $db->query($queryMId)->fetch_assoc();
+					$medicalId = $med['medical_id'];
+					
+					$queryD = "INSERT INTO `driver` (emp_id, lic_id, medical_id) VALUES ('{$empId}', '{$licId}',  '{$medicalId}')";
+					if ($db->query($queryD) === TRUE) {
+						$db->close();
+						echo '<script type="text/javascript">
+							location.replace("'.ROOT.'/admin_emp_list.php");
+							</script>';
+					}
+					else{
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+					}	
+				}
+				else{
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
+				}			
+			}
+			else{
+			echo "Error: " . $query . "<br>" . $db->error;
+			$db->close();
+			exit;
+			}	
+		}
+		
 		// get submit from add Destination page
 		else if (isset($_POST['destinationName']) && isset($_POST['destinationAddress']) && isset($_POST['destinationPhoneNum']) && isset($_POST['destinationContactName'])) {
 			$destinationName = ($_POST['destinationName']);

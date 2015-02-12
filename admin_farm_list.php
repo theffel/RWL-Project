@@ -94,7 +94,7 @@ include('header.php');
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/login.php");
+							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
  		echo "<hr><form action = '".ROOT."/admin_add_farm.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Farm'></form><br />";

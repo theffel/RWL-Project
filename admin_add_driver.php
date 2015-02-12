@@ -33,7 +33,7 @@ include('header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Driver Addition - Insurance</h1>
+                <h1 class="page-header">New Driver Addition</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
@@ -45,42 +45,60 @@ include('header.php');
 		<?php
 			// If the user is logged in, display the add driver form
 			if ($loggedIn == true) {	
-				// Get Driver Id
-				$id = $_GET["id"];
+				// Get Employee Id
+				$empId = $_GET["id"];
 			?>
 				<form class='form-horizontal' name='addDriverForm' id='addDriverForm' method='post' action="<?php echo ROOT; ?>/add_to_database.php">
+					<!--employee Id-->
+					<input hidden type = "radio" name = "empId" id = "empId" value = "<?php echo $empId; ?>" checked>
+					
 			
-					<!--driver insurance expirey date-->
+			<!--license-->
+			
+					<!--driver licence number-->
 					<div class="form-group">
-						<label for="inputdriverExp" class="control-label col-xs-2">driver Name</label>
+						<label for="inputdriverExp" class="control-label col-xs-2">driver licence number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="driverExp" id="driverExp" required data-validation-required-message="Please enter the expirey date of the new drivers insurance.">
+							<input type="text" class="form-control" name="driverLicNum" id="driverLicNum" required data-validation-required-message="Please enter the number of the new drivers licence.">
 						</div>
 					</div>
 					
-					<!--driver truck-->
+					<!--driver licence expirey date-->
 					<div class="form-group">
-						<label for="inputdriverAddress" class="control-label col-xs-2">driver Truck Id</label>
+						<label for="inputdriverExp" class="control-label col-xs-2">driver licence expirey date</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="driverTruck" id="driverTruck" required data-validation-required-message="Please enter the Truck of the new driver.">
+							<input type="text" class="form-control" name="driverLicED" id="driverLicED" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the expirey date of the new drivers licence.">
 						</div>
 					</div>
 					
-					<!--driver trailer-->
+					<!--driver licence type id-->
 					<div class="form-group">
-						<label for="inputdriverPhoneNum" class="control-label col-xs-2">driver Trailer Id</label>
+						<label for="inputdriverExp" class="control-label col-xs-2">driver licence type Id</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="driverTrailer" id="driverTrailer" placeholder="902#######" required data-validation-required-message="Please enter the Trailer of the new driver.">
+							<input type="text" class="form-control" name="driverLicTId" id="driverLicTId" placeholder="##" required data-validation-required-message="Please enter the Id of the type of drivers licence.">
 						</div>
 					</div>
 					
-					<!--driver image-->
+					<hr />
+			<!--medical-->
+			
+				<!--medical cleared-->	
 					<div class="form-group">
-						<label for="inputdriverContactName" class="control-label col-xs-2">driver Image Id</label>
+						<label for="inputmedicalClear" class="control-label col-xs-2">Medical Clear Status</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="driverImage" id="driverImage" required data-validation-required-message="Please enter the Id of the Image for the new driver.">
+							<select name="medicalClear" id="medicalClear" form="addDriverForm">
+								<option value="0" selected>not cleared</option>
+								<option value="1">cleared</option>								
+							</select>
 						</div>
-					</div>					
+					</div>
+				<!--medical coverage expirey date-->
+					<div class="form-group">
+						<label for="inputdriverExp" class="control-label col-xs-2">medical coverage expirey date</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="medicalED" id="medicalED" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the expirey date of the new drivers medical coverage.">
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">

@@ -186,8 +186,8 @@ include('header.php');
 					</div>
 					
 				</form>
+				<hr />
 				<form action = 'admin_update_train.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '<?php echo $empId; ?>' checked><input type = 'submit' class='btn btn-primary' value = 'Update Training Credentials'></form><br />
-
 
 			<?php
 				$query2 = "select * from driver where emp_id = '{$empId}'";
