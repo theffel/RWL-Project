@@ -135,9 +135,9 @@ include('pretrip_script.php');
                         echo '<input type="checkbox" name="engineLowAir" value="0"> Low Air or Vacuum Warning Device (Air pressure below 40 psi check on pressure build-up. Air pressure above 60 psi deplete air until warning device works.) (Vacuum below 8 inches Hg. check on build-up. Above 8 inchdes Hg. deplete vacuum until device works.</input><br />';
                     }
                     if($_SESSION['editPretrips'][0][8] == 0){
-                        echo '<input type="checkbox" name="engineInstrumentPanel" value="1" checked> Instrument Panel (Telltale lights or buzzers)</input><br />'
+                        echo '<input type="checkbox" name="engineInstrumentPanel" value="1" checked> Instrument Panel (Telltale lights or buzzers)</input><br />';
                     } else {
-                        echo '<input type="checkbox" name="engineInstrumentPanel" value="0"> Instrument Panel (Telltale lights or buzzers)</input><br />'
+                        echo '<input type="checkbox" name="engineInstrumentPanel" value="0"> Instrument Panel (Telltale lights or buzzers)</input><br />';
                     }
                     if($_SESSION['editPretrips'][0][9] == 0){
                         echo '<input type="checkbox" name="engineHorn" value="1" checked> Horn</input><br />';
@@ -254,9 +254,9 @@ include('pretrip_script.php');
                 <div class="col-md-10">
                     <?php
                     if($_SESSION['editPretrips'][0][27] == 0){
-                        echo '<input type="checkbox" name="rearTailLights" value="1" checked> Tail Lights</input><br />'
+                        echo '<input type="checkbox" name="rearTailLights" value="1" checked> Tail Lights</input><br />';
                     } else {
-                        echo '<input type="checkbox" name="rearTailLights" value="0"> Tail Lights</input><br />'
+                        echo '<input type="checkbox" name="rearTailLights" value="0"> Tail Lights</input><br />';
                     }
                     if($_SESSION['editPretrips'][0][28] == 0){
                         echo '<input type="checkbox" name="rearStopLights" value="1" checked> Stop Lights</input><br />';

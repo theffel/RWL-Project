@@ -302,7 +302,7 @@ if (isset($_POST['submit'])) {
 	
 	$query = "INSERT INTO pretrip_inspection(emp_id, inspect_date, truck_id, trailer_id, park_break, cleanliness,
 				 oil_pressure, air_pressure, low_air_warn, inst_pannel, horn, wiper_washer, heat_defrost, mirrors, 
-				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, headlights, clearence_lights, 
+				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, head_lights, clearence_lights, 
 				 identfy_lights, turn_signals_4way_flashers, wheel_lug_front, fuel_tank_cap_left, sidemarker_lights_left,
 				 reflectors_left, wheel_lug_left, cargo_tiedowns_doors_left, tail_lights, stop_lights, 
 				 turn_signals_4way_flashers_rear, clearence_lights_rear, identfy_lights_rear, reflectors_rear, wheel_lug_rear,
@@ -350,7 +350,7 @@ if (!empty($result)) {
 			$_SESSION['pretripNum'] = $pretrips[$x][0];
 			$query = "SELECT inspect_date, truck_num, trailer_num, park_break, cleanliness,
 				 oil_pressure, air_pressure, low_air_warn, inst_pannel, horn, wiper_washer, heat_defrost, mirrors, 
-				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, headlights, clearence_lights, 
+				 steering_wheel, emerg_trailer_breaks, engine_lights,fire_extinguisher_warning_device, head_lights, clearence_lights, 
 				 identfy_lights, turn_signals_4way_flashers, wheel_lug_front, fuel_tank_cap_left, sidemarker_lights_left,
 				 reflectors_left, wheel_lug_left, cargo_tiedowns_doors_left, tail_lights, stop_lights, 
 				 turn_signals_4way_flashers_rear, clearence_lights_rear, identfy_lights_rear, reflectors_rear, wheel_lug_rear,
@@ -380,7 +380,7 @@ if (!empty($result)) {
 			$emergTrailerBreaks = $row['emerg_trailer_breaks'];	
 			$engineLights = $row['engine_lights'];	
 			$fireExtinguisher = $row['fire_extinguisher_warning_device'];	
-			$headlights = $row['headlights'];	
+			$headlights = $row['head_lights'];	
 			$clearenceLights = $row['clearence_lights'];	
 			$identfyLights = $row['identfy_lights'];
 			$turnSignals = $row['turn_signals_4way_flashers'];	
@@ -705,7 +705,7 @@ if (isset($_POST['update'])) {
 				 inst_pannel = " . $engineInstrumentPanel .", horn = " . $engineHorn .", wiper_washer = " . $engineWindshieldWiper .", 
 				 heat_defrost = " . $engineHeaterDefroster .", mirrors = " . $engineMirrors .", steering_wheel = " . $engineSteeringWheel .", 
 				 emerg_trailer_breaks = " . $engineTrailerBrakesEmergency .", engine_lights = " . $engineAllLights .",
-				 fire_extinguisher_warning_device  = " . $engineFireExtinguisher .", headlights = " . $frontHeadlights .", 
+				 fire_extinguisher_warning_device  = " . $engineFireExtinguisher .", head_lights = " . $frontHeadlights .", 
 				 clearence_lights = " . $frontClearanceLights .", identfy_lights = " . $frontIdentificationLights .", 
 				 turn_signals_4way_flashers = " . $frontTurnSignals .", wheel_lug_front = " . $frontTiresWheels .", fuel_tank_cap_left = " . $leftFuelTankCap .", 
 				 sidemarker_lights_left = " . $leftSidemarkerLights .", reflectors_left = " . $leftReflectors .", wheel_lug_left = " . $leftTiresWheels .", 
