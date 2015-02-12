@@ -20,20 +20,26 @@
 include('../database.php');
 include('../session_load.php');
 
-// Insert Plant cleaning
+// Insert wash line cleaning
 if (isset($_POST['submit'])) {
-	$date = $db->real_escape_string($_POST['date']);
-	$cleaned = $db->real_escape_string($_POST['equipment']);
-	$description = $db->real_escape_string($_POST['descClean']);
-	$empID = $db->real_escape_string($_POST['employees']);
+	if (empty($_POST['descClean'])){
+//		header ("location:index.php");
+		echo "Please enter all value here!";
 
-	$query = "INSERT INTO wash_line_cleaning (line_clean_date, equip_id, clean_descript, cleaner1, emp_id)
-			  VALUES ('" . $date . "', " . $cleaned . ", '" . $description . "', " . $empID . ", " . $empID ." )";
+	} else {
+		$date = $db->real_escape_string($_POST['date']);
+		$cleaned = $db->real_escape_string($_POST['equipment']);
+		$description = $db->real_escape_string($_POST['descClean']);
+		$empID = $db->real_escape_string($_POST['employees']);
 
-	$result = $db->query($query);
+		$query = "INSERT INTO wash_line_cleaning (line_clean_date, equip_id, clean_descript, cleaner1, emp_id)
+			  VALUES ('" . $date . "', " . $cleaned . ", '" . $description . "', " . $empID . ", " . $empID . " )";
+
+		$result = $db->query($query);
+	}
 }
 
-//select plant cleaning data for view
+//select wash line cleaning data for view
 $query = "SELECT w.line_clean_id, w.line_clean_date, w.equip_id, el.equip_name, w.clean_descript, e.emp_first_name, e.emp_last_name, w.emp_id FROM wash_line_cleaning AS w
 		  INNER JOIN equipment_list AS el ON w.equip_id = el.equip_id
 		  INNER JOIN employee AS e ON w.emp_id = e.emp_id";
@@ -54,8 +60,8 @@ while ($row = $result->fetch_assoc()){
 	$_SESSION['lineCleaning'] = $lineCleaning;
 }
 
-// Select plant cleaning for edit
-if (empty($_SESSION['plantCleaning'])) {
+// Select wash line cleaning for edit
+if (empty($_SESSION['lineCleaning'])) {
 	echo "";
 } else {
 for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
