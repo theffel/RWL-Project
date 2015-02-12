@@ -148,8 +148,8 @@ include('product_script.php');
                 <label for="movementCert" class="control-label col-md-2">Movement Certifcate</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="movementCert" value="Yes"> Yes</li>
-                        <li><input type="radio" name="movementCert" value="No"> No</li>
+                        <li><input type="radio" name="movementCert" value="0"> Yes</li>
+                        <li><input type="radio" name="movementCert" value="1"> No</li>
                     </ul>
                 </div>
             </div>
@@ -157,8 +157,8 @@ include('product_script.php');
                 <label for="accepted" class="control-label col-md-2">Accepted</label>
                 <div class="col-md-10">
                     <ul class="list-inline">
-                        <li><input type="radio" name="accepted" value="Yes"> Yes</li>
-                        <li><input type="radio" name="accepted" value="No"> No</li>
+                        <li><input type="radio" name="accepted" value="0"> Yes</li>
+                        <li><input type="radio" name="accepted" value="1"> No</li>
                     </ul>
                 </div>
             </div>

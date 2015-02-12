@@ -51,7 +51,8 @@ if (!empty($result)) {
 	for ($x = 0; $x < count($_SESSION['changeFarms']); $x++){
 		if (isset($_POST[$changeFarms[$x][0]])) {
 			$_SESSION['changeNum'] = $changeFarms[$x][0];
-			$query = "SELECT change_date, farm_name, weight, by_product, bin_marker FROM rwl_bin INNER JOIN farm ON rwl_bin.farm_id = farm.farm_id FROM change_date WHERE rwl_bin_id = " . $_SESSION['changeNum'];
+			$query = "SELECT change_date, farm_name, weight, by_product, bin_marker FROM rwl_bin INNER JOIN farm ON rwl_bin.farm_id = farm.farm_id WHERE rwl_bin_id = " . $_SESSION['changeNum'];
+			var_dump($query);
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$date = $row['change_date'];
