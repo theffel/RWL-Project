@@ -45,7 +45,8 @@ include('header.php');
 		<?php
 			// If the user is logged in, display the add employee form
 			if ($loggedIn == true) {
-
+				// Get employee Id
+				$empId = $_GET["id"];	
 
 
 			
@@ -53,13 +54,9 @@ include('header.php');
 
 				<form class="form-horizontal" name="addemployeeTCForm" id="addemployeeTCForm" method="post" action="add_to_database.php">
 
-					<!--employee ID-->
-					<div class="form-group">
-						<label for="inputEmployeeId" class="control-label col-xs-2">Employee Id</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="employeeId" id="employeeId" placeholder="###" required data-validation-required-message="Please enter the designated employee ID.">
-						</div>
-					</div>				
+					<!--employee Id-->
+					<input hidden type = "radio" name = "empId" id = "empId" value = "<?php echo $empId; ?>" checked>
+									
 					
 					<!--training certificate start date-->
 					<div class="form-group">
@@ -81,7 +78,10 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputCompletionStat" class="control-label col-xs-2">Training Certificate Completion Status</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="CompletionStat" id="CompletionStat" placeholder="0-incomplete 1-complete" required data-validation-required-message="Please enter the completion status of the training certificate.">
+							<select name="completionStat" id="completionStat" form="addemployeeTCForm">
+								<option value="0" selected>Incomplete</option>
+								<option value="1">Complete</option>
+							</select>
 						</div>
 					</div>
 					

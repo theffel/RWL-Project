@@ -48,12 +48,21 @@ include('header.php');
 						
 				// Create query
 				$query = "select * FROM destination";
-				$dests = $db->query($query);
+				$result = $db->query($query);
 				
-				if ($dests->num_rows > 0) {
-					while($row = $dests->fetch_assoc()){
-						echo "<form ><input type = 'submit' class='btn btn-primary' value = '" . $row['dest_name'] . "'></form><br />";
+				if ($result->num_rows > 0) {
+					echo "<table style='width:100%' border='1'>";
+					echo "<tr><td>Destination Name</td> <td>Address</td> <td>Province</td> <td>Phone Number</td> <td>Contact Name</td> <td></td></tr>";
+					while($row = $result->fetch_assoc()){
+						echo "<tr><td>". $row['dest_name'] . "</td>";
+						echo "<td>" . $row['dest_address'] . "</td>";
+						echo "<td>" . $row['dest_prov'] . "</td>";
+						echo "<td>" . $row['dest_phone'] . "</td>";
+						echo "<td>" . $row['dest_contact_name'] . "</td>";
+						echo "<td><form action = 'admin_update_destination.php' method = 'get'><input hidden type = radio name = id value = '" . $row['dest_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						echo "</tr>";
 					}
+					echo "</table>";
 				}
 				else {
 					echo "0 results";

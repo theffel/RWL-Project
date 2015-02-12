@@ -187,7 +187,11 @@
 							$db->close();
 							exit;
 						}
-						
+						echo "New record created successfully";
+						$db->close();
+						echo '<script type="text/javascript">
+							location.replace("'.ROOT.'/admin_add_employee.php");
+							</script>';	
 						
 					}
 					else {
@@ -201,11 +205,6 @@
 					$db->close();
 					exit;
 				}
-				echo "New record created successfully";
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_add_employee.php");
-					</script>';	
 			} 
 			else {
 				echo "Error: " . $query . "<br>" . $db->error;
@@ -268,7 +267,7 @@
 					if ($db->query($queryD) === TRUE) {
 						$db->close();
 						echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/admin_emp_list.php");
+							location.replace("'.ROOT.'/admin_driver_list.php");
 							</script>';
 					}
 					else{
@@ -291,14 +290,15 @@
 		}
 		
 		// get submit from add Destination page
-		else if (isset($_POST['destinationName']) && isset($_POST['destinationAddress']) && isset($_POST['destinationPhoneNum']) && isset($_POST['destinationContactName'])) {
+		else if (isset($_POST['destinationName']) && isset($_POST['destinationAddress']) && isset($_POST['destinationProvince']) && isset($_POST['destinationPhoneNum']) && isset($_POST['destinationContactName'])) {
 			$destinationName = ($_POST['destinationName']);
 			$destinationAddress = ($_POST['destinationAddress']);
+			$destinationProvince = ($_POST['destinationProvince']);
 			$destinationPhoneNum = ($_POST['destinationPhoneNum']);
 			$destinationContactName = ($_POST['destinationContactName']);
 
 			// Create query
-			$query = "INSERT INTO `destination` (dest_name, dest_address, dest_phone, dest_contact_name) VALUES ('{$destinationName}', '{$destinationAddress}',  '{$destinationPhoneNum}', '{$destinationContactName}')";
+			$query = "INSERT INTO `destination` (dest_name, dest_address, dest_prov, dest_phone, dest_contact_name) VALUES ('{$destinationName}', '{$destinationAddress}', '{$destinationProvince}',  '{$destinationPhoneNum}', '{$destinationContactName}')";
 					
 			if ($db->query($query) === TRUE) {
 			$db->close();
@@ -337,50 +337,240 @@
 		}
 			
 		// get submit from add truck page
-		else if (isset($_POST['truckNum']) && isset($_POST['regId']) && isset($_POST['inspectId']) && isset($_POST['plateNum']) && isset($_POST['insId'])) {
+		else if (isset($_POST['truckNum']) && isset($_POST['plateNum']) && isset($_POST['regExpiry']) && isset($_POST['regImg']) && isset($_POST['inspectExpiry']) && isset($_POST['inspectImg']) && isset($_POST['insureExpiry']) && isset($_POST['insureImg'])) {
 			$truckNum = ($_POST['truckNum']);
-			$regId = ($_POST['regId']);
-			$inspectId = ($_POST['inspectId']);
 			$plateNum = ($_POST['plateNum']);
-			$insId = ($_POST['insId']);
+			$regExpiry = ($_POST['regExpiry']);
+			$regImg = ($_POST['regImg']);
+			$inspectExpiry = ($_POST['inspectExpiry']);
+			$inspectImg = ($_POST['inspectImg']);
+			$insureExpiry = ($_POST['insureExpiry']);
+			$insureImg = ($_POST['insureImg']);
 
 			// Create query
-			$query = "INSERT INTO `truck` (truck_num, reg_id, inspect_id, plate_num, ins_id) VALUES ('{$truckNum}', '{$regId}',  '{$inspectId}', '{$plateNum}', '{$insId}')";
-				
+			$query = "INSERT INTO `truck` (truck_num, plate_num) VALUES ('{$truckNum}', '{$plateNum}')";
 			if ($db->query($query) === TRUE) {
-			$db->close();
-			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_add_processor.php");
-					</script>';	
+				$queryTId = "select truck_id from `truck` where truck_num = {$truckNum} AND plate_num = {$plateNum}";
+				$truck = $db->query($queryTId)->fetch_assoc();
+				$truckId = $truck['truck_id'];
+				if($truckId > 0){
+					$queryRegImg = "INSERT INTO `images` (img) VALUES ('{$regImg}')";
+					if ($db->query($queryRegImg) === TRUE) {
+						$queryRegImgId = "select img_id from `images` where img = '{$regImg}'";
+						$regImgIdFetch = $db->query($queryRegImgId)->fetch_assoc();
+						$regImgId = $regImgIdFetch['img_id'];
+						
+						$queryInspectImg = "INSERT INTO `images` (img) VALUES ('{$inspectImg}')";
+						if ($db->query($queryInspectImg) === TRUE) {
+							$queryInspectImgId = "select img_id from `images` where img = '{$inspectImg}'";
+							$inspectImgIdFetch = $db->query($queryInspectImgId)->fetch_assoc();
+							$inspectImgId = $inspectImgIdFetch['img_id'];
+						
+							$queryInsureImg = "INSERT INTO `images` (img) VALUES ('{$insureImg}')";
+							if ($db->query($queryInsureImg) === TRUE) {
+								$queryInsureImgId = "select img_id from `images` where img = '{$insureImg}'";
+								$insureImgIdFetch = $db->query($queryInsureImgId)->fetch_assoc();
+								$insureImgId = $insureImgIdFetch['img_id'];	
+						
+								$queryReg = "INSERT INTO `registration` (reg_expiry_date, truck_id, img_id) VALUES ('{$regExpiry}', '{$truckId}', '{$regImgId}')";
+								
+								if ($db->query($queryReg) === TRUE) {
+									$queryRId = "select reg_id from `registration` where truck_id = '{$truckId}'";
+									$reg = $db->query($queryRId)->fetch_assoc();
+									$regId = $reg['reg_id'];
+									
+									$queryinspect = "INSERT INTO `inspection` (inspect_expiry_date, truck_id, img_id) VALUES ('{$inspectExpiry}', '{$truckId}', '{$inspectImgId}')";
+									
+									if ($db->query($queryinspect) === TRUE) {
+										$queryInspId = "select inspect_id from `inspection` where truck_id = {$truckId}";
+										$inspect = $db->query($queryInspId)->fetch_assoc();
+										$inspectId = $inspect['inspect_id'];
+										
+										$queryinsure = "INSERT INTO `insurance` (ins_expiry_date, truck_id, img_id) VALUES ('{$insureExpiry}', '{$truckId}', '{$insureImgId}')";
+										
+										if ($db->query($queryinsure) === TRUE) {
+											$queryInsuId = "select ins_id from `insurance` where truck_id = {$truckId}";
+											$insure = $db->query($queryInsuId)->fetch_assoc();
+											$insureId = $insure['ins_id'];
+											
+											$queryTruckFin = "UPDATE `truck` SET reg_id = '{$regId}', inspect_id = '{$inspectId}', ins_id = '{$insureId}' WHERE truck_id = '{$truckId}'";
+											if ($db->query($queryTruckFin) === TRUE) {
+												$db->close();
+												echo '<script type="text/javascript">
+														location.replace("'.ROOT.'/admin_truck_list.php");
+														</script>';	
+											}
+											else{
+												echo "Error: " . $query . "<br>" . $db->error;
+												$db->close();
+												exit;
+											}
+										}
+										else{
+											echo "Error: " . $query . "<br>" . $db->error;
+											$db->close();
+											exit;
+										}
+									}
+									else{
+										echo "Error: " . $query . "<br>" . $db->error;
+										$db->close();
+										exit;
+									}
+								}
+								else{
+									echo "Error: " . $query . "<br>" . $db->error;
+									$db->close();
+									exit;
+								}
+							}
+							else{
+								echo "Error: " . $query . "<br>" . $db->error;
+								$db->close();
+								exit;
+							}
+						}
+						else{
+							echo "Error: " . $query . "<br>" . $db->error;
+							$db->close();
+							exit;
+						}
+					}
+					else{
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				}
+				else{
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
 			else{
-			echo "Error: " . $query . "<br>" . $db->error;
-			$db->close();
-			exit;
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
 			}	
 		}
 
 		// get submit from add trailer page
-		else if (isset($_POST['trailerNum']) && isset($_POST['regId']) && isset($_POST['inspectId']) && isset($_POST['plateNum']) && isset($_POST['insId'])) {
+		else if (isset($_POST['trailerNum']) && isset($_POST['plateNum']) && isset($_POST['regExpiry']) && isset($_POST['regImg']) && isset($_POST['inspectExpiry']) && isset($_POST['inspectImg']) && isset($_POST['insureExpiry']) && isset($_POST['insureImg'])) {
 			$trailerNum = ($_POST['trailerNum']);
-			$regId = ($_POST['regId']);
-			$inspectId = ($_POST['inspectId']);
 			$plateNum = ($_POST['plateNum']);
-			$insId = ($_POST['insId']);
+			$regExpiry = ($_POST['regExpiry']);
+			$regImg = ($_POST['regImg']);
+			$inspectExpiry = ($_POST['inspectExpiry']);
+			$inspectImg = ($_POST['inspectImg']);
+			$insureExpiry = ($_POST['insureExpiry']);
+			$insureImg = ($_POST['insureImg']);
 
 			// Create query
-			$query = "INSERT INTO `trailer` (trailer_num, reg_id, inspect_id, plate_num, ins_id) VALUES ('{$trailerNum}', '{$regId}',  '{$inspectId}', '{$plateNum}', '{$insId}')";
-					
+			$query = "INSERT INTO `trailer` (trailer_num, plate_num) VALUES ('{$trailerNum}', '{$plateNum}')";
 			if ($db->query($query) === TRUE) {
-			$db->close();
-			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin_add_trailer.php");
-					</script>';	
+				$queryTId = "select trailer_id from `trailer` where trailer_num = {$trailerNum} AND plate_num = {$plateNum}";
+				$trailer = $db->query($queryTId)->fetch_assoc();
+				$trailerId = $trailer['trailer_id'];
+				if($trailerId > 0){
+					$queryRegImg = "INSERT INTO `images` (img) VALUES ('{$regImg}')";
+					if ($db->query($queryRegImg) === TRUE) {
+						$queryRegImgId = "select img_id from `images` where img = '{$regImg}'";
+						$regImgIdFetch = $db->query($queryRegImgId)->fetch_assoc();
+						$regImgId = $regImgIdFetch['img_id'];
+						
+						$queryInspectImg = "INSERT INTO `images` (img) VALUES ('{$inspectImg}')";
+						if ($db->query($queryInspectImg) === TRUE) {
+							$queryInspectImgId = "select img_id from `images` where img = '{$inspectImg}'";
+							$inspectImgIdFetch = $db->query($queryInspectImgId)->fetch_assoc();
+							$inspectImgId = $inspectImgIdFetch['img_id'];
+						
+							$queryInsureImg = "INSERT INTO `images` (img) VALUES ('{$insureImg}')";
+							if ($db->query($queryInsureImg) === TRUE) {
+								$queryInsureImgId = "select img_id from `images` where img = '{$insureImg}'";
+								$insureImgIdFetch = $db->query($queryInsureImgId)->fetch_assoc();
+								$insureImgId = $insureImgIdFetch['img_id'];	
+								
+								$queryReg = "INSERT INTO `registration` (reg_expiry_date, trailer_id, img_id) VALUES ('{$regExpiry}', '{$trailerId}', '{$regImgId}')";
+								
+								if ($db->query($queryReg) === TRUE) {
+									$queryRId = "select reg_id from `registration` where trailer_id = {$trailerId}";
+									$reg = $db->query($queryRId)->fetch_assoc();
+									$regId = $reg['reg_id'];
+									
+									$queryinspect = "INSERT INTO `inspection` (inspect_expiry_date, trailer_id, img_id) VALUES ('{$inspectExpiry}', '{$trailerId}', '{$inspectImgId}')";
+									
+									if ($db->query($queryinspect) === TRUE) {
+										$queryInspId = "select inspect_id from `inspection` where trailer_id = {$trailerId}";
+										$inspect = $db->query($queryInspId)->fetch_assoc();
+										$inspectId = $inspect['inspect_id'];
+										
+										$queryinsure = "INSERT INTO `insurance` (ins_expiry_date, trailer_id, img_id) VALUES ('{$insureExpiry}', '{$trailerId}', '{$insureImgId}')";
+										
+										if ($db->query($queryinsure) === TRUE) {
+											$queryInsuId = "select ins_id from `insurance` where trailer_id = {$trailerId}";
+											$insure = $db->query($queryInsuId)->fetch_assoc();
+											$insureId = $insure['ins_id'];
+											
+											$querytrailerFin = "UPDATE `trailer` SET reg_id = '{$regId}', inspect_id = '{$inspectId}', ins_id = '{$insureId}' WHERE trailer_id = '{$trailerId}'";
+											if ($db->query($querytrailerFin) === TRUE) {
+												$db->close();
+												echo '<script type="text/javascript">
+														location.replace("'.ROOT.'/admin_trailer_list.php");
+														</script>';	
+											}
+											else{
+												echo "Error: " . $query . "<br>" . $db->error;
+												$db->close();
+												exit;
+											}
+										}
+										else{
+											echo "Error: " . $query . "<br>" . $db->error;
+											$db->close();
+											exit;
+										}
+									}
+									else{
+										echo "Error: " . $query . "<br>" . $db->error;
+										$db->close();
+										exit;
+									}
+								}
+								else{
+									echo "Error: " . $query . "<br>" . $db->error;
+									$db->close();
+									exit;
+								}
+							}
+							else{
+								echo "Error: " . $query . "<br>" . $db->error;
+								$db->close();
+								exit;
+							}
+						}
+						else{
+							echo "Error: " . $query . "<br>" . $db->error;
+							$db->close();
+							exit;
+						}
+					}
+					else{
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				}
+				else{
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
 			else{
-			echo "Error: " . $query . "<br>" . $db->error;
-			$db->close();
-			exit;
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
 			}	
 		}
 			

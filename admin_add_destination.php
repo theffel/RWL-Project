@@ -66,6 +66,14 @@ include('header.php');
 						</div>
 					</div>
 					
+					<!--Destination Province-->
+					<div class="form-group">
+						<label for="inputDestinationProvince" class="control-label col-xs-2">Destination Province</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="destinationProvince" id="destinationProvince" required data-validation-required-message="Please enter the Province of the new destination.">
+						</div>
+					</div>
+					
 					<!--Destination Phone Number-->
 					<div class="form-group">
 						<label for="inputDestinationPhoneNum" class="control-label col-xs-2">Destination Phone Number</label>

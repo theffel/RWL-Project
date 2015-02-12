@@ -44,6 +44,22 @@ include('header.php');
 			if ($loggedIn == true) {	
 				// Get field Id
 				$fieldId = $_GET["id"];
+				// Get Bin Id
+				$binQuery = "select * from `field` where field_id = '{$fieldId}'";
+				$binResult = $db->query($binQuery)->fetch_assoc();
+				$binId = $binResult['warehouse_id'];
+				// Get warehouse Id
+				$warehouseQuery = "select * FROM warehouse_bin WHERE bin_id = '{$binId}'";
+				$warehouseResult = $db->query($warehouseQuery)->fetch_assoc();
+				$warehouseId = $warehouseResult['warehouse_id'];
+				// Get Farm Id
+				$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$warehouseId}'";
+				$farmResult = $db->query($farmQuery)->fetch_assoc();
+				$farmId = $farmResult['farm_id'];
+				
+				echo "<li><a href='".ROOT."/admin_warehouse_list.php?id=" . $farmId . "'>Warehouses</a></li>";
+				echo "<li><a href='".ROOT."/admin_bin_list.php?id=" . $warehouseId . "'>Bins</a></li>";
+				echo "<li><a href='".ROOT."/admin_field_list.php?id=" . $binId . "'>Fields</a></li>";
 ?>				                 
 					
                     <li class="active">Update field</li>
@@ -53,11 +69,9 @@ include('header.php');
         <!-- /.row -->
 		<?php
 			// Create query	
-			$query = "select * from `field` where field_id = '{$fieldId}'";
-			$result = $db->query($query);
-			if ($result->num_rows > 0) {
-				$queryValues = $result->fetch_assoc();
-				$employeePosId = $queryValues['position_id'];
+			if ($binResult->num_rows > 0) {
+				$queryValues = $binResult->fetch_assoc();
+				$fieldLocation = $queryValues['field_location'];
 			}
 
 
@@ -70,7 +84,7 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputfieldName" class="control-label col-xs-2">Field Location</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="fieldLocation" id="fieldLocation" required data-validation-required-message="Please enter the Location of the field." autofocus>
+							<input type="text" class="form-control" name="fieldLocation" id="fieldLocation" value="<?php echo $fieldLocation; ?>" required data-validation-required-message="Please enter the Location of the field." autofocus>
 						</div>
 					</div>
 

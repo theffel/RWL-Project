@@ -44,8 +44,17 @@ include('header.php');
 			if ($loggedIn == true) {	
 				// Get bin Id
 				$binId = $_GET["id"];
+				// Get warehouse Id
+				$warehouseQuery = "select * FROM warehouse_bin WHERE bin_id = '{$binId}'";
+				$warehouseResult = $db->query($warehouseQuery)->fetch_assoc();
+				$warehouseId = $warehouseResult['warehouse_id'];
+				// Get Farm Id
+				$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$warehouseId}'";
+				$farmResult = $db->query($farmQuery)->fetch_assoc();
+				$farmId = $farmResult['farm_id'];
 				//warehouse breadcrumb
-//				echo "<li><a href='admin_warehouse_list.php?id=" . $warehouseId . "'>warehouse</a></li>";
+				echo "<li><a href='".ROOT."/admin_warehouse_list.php?id=" . $farmId . "'>Warehouses</a></li>";
+				echo "<li><a href='".ROOT."/admin_bin_list.php?id=" . $warehouseId . "'>Bins</a></li>";
 ?>				                 
 					
                     <li class="active">update Bin</li>
@@ -54,11 +63,10 @@ include('header.php');
         </div>
         <!-- /.row -->
 		<?php
-				// Create query				
-				$query = "select * from `warehouse_bin` where bin_id = '{$binId}'";
-				$result = $db->query($query);
-				if ($result->num_rows > 0) {
-					$queryValues = $result->fetch_assoc();
+				//query bin table				
+
+				if ($warehouseResult->num_rows > 0) {
+					$queryValues = $warehouseResult->fetch_assoc();
 					$binName = $queryValues['bin_name'];
 				}
 				echo "<form class='form-horizontal' name='updateWarehouseBinForm' id='updateWarehouseBinForm' method='post' action='update_database.php'>";

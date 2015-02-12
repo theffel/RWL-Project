@@ -44,8 +44,13 @@ include('header.php');
 			if ($loggedIn == true) {	
 				// Get warehouse Id
 				$warehouseId = $_GET["id"];
+				// Get Farm Id
+				$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$warehouseId}'";
+				$farmResult = $db->query($farmQuery)->fetch_assoc();
+				$farmId = $farmResult['farm_id'];
 				//warehouse breadcrumb
-//				echo "<li><a href='admin_warehouse_list.php?id=" . $warehouseId . "'>warehouse</a></li>";
+				echo "<li><a href='".ROOT."/admin_warehouse_list.php?id=" . $farmId . "'>Warehouses</a></li>";
+				echo "<li><a href='".ROOT."/admin_bin_list.php?id=" . $warehouseId . "'>Bins</a></li>";
 ?>				                 
 					
                     <li class="active">Add Bin</li>

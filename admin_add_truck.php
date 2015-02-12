@@ -59,46 +59,79 @@ include('header.php');
 					<div class="form-group">
 						<label for="inputTruckNumber" class="control-label col-xs-2">Truck Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="truckNum" id="truckNum" placeholder="##" required data-validation-required-message="Please enter the designated Truck number.">
+							<input type="text" class="form-control" name="truckNum" id="truckNum" placeholder="#####" required data-validation-required-message="Please enter the designated Truck number.">
 						</div>
 					</div>	
-
-					<!--Registration Id-->
-					<div class="form-group">
-						<label for="inputRegistrationId" class="control-label col-xs-2">Registration Id</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="regId" id="regId" placeholder="##" required data-validation-required-message="Please enter the designated Registration Id.">
-						</div>
-					</div>
-
-					<!--Inspection Id-->
-					<div class="form-group">
-						<label for="inputInspectionId" class="control-label col-xs-2">Inspection Id</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="inspectId" id="inspectId" placeholder="##" required data-validation-required-message="Please enter the designated Inspection Id.">
-						</div>
-					</div>
 
 					<!--License Plate number-->
 					<div class="form-group">
 						<label for="inputPlateNumber" class="control-label col-xs-2">License Plate Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="plateNum" id="plateNum" placeholder="##" required data-validation-required-message="Please enter the designated License Plate number.">
+							<input type="text" class="form-control" name="plateNum" id="plateNum" placeholder="########" required data-validation-required-message="Please enter the designated License Plate number.">
 						</div>
 					</div>
-
-					<!--Insurance Id-->
+					
+					<hr />
+					
+				<!--Registration-->
+					<!--Registration expirey-->
 					<div class="form-group">
-						<label for="inputInsuranceId" class="control-label col-xs-2">Insurance Id</label>
+						<label for="inputRegistrationExpiry" class="control-label col-xs-2">Registration Expirey</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="insId" id="insId" placeholder="##" required data-validation-required-message="Please enter the designated Insurance Id.">
+							<input type="text" class="form-control" name="regExpiry" id="regExpiry" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the designated registration expirey date.">
 						</div>
-					</div>					
+					</div>
+					
+					<!--Registration image-->
+					<div class="form-group">
+						<label for="inputRegistrationImg" class="control-label col-md-2">Registration Picture</label>
+						<div class="col-md-10">
+							<input type="file" id="regImg" name="regImg" accept="image/*" required data-validation-required-message="Please enter the designated registration expirey date.">
+						</div>
+					</div>
+					
+					<hr />					
+
+				<!--Inspection-->
+					<!--Inspection expirey-->
+					<div class="form-group">
+						<label for="inputInspectionExpiry" class="control-label col-xs-2">Inspection Expirey</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="inspectExpiry" id="inspectExpiry" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the designated inspection expirey date.">
+						</div>
+					</div>
+					
+					<!--Inspection image-->
+					<div class="form-group">
+						<label for="inputInspectionImg" class="control-label col-md-2">Inspection Picture</label>
+						<div class="col-md-10">
+							<input type="file" id="inspectImg" name="inspectImg" accept="image/*" required data-validation-required-message="Please enter the designated registration expirey date.">
+						</div>
+					</div>
+					
+					<hr />
+
+				<!--Insurance-->
+					<!--Insurance expirey-->
+					<div class="form-group">
+						<label for="inputInsuranceExpiry" class="control-label col-xs-2">Insurance Expirey</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" name="insureExpiry" id="insureExpiry" placeholder="YYYY-MM-DD" required data-validation-required-message="Please enter the designated insurance expirey date.">
+						</div>
+					</div>	
+
+					<!--Insurance image-->
+					<div class="form-group">
+						<label for="inputInsuranceImg" class="control-label col-md-2">Insurance Picture</label>
+						<div class="col-md-10">
+							<input type="file" id="insureImg" name="insureImg" accept="image/*" required >
+						</div>
+					</div>
 					
 			
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">
-							<input type="submit" class="btn btn-primary" name="addTruck" value="Add Truck"/>
+							<input type="submit" class="btn btn-primary" name="addtruck" value="Add Truck"/>
 						</div>
 					</div>
 					
@@ -110,7 +143,7 @@ include('header.php');
 			// If the user is not logged in, redirect them to login.php if they try to access this page
 			else {
 				echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/login.php");
+							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
         ?>

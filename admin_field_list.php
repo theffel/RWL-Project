@@ -28,9 +28,16 @@ include('header.php');
 <?php
 	// If the user is logged in, display the add farm form
 	if ($loggedIn == true) {	
-	// Get warehouse Id
-	$id = $_GET["id"];
-
+		// Get Bin Id
+		$binId = $_GET["id"];
+		// Get warehouse Id
+		$warehouseQuery = "select * FROM warehouse_bin WHERE bin_id = '{$binId}'";
+		$warehouseResult = $db->query($warehouseQuery)->fetch_assoc();
+		$warehouseId = $warehouseResult['warehouse_id'];
+		// Get Farm Id
+		$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$warehouseId}'";
+		$farmResult = $db->query($farmQuery)->fetch_assoc();
+		$farmId = $farmResult['farm_id'];
 ?>
 <html>
 	<body>
@@ -45,6 +52,10 @@ include('header.php');
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin_farm_list.php">Farms</a>
+                    </li>
+					<li><a href="<?php echo ROOT; ?>/admin_warehouse_list.php?id=<?php echo $farmId; ?>">Warehouses</a>
+                    </li>
+					<li><a href="<?php echo ROOT; ?>/admin_bin_list.php?id=<?php echo $warehouseId; ?>">Bins</a>
                     </li>
                     <li class="active">Field</li>
                 </ol>
@@ -81,7 +92,7 @@ include('header.php');
 							</script>';
 			}
 
-		echo "<hr><form action = '".ROOT."/admin_add_field.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add field'></form><br />";
+		echo "<hr><form action = '".ROOT."/admin_add_field.php' method = 'get'> <input hidden type = radio name = id value = '" . $binId . "' checked><input type = submit class='btn btn-primary' value = 'Add field'></form><br />";
 		?>
         <hr>
 

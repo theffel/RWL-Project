@@ -84,7 +84,7 @@ include('header.php');
 
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">
-							<input type="submit" class="btn btn-primary" name="addDest" value="Add Processor"/>
+							<input type="submit" class="btn btn-primary" name="addProcessor" value="Add Processor"/>
 						</div>
 					</div>
 					

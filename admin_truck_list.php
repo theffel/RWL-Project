@@ -67,7 +67,7 @@ include('header.php');
 							location.replace("'.ROOT.'/login.php");
 							</script>';
 			}
- 		echo "<hr><form action = '".ROOT."/admin_add_truck.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Truck'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin_add_truck.php'><input type = submit class='btn btn-primary' value = 'Add Truck'></form><br />";
 
 		?>
 		<hr>

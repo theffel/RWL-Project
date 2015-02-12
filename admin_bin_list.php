@@ -29,9 +29,9 @@ include('header.php');
 	// If the user is logged in, display the add farm form
 	if ($loggedIn == true) {	
 	// Get warehouse Id
-	$id = $_GET["id"];
+	$warehouseId = $_GET["id"];
 	// Get Farm Id
-	$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$id}'";
+	$farmQuery = "select * FROM warehouse WHERE warehouse_id = '{$warehouseId}'";
 	$farmResult = $db->query($farmQuery)->fetch_assoc();
 	$farmId = $farmResult['farm_id'];
 ?>
@@ -59,7 +59,7 @@ include('header.php');
 		<?php
 
 				// Create query
-				$query = "select * FROM warehouse_bin WHERE warehouse_id = '{$id}'";
+				$query = "select * FROM warehouse_bin WHERE warehouse_id = '{$warehouseId}'";
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {
@@ -89,7 +89,7 @@ include('header.php');
 							</script>';
 			}
 
-		echo "<hr><form action = '".ROOT."/admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add Bin'></form><br />";
+		echo "<hr><form action = '".ROOT."/admin_add_bin.php' method = 'get'> <input hidden type = radio name = id value = '" . $warehouseId . "' checked><input type = submit class='btn btn-primary' value = 'Add Bin'></form><br />";
 		?>
         <hr>
 
