@@ -35,9 +35,7 @@ if (isset($_POST['Attendance'])) {
 	
 	if ($result != null) {
 		while ($row = $result->fetch_assoc()) {
-			
-			// should have 3 ppl 
-			
+		
 			$empFName = $row['emp_first_name'];
 			$empLName = $row['emp_last_name'];
 			$timeIn = $row['time_in'];
@@ -69,9 +67,7 @@ if (isset($_POST['Attendance'])) {
 				array_push($attendance[$empID]["breakTimes"], $startTime,$endTime);
 				
 			}
-		}
-		//var_dump($attendance);
-		
+		}		
 	}
 
 } else {

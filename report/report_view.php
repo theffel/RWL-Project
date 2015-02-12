@@ -94,8 +94,6 @@ include('../header.php');
 								
 								// for each breaktime they have, make a new column and fill it up
 								// NOTE: If they  have more than 3 breaks (in and out), it will just continue to make
-								// columns across the page - Perhaps you are ok with this? It is more of a business rule
-								// thing...
 								if (count($emp["breakTimes"]) > 0) {
 									foreach ($emp["breakTimes"] as $indBreak) {
 										echo "<td>".$indBreak."</td>";
@@ -109,7 +107,7 @@ include('../header.php');
 								
 							}     
 							
-						}// end if ppl							
+						}					
 					?>
 						
                 </table>
@@ -132,12 +130,6 @@ include('../header.php');
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-        <?php
-//            echo "incoming : "; print_r($_SESSION['incoming']);
-//            echo "outgoing : "; print_r($_SESSION['outgoing']);
-//            echo "sample : "; print_r($_SESSION['sample']);
-
-        ?>
             <table>
                  <tr>
                     <td>

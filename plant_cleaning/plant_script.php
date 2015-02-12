@@ -55,20 +55,18 @@ while ($row = $result->fetch_assoc()){
 }
 
 // Select plant cleaning for edit
-if (empty($_SESSION['plantCleaning'])) {
+if (empty($plantCleaning)) {
 	echo "";
 } else {
 for ($x = 0; $x < count($_SESSION['plantCleaning']); $x++){
 	if (isset($_POST[$plantCleaning[$x][0]])) {
 		$_SESSION['cleanNum'] = $plantCleaning[$x][0];
-		$query = "SELECT p.plant_clean_id, p.plant_clean_date, p.equip_id, el.equip_name, p.clean_descript, e.emp_first_name, e.emp_last_name, p.emp_id
-				  FROM plant_cleaning AS p
+		$query = "SELECT p.plant_clean_id, p.plant_clean_date, p.equip_id, el.equip_name, p.clean_descript, e.emp_first_name, e.emp_last_name, p.emp_id FROM plant_cleaning AS p
 		  		  INNER JOIN equipment_list AS el ON p.equip_id = el.equip_id
 				  INNER JOIN employee AS e ON p.emp_id = e.emp_id
  				  WHERE plant_clean_id = " . $_SESSION['cleanNum'];
 		$result = $db->query($query);
 		$row = $result->fetch_assoc();
-
 
 		$cleanDate = $row['plant_clean_date'];
 		$equipId = $row['equip_id'];

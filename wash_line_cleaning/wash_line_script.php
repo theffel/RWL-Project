@@ -61,33 +61,33 @@ while ($row = $result->fetch_assoc()){
 }
 
 // Select wash line cleaning for edit
-if (empty($_SESSION['lineCleaning'])) {
+if (empty($lineCleaning)) {
 	echo "";
 } else {
-for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
-	if (isset($_POST[$lineCleaning[$x][0]])) {
-		$_SESSION['wCleanNum'] = $lineCleaning[$x][0];
-		$query = "SELECT w.line_clean_id, w.line_clean_date, w.equip_id, el.equip_name, w.clean_descript, e.emp_first_name, e.emp_last_name, w.emp_id FROM wash_line_cleaning AS w
-				  INNER JOIN equipment_list AS el ON w.equip_id = el.equip_id
-				  INNER JOIN employee AS e ON w.emp_id = e.emp_id
- 				  WHERE line_clean_id = " . $_SESSION['wCleanNum'];
-		$result = $db->query($query);
-		$row = $result->fetch_assoc();
+	for ($x = 0; $x < count($_SESSION['lineCleaning']); $x++){
+		if (isset($_POST[$lineCleaning[$x][0]])) {
+			$_SESSION['wCleanNum'] = $lineCleaning[$x][0];
+			$query = "SELECT w.line_clean_id, w.line_clean_date, w.equip_id, el.equip_name, w.clean_descript, e.emp_first_name, e.emp_last_name, w.emp_id FROM wash_line_cleaning AS w
+					  INNER JOIN equipment_list AS el ON w.equip_id = el.equip_id
+					  INNER JOIN employee AS e ON w.emp_id = e.emp_id
+					  WHERE line_clean_id = " . $_SESSION['wCleanNum'];
+			$result = $db->query($query);
+			$row = $result->fetch_assoc();
 
-		$cleanDate = $row['line_clean_date'];
-		$equipId = $row['equip_id'];
-		$descript = $row['clean_descript'];
-		$empID = $row['emp_id'];
-		$equipName = $row['equip_name'];
-		$firstName = $row['emp_first_name'];
-		$lastName = $row['emp_last_name'];
-		$name = $firstName . " " . $lastName;
+			$cleanDate = $row['line_clean_date'];
+			$equipId = $row['equip_id'];
+			$descript = $row['clean_descript'];
+			$empID = $row['emp_id'];
+			$equipName = $row['equip_name'];
+			$firstName = $row['emp_first_name'];
+			$lastName = $row['emp_last_name'];
+			$name = $firstName . " " . $lastName;
 
-		$editLineCleaning[] = array($cleanDate, $equipName, $descript, $name, $empID);
-		$_SESSION['editLineCleaning'] = $editLineCleaning;
-		header ("location:edit_wash_line.php?id=" . $_SESSION['wCleanNum'] );
+			$editLineCleaning[] = array($cleanDate, $equipName, $descript, $name, $empID);
+			$_SESSION['editLineCleaning'] = $editLineCleaning;
+			header ("location:edit_wash_line.php?id=" . $_SESSION['wCleanNum'] );
+		}
 	}
-}
 }
 if (isset($_POST['update'])) {
 	$date = $db->real_escape_string($_POST['date']);
