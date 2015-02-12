@@ -47,7 +47,7 @@ INSERT INTO `Employee_Type`(`emp_type_id`, `type_description`, `type_alt_descrip
 (10, 'Fleet Management', 'fleetmanagement');
 
 
-INSERT INTO `equiptment_list`(`equip_id`, `equip_name`) VALUES
+INSERT INTO `equipment_list`(`equip_id`, `equip_name`) VALUES
 (1,'Evenflow 1'), (2,'Evenflow 2'), (3,'310'), (4,'315'), (5,'320'), (6,'Spudnik'), (7,'590'), (8,'411'), (9,'412'), (10,'Flume'), (11,'Rock Chain 580'), (12,'Barrel Washer'), 
 (13,'Trenches'), (14,'Drying table'), (15,'455'), (16,'Odenburg'), (17,'510'), (18,'512'), (19,'514'), (20,'516'), (21,'520'),(22,'530'), (23,'535'), (24,'Bin 611'), (25,'Bin 621'), 
 (26,'600'), (27,'610'), (28,'810'), (29,'820'), (30,'Bin Piler'), (31,'Bunker Water'), (32,'Bunker Solid 1'), (33,'Bunker Solid 2'), (34,'Floors recieving'), (35,'Floors grading room'), 
