@@ -63,7 +63,7 @@ include('sample_script.php');
                 </div>
                 <label for="numSample" class="control-label col-md-2">Number of Sample(s)</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="numOfSample" value="">
+                    <input type="text" class="form-control" name="numOfSample" >
                 </div>
             </div>
 
@@ -78,7 +78,7 @@ include('sample_script.php');
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-4">
                     <select class="form-control" name="potato" id="potato">
-                        <option value="" disabled selected style="display:none;"></option>
+                        <option  disabled selected style="display:none;"></option>
                         <?php
                             for ($x = 0; $x < count($potatoes); $x++){
                             echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
@@ -103,11 +103,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="totalWeight" class="col-md-1 control-label">Sample Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="totalWeight" value="" onchange="setSampleWeight(this.value)">
+                            <input type="text" class="form-control" name="totalWeight"  onchange="setSampleWeight(this.value)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="totalPercent" name="totalPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="totalPercent" name="totalPercent" disabled>
                         </div>
                     </div>
                 </div>
@@ -121,11 +121,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="useableWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="unuseableWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="unuseableWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent" disabled>
                         </div>
                     </div>
                 </div>
@@ -137,11 +137,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="rotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="rotWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="rotWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="rotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="rotPercent" name="rotPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="rotPercent" name="rotPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -153,11 +153,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="internalWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="internalWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="internalWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="internalPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="internalPercent" name="internalPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="internalPercent" name="internalPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -171,11 +171,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="pitRotWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="pitrotWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="pitrotWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="pitRotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -187,11 +187,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="wirewormWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="wirewormWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="wirewormWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="wirewormPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -205,11 +205,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="jellyEndWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="jellyendWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="jellyendWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="jellyEndPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -221,11 +221,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="otherWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="otherWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="otherWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="otherPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="otherPercent" name="otherPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="otherPercent" name="otherPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -239,11 +239,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="hollowHeartWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="hollowheartWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="hollowheartWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="hollowHeartPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -255,11 +255,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="scabWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="scabWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="scabWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="scabPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="scabPercent" name="scabPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="scabPercent" name="scabPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -271,11 +271,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="sunburnWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="sunburnWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="sunburnWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="sunburnPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -289,11 +289,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="mechBruiseWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="mechbruiseWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="mechbruiseWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="mechBruisePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -305,11 +305,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="smallsWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="smallsWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="smallsWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="smallsPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -321,11 +321,11 @@ include('sample_script.php');
                     <div class="form-group row">
                         <label for="10ozWeight" class="col-md-1 control-label">Weight</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" name="tenozsWeight" value="" onchange="calculatePercent(this.value, this.name)">
+                            <input type="text" class="form-control" name="tenozsWeight"  onchange="calculatePercent(this.value, this.name)">
                         </div>
                         <label for="10ozPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent"  disabled>
                         </div>
                     </div>
                 </div>

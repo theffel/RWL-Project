@@ -121,7 +121,7 @@ include('sample_script.php');
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="totalPercent" name="totalPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="totalPercent" name="totalPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ include('sample_script.php');
                         </div>
                         <label for="useablePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="unuseablePercent" name="unuseablePercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ include('sample_script.php');
                         </div>
                         <label for="rotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="rotPercent" name="rotPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="rotPercent" name="rotPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ include('sample_script.php');
                         </div>
                         <label for="internalPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="internalPercent" name="internalPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="internalPercent" name="internalPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@ include('sample_script.php');
                         </div>
                         <label for="pitRotPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="pitrotPercent" name="pitrotPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@ include('sample_script.php');
                         </div>
                         <label for="wirewormPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="wirewormPercent" name="wirewormPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -223,7 +223,7 @@ include('sample_script.php');
                         </div>
                         <label for="jellyEndPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="jellyendPercent" name="jellyendPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -239,7 +239,7 @@ include('sample_script.php');
                         </div>
                         <label for="otherPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="otherPercent" name="otherPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="otherPercent" name="otherPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -257,7 +257,7 @@ include('sample_script.php');
                         </div>
                         <label for="hollowHeartPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="hollowheartPercent" name="hollowheartPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -273,7 +273,7 @@ include('sample_script.php');
                         </div>
                         <label for="scabPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="scabPercent" name="scabPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="scabPercent" name="scabPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -289,7 +289,7 @@ include('sample_script.php');
                         </div>
                         <label for="sunburnPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="sunburnPercent" name="sunburnPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -307,7 +307,7 @@ include('sample_script.php');
                         </div>
                         <label for="mechBruisePercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="mechbruisePercent" name="mechbruisePercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -323,7 +323,7 @@ include('sample_script.php');
                         </div>
                         <label for="smallsPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="smallsPercent" name="smallsPercent"  disabled>
                         </div>
                     </div>
                 </div>
@@ -339,7 +339,7 @@ include('sample_script.php');
                         </div>
                         <label for="10ozPercent" class="col-md-1 control-label">Percent</label>
                         <div class="col-md-5">
-                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent" value="" placeholder="%" disabled>
+                            <input type="text" class="form-control" id="tenozsPercent" name="tenozsPercent"  disabled>
                         </div>
                     </div>
                 </div>
