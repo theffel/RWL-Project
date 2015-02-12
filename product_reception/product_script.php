@@ -34,12 +34,12 @@ if (isset($_POST['submit'])) {
 	$movementCert = $db->real_escape_string($_POST['movementCert']);
 	$accepted = $db->real_escape_string($_POST['accepted']);
 
-	$query = "INSERT INTO production_reception (reception_date, potato_id, farm_id, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, notified_by, movement_certificate, accepted, cleanliness, emp_id) VALUES ('" . $dateTime . "', " . $potato . ", " . $farm . ", " . $loadIDInfo . ", " . $quantity . ", " . $washed . ", " . $bulkOther . ", " . $CFIANotified . ", " . $CFIANotifiedBy . ", " . $movementCert . ", " . $accepted . ", " . $cleanliness . ", " . $empId . ")";
+	$query = "INSERT INTO production_reception (reception_date, potato_id, farm_id, rwl_ticket_num, quantity_recieved, washed, trailer_tandom, CFIA_notified, notified_by, movement_certificate, accepted, cleanliness, emp_id) VALUES ('" . $dateTime . "', " . $potato . ", " . $farm . ", " . $loadIDInfo . ", " . $quantity . ", " . $washed . ", " . $bulkOther . ", " . $CFIANotified . ", " . $CFIANotifiedBy . ", " . $movementCert . ", " . $accepted . ", " . $cleanliness . ", " . $empId . ")";
 	$result = $db->query($query);
 }
 
 // Load array with product reception for day by employee
-$query = "SELECT reception_id, reception_date, potato_name, farm_name, load_info_id, quantity_recieved FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY reception_date DESC";
+$query = "SELECT reception_id, reception_date, potato_name, farm_name, rwl_ticket_num, quantity_recieved FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY reception_date DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
@@ -48,7 +48,7 @@ if (!empty($result)) {
     	$date = $row['reception_date'];
     	$potato = $row['potato_name'];
     	$farm = $row['farm_name'];
-    	$loadIDInfo = $row['load_info_id'];
+    	$loadIDInfo = $row['rwl_ticket_num'];
     	$quantity = $row['quantity_recieved'];
     	$productionReception[] = array($receptionId, $date, $potato, $farm, $loadIDInfo, $quantity);
     	$_SESSION['productionReception'] = $productionReception;
@@ -58,13 +58,13 @@ if (!empty($result)) {
 	for ($x = 0; $x < count($_SESSION['productionReception']); $x++) {
 		if (isset($_POST[$productionReception[$x][0]])) {
 			$_SESSION['receptionNum'] = $productionReception[$x][0];
-			$query = "SELECT reception_date, potato_name, farm_name, load_info_id, quantity_recieved, washed, trailer_tandom, CFIA_notified, notified_by, movement_certificate, accepted, cleanliness FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_id = " . $_SESSION['receptionNum'];
+			$query = "SELECT reception_date, potato_name, farm_name, rwl_ticket_num, quantity_recieved, washed, trailer_tandom, CFIA_notified, notified_by, movement_certificate, accepted, cleanliness FROM production_reception INNER JOIN potato ON production_reception.potato_id = potato.potato_id INNER JOIN farm ON production_reception.farm_id = farm.farm_id WHERE reception_id = " . $_SESSION['receptionNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
 			$date = $row['reception_date'];
     		$farm = $row['farm_name'];
     		$potato = $row['potato_name'];
-    		$loadIDInfo = $row['load_info_id'];
+    		$loadIDInfo = $row['rwl_ticket_num'];
     		$quantity = $row['quantity_recieved'];
     		$bulkOther = $row['trailer_tandom'];
     		$washed = $row['washed'];
@@ -95,7 +95,7 @@ if (isset($_POST['update'])) {
 	$movementCert = $db->real_escape_string($_POST['movementCert']);
 	$accepted = $db->real_escape_string($_POST['accepted']);
 
-	$query = "UPDATE production_reception SET reception_date = '" . $date . "', potato_id = " . $potato . ", farm_id =" . $farm . ", load_info_id = " . $loadIDInfo . ", quantity_recieved = " . $quanRecieved . ", washed = " . $washed . ", trailer_tandom = " . $bulkOther . ", CFIA_notified = " . $CFIANotified . ", notified_by = " . $CFIANotifiedBy . ", movement_certificate = " . $movementCert . ", accepted = " . $accepted . ", cleanliness = " . $cleanliness . " WHERE reception_id = " . $_SESSION['receptionNum'];
+	$query = "UPDATE production_reception SET reception_date = '" . $date . "', potato_id = " . $potato . ", farm_id =" . $farm . ", rwl_ticket_num = " . $loadIDInfo . ", quantity_recieved = " . $quanRecieved . ", washed = " . $washed . ", trailer_tandom = " . $bulkOther . ", CFIA_notified = " . $CFIANotified . ", notified_by = " . $CFIANotifiedBy . ", movement_certificate = " . $movementCert . ", accepted = " . $accepted . ", cleanliness = " . $cleanliness . " WHERE reception_id = " . $_SESSION['receptionNum'];
 	$result = $db->query($query);
 
 	// kill session var 'productionReception'
