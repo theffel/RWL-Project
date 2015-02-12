@@ -44,7 +44,7 @@ include('sample_script.php');
         $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
 
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 $employeeType == 3 || $employeeType == 4) {
+        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 4) {
         ?>
         <h2 class="page-header">Add a Sample</h2>
 
