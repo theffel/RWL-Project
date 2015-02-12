@@ -53,13 +53,11 @@
                                                 echo '<a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>';
                                                 echo '<a href="'. ROOT . '/fuel">Fuel</a>';
                                                 echo '<a href="'. ROOT . '/pickup">Pick Up</a>';
-                                                echo '<a href="'. ROOT . '/delivery">Delivery</a>';
-
                                             } if ($employeeType == 1 || $employeeType == 3) { // Driver or production manager
                                                 echo '<a href="'. ROOT . '/product_reception">Production Reception</a>';
                                             } if ($employeeType == 1 || $employeeType == 7) { // Driver or maintenance
                                                 echo '<a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>';
-                                                echo '<a href="'. ROOT . '/equipment_inspection">Equipment Inspection</a>';
+                                                //echo '<a href="'. ROOT . '/equipment_inspection">Equipment Inspection</a>';
                                             } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
                                                 echo '<a href="'. ROOT . '/rejection">Rejection</a>';
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
@@ -78,7 +76,7 @@
                                             } if ($employeeType == 2) { // Dispatcher
                                                 echo '<a href="'. ROOT . '/shipping">Shipping</a>';
                                             } if ($employeeType == 7) { // Maintenance
-                                                echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
+                                                //echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
                                             } if ($employeeType == 9) { // Admin
                                                 echo '<a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>';
                                             	echo '<a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>';
