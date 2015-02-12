@@ -21,6 +21,7 @@ session_start();
 // Include php files
 include('../database.php');
 include('../header.php');
+include('rejection_script.php');
 ?>
     <!-- Page Content -->
     <div class="container">

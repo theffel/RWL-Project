@@ -30,12 +30,12 @@ if (isset($_POST['submit'])) {
 	$regraded = $db->real_escape_string($_POST['regraded']);
 	$prodReturned = $db->real_escape_string($_POST['prodReturned']);
 
-	$query = "INSERT INTO rejection (reject_date, potato_id, farm_id, poc_ticket_num, quanity_returned, re_washed, re_graded, returned_to, emp_id) VALUES ('" . $date . "', " . $potato . ", " . $farm . ", " . $ticketNumber . "," . $quantReturned . ", " . $rewashed . ", " . $regraded . ", " . $prodReturned . ", " . $empId . ")";
+	$query = "INSERT INTO rejection (reject_date, potato_id, farm_id, proc_ticket_num, quanity_returned, re_washed, re_graded, returned_to, emp_id) VALUES ('" . $date . "', " . $potato . ", " . $farm . ", " . $ticketNumber . "," . $quantReturned . ", " . $rewashed . ", " . $regraded . ", " . $prodReturned . ", " . $empId . ")";
 	$result = $db->query($query);
 }
 
 // Load array with rejections for day by employee
-$query = "SELECT reject_id, reject_date, potato_name, farm_name, quanity_returned, returned_to FROM rejection INNER JOIN potato ON rejection.potato_id = potato.potato_id INNER JOIN farm ON rejection.farm_id = farm.farm_id WHERE reject_id LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY reject_id DESC";
+$query = "SELECT reject_id, reject_date, potato_name, farm_name, quanity_returned, returned_to FROM rejection INNER JOIN potato ON rejection.potato_id = potato.potato_id INNER JOIN farm ON rejection.farm_id = farm.farm_id WHERE reject_date LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY reject_date DESC";
 $result = $db->query($query);
 
 if (!empty($result)) {
@@ -49,26 +49,25 @@ if (!empty($result)) {
     	$rejections[] = array($rejectId, $date, $potato, $farm, $quantReturned, $prodReturned);
     	$_SESSION['rejections'] = $rejections;
 	}
-}
 
 	// Select rejections
 	for ($x = 0; $x < count($_SESSION['rejections']); $x++) {
 		if (isset($_POST[$rejections[$x][0]])) {
 			$_SESSION['rejectNum'] = $rejections[$x][0];
-			$query = "SELECT reject_date, potato_name, farm_name, poc_ticket_num, quanity_returned, re_washed, re_graded, returned_to FROM rejection INNER JOIN potato ON rejection.potato_id = potato.potato_id INNER JOIN farm ON rejection.farm_id = farm.farm_id WHERE reject_id = " . $_SESSION['rejectNum'];
+			$query = "SELECT reject_date, potato_name, farm_name, proc_ticket_num, quanity_returned, re_washed, re_graded, returned_to FROM rejection INNER JOIN potato ON rejection.potato_id = potato.potato_id INNER JOIN farm ON rejection.farm_id = farm.farm_id WHERE reject_id = " . $_SESSION['rejectNum'];
 			$result = $db->query($query);
 			$row = $result->fetch_assoc();
     		$date = $row['reject_date'];
     		$potato = $row['potato_name'];
     		$farm = $row['farm_name'];
-    		$ticketNumber = $row['poc_ticket_num'];
+    		$ticketNumber = $row['proc_ticket_num'];
     		$quantReturned = $row['quanity_returned'];
     		$rewashed = $row['re_washed'];
     		$regraded = $row['re_graded'];
     		$prodReturned = $row['returned_to'];
 			$editRejection[] = array($date, $potato, $farm, $ticketNumber, $quantReturned, $rewashed, $regraded, $prodReturned);
 			$_SESSION['editRejection'] = $editRejection;
-			header("location:edit_rejection.php?id=" . $_SESSION['rejectNum'] );
+			header("location:edit_rejection.php?id=" . $_SESSION['rejectNum']);
 		}
 	}
 }
@@ -84,7 +83,7 @@ if (isset($_POST['update'])) {
 	$regraded = $db->real_escape_string($_POST['regraded']);
 	$prodReturned = $db->real_escape_string($_POST['prodReturned']);
 
-	$query = "UPDATE rejection SET reject_date = '" . $date . "' , potato_id = " . $potato . ", farm_id = " . $farm . ", poc_ticket_num = " . $ticketNumber . ", quanity_returned = " . $quantReturned . ", re_washed = '" . $rewashed . ", re_graded = '" . $regraded . ", returned_to = " . $prodReturned . " WHERE reject_id = " . $_SESSION['rejectNum'];
+	$query = "UPDATE rejection SET reject_date = '" . $date . "' , potato_id = " . $potato . ", farm_id = " . $farm . ", proc_ticket_num = " . $ticketNumber . ", quanity_returned = " . $quantReturned . ", re_washed = '" . $rewashed . ", re_graded = '" . $regraded . ", returned_to = " . $prodReturned . " WHERE reject_id = " . $_SESSION['rejectNum'];
 	$result = $db->query($query);
 
 	// kill session var 'rejections'
