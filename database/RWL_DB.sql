@@ -299,10 +299,10 @@ CREATE TABLE IF NOT EXISTS `employee_work_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equiptment_list`
+-- Table structure for table `equipment_list`
 --
 
-CREATE TABLE IF NOT EXISTS `equiptment_list` (
+CREATE TABLE IF NOT EXISTS `equipment_list` (
   `equip_id` int(3) unsigned NOT NULL AUTO_INCREMENT,
   `equip_name` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`equip_id`)
