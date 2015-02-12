@@ -282,6 +282,7 @@ include('shipping_script.php');
                         <li><input type="radio" name="rejected" value="0"> Yes</li>
                         <li><input type="radio" name="rejected" value="1"> No</li>
                     </ul>
+                    <!--<input type="checkbox" class="form-control" name="rejected" onclick="return rejected();" placeholder="">-->
                 </div>
             </div>            
 <!--            <div class="form-group">

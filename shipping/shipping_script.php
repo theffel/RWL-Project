@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 	$rejected = $db->real_escape_string($_POST['rejected']);
 
 	$query = "INSERT INTO shipping (load_begin, load_end, depart_rwl, potato_id, farm_id, trailer_id, rwl_ticket_num, weight_shipped, washed, dest_id, emp_id,
-								arrival, unload_begin, umload_end, depart_processor, proc_ticket_num, gross_weight, tare_weight, rejected) 
+								arrival, unload_begin, unload_end, depart_processor, proc_ticket_num, gross_weight, tare_weight, rejected) 
 		VALUES ('" . $rwlLoadBegin . "','" . $rwlLoadEnd . "','" . $rwlDepartureTime . "', " . $potato . ", " . $farm . "," . $trailer . "," . $rwlTicNum . "," . $weight . "," . $washed . "," . $destination . "," . $empId . ",
 					'" . $procArrivalTime . "','" . $procUnloadBegin . "','" . $procUnloadEnd . "','" . $procDepartureTime . "', " . $procTicNum . ", " . $grossWeight . "," . $tareWeight . "," . $rejected . ")";
 	$result = $db->query($query);
@@ -109,7 +109,7 @@ if (!empty($result)) {
 	    	$rejected = $row['rejected'];   
 	    	$editShipping[] = array($rwlLoadBegin, $rwlLoadEnd, $rwlDepartureTime, $rwlTicNum, $weight, $washed, 
 	    		 $procArrivalTime, $procUnloadBegin, $procUnloadEnd, $procDepartureTime, $procTicNum, 
-	    		$grossWeight, $tareWeight, $rejected); 
+	    		 $grossWeight, $tareWeight, $rejected); 
 			$_SESSION['editShipping'] = $editShipping;
 			header("location:edit_shipping.php?id=" . $_SESSION['shipNum'] );
 		}
@@ -118,16 +118,29 @@ if (!empty($result)) {
 
 // Update shipping
 if (isset($_POST['update'])) {	
-	$date = $db->real_escape_string($_POST['date']);	
-	$potato = $db->real_escape_string($_POST['potato']);
-	$farm = $db->real_escape_string($_POST['farm']);
-	$trailer = $db->real_escape_string($_POST['trailer']);
+	$rwlLoadBegin = $db->real_escape_string($_POST['rwlLoadBegin']);
+	$rwlLoadEnd = $db->real_escape_string($_POST['rwlLoadEnd']);
+	$rwlDepartureTime = $db->real_escape_string($_POST['rwlDepartureTime']);	
+	//$potato = $db->real_escape_string($_POST['potato']);
+	//$farm = $db->real_escape_string($_POST['farm']);
+	//$truck = $db->real_escape_string($_POST['truck']);
+	//$trailer = $db->real_escape_string($_POST['trailer']);
+	//$dispatcher = $db->real_escape_string($_POST['dispatcher']);
+	//$driver = $db->real_escape_string($_POST['driver']);
 	$rwlTicNum = $db->real_escape_string($_POST['rwlTicNum']);
 	$weight = $db->real_escape_string($_POST['weight']);
 	$washed = $db->real_escape_string($_POST['washed']);
-	$destination = $db->real_escape_string($_POST['destination']);
+	//$destination = $db->real_escape_string($_POST['destination']);
+	$procArrivalTime = $db->real_escape_string($_POST['procArrivalTime']);
+	$procUnloadBegin = $db->real_escape_string($_POST['procUnloadBegin']);
+	$procUnloadEnd = $db->real_escape_string($_POST['procUnloadEnd']);
+	$procDepartureTime = $db->real_escape_string($_POST['procDepartureTime']);
+	$procTicNum = $db->real_escape_string($_POST['procTicNum']);
+	$grossWeight = $db->real_escape_string($_POST['grossWeight']);
+	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
+	$rejected = $db->real_escape_string($_POST['rejected']);
 	
-	$query = "SELECT trailer_id FROM trailer WHERE trailer_num = '" . $trailer . "'";
+	/*$query = "SELECT trailer_id FROM trailer WHERE trailer_num = '" . $trailer . "'";
 	$result = $db->query($query);
 	$row = $result->fetch_assoc();
 	$trailerId = $row['trailer_id'];
@@ -145,12 +158,13 @@ if (isset($_POST['update'])) {
 	$query = "SELECT dest_id FROM destination WHERE dest_name = '" . $destination . "'";
 	$result = $db->query($query);
 	$row = $result->fetch_assoc();
-	$destId = $row['dest_id'];
+	$destId = $row['dest_id'];*/
 
 	
-	$query = "UPDATE shipping SET ship_date = '" . $date . "', potato_id = " . $potatoId . ", farm_id =" . $farmId . ", 
-	trailer_id = " . $trailerId . ", rwl_ticket_num = " . $rwlTicNum . ", weight_shipped = " . $weight . ", washed = " . $washed . ", 
-	dest_id = " . $destId . " WHERE ship_id = " . $_SESSION['shipNum'];
+	$query = "UPDATE shipping SET load_begin = '" . $rwlLoadBegin . "', load_end = '" . $rwlLoadEnd . "', depart_rwl = '" . $rwlDepartureTime . "', rwl_ticket_num = " . $rwlTicNum . ", weight_shipped = " . $weight . ", 
+	washed = " . $washed . ", arrival = '" . $procArrivalTime . "', unload_begin = '" . $procUnloadBegin . "', unload_end = '" . $procUnloadEnd . "', depart_processor = '" . $procDepartureTime . "', 
+	proc_ticket_num = " . $procTicNum . ", gross_weight = " . $grossWeight . ", tare_weight = " . $tareWeight . ", rejected = " . $rejected . " 
+	 WHERE ship_id = " . $_SESSION['shipNum'];
 
 	$result = $db->query($query);
 	

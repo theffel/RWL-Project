@@ -68,9 +68,9 @@ include('shipping_script.php');
             </div>
                         
             <div class="form-group">
-                <label for="loadIDInfo" class="control-label col-md-2">RWL Ticket Number</label>
+                <label for="rwlTicNum" class="control-label col-md-2">RWL Ticket Number</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="loadIDInfo" value="<?php echo $_SESSION['editShipping'][0][3]; ?>">
+                    <input type="text" class="form-control" name="rwlTicNum" value="<?php echo $_SESSION['editShipping'][0][3]; ?>">
                 </div>
             </div>
             <div class="form-group">
