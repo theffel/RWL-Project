@@ -51,7 +51,7 @@ if (!empty($result)) {
 		} else {
 			$returnedName = "Producer";
 		}
-    	$rejections[] = array($rejectId, $date, $potato, $farm, $returnedName, $prodReturned);
+    	$rejections[] = array($rejectId, $date, $potato, $farm, $quantReturned, $returnedName);
     	$_SESSION['rejections'] = $rejections;
 	}
 
