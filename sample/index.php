@@ -78,7 +78,7 @@ include('sample_script.php');
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-4">
                     <select class="form-control" name="potato" id="potato">
-                        <option  disabled selected style="display:none;"></option>
+                        <option value="" disabled selected style="display:none;"></option>
                         <?php
                             for ($x = 0; $x < count($potatoes); $x++){
                             echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
