@@ -83,12 +83,21 @@ include('../header.php');
                     </select>
                 </div>
             </div>
+
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
+                </div>
+            </div>
+        </form>
         <hr>
+        <form class="form-horizontal" name="washForm" id="washForm" method="POST" action="index.php">
         <h2 class="page-header">Edit Wash Line Cleanings</h2>
             <?php
             if (!empty($lineCleaning)) {
@@ -127,5 +136,7 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="wash_line_validation.js"></script>
 </body>
 </html>

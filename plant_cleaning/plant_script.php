@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert Plant cleaning
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$cleaned = $db->real_escape_string($_POST['equipment']);
 	$description = $db->real_escape_string($_POST['descClean']);
@@ -83,7 +83,7 @@ for ($x = 0; $x < count($_SESSION['plantCleaning']); $x++){
 	}
 }
 }
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$cleaned = $db->real_escape_string($_POST['equipment']);
 	$description = $db->real_escape_string($_POST['descClean']);

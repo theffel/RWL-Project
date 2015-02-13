@@ -46,7 +46,7 @@ include('../header.php');
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 3 || $employeeType == 2 || $employeeType == 5 || $employeeType == 1) {
             ?>
             <h2 class="page-header">Edit Plant Cleaning</h2>
-            <form class="form-horizontal"  name="plantForm" id="plantForm" method="POST" action="edit_wash_line.php">
+            <form class="form-horizontal"  name="washForm" id="washForm" method="POST" action="edit_wash_line.php">
                 <div class="form-group">
                     <label for="date" class="control-label col-md-2">Date</label>
                     <div class="col-md-10">
@@ -59,7 +59,7 @@ include('../header.php');
                         <select class="form-control" name="equipment">
                             <?php
                             for ($x = 0; $x < count($equipment); $x++){
-								echo $equipment[$x][1]." ".$_SESSION['editPlantCleaning'][0][1];
+								echo $equipment[$x][1]." ".$_SESSION['editLineCleaning'][0][1];
                                 if (strcmp($equipment[$x][1], $_SESSION['editLineCleaning'][0][1]) == 0) {
                                     echo '<option selected value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                                 } else {
@@ -92,9 +92,16 @@ include('../header.php');
                         </select>
                     </div>
                 </div>
+
+                <!-- #messages is where the messages are placed inside -->
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                        <div id="messages"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                     </div>
                 </div>
             </form>
@@ -111,5 +118,7 @@ include('../header.php');
 <script src="../js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+<script type="text/javascript" src="wash_line_validation.js"></script>
 </body>
 </html>

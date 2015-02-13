@@ -63,12 +63,14 @@ include('../header.php');
                     </select>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="descClean" class="control-label col-md-2">Description of Cleaning</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="descClean">
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="nameClean" class="control-label col-md-2">Name of Cleaner(s)</label>
                 <div class="col-md-10">
@@ -81,12 +83,21 @@ include('../header.php');
                     </select>
                 </div>
             </div>
+
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
                 </div>
             </div>
         <hr>
+        </form>
+        <form class="form-horizontal" name="plantForm" id="plantForm" method="POST" action="index.php">
         <h2 class="page-header">Edit Plant Cleanings</h2>
             <?php
             if (!empty($plantCleaning)) {
@@ -125,5 +136,7 @@ include('../header.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="plant_validation.js"></script>
 </body>
 </html>

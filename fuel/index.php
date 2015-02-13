@@ -43,6 +43,7 @@ include('../header.php');
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
         $fuelReceipts = (!empty($_SESSION['fuelReceipts'])) ? $_SESSION['fuelReceipts'] : "";
         $trucks = (!empty($_SESSION['trucks'])) ? $_SESSION['trucks'] : "";
+
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1) {
         ?>

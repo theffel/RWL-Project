@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert wash line cleaning
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	if (empty($_POST['descClean'])){
 //		header ("location:index.php");
 		echo "Please enter all value here!";
@@ -85,20 +85,21 @@ if (empty($lineCleaning)) {
 
 			$editLineCleaning[] = array($cleanDate, $equipName, $descript, $name, $empID);
 			$_SESSION['editLineCleaning'] = $editLineCleaning;
-			header ("location:edit_wash_line.php?id=" . $_SESSION['wCleanNum'] );
+			header ("location:edit_wash_line.php?id=".$_SESSION['wCleanNum'] );
 		}
 	}
 }
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$cleaned = $db->real_escape_string($_POST['equipment']);
 	$description = $db->real_escape_string($_POST['descClean']);
 	$empID = $db->real_escape_string($_POST['employees']);
 
 	$query = "UPDATE wash_line_cleaning SET line_clean_date = '".$date."', equip_id = ".$cleaned.", clean_descript = '".$description."', cleaner1 = ".$empID.", emp_id = ".$empID."
-			  WHERE line_clean_id = " . $_SESSION['cleanNum'];
+			  WHERE line_clean_id = " . $_SESSION['wCleanNum'];
 	$result = $db->query($query);
 
+	var_dump($query);
 	// kill session var 'editLineCleaning'
 	unset($_SESSION['lineCleaning']);
 	header("location:index.php");
