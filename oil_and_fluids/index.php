@@ -50,7 +50,7 @@ include('oils_and_fluids_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value= "<?php echo $dateTime; ?>">                  
+                    <input type="text" class="form-control" name="date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -91,10 +91,17 @@ include('oils_and_fluids_script.php');
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                   <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                   <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
+                </div>
+            </div>
+        </form>
         <hr>
+        <form class="form-horizontal" name="fluidsForm" id="fluidsForm" method="post" action="index.php">
         <h2 class="page-header">Edit Oils and Fluids</h2>
         <?php
             if (!empty($oilsAndFluids)) {
@@ -137,5 +144,7 @@ include('oils_and_fluids_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="oils_and_fluids_validation.js"></script>
 </body>
 </html>

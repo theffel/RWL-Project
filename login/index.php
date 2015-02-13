@@ -55,7 +55,7 @@ include('../header.php');
             </div>
             <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
-                <div class="col-md-offset-2 col-xs-10">
+                <div class="col-md-offset-2 col-md-10">
                     <div id="messages"></div>
                 </div>
             </div>

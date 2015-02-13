@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert oils and fluids
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$engineOilLiters = $db->real_escape_string($_POST['engineOilLiters']);
@@ -70,7 +70,7 @@ for ($x = 0; $x < count($_SESSION['oilsAndFluids']); $x++){
 }
 
 // Update oils and fluids
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$engineOilLiters = $db->real_escape_string($_POST['engineOilLiters']);
