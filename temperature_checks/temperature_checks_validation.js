@@ -9,6 +9,9 @@ $(document).ready(function() {
         fields: {
             date:  {
                 validators: {
+                    notEmpty: {
+                        message: 'Date is required and cannot be empty.'
+                    },
                     date: {
                         format: 'YYYY-MM-DD H:m:s',
                         message:  'Date must follow format of YYYY-MM-DD HH:MM:SS.'

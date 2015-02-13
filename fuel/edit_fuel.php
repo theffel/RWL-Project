@@ -96,9 +96,15 @@ include('../header.php');
                     <input type="text" class="form-control" name="location" value= "<?php echo $_SESSION['editReceipt'][0][5]; ?>">
                 </div>
             </div>
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                 </div>
             </div>
         </form>
@@ -116,5 +122,7 @@ include('../header.php');
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/device_javascripts/camera_control.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="fuel_validation.js"></script> 
 </body>
 </html>

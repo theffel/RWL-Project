@@ -12,6 +12,9 @@ $(document).ready(function() {
                     date: {
                         format: 'YYYY-MM-DD H:m:s',
                         message:  'Date must follow format of YYYY-MM-DD HH:MM:SS.'
+                    },
+                    notEmpty: {
+                        message: 'Date is required and cannot be empty.'
                     }
                 }
             },

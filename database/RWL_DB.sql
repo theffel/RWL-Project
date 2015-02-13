@@ -540,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `pick_up` (
   `arrive_time_rwl` datetime NOT NULL,
   `unload_time` datetime NOT NULL,
   `depart_time_rwl` datetime NOT NULL,
-  `ticket_num` int(5) unsigned NOT NULL,
+  `ticket_num` int(10) unsigned NOT NULL,
   `gross_weight` double unsigned NOT NULL,
   `tare_weight` double unsigned NOT NULL,
   `potato_id` int(2) unsigned NOT NULL,

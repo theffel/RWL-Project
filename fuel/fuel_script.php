@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert fuel
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submitBtn'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$truck = $db->real_escape_string($_POST['truck']);
 	$mileage = $db->real_escape_string($_POST['mileage']);
@@ -73,7 +73,7 @@ if (!empty($result)) {
 }
 
 // Update fuel
-if (isset($_POST['update'])) {	
+if (isset($_POST['updateBtn'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$truck = $db->real_escape_string($_POST['truck']);
 	$mileage = $db->real_escape_string($_POST['mileage']);

@@ -14,7 +14,7 @@ $(document).ready(function() {
                         message:  'Date must follow format of YYYY-MM-DD HH:MM:SS.'
                     },
                     notEmpty: {
-                        message: 'Truck number is required and cannot be empty.'
+                        message: 'Date is required and cannot be empty.'
                     }
                 }
             },
