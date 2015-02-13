@@ -77,9 +77,15 @@ include('byproduct_script.php');
                     <input type="text" class="form-control" name="transported" value="<?php echo $_SESSION['editByproducts'][0][4]; ?>">
                 </div>
             </div>
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                 </div>
             </div>
         </form>
@@ -96,5 +102,7 @@ include('byproduct_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="byproduct_validation.js"></script>
 </body>
 </html>

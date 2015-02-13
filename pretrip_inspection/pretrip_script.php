@@ -25,7 +25,7 @@ include('../session_load.php');
 
 
 // Insert pickup
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$trailer = $db->real_escape_string($_POST['trailer']);	
@@ -425,7 +425,7 @@ if (!empty($result)) {
 	}
 }
 
-if (isset($_POST['update'])) {	
+if (isset($_POST['updateBtn'])) {	
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$trailer = $db->real_escape_string($_POST['trailer']);	

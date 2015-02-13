@@ -71,9 +71,15 @@ include('temperature_checks_script.php');
                     <input type="text" class="form-control" name="tank3" value="<?php echo $_SESSION['editTemperatureCheck'][0][3]; ?>">
                 </div>
             </div>
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                 </div>
             </div>
         </form>
@@ -90,5 +96,7 @@ include('temperature_checks_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="temperature_checks_validation.js"></script>
 </body>
 </html>

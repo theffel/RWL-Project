@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert daily mileage
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$startKmTruck = $db->real_escape_string($_POST['startKmTruck']);
@@ -76,7 +76,7 @@ if (!empty($result)) {
 }
 
 // Update daily mileage
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$truck = $db->real_escape_string($_POST['truck']);
 	$startKmTruck = $db->real_escape_string($_POST['startKmTruck']);

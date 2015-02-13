@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert byproduct
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$desc = $db->real_escape_string($_POST['desc']);
 	$sent = $db->real_escape_string($_POST['sent']);
@@ -67,7 +67,7 @@ if (!empty($result)) {
 }
 
 // Update byproduct
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$desc = $db->real_escape_string($_POST['desc']);
 	$sent = $db->real_escape_string($_POST['sent']);

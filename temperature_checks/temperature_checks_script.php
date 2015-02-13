@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert temperature check
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submitBtn'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$tank1 = $db->real_escape_string($_POST['tank1']);
 	$tank2 = $db->real_escape_string($_POST['tank2']);
@@ -64,7 +64,7 @@ if (!empty($result)) {
 }
 
 // Update temperature check
-if (isset($_POST['update'])) {	
+if (isset($_POST['updateBtn'])) {	
 	$date = $db->real_escape_string($_POST['date']);	
 	$tank1 = $db->real_escape_string($_POST['tank1']);
 	$tank2 = $db->real_escape_string($_POST['tank2']);

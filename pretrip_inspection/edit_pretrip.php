@@ -399,10 +399,15 @@ include('pretrip_script.php');
                     </ul></input>
                 </div>
             </div>
-
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                 </div>
             </div>
         </form>
@@ -419,5 +424,7 @@ include('pretrip_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="pretrip_validation.js"></script>
 </body>
 </html>
