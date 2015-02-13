@@ -61,7 +61,7 @@ if (isset($_POST['submitBtn'])) {
         $_SESSION['loggedIn'] = $loggedIn;
         $_SESSION['username'] = $username;
         // Go to the attendance/index.php
-        header("location:attendance");
+        header("location:../attendance");
     }
     // If the login was not successful
     else {

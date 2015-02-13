@@ -37,7 +37,7 @@
                     <li><a href="<?php echo ROOT; ?>/contact">Contact</a></li>
                     <?php
                         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
-                        $username = (!empty($_SESSION['username'])) ? $_SESSION['username'] : "";
+                        $name = (!empty($_SESSION['name'])) ? $_SESSION['name'] : "";
                         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
                         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
                         if ($loggedIn == false) {
@@ -45,9 +45,10 @@
                         } else {
                             if ($attendanceId != 0 && $employeeType != 0) {
                             echo '<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $username . ' <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $name . ' <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>';
+                                            echo '<a href="'. ROOT . '/attendance/">Attendance</a>';
                                             if ($employeeType == 1) { // Driver
                                                 echo '<a href="'. ROOT . '/daily_mileage">Daily Mileage</a>';
                                                 echo '<a href="'. ROOT . '/pretrip_inspection">Pre-Trip Inspection</a>';
@@ -85,8 +86,9 @@
                             echo '      </li>
                                     </ul>
                                 </li>';
+                            } else {
+                                echo '<li><a href="'. ROOT . '/attendance/">Attendance</a></li>';
                             }
-                            echo '<li><a href="'. ROOT . '/attendance/">Attendance</a></li>';
                             echo '<li><a href="'. ROOT . '/login/index.php?action=logout">Logout</a></li>';
                         }
                     ?>

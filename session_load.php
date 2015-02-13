@@ -10,6 +10,14 @@ $row = $result->fetch_assoc();
 $empId = $row['emp_id'];
 $_SESSION['empId'] = $empId;
 
+// Store name in the session
+$query = "SELECT emp_first_name, emp_last_name FROM employee WHERE emp_id = " . $empId;
+$result = $db->query($query);
+$row = $result->fetch_assoc();
+$firstName = $row['emp_first_name'];
+$lastName = $row['emp_last_name'];
+$_SESSION['name'] = $firstName . ' ' . $lastName;
+
 // Store destinations in the session
 $query = "SELECT * FROM destination";
 $result = $db->query($query);
