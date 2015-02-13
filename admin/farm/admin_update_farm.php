@@ -38,9 +38,9 @@ include($path.'/header.php');
             <div class="col-lg-12">
                 <h1 class="page-header">New Farm Addition</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Home</a>
+                    <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="farm/admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Update Farm</li>
                 </ol>
@@ -95,14 +95,6 @@ include($path.'/header.php');
 						</div>
 					</div>
 					
-					<!--Farm Contact-->
-					<div class="form-group">
-						<label for="inputFarmContact" class="control-label col-xs-2">Farm Business Contact</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmContact" id="farmContact" placeholder="###" value="<?php echo $farmContactId; ?>" required data-validation-required-message="Please enter the new Id of the business contact at the farm.">
-						</div>
-					</div>
-					
 					<!--Farm email address-->
 					<div class="form-group">
 						<label for="inputFarmemail" class="control-label col-xs-2">Farm email Address</label>
@@ -124,6 +116,8 @@ include($path.'/header.php');
 				else{
 					echo "failed query";
 				}
+				echo "<td><form action = '".ROOT."/admin/farm/admin_farm_contact.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $farmId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Modify contacts'></form></td>";
+
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
