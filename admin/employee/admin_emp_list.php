@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -62,10 +65,10 @@ include('header.php');
 						echo "<tr><td>" . $row['emp_first_name'] . " " . $row['emp_middle_initial'] . " " . $row['emp_last_name'] . "</td>";
 						echo "<td>" . $row['emp_phone'] . "</td>";
 						echo "<td>" . $row['emp_email'] . "</td>";
-						echo "<td><form action = '".ROOT."/employee/admin_update_employee.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						echo "<td><form action = '".ROOT."/admin/employee/admin_update_employee.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
 
 						echo "<td>".$contactP['emerg_first_name']." ".$contactP['emerg_last_name']."<br />".$contactS['emerg_first_name']." ".$contactS['emerg_last_name']."</td>";
-						echo "<td><form action = '".ROOT."/employee/admin_update_employee_emergency_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Modify'></form></td></tr>";
+						echo "<td><form action = '".ROOT."/admin/employee/admin_update_employee_emergency_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Modify'></form></td></tr>";
 					}
 					echo "</table>";
 				}
@@ -81,8 +84,8 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
- 		echo "<hr><form action = '".ROOT."/employee/admin_add_employee.php'><input type = submit class='btn btn-primary' value = 'Add Employee'></form><br />";
- 		echo "<hr><form action = '".ROOT."/employee/admin_driver_list.php'><input type = submit class='btn btn-primary' value = 'Driver List'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin/employee/admin_add_employee.php'><input type = submit class='btn btn-primary' value = 'Add Employee'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin/employee/admin_driver_list.php'><input type = submit class='btn btn-primary' value = 'Driver List'></form><br />";
 		?>
 		<hr>
 

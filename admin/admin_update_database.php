@@ -18,11 +18,15 @@
 	// Start the session
 	session_start();
 
-	// Include the database.php file
-	include('database.php');
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
+// Include the database.php file
+include($path.'/database.php');
 
-	// Include the header.php file
-	include('header.php');
+// Include the header.php file
+include($path.'/header.php');
+
 		// If the user is logged in, run the script
 		if ($loggedIn == true) {	
 			//get warehouse update
@@ -39,7 +43,7 @@
 			if ($db->query($query) === TRUE) {
 				$db->close();
 				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
+					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
 					</script>';	
 			} 
 			else {

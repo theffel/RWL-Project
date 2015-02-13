@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/employee/admin_emp_list.php">employees</a>
+					<li><a href="<?php echo ROOT; ?>/admin/employee/admin_emp_list.php">employees</a>
                     </li>
                     <li class="active">Drivers</li>
                 </ol>
@@ -70,10 +73,10 @@ include('header.php');
 							echo "<tr><td>" . $empRow['emp_first_name'] . " " . $empRow['emp_middle_initial'] . " " . $empRow['emp_last_name'] . "</td>";
 							echo "<td>" . $empRow['emp_phone'] . "</td>";
 							echo "<td>" . $empRow['emp_email'] . "</td>";
-							echo "<td><form action = '".ROOT."/employee/admin_update_employee.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empRow['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+							echo "<td><form action = '".ROOT."/admin/employee/admin_update_employee.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empRow['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
 
 							echo "<td>".$contactP['emerg_first_name']." ".$contactP['emerg_last_name']."<br />".$contactS['emerg_first_name']." ".$contactS['emerg_last_name']."</td>";
-							echo "<td><form action = '".ROOT."/employee/admin_update_employee_emergency_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empRow['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Modify'></form></td></tr>";
+							echo "<td><form action = '".ROOT."/admin/employee/admin_update_employee_emergency_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empRow['emp_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Modify'></form></td></tr>";
 						}
 						
 					}

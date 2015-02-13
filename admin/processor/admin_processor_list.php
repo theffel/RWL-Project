@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -67,7 +70,7 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
- 		echo "<hr><form action = '".ROOT."/processor/admin_add_processor.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Processor'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin/processor/admin_add_processor.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Processor'></form><br />";
 		?>
 		<hr>
 

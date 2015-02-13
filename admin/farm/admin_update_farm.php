@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -64,7 +67,7 @@ include('header.php');
 				
 			?>
 
-				<form class="form-horizontal" name="updateFarmForm" id="updateFarmForm" method="post" action="<?php echo ROOT; ?>/admin_update_database.php">
+				<form class="form-horizontal" name="updateFarmForm" id="updateFarmForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 					
 					<!--Farm Id-->
 					<input hidden type = "radio" name = "farmId" id = "farmId" value = "<?php echo $farmId; ?>" checked>

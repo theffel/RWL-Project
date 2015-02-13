@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/employee/admin_emp_list.php">Employee List</a>
+					<li><a href="<?php echo ROOT; ?>/admin/employee/admin_emp_list.php">Employee List</a>
                     </li>
                     <li class="active">Update Employee</li>
                 </ol>
@@ -69,7 +72,7 @@ include('header.php');
 			
 			?>
 
-				<form class="form-horizontal" name="updateEmployeeForm" id="updateEmployeeForm" method="post" action="<?php echo ROOT; ?>/admin_update_database.php">
+				<form class="form-horizontal" name="updateEmployeeForm" id="updateEmployeeForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 					
 					<!--employee Id-->
 					<input hidden type = "radio" name = "empId" id = "empId" value = "<?php echo $empId; ?>" checked>
@@ -193,7 +196,7 @@ include('header.php');
 				$query2 = "select * from driver where emp_id = '{$empId}'";
 				$result = $db->query($query2);
 				if ($result->num_rows < 1) {
-					echo "<form action = ".ROOT."/employee/admin_add_driver.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Add as Driver'></form><br />";
+					echo "<form action = ".ROOT."/admin/employee/admin_add_driver.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Add as Driver'></form><br />";
 				}
 			}
 			else{

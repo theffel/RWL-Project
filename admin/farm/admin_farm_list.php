@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -79,9 +82,9 @@ include('header.php');
 						else {
 							echo "<td></td><td></td>";
 						}
-						echo "<td><form action = '".ROOT."/farm/admin_update_farm.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Update Farm'></form></td>";
+						echo "<td><form action = '".ROOT."/admin/farm/admin_update_farm.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Update Farm'></form></td>";
 						echo "<td>".$warehouseCount."</td>";
-						echo "<td><form action = '".ROOT."/warehouse/admin_warehouse_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Warehouse List'></form></td></tr>";
+						echo "<td><form action = '".ROOT."/admin/warehouse/admin_warehouse_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['farm_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Warehouse List'></form></td></tr>";
 					}
 					echo "</table>";
 				}
@@ -97,7 +100,7 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
- 		echo "<hr><form action = '".ROOT."/farm/admin_add_farm.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Farm'></form><br />";
+ 		echo "<hr><form action = '".ROOT."/admin/farm/admin_add_farm.php'><input type = submit class='btn btn-primary' value = 'Add Farm'></form><br />";
 		?>
 		<hr>
 

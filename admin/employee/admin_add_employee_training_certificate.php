@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/employee/admin_emp_list.php">Employee List</a>
+					<li><a href="<?php echo ROOT; ?>/admin/employee/admin_emp_list.php">Employee List</a>
                     </li>
                     <li class="active">Add training certificate</li>
                 </ol>
@@ -54,7 +57,7 @@ include('header.php');
 			
 			?>
 
-				<form class="form-horizontal" name="addemployeeTCForm" id="addemployeeTCForm" method="post" action="<?php echo ROOT; ?>/add_to_database.php">
+				<form class="form-horizontal" name="addemployeeTCForm" id="addemployeeTCForm" method="post" action="<?php echo ROOT; ?>/admin/add_to_database.php">
 
 					<!--employee Id-->
 					<input hidden type = "radio" name = "empId" id = "empId" value = "<?php echo $empId; ?>" checked>

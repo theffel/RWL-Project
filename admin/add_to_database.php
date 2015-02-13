@@ -18,11 +18,14 @@
 	// Start the session
 	session_start();
 
-	// Include the database.php file
-	include('database.php');
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
+// Include the database.php file
+include($path.'/database.php');
 
-	// Include the header.php file
-	include('header.php');
+// Include the header.php file
+include($path.'/header.php');
 
 	// If the user is logged in, run the script
 	if ($loggedIn == true) {
@@ -53,7 +56,7 @@
 					if ($db->query($query3) === TRUE) {
 						$db->close();
 						echo '<script type="text/javascript">
-								location.replace("'.ROOT.'/warehouse/admin_add_warehouse.php?id=' . $farmId . '");
+								location.replace("'.ROOT.'/admin/warehouse/admin_add_warehouse.php?id=' . $farmId . '");
 								</script>';	
 					}
 					else{			
@@ -92,7 +95,7 @@
 			if ($db->query($query) === TRUE) {
 				$db->close();
 				echo '<script type="text/javascript">
-						location.replace("'.ROOT.'/warehouse/admin_add_warehouse.php?id=' . $farmId . '");
+						location.replace("'.ROOT.'/admin/warehouse/admin_add_warehouse.php?id=' . $farmId . '");
 						</script>';			
 			} else {
 				echo "Error: " . $query . "<br>" . $db->error;
@@ -113,7 +116,7 @@
 			if ($db->query($query) === TRUE) {
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/warehouse bin/admin_add_bin.php?id=' . $warehouseId . '");
+					location.replace("'.ROOT.'/admin/warehouse_bin/admin_add_bin.php?id=' . $warehouseId . '");
 					</script>';	
 			}
 			else{
@@ -135,7 +138,7 @@
 			if ($db->query($query) === TRUE) {
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/field/admin_add_field.php?id=' . $binId . '");
+					location.replace("'.ROOT.'/admin/field/admin_add_field.php?id=' . $binId . '");
 					</script>';	
 			}
 			else{
@@ -190,7 +193,7 @@
 						echo "New record created successfully";
 						$db->close();
 						echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/employee/admin_add_employee.php");
+							location.replace("'.ROOT.'/admin/employee/admin_add_employee.php");
 							</script>';	
 						
 					}
@@ -228,7 +231,7 @@
 				echo "New record created successfully";
 				$db->close();
 				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/employee/admin_add_employee_training_certificate.php");
+					location.replace("'.ROOT.'/admin/employee/admin_add_employee_training_certificate.php");
 					</script>';	
 			}
 			else {
@@ -267,7 +270,7 @@
 					if ($db->query($queryD) === TRUE) {
 						$db->close();
 						echo '<script type="text/javascript">
-							location.replace("'.ROOT.'/employee/admin_driver_list.php");
+							location.replace("'.ROOT.'/admin/employee/admin_driver_list.php");
 							</script>';
 					}
 					else{
@@ -303,7 +306,7 @@
 			if ($db->query($query) === TRUE) {
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/destination/admin_add_destination.php");
+					location.replace("'.ROOT.'/admin/destination/admin_add_destination.php");
 					</script>';	
 			}
 			else{
@@ -326,7 +329,7 @@
 			if ($db->query($query) === TRUE) {
 			$db->close();
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/processor/admin_add_processor.php");
+					location.replace("'.ROOT.'/admin/processor/admin_add_processor.php");
 					</script>';	
 			}
 			else{
@@ -397,7 +400,7 @@
 											if ($db->query($queryTruckFin) === TRUE) {
 												$db->close();
 												echo '<script type="text/javascript">
-														location.replace("'.ROOT.'/truck/admin_truck_list.php");
+														location.replace("'.ROOT.'/admin/truck/admin_truck_list.php");
 														</script>';	
 											}
 											else{
@@ -516,7 +519,7 @@
 											if ($db->query($querytrailerFin) === TRUE) {
 												$db->close();
 												echo '<script type="text/javascript">
-														location.replace("'.ROOT.'/trailer/admin_trailer_list.php");
+														location.replace("'.ROOT.'/admin/trailer/admin_trailer_list.php");
 														</script>';	
 											}
 											else{

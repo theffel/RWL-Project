@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/destination/admin_destination_list.php">Destinations</a>
+					<li><a href="<?php echo ROOT; ?>/admin/destination/admin_destination_list.php">Destinations</a>
                     </li>
                     <li class="active">Add Destination</li>
                 </ol>
@@ -48,7 +51,7 @@ include('header.php');
 			// If the user is logged in, display the add Destination form
 			if ($loggedIn == true) {	
 			?>
-				<form class='form-horizontal' name='adddestinationForm' id='adddestinationForm' method='post' action="<?php echo ROOT; ?>/add_to_database.php">
+				<form class='form-horizontal' name='adddestinationForm' id='adddestinationForm' method='post' action="<?php echo ROOT; ?>/admin/add_to_database.php">
 			
 					<!--Destination Name-->
 					<div class="form-group">

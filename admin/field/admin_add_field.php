@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/farm/admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
 					</li>
 <?php
 			// If the user is logged in, display the form
@@ -53,9 +56,9 @@ include('header.php');
 				$farmResult = $db->query($farmQuery)->fetch_assoc();
 				$farmId = $farmResult['farm_id'];
 				
-				echo "<li><a href='".ROOT."/warehouse/admin_warehouse_list.php?id=" . $farmId . "'>Warehouses</a></li>";
-				echo "<li><a href='".ROOT."/warehouse bin/admin_bin_list.php?id=" . $warehouseId . "'>Bins</a></li>";
-				echo "<li><a href='".ROOT."/field/admin_field_list.php?id=" . $binId . "'>Fields</a></li>";
+				echo "<li><a href='".ROOT."/admin/warehouse/admin_warehouse_list.php?id=" . $farmId . "'>Warehouses</a></li>";
+				echo "<li><a href='".ROOT."/admin/warehouse_bin/admin_bin_list.php?id=" . $warehouseId . "'>Bins</a></li>";
+				echo "<li><a href='".ROOT."/admin/field/admin_field_list.php?id=" . $binId . "'>Fields</a></li>";
 ?>				                 
 					
                     <li class="active">Add field</li>
@@ -71,7 +74,7 @@ include('header.php');
 			
 			
 
-				echo "<form class='form-horizontal' name='addBinFieldForm' id='addBinFieldForm' method='post' action='".ROOT."/add_to_database.php/?id=". $binId ."'>";
+				echo "<form class='form-horizontal' name='addBinFieldForm' id='addBinFieldForm' method='post' action='".ROOT."/admin/add_to_database.php/?id=". $binId ."'>";
 			?>		
 					<!--field Location-->
 					<div class="form-group">

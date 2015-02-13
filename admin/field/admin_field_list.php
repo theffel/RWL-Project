@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <?php
@@ -51,11 +54,11 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/farm/admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/warehouse/admin_warehouse_list.php?id=<?php echo $farmId; ?>">Warehouses</a>
+					<li><a href="<?php echo ROOT; ?>/admin/warehouse/admin_warehouse_list.php?id=<?php echo $farmId; ?>">Warehouses</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/warehouse bin/admin_bin_list.php?id=<?php echo $warehouseId; ?>">Bins</a>
+					<li><a href="<?php echo ROOT; ?>/admin/warehouse_bin/admin_bin_list.php?id=<?php echo $warehouseId; ?>">Bins</a>
                     </li>
                     <li class="active">Field</li>
                 </ol>
@@ -74,7 +77,7 @@ include('header.php');
 					while($row = $result->fetch_assoc()){
 						echo "<tr><td>".$row['field_id']."</td>";
 						echo "<td>" . $row['field_location'] . "</td>";
-						echo "<td><form action = '".ROOT."/field/admin_update_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['field_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Update'></form></td>";
+						echo "<td><form action = '".ROOT."/admin/field/admin_update_field.php' method = 'get'><input hidden type = radio name = id value = '" . $row['field_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Update'></form></td>";
 						echo "</tr>";
 					}
 					echo "</table>";
@@ -92,7 +95,7 @@ include('header.php');
 							</script>';
 			}
 
-		echo "<hr><form action = '".ROOT."/field/admin_add_field.php' method = 'get'> <input hidden type = radio name = id value = '" . $binId . "' checked><input type = submit class='btn btn-primary' value = 'Add field'></form><br />";
+		echo "<hr><form action = '".ROOT."/admin/field/admin_add_field.php' method = 'get'> <input hidden type = radio name = id value = '" . $binId . "' checked><input type = submit class='btn btn-primary' value = 'Add field'></form><br />";
 		?>
         <hr>
 

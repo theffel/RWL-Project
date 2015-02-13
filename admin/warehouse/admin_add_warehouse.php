@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/farm/admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Add Warehouse</li>
                 </ol>
@@ -50,7 +53,7 @@ include('header.php');
 			// Get Farm Id
 			$farmId = $_GET["id"];
 				
-				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='".ROOT."/add_to_database.php/?id=". $farmId ."'>";
+				echo "<form class='form-horizontal' name='addwarehouseForm' id='addwarehouseForm' method='post' action='".ROOT."/admin/add_to_database.php/?id=". $farmId ."'>";
 			?>		
 					<!--warehouse Name-->
 					<div class="form-group">

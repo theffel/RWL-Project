@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for displaying dests.
+ * This page holds the form for displaying farms.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     x.xx
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-02-01
+ * @since       2015-01-15
  */
 
 // Start the session
@@ -36,13 +36,11 @@ include($path.'/header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">List of destinations</h1>
+                <h1 class="page-header">List of Admin Pages</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
-                    </li>
-                    <li class="active">destinations</li>
+                    <li class="active">Admin List</li>
                 </ol>
             </div>
         </div>
@@ -50,29 +48,19 @@ include($path.'/header.php');
 		<?php
 			// If the user is logged in, display the form
 			if ($loggedIn == true) {			
-						
-				// Create query
-				$query = "select * FROM destination";
-				$result = $db->query($query);
-				
-				if ($result->num_rows > 0) {
-					echo "<table style='width:100%' border='1'>";
-					echo "<tr><td>Destination Name</td> <td>Address</td> <td>Province</td> <td>Phone Number</td> <td>Contact Name</td> <td></td></tr>";
-					while($row = $result->fetch_assoc()){
-						echo "<tr><td>". $row['dest_name'] . "</td>";
-						echo "<td>" . $row['dest_address'] . "</td>";
-						echo "<td>" . $row['dest_prov'] . "</td>";
-						echo "<td>" . $row['dest_phone'] . "</td>";
-						echo "<td>" . $row['dest_contact_name'] . "</td>";
-						echo "<td><form action = '".ROOT."/admin_update_destination.php' method = 'get'><input hidden type = radio name = id value = '" . $row['dest_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
-						echo "</tr>";
-					}
-					echo "</table>";
-				}
-				else {
-					echo "0 results";
-				}
-				$db->close();
+
+				echo "<form action = '".ROOT."/admin/destination/admin_destination_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Destination List'></form><br />";
+				echo "<form action = '".ROOT."/admin/employee/admin_emp_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Employee List'></form><br />";
+				echo "<form action = '".ROOT."/admin/farm/admin_farm_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Farm List'></form><br />";
+				echo "<form action = '".ROOT."/admin/processor/admin_processor_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Processor List'></form><br />";
+				echo "<form action = '".ROOT."/admin/trailer/admin_trailer_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Trailer List'></form><br />";
+				echo "<form action = '".ROOT."/admin/truck/admin_truck_list.php'>
+						<input type = 'submit' class='btn btn-primary' value = 'Truck List'></form><br />";
 			}
 
 			// If the user is not logged in, redirect them to login.php if they try to access this page
@@ -81,7 +69,6 @@ include($path.'/header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
-  		echo "<hr><form action = '".ROOT."/admin/destination/admin_add_destination.php' method = 'get'><input type = submit class='btn btn-primary' value = 'Add Destination'></form><br />";
 		?>
 		<hr>
 

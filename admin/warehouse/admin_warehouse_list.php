@@ -18,11 +18,14 @@
 // Start the session
 session_start();
 
+//set path to include files
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/RWL-Project";
 // Include the database.php file
-include('database.php');
+include($path.'/database.php');
 
 // Include the header.php file
-include('header.php');
+include($path.'/header.php');
 ?>
 
 <html>
@@ -37,7 +40,7 @@ include('header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/farm/admin_farm_list.php">Farms</a>
+					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
                     <li class="active">Warehouses</li>
                 </ol>
@@ -63,9 +66,9 @@ include('header.php');
 						//fill table
 						echo "<tr><td>".$row['warehouse_name']."</td>";
 						echo "<td>".$row['warehouse_civic_address']."</td>";
-						echo "<td><form action = '".ROOT."/warehouse/admin_update_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit Warehouse'></form></td>";
+						echo "<td><form action = '".ROOT."/admin/warehouse/admin_update_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $row['warehouse_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit Warehouse'></form></td>";
 						echo "<td>".$binCount."</td>";
-						echo "<td><form action = '".ROOT."/warehouse bin/admin_bin_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['warehouse_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Bin List'></form></td></tr>";
+						echo "<td><form action = '".ROOT."/admin/warehouse_bin/admin_bin_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $row['warehouse_id'] . "' checked><input type = 'submit' class='btn btn-primary' value = 'Bin List'></form></td></tr>";
 					}
 					echo "</table>";
 				}
@@ -81,7 +84,7 @@ include('header.php');
 							location.replace("'.ROOT.'/login/index.php");
 							</script>';
 			}
-		echo "<hr><form action = '".ROOT."/warehouse/admin_add_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add Warehouse'></form><br />";
+		echo "<hr><form action = '".ROOT."/admin/warehouse/admin_add_warehouse.php' method = 'get'> <input hidden type = radio name = id value = '" . $id . "' checked><input type = submit class='btn btn-primary' value = 'Add Warehouse'></form><br />";
 		?>
 		<hr>
 
