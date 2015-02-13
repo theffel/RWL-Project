@@ -10,7 +10,7 @@
  * @author      Zachary Theriault
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-12
  */
@@ -34,12 +34,11 @@ if (isset($_GET['action'])) {
                 $params["secure"], $params["httponly"]
             );
         }
-
     }
     header('location:../index.php');
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
     // Define $username and $password
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -52,25 +51,21 @@ if (isset($_POST['submit'])) {
     // $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password=sha1('" .$password ."')";
     $query = "SELECT COUNT(*) FROM users WHERE username='" .$username ."' AND password='" .$password ."'";
     $result = $db->query($query);
-
     $row = $result->fetch_row();
 
     // If the login was successful
     if ($row[0] == 1) {
         $loggedIn = true;
-        //$employeeType = 1;
 
         // Store the login boolean and the username of the logged in user in the session
         $_SESSION['loggedIn'] = $loggedIn;
         $_SESSION['username'] = $username;
-        //$_SESSION['employeeType'] = $employeeType;
         // Go to the index.php
-
-        header("location: index.php");
+        header("location:index.php");
     }
     // If the login was not successful
     else {
-        header("location: index.php");
+        $_SESSION['login_error'] = "Login failed. Please try again.";
     }
 }
 ?>
