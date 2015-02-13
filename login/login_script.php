@@ -60,8 +60,8 @@ if (isset($_POST['submitBtn'])) {
         // Store the login boolean and the username of the logged in user in the session
         $_SESSION['loggedIn'] = $loggedIn;
         $_SESSION['username'] = $username;
-        // Go to the index.php
-        header("location:index.php");
+        // Go to the attendance/index.php
+        header("location:attendance");
     }
     // If the login was not successful
     else {
