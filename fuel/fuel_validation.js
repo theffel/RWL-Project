@@ -24,7 +24,7 @@ $(document).ready(function() {
                         message: 'Mileage is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'Starting Kms must be a number between 1 and 99999999.'
                     }
                 }
@@ -35,7 +35,7 @@ $(document).ready(function() {
                         message: 'Mileage is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
                        message: 'Liters in fuel tank must be a number between 0 and 999.99.'
                     }
                 }
@@ -46,7 +46,7 @@ $(document).ready(function() {
                         message: 'Mileage is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
                        message: 'Cost must be a number between 0 and 999.99.'
                     }
                 }

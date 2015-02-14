@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert product reception
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$potato = $db->real_escape_string($_POST['potato']);
@@ -74,14 +74,15 @@ if (!empty($result)) {
     		$movementCert = $row['movement_certificate'];
     		$accepted = $row['accepted'];
 			$editProductionReception[] = array($date, $farm, $potato, $loadIDInfo, $quantity, $bulkOther, $washed, $cleanliness, $CFIANotified, $CFIANotifiedBy, $movementCert, $accepted);
-			$_SESSION['editProductionReception'] = $editReceipt;
+			$_SESSION['editProductionReception'] = $editProductionReception;
+			var_dump($_SESSION['editProductionReception']);
 			header("location:edit_product.php?id=" . $_SESSION['receptionNum'] );
 		}
 	}
 }
 
 // Update product reception
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$potato = $db->real_escape_string($_POST['potato']);

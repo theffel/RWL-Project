@@ -29,6 +29,10 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'Engine oil litres is required and cannot be empty.'
+                    },
+                    regexp: {
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       message: 'Engine liters must be a number between 0 and 999.99.'
                     }
                 }
             },
@@ -36,20 +40,32 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'Hydraulic oil litres is required and cannot be empty.'
-                    }
+                    },
+                    regexp: {
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       message: 'Hydraulic Oil liters must be a number between 0 and 999.99.'
+                    }                    
                 }
             },
             transFluidLiters: {
                 validators: {
                     notEmpty: {
                         message: 'Transmission fluid litres is required and cannot be empty.'
+                    },
+                    regexp: {
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       message: 'Transmission liters must be a number between 0 and 999.99.'
                     }
-                }
+                },                
             },
             coolantLitres: {
                 validators: {
                     notEmpty: {
                         message: 'Coolant litres is required and cannot be empty.'
+                    },
+                    regexp: {
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       message: 'Coolant liters must be a number between 0 and 999.99.'
                     }
                 }
             }

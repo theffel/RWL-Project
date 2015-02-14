@@ -24,7 +24,7 @@ $(document).ready(function() {
                         message: 'Starting Kms is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'Starting Kms must be a number between 1 and 99999999.'
                     }
                 }
@@ -32,7 +32,7 @@ $(document).ready(function() {
             peiKm: {
                 validators: {
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'PEI Kms must be a number between 1 and 99999999.'
                     }
                 }
@@ -40,7 +40,7 @@ $(document).ready(function() {
             nbKM: {
                 validators: {
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'NB Kms must be a number between 1 and 99999999.'
                     }
                 }
@@ -48,7 +48,7 @@ $(document).ready(function() {
             nsKm: {
                 validators: {
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'NS Kms must be a number between 1 and 99999999.'
                     }
                 }
@@ -59,7 +59,7 @@ $(document).ready(function() {
                         message: 'Liters in fuel tank is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]\d?\d?|0)(\.\d{1,2})?$/,
+                       regexp: /^([0-9]\d?\d?|0)(\.\d{1,2})?$/,
                        message: 'Liters in fuel tank must be a number between 0 and 999.99.'
                     }
                 }
@@ -70,11 +70,11 @@ $(document).ready(function() {
                         message: 'Finish Kms is required and cannot be empty.'
                     },
                     regexp: {
-                       regexp: /^([1-9]{1,8})?$/,
+                       regexp: /^([0-9]{1,8})?$/,
                        message: 'Finish Kms must be a number between 1 and 99999999.'
                     }
                 }
-            },
+            }
         }
     });
 });

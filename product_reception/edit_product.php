@@ -41,8 +41,10 @@ include('product_script.php');
         $loggedIn = (!empty($_SESSION['loggedIn'])) ? $_SESSION['loggedIn'] : "";
         $employeeType = (!empty($_SESSION['employeeType'])) ? $_SESSION['employeeType'] : "";
         $attendanceId = (!empty($_SESSION['attendanceId'])) ? $_SESSION['attendanceId'] : "";
+        $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
         // If the user is logged in with the correct employee permissions
         if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 1 || $employeeType == 3) {
+
         ?>
         <h2 class="page-header">Edit Product</h2>
         <form class="form-horizontal" name="receptionForm" id="receptionForm" method="post" action="edit_product.php">
@@ -58,7 +60,7 @@ include('product_script.php');
                     <select class="form-control" name="farm">
                         <?php
                         for ($x = 0; $x < count($trucks); $x++){
-                            if ($farms[$x][0] == $_SESSION['editProductionReception'][0][1]) {
+                            if ($farms[$x][1] == $_SESSION['editProductionReception'][0][1]) {
                                 echo '<option selected value="' . $farms[$x][0] . '">' . $farms[$x][1] . '</option>';
                             } else {
                                 echo '<option value="' . $farms[$x][0] . '">' . $farms[$x][1] . '</option>';
@@ -74,7 +76,7 @@ include('product_script.php');
                     <select class="form-control" name="potato">
                         <?php
                         for ($x = 0; $x < count($potatos); $x++){
-                            if ($potatos[$x][0] == $_SESSION['editProductionReception'][0][2]) {
+                            if ($potatos[$x][1] == $_SESSION['editProductionReception'][0][2]) {
                                 echo '<option selected value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
                             } else {
                                 echo '<option value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
@@ -178,11 +180,11 @@ include('product_script.php');
                     <ul class="list-inline">
                         <?php
                         if ($_SESSION['editProductionReception'][0][10] == 0) {
-                            echo '<li><input type="radio" name="movementCert" value="Yes" checked> Yes</li>';
-                            echo '<li><input type="radio" name="movementCert" value="No"> No</li>';
+                            echo '<li><input type="radio" name="movementCert" value="0" checked> Yes</li>';
+                            echo '<li><input type="radio" name="movementCert" value="1"> No</li>';
                         } else {
-                            echo '<li><input type="radio" name="movementCert" value="Yes"> Yes</li>';
-                            echo '<li><input type="radio" name="movementCert" value="No"> No</li>';
+                            echo '<li><input type="radio" name="movementCert" value="0"> Yes</li>';
+                            echo '<li><input type="radio" name="movementCert" value="1" checked> No</li>';
                         }
                         ?>
                     </ul>
@@ -194,19 +196,25 @@ include('product_script.php');
                     <ul class="list-inline">
                         <?php
                         if ($_SESSION['editProductionReception'][0][11] == 0) {
-                            echo '<li><input type="radio" name="accepted" value="Yes" checked> Yes</li>';
-                            echo '<li><input type="radio" name="accepted" value="No"> No</li>';
+                            echo '<li><input type="radio" name="accepted" value="0" checked> Yes</li>';
+                            echo '<li><input type="radio" name="accepted" value="1"> No</li>';
                         } else {
-                            echo '<li><input type="radio" name="accepted" value="Yes"> Yes</li>';
-                            echo '<li><input type="radio" name="accepted" value="No"> No</li>';
+                            echo '<li><input type="radio" name="accepted" value="0"> Yes</li>';
+                            echo '<li><input type="radio" name="accepted" value="1" checked> No</li>';
                         }
                         ?>
                     </ul>
                 </div>
             </div>
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="update" value="Update"/>
+                    <div id="messages"></div>
+                </div>
+            </div>            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
                 </div>
             </div>
         </form>
@@ -223,5 +231,7 @@ include('product_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="product_validation.js"></script>    
 </body>
 </html>
