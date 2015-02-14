@@ -75,11 +75,11 @@ include('product_script.php');
                 <div class="col-md-10">
                     <select class="form-control" name="potato">
                         <?php
-                        for ($x = 0; $x < count($potatos); $x++){
-                            if ($potatos[$x][1] == $_SESSION['editProductionReception'][0][2]) {
-                                echo '<option selected value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
+                        for ($x = 0; $x < count($potatoes); $x++){
+                            if ($potatoes[$x][1] == $_SESSION['editProductionReception'][0][2]) {
+                                echo '<option selected value="' . $potatoes[$x][0] . '">' . $potatoes[$x][1] . '</option>';
                             } else {
-                                echo '<option value="' . $potatos[$x][0] . '">' . $potatos[$x][1] . '</option>';
+                                echo '<option value="' . $potatoes[$x][0] . '">' . $potatoes[$x][1] . '</option>';
                             }
                         }
                         ?>
@@ -211,7 +211,7 @@ include('product_script.php');
                 <div class="col-md-offset-2 col-md-10">
                     <div id="messages"></div>
                 </div>
-            </div>            
+            </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="updateBtn" value="Update"/>
@@ -232,6 +232,6 @@ include('product_script.php');
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
-    <script type="text/javascript" src="product_validation.js"></script>    
+    <script type="text/javascript" src="product_validation.js"></script>
 </body>
 </html>
