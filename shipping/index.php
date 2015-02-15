@@ -46,11 +46,11 @@ include('shipping_script.php');
         $shipDetails = (!empty($_SESSION['shipDetails'])) ? $_SESSION['shipDetails'] : "";
 
         // If the user is logged in with the correct employee permissions
-        if ($loggedIn == true && $attendanceId =! 0 && $employeeType == 2) {
+        if ($loggedIn == true && $attendanceId != 0 && $employeeType == 2) {
         ?>
         <h2 class="page-header">Add a Shipment</h2>
         <form class="form-horizontal" name="shipForm" id="shipForm" method="post" action="index.php">
-           <h2 class="page-header">RWL</h2>
+          
             <div class="form-group">
 
                 <label for="rwlLoadBegin" class="control-label col-md-2">Load Time Begin</label>
@@ -141,32 +141,7 @@ include('shipping_script.php');
                     </select>
                 </div>             
             </div> 
-            <div class="form-group">
-                <label for="dispatcher" class="control-label col-md-2">Dispatcher</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-5">
-                            <select class="form-control" name="dispatcher">
-                                <?php
-                                for ($x = 0; $x < count($dispatchers); $x++){
-                                    echo '<option value="' . $dispatchers[$x][0] .'">' . $dispatchers[$x][1] .'</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <label for="driver" class="control-label col-md-2">Driver</label>
-                        <div class="col-md-5">
-                            <select class="form-control" name="driver">
-                                <?php
-                                for ($x = 0; $x < count($drivers); $x++){
-                                    echo '<option value="' . $drivers[$x][0] .'">' . $drivers[$x][1] .'</option>';
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>           
+                       
             <div class="form-group">
                 <label for="rwlTicNum" class="control-label col-md-2">RWL Ticket Number</label>
                 <div class="col-md-10">
@@ -200,91 +175,7 @@ include('shipping_script.php');
                     </select>
                 </div>
             </div>
-            <h2 class="page-header">Processor</h2>
-            <div class="form-group">
-                <label for="procArrivalTime" class="control-label col-md-2">Arrival Time</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="procArrivalTime" name="procArrivalTime" value="">
-                        </div>  
-                        <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="procArrivalTimeBtn" value="procArrivalTime" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;&nbsp;Arrival&nbsp;&nbsp;&nbsp;</button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="form-group">
-                <label for="procUnloadBegin" class="control-label col-md-2">Unload Time Begin</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="procUnloadBegin" name="procUnloadBegin" value="">
-                        </div>  
-                        <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="procUnloadBeginBtn" value="procUnloadBegin" onclick="getTime(this.value)">&nbsp;&nbsp;&nbsp;Begin&nbsp;&nbsp;&nbsp;</button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            <div class="form-group">
-                <label for="procUnloadEnd" class="control-label col-md-2">Unload Time End</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="procUnloadEnd" name="procUnloadEnd" value="">
-                        </div>  
-                        <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="procUnloadEndBtn" value="procUnloadEnd" onclick="getTime(this.value)">End&nbsp;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="procDepartureTime" class="control-label col-md-2">Departure Time</label>
-                <div class="col-md-10">
-                    <div class="form-group row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="procDepartureTime" name="procDepartureTime" value="">
-                        </div>  
-                        <div class="col-md-1">
-                        <button type="button" class="btn btn-primary" name="procDepartureTimeBtn" value="procDepartureTime" onclick="getTime(this.value)">Depart&nbsp;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="procTicNum" class="control-label col-md-2">Processor Ticket Number</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="procTicNum" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="grossWeight" placeholder="">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="tareWeight" placeholder="">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="rejected" class="control-label col-md-2">Rejected</label>
-                <div class="col-md-10">
-                    <ul class="list-inline">
-                        <li><input type="radio" name="rejected" value="0"> Yes</li>
-                        <li><input type="radio" name="rejected" value="1"> No</li>
-                    </ul>
-                    <!--<input type="checkbox" class="form-control" name="rejected" onclick="return rejected();" placeholder="">-->
-                </div>
-            </div>            
+                        
 <!--            <div class="form-group">
                 <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
                 <div class="col-md-10">
@@ -305,10 +196,11 @@ include('shipping_script.php');
             if (!empty($shipDetails)) {
                 echo '<table class="table">
                         <thead>
-                           <tr>
+                            <tr>
                                 <th>Date</th>
                                 <th>Potato</th>
                                 <th>Farm</th>
+                                <th>Truck</th>
                                 <th>Trailer</th>
                                 <th>Weight</th>
                                 <th>Destination</th> 
@@ -323,6 +215,7 @@ include('shipping_script.php');
                         <td>'. $shipDetails[$x][4].'</td>
                         <td>'. $shipDetails[$x][5].'</td>
                         <td>'. $shipDetails[$x][6].'</td>
+                        <td>'. $shipDetails[$x][7].'</td>
                         <td><input type="submit" class="btn btn-primary" name="'. $shipDetails[$x][0].'" value="Edit"/></td>
                     </tr>';
                 }

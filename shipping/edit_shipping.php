@@ -95,74 +95,7 @@ include('shipping_script.php');
                     </ul>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="procArrivalTime" class="control-label col-md-2">Arrival Time</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="procArrivalTime" value="<?php echo $_SESSION['editShipping'][0][6]; ?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="procUnloadBegin" class="control-label col-md-2">Unload Time Begin</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" name="procUnloadBegin" value="<?php echo $_SESSION['editShipping'][0][7]; ?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="procUnloadEnd" class="control-label col-md-2">Unload Time End</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="procUnloadEnd" value="<?php echo $_SESSION['editShipping'][0][8]; ?>">
-                </div>             
-            </div>
-            <div class="form-group">
-                <label for="procDepartureTime" class="control-label col-md-2">Departure Time</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="procDepartureTime" value="<?php echo $_SESSION['editShipping'][0][9]; ?>">
-                </div>             
-            </div>
-            <div class="form-group">
-                <label for="procTicNum" class="control-label col-md-2">Processor Ticket Number</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="procTicNum" value="<?php echo $_SESSION['editShipping'][0][10]; ?>">
-                </div>             
-            </div>
-            <div class="form-group">
-                <label for="grossWeight" class="control-label col-md-2">Gross Weight</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="grossWeight" value="<?php echo $_SESSION['editShipping'][0][11]; ?>">
-                </div>             
-            </div>
-            <div class="form-group">
-                <label for="tareWeight" class="control-label col-md-2">Tare Weight</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" name="tareWeight" value="<?php echo $_SESSION['editShipping'][0][12]; ?>">
-                </div>             
-            </div>
-            <div class="form-group">
-                <label for="rejected" class="control-label col-md-2">Rejected</label>
-                <div class="col-md-10">
-                    <ul class="list-inline">
-                        <?php
-                            if ($_SESSION['editShipping'][0][13] == 0) {
-                            echo '<li><input type="radio" name="rejected" value="0" checked> Yes</li>';
-                            echo '<li><input type="radio" name="rejected" value="1"> No</li>';
-                            } else {
-                            echo '<li><input type="radio" name="rejected" value="0"> Yes</li>';
-                            echo '<li><input type="radio" name="rejected" value="1" checked> No</li>';
-                            }
-                        ?>
-                    </ul>
-                </div>
-            </div>
             
-<!--            <div class="form-group">
-                <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
-                <div class="col-md-10">
-                    <ul class="list-inline">
-                        <li><input type="radio" name="truckCleaned" value="Yes"> Yes</li>
-                        <li><input type="radio" name="truckCleaned" value="No"> No</li>
-                    </ul>
-                </div>
-            </div> -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="update" value="Update"/>
