@@ -287,7 +287,7 @@ include('../header.php');
             </div>
         <hr>
         </form>
-        <form class="form-horizontal" name="pickorm" id="pickForm2" method="post" action="index.php">
+        <form class="form-horizontal" name="pickorm" id="pickForm" method="post" action="index.php">
         <h2 class="page-header">Edit Incoming Delivery</h2>
         <?php
             if (!empty($incomingDeliveries)) {

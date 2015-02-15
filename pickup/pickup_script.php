@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert pickup
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$driver = $db->real_escape_string($_POST['driver']);
 	$dispatcher = $db->real_escape_string($_POST['dispatcher']);
@@ -94,7 +94,7 @@ if (!empty($result)) {
 	}
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$farmArrivalTime = $db->real_escape_string($_POST['farmArrivalTime']);
 	$loadTime = $db->real_escape_string($_POST['loadTime']);
 	$farmDepartureTime = $db->real_escape_string($_POST['farmDepartureTime']);
