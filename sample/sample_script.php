@@ -25,7 +25,7 @@ include('../session_load.php');
 
 
 // Insert pickup
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$trailer = $db->real_escape_string($_POST['trailer']);
 	$incomingOutgoing = $db->real_escape_string($_POST['incomingOutgoing']);
 	$numOfSample = $db->real_escape_string($_POST['numOfSample']);
@@ -126,7 +126,7 @@ if (!empty($result)) {
 	}
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$trailer = $db->real_escape_string($_POST['trailer']);
 	$incomingOutgoing = $db->real_escape_string($_POST['incomingOutgoing']);
 	$numOfSample = $db->real_escape_string($_POST['numOfSample']);

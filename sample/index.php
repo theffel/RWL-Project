@@ -351,14 +351,20 @@ include('sample_script.php');
                     <input type="text" class="form-control" name="rockWeight">
                 </div>
             </div>
-
+            <!-- #messages is where the messages are placed inside -->
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
                 </div>
             </div>
         <hr>
-
+        </form>
+        <form class="form-horizontal" name="sampleForm" id="sampleForm" method="post" action="index.php">
         <h2 class="page-header">Edit Samples</h2>
         <?php
             if (!empty($samples)) {
@@ -403,5 +409,7 @@ include('sample_script.php');
     <script src="../js/bootstrap.min.js"></script>
         <!-- Custom JavaScript -->
     <script src="../js/custom_js.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="sample_validation.js"></script> 
 </body>
 </html>
