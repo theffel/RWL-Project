@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert downtime
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$startDowntime = $db->real_escape_string($_POST['startDowntime']);
 	$endDowntime = $db->real_escape_string($_POST['endDowntime']);
 	$reason = $db->real_escape_string($_POST['reason']);
@@ -67,7 +67,7 @@ if (!empty($result)) {
 	}
 }
 
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$startDowntime = $db->real_escape_string($_POST['startDowntime']);
 	$endDowntime = $db->real_escape_string($_POST['endDowntime']);
 	$reason = $db->real_escape_string($_POST['reason']);

@@ -81,12 +81,20 @@ include('change_farm_script.php');
                    <input type="text" class="form-control" name="binMarker">
                 </div>
             </div>
+            <!-- #messages is where the messages are placed inside -->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div id="messages"></div>
+                </div>
+            </div>            
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
                 </div>
             </div>
         <hr>
+        </form>
+        <form class="form-horizontal" name="changeForm" id="changeForm" method="post" action="index.php">
         <h2 class="page-header">Edit Farm</h2>
         <?php
             if (!empty($changeFarms)) {
@@ -128,5 +136,7 @@ include('change_farm_script.php');
     <script src="../js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="change_farm_validation.js"></script> 
 </body>
 </html>

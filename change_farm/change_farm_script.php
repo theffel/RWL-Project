@@ -20,7 +20,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert temperature check
-if (isset($_POST['submit'])) {
+if (isset($_POST['submitBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$weight = $db->real_escape_string($_POST['weight']);
@@ -67,7 +67,7 @@ if (!empty($result)) {
 }
 
 // Update farm
-if (isset($_POST['update'])) {
+if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$farm = $db->real_escape_string($_POST['farm']);
 	$weight = $db->real_escape_string($_POST['weight']);
