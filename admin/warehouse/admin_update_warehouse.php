@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for updateing a new warehouse.
+ * This page holds the form for updating a new warehouse.
  *
  * PHP version 5
  *
@@ -36,7 +36,7 @@ include($path.'/header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">New Warehouse updateition</h1>
+                <h1 class="page-header">New Warehouse Update</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
@@ -63,11 +63,10 @@ include($path.'/header.php');
         </div>
         <!-- /.row -->
 		<?php
-			// If the user is logged in, display the update farm form
+			// If the user is logged in, display the update warehouse form
 			if ($loggedIn == true) {			
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
-					$farmId = $queryValues['farm_id'];
 					$warehouseName = $queryValues['warehouse_name'];
 					$warehouseCivAddress = $queryValues['warehouse_civic_address'];
 					$warehouseProvince = $queryValues['warehouse_prov'];
@@ -77,6 +76,9 @@ include($path.'/header.php');
 					
 						<!--warehouse Id-->
 						<input hidden type = "radio" name = "warehouseId" id = "warehouseId" value = "<?php echo $warehouseId; ?>" checked>		
+						
+						<!--Farm Id-->
+						<input hidden type = "radio" name = "farmId" id = "farmId" value = "<?php echo $farmId; ?>" checked>		
 						
 						<!--warehouse Name-->
 						<div class="form-group">
@@ -112,7 +114,7 @@ include($path.'/header.php');
 
 						<div class="form-group">
 							<div class="col-xs-offset-2 col-xs-10">
-								<input type="submit" class="btn btn-primary" name="updateFarm" value="update Warehouse"/>
+								<input type="submit" class="btn btn-primary" name="updateWarehouse" value="update Warehouse"/>
 							</div>
 						</div>
 						

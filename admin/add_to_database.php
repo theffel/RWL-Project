@@ -580,7 +580,7 @@ include($path.'/header.php');
 		//improper sending variable
 		else{
 			echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/index.php");
+					location.replace("'.ROOT.'/admin/admin_page_list.php");
 					</script>';	
 		}
 	}

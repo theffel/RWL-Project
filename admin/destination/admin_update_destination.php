@@ -51,7 +51,7 @@ include($path.'/header.php');
         <!-- /.row -->
 		<?php
 			// If the user is logged in, display the add Destination form
-			if ($loggedIn == true) {	\
+			if ($loggedIn == true) {	
 				// Get Farm Id
 				$destId = $_GET["id"];	
 						// Create query
@@ -69,7 +69,7 @@ include($path.'/header.php');
 			?>
 				<form class='form-horizontal' name='updatedestinationForm' id='updatedestinationForm' method='post' action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 			
-					<!--Farm Id-->
+					<!--Destination Id-->
 					<input hidden type = "radio" name = "destId" id = "destId" value = "<?php echo $destId; ?>" checked>
 					<!--Destination Name-->
 					<div class="form-group">

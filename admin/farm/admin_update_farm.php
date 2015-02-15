@@ -62,10 +62,9 @@ include($path.'/header.php');
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
 					$farmName = $queryValues['farm_name'];
-					$farmCivAdd = $queryValues['farm_civic_address'];
-					$farmPhone = $queryValues['farm_phone'];
+					$farmCivAddress = $queryValues['farm_civic_address'];
+					$farmPhoneNum = $queryValues['farm_phone'];
 					$farmEmail = $queryValues['farm_email'];
-					$farmContactId = $queryValues['farm_contact_id'];
 				
 			?>
 
@@ -85,7 +84,7 @@ include($path.'/header.php');
 					<div class="form-group">
 						<label for="inputFarmCivAddress" class="control-label col-xs-2">Farm Civic Address</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress" value="<?php echo $farmCivAdd; ?>"  required data-validation-required-message="Please enter the new civic address of the farm.">
+							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress" value="<?php echo $farmCivAddress; ?>"  required data-validation-required-message="Please enter the new civic address of the farm.">
 						</div>
 					</div>
 					
@@ -93,7 +92,7 @@ include($path.'/header.php');
 					<div class="form-group">
 						<label for="inputFarmPhoneNum" class="control-label col-xs-2">Farm Phone Number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" placeholder="902#######" value="<?php echo $farmPhone; ?>" required data-validation-required-message="Please enter the new Phone number of the farm.">
+							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" placeholder="902#######" value="<?php echo $farmPhoneNum; ?>" required data-validation-required-message="Please enter the new Phone number of the farm.">
 						</div>
 					</div>
 					

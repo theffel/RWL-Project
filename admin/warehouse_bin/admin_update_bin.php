@@ -68,22 +68,24 @@ include($path.'/header.php');
         </div>
         <!-- /.row -->
 		<?php
-				//query bin table				
+				//retrieve bin name				
 
 				if ($warehouseResult->num_rows > 0) {
-					$queryValues = $warehouseResult->fetch_assoc();
-					$binName = $queryValues['bin_name'];
+					$binName = $warehouseResult['bin_name'];
 				}
 				echo "<form class='form-horizontal' name='updateWarehouseBinForm' id='updateWarehouseBinForm' method='post' action='".ROOT."/admin/admin_update_database.php'>";
 			?>		
 				<!--bin Id-->
 				<input hidden type = "radio" name = "binId" id = "binId" value = "<?php echo $binId; ?>" checked>
+				
+				<!--Warehouse Id-->
+				<input hidden type = "radio" name = "warehouseId" id = "warehouseId" value = "<?php echo $warehouseId; ?>" checked>
 					
 					<!--Bin Name-->
 					<div class="form-group">
 						<label for="inputbinName" class="control-label col-xs-2">Bin Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="binName" id="binName" value = "<?php echo $binName; ?>" required data-validation-required-message="Please enter the Name of the new bin." autofocus>
+							<input type="text" class="form-control" name="binName" id="binName" value = "<?php echo $binName; ?>" required data-validation-required-message="Please enter the new Name of the bin." autofocus>
 						</div>
 					</div>
 
