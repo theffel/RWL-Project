@@ -36,7 +36,7 @@ include($path.'/header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">truck Update</h1>
+                <h1 class="page-header">Truck Registration Update</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
@@ -62,10 +62,11 @@ include($path.'/header.php');
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
 					$regExpiry = $queryValues['reg_expiry_date'];
-					$regImg = $queryValues['img_id'];
+					$imgId = $queryValues['img_id'];
+
 			?>
 
-				<form class="form-horizontal" name="updatetruckForm" id="updatetruckForm" method="post" action="<?php echo ROOT; ?>/admin/add_to_database.php">
+				<form class="form-horizontal" name="updatetruckForm" id="updatetruckForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 
 					<!--truck Id-->
 					<input hidden type = "radio" name = "truckId" id = "truckId" value = "<?php echo $truckId; ?>" checked>
@@ -78,7 +79,16 @@ include($path.'/header.php');
 							<input type="text" class="form-control" name="regExpiry" id="regExpiry" placeholder="YYYY-MM-DD" value = "<?php echo $regExpiry; ?>" required data-validation-required-message="Please enter the designated registration expirey date.">
 						</div>
 					</div>
-					
+			<?php
+								
+					$queryImg = "select `img` from `images` where img_id = {$imgId}";
+					$resultImg = $db->query($queryImg);
+				
+					if ($resultImg->num_rows > 0) {
+						$queryValuesImg = $result->fetch_assoc();
+						$regImg = $queryValuesImg['img'];
+
+					?>
 					<!--Registration image-->
 					<div class="form-group">
 						<label for="inputRegistrationImg" class="control-label col-md-2">Registration Picture</label>
@@ -86,16 +96,24 @@ include($path.'/header.php');
 							<input type="file" id="regImg" name="regImg" accept="image/*" value = "<?php echo $regImg; ?>" required data-validation-required-message="Please enter the designated registration expirey date.">
 						</div>
 					</div>
-			
+						<?php
+								
+					}
+					else{
+						echo "No image found";
+					}
+
+					?>
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">
-							<input type="submit" class="btn btn-primary" name="updatetruck" value="Update truck"/>
+							<input type="submit" class="btn btn-primary" name="updatetruck" value="Update Registration"/>
 						</div>
 					</div>
 					
 				</form>
 
-			<?php
+<?php
+
 				}
 				else{
 					echo "failed query";

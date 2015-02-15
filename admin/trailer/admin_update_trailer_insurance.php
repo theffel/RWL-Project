@@ -1,6 +1,6 @@
 <?php
 /**
- * This page holds the form for adding a new trailer.
+ * This page holds the form for updating a trailers insurance.
  *
  * PHP version 5
  *
@@ -36,13 +36,13 @@ include($path.'/header.php');
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Trailer Update</h1>
+                <h1 class="page-header">trailer insurance Update</h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
                     </li>
-					<li><a href="<?php echo ROOT; ?>/admin/trailer/admin_trailer_list.php">Trailers</a>
+					<li><a href="<?php echo ROOT; ?>/admin/trailer/admin_trailer_list.php">trailers</a>
                     </li>
                     <li class="active">Update</li>
                 </ol>
@@ -55,47 +55,74 @@ include($path.'/header.php');
 				// Get Farm Id
 				$trailerId = $_GET["id"];	
 						// Create query
-				$query = "select `trailer_num`, `plate_num` from `trailer` where trailer_Id = {$trailerId}";
+				$query = "select `ins_expiry_date`, `img_id` from `insurance` where trailer_Id = {$trailerId}";
 					
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
-					$trailerNum = $queryValues['trailer_num'];
-					$plateNum = $queryValues['plate_num'];
+					$insExpiry = $queryValues['ins_expiry_date'];
+					$imgId = $queryValues['img_id'];
+
 			?>
 
-				<form class="form-horizontal" name="updatetrailerForm" id="updatetrailerForm" method="post" action="<?php echo ROOT; ?>/admin/add_to_database.php">
+				<form class="form-horizontal" name="updatetrailerForm" id="updatetrailerForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 
-					<!--Trailer Id-->
+					<!--trailer Id-->
 					<input hidden type = "radio" name = "trailerId" id = "trailerId" value = "<?php echo $trailerId; ?>" checked>
 
-					<!--trailer number-->
+				<!--insurance-->
+					<!--insurance expirey-->
 					<div class="form-group">
-						<label for="inputTrailerNumber" class="control-label col-xs-2">Trailer Number</label>
+						<label for="inputinsuranceExpiry" class="control-label col-xs-2">insurance Expirey</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="trailerNum" id="trailerNum" placeholder="#####" value = "<?php echo $trailerNum; ?>" required data-validation-required-message="Please enter the designated trailer number.">
+							<input type="text" class="form-control" name="insExpiry" id="insExpiry" placeholder="YYYY-MM-DD" value = "<?php echo $insExpiry; ?>" required data-validation-required-message="Please enter the designated insurance expirey date.">
 						</div>
 					</div>
-					
-					<!--License Plate number-->
+			<?php
+								
+					$queryImg = "select `img` from `images` where img_id = {$imgId}";
+					$resultImg = $db->query($queryImg);
+				
+					if ($resultImg->num_rows > 0) {
+						$queryValuesImg = $result->fetch_assoc();
+						$insImg = $queryValuesImg['img'];
+
+					?>
+					<!--insurance image-->
 					<div class="form-group">
-						<label for="inputPlateNumber" class="control-label col-xs-2">License Plate Number</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="plateNum" id="plateNum" placeholder="########" value = "<?php echo $plateNum; ?>" required data-validation-required-message="Please enter the designated License Plate number.">
+						<label for="inputinsuranceImg" class="control-label col-md-2">insurance Picture</label>
+						<div class="col-md-10">
+							<input type="file" id="insImg" name="insImg" accept="image/*" value = "<?php echo $insImg; ?>" required data-validation-required-message="Please enter the designated insurance expirey date.">
 						</div>
 					</div>
-					
-			
+						<?php
+								
+					}
+					else{
+						echo "No image found";
+						?>
+						<!--insurance image-->
+					<div class="form-group">
+						<label for="inputinsuranceImg" class="control-label col-md-2">insurance Picture</label>
+						<div class="col-md-10">
+							<input type="file" id="insImg" name="insImg" accept="image/*" required data-validation-required-message="Please enter the designated insurance expirey date.">
+						</div>
+					</div>
+						<?php
+					}
+
+					?>
 					<div class="form-group">
 						<div class="col-xs-offset-2 col-xs-10">
-							<input type="submit" class="btn btn-primary" name="updateTrailer" value="Update Trailer"/>
+							<input type="submit" class="btn btn-primary" name="updatetrailer" value="Update insurance"/>
 						</div>
 					</div>
 					
 				</form>
 
-			<?php
+<?php
+
 				}
 				else{
 					echo "failed query";

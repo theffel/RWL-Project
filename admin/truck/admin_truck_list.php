@@ -40,6 +40,8 @@ include($path.'/header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
+                    </li>
                     <li class="active">trucks</li>
                 </ol>
             </div>
@@ -51,12 +53,34 @@ include($path.'/header.php');
 						
 				// Create query
 				$query = "select * FROM truck";
-				$trucks = $db->query($query);
+				$result = $db->query($query);
 				
-				if ($trucks->num_rows > 0) {
-					while($row = $trucks->fetch_assoc()){
-						echo "<form ><input type = 'submit' class='btn btn-primary' value = '" . $row['truck_num'] . "'></form><br />";
+				if ($result->num_rows > 0) {
+					echo "<table style='width:100%' border='1'>";
+					echo "<tr><td>truck Number</td> <td>Plate Number</td> <td></td> <td>Registration Expiry Date</td> <td></td> <td>Inspection Expiry Date</td> <td></td> <td>InsuranceExpiry Date</td> <td></td></tr>";
+					while($row = $result->fetch_assoc()){
+						echo "<tr><td>". $row['truck_num'] . "</td>";
+						echo "<td>" . $row['plate_num'] . "</td>";
+						echo "<td><form action = '".ROOT."/admin/truck/admin_update_truck.php' method = 'get'><input hidden type = radio name = id value = '" . $row['truck_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						//registration
+						$registrationQuery = "select `reg_expiry_date` from `registration` where truck_Id = '{$row['truck_id']}'";
+						$registrationResult = $db->query($registrationQuery)->fetch_assoc();
+						echo "<td>". $registrationResult['reg_expiry_date']."</td>";
+						echo "<td><form action = '".ROOT."/admin/truck/admin_update_truck_reg.php' method = 'get'><input hidden type = radio name = id value = '" . $row['truck_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						//inspection
+						$inspectionQuery = "select `inspect_expiry_date` from `inspection` where truck_Id = '{$row['truck_id']}'";
+						$inspectionResult = $db->query($inspectionQuery)->fetch_assoc();
+						echo "<td>". $inspectionResult['inspect_expiry_date']."</td>";
+						echo "<td><form action = '".ROOT."/admin/truck/admin_update_truck_inspect.php' method = 'get'><input hidden type = radio name = id value = '" . $row['truck_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						//insurance
+						$insuranceQuery = "select `ins_expiry_date` from `insurance` where truck_Id = '{$row['truck_id']}'";
+						$insuranceResult = $db->query($insuranceQuery)->fetch_assoc();
+						echo "<td>". $insuranceResult['ins_expiry_date']."</td>";
+						echo "<td><form action = '".ROOT."/admin/truck/admin_update_truck_insurance.php' method = 'get'><input hidden type = radio name = id value = '" . $row['truck_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						
+						echo "</tr>";
 					}
+					echo "</table>";
 				}
 				else {
 					echo "0 results";

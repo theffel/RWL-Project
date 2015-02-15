@@ -64,7 +64,7 @@ include($path.'/header.php');
 						echo "<td>" . $row['dest_prov'] . "</td>";
 						echo "<td>" . $row['dest_phone'] . "</td>";
 						echo "<td>" . $row['dest_contact_name'] . "</td>";
-						echo "<td><form action = '".ROOT."/admin_update_destination.php' method = 'get'><input hidden type = radio name = id value = '" . $row['dest_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						echo "<td><form action = '".ROOT."/admin/destination/admin_update_destination.php' method = 'get'><input hidden type = radio name = id value = '" . $row['dest_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
 						echo "</tr>";
 					}
 					echo "</table>";

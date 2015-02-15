@@ -54,6 +54,8 @@ include($path.'/header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
+                    </li>
 					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin/warehouse/admin_warehouse_list.php?id=<?php echo $farmId; ?>">Warehouses</a>

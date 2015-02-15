@@ -40,6 +40,8 @@ include($path.'/header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
+                    </li>
                     <li class="active">processors</li>
                 </ol>
             </div>
@@ -51,12 +53,20 @@ include($path.'/header.php');
 						
 				// Create query
 				$query = "select * FROM processor";
-				$processors = $db->query($query);
+				$result = $db->query($query);
 				
-				if ($processors->num_rows > 0) {
-					while($row = $processors->fetch_assoc()){
-						echo "<form ><input type = 'submit' class='btn btn-primary' value = '" . $row['processor_name'] . "'></form><br />";
+				if ($result->num_rows > 0) {
+					echo "<table style='width:100%' border='1'>";
+					echo "<tr><td>Processor Name</td> <td>Address</td> <td>Phone Number</td> <td>Contact Name</td> <td></td></tr>";
+					while($row = $result->fetch_assoc()){
+						echo "<tr><td>". $row['processor_name'] . "</td>";
+						echo "<td>" . $row['processor_address'] . "</td>";
+						echo "<td>" . $row['processor_phone'] . "</td>";
+						echo "<td>" . $row['processor_contact_name'] . "</td>";
+						echo "<td><form action = '".ROOT."/admin_update_processor.php' method = 'get'><input hidden type = radio name = id value = '" . $row['processor_id'] . "' checked><input type = submit class='btn btn-primary' value = 'Edit'></form></td>";
+						echo "</tr>";
 					}
+					echo "</table>";
 				}
 				else {
 					echo "0 results";

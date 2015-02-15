@@ -40,6 +40,8 @@ include($path.'/header.php');
                 <ol class="breadcrumb">
                     <li><a href="<?php echo ROOT; ?>/index.php">Home</a>
                     </li>
+					<li><a href="<?php echo ROOT; ?>/admin/admin_page_list.php">Admin Root</a>
+                    </li>
 					<li><a href="<?php echo ROOT; ?>/admin/processor/admin_processor_list.php">Processors</a>
                     </li>
                     <li class="active">Add Processor</li>
