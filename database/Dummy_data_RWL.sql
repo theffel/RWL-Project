@@ -70,6 +70,9 @@ INSERT INTO `farm`(`farm_id`, `farm_name`, `farm_civic_address`, `farm_phone`, `
 ('1', 'JustAnotherFarm', '3354 Route 2 Hunter River', '9024887788', 'myfarm@patatoe.pe', '1', '1', '0', '00000000', '00000000'),
 ('2', 'Tom Jones Farm', '4455 Park rd Seaview', '9028885544', 'hisfarm@shoreside.ca', '2', '1', '0', '00000000', '00000000');
 
+INSERT INTO `Field`(`field_id`, `field_location`, `bin_id`) VALUES
+('1', 'under some snowbank', '1'),
+('2', 'field town', '2');
 
 INSERT INTO `potato`(`potato_id`, `potato_name`) VALUES
 (1, 'Russet Burbank'),
