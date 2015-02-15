@@ -78,10 +78,8 @@
                                             } if ($employeeType == 7) { // Maintenance
                                                 //echo '<a href="'. ROOT . '/repairs_and_maintenance">Repairs and Maintenance</a>';
                                             } if ($employeeType == 9) { // Admin
-                                                echo '<a href="'. ROOT . '/admin_add_farm.php">Add Farm</a>';
-                                            	echo '<a href="'. ROOT . '/admin_add_employee.php">Add Employee</a>';
-                                            	echo '<a href="'. ROOT . '/admin_farm_list.php">View Farm</a>';
-                                                echo '<a href="'. ROOT . '/report/index.php">Report</a>';
+                                                echo '<a href="'. ROOT . '/admin/admin_page_list.php">Admin Pages</a>';
+                                                echo '<a href="'. ROOT . '/report/index.php">Reports</a>';
                                             }
                             echo '      </li>
                                     </ul>
