@@ -66,7 +66,7 @@ include($path.'/header.php');
 					<div class="form-group">
 						<label for="inputdriverExp" class="control-label col-xs-2">driver licence number</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="driverLicNum" id="driverLicNum" required data-validation-required-message="Please enter the number of the new drivers licence.">
+							<input type="text" class="form-control" name="driverLicNum" id="driverLicNum" placeholder="##########" required data-validation-required-message="Please enter the number of the new drivers licence.">
 						</div>
 					</div>
 					

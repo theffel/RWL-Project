@@ -40,7 +40,7 @@ include($path.'/header.php');
 			$destinationContactName = $_POST['destinationContactName'];
 			
 			// Create query
-			$query = "Update `employee` SET dest_name = '{$destinationName}', dest_address = '{$destinationAddress}', dest_prov = '{$destinationProvince}', dest_phone = '{$destinationPhoneNum}', dest_contact_name = '{$destinationContactName}' where dest_id = '{$destId}'";
+			$query = "Update `destination` SET dest_name = '{$destinationName}', dest_address = '{$destinationAddress}', dest_prov = '{$destinationProvince}', dest_phone = '{$destinationPhoneNum}', dest_contact_name = '{$destinationContactName}' where dest_id = '{$destId}'";
 
 			if ($db->query($query) === TRUE) {
 				$db->close();
@@ -105,7 +105,7 @@ include($path.'/header.php');
 			// Create query
 			$queryP = "Update `employee_emergency_contact` SET emerg_first_name = '{$employeePrimaryECFN}', emerg_last_name = '{$employeePrimaryECLN}', emerg_phone = '{$employeePrimaryECPhoneNum}' where emp_id = '{$empId}' AND emerg_contact_id = '1'";
 			if ($db->query($queryP) === TRUE) {
-				$queryP = "Update `employee_emergency_contact` SET emerg_first_name = '{$employeeSecondaryECFN}', emerg_last_name = '{$employeeSecondaryECLN}', emerg_phone = '{$employeeSecondaryECPhoneNum}' where emp_id = '{$empId}' AND emerg_contact_id = '2'";
+				$queryS = "Update `employee_emergency_contact` SET emerg_first_name = '{$employeeSecondaryECFN}', emerg_last_name = '{$employeeSecondaryECLN}', emerg_phone = '{$employeeSecondaryECPhoneNum}' where emp_id = '{$empId}' AND emerg_contact_id = '2'";
 				if ($db->query($queryS) === TRUE) {
 					$db->close();
 					echo '<script type="text/javascript">
@@ -117,6 +117,31 @@ include($path.'/header.php');
 					$db->close();
 					exit;
 				}
+			}
+			else {
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
+			}
+		}
+
+		//add employee training certificate
+		else if (isset($_POST['trainingId']) && isset($_POST['empId']) && isset($_POST['TrainingStart']) && isset($_POST['TrainingEnd']) && isset($_POST['completionStat']) && isset($_POST['TrainingTypeId'])){
+			$trainingId = $_POST['trainingId'];
+			$empId = $_POST['empId'];
+			$TrainingStart = $_POST['TrainingStart'];
+			$TrainingEnd = $_POST['TrainingEnd'];
+			$completionStat = $_POST['completionStat'];
+			$TrainingTypeId = $_POST['TrainingTypeId'];					
+
+			// Create query
+			$query = "Update `employee_training_certificate` SET start_date = '{$TrainingStart}', end_date = '{$TrainingEnd}', completed = '{$completionStat}', training_type_id = '{$TrainingTypeId}' where certificate_id = '{$trainingId}'";
+			if ($db->query($query) === TRUE) {
+				echo "New record created successfully";
+				$db->close();
+				echo '<script type="text/javascript">
+					location.replace("'.ROOT.'/admin/employee/admin_employee_training_list.php?id='.$empId.'");
+					</script>';	
 			}
 			else {
 				echo "Error: " . $query . "<br>" . $db->error;

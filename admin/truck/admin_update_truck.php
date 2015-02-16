@@ -65,7 +65,7 @@ include($path.'/header.php');
 					$plateNum = $queryValues['plate_num'];
 			?>
 
-				<form class="form-horizontal" name="updatetruckForm" id="updatetruckForm" method="post" action="<?php echo ROOT; ?>/admin/add_to_database.php">
+				<form class="form-horizontal" name="updatetruckForm" id="updatetruckForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 
 					<!--truck Id-->
 					<input hidden type = "radio" name = "truckId" id = "truckId" value = "<?php echo $truckId; ?>" checked>

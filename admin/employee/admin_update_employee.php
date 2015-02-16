@@ -163,7 +163,7 @@ include($path.'/header.php');
 					<div class="form-group">
 						<label for="inputEmployeeGender" class="control-label col-xs-2">Gender</label>
 						<div class="col-xs-10">
-							<select name="employeeGender" id="employeeGender" form="addemployeeForm">
+							<select name="employeeGender" id="employeeGender" form="updateEmployeeForm">
 								<?php
 								if($employeeGender == 0){
 									echo'<option value="0" selected>Male</option><option value="1">Female</option>';
@@ -192,13 +192,13 @@ include($path.'/header.php');
 					
 				</form>
 				<hr />
-				<form action = ".ROOT."/admin_update_train.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '<?php echo $empId; ?>' checked><input type = 'submit' class='btn btn-primary' value = 'Update Training Credentials'></form><br />
+				<form action = "<?php echo ROOT ?>/admin/employee/admin_employee_training_list.php" method = 'get'> <input hidden type = 'radio' name = 'id' value = '<?php echo $empId; ?>' checked><input type = 'submit' class='btn btn-primary' value = 'Update Training Credentials'></form><br />
 
 			<?php
 				$query2 = "select * from driver where emp_id = '{$empId}'";
 				$result = $db->query($query2);
 				if ($result->num_rows < 1) {
-					echo "<form action = ".ROOT."/admin/employee/admin_add_driver.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Add as Driver'></form><br />";
+					echo "<form action = '".ROOT."/admin/employee/admin_add_driver.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $empId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Add as Driver'></form><br />";
 				}
 			}
 			else{
