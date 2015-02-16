@@ -80,6 +80,28 @@ include($path.'/header.php');
 				
 		}
 		
+		// get submit from add farm contact page
+		else if (isset($_POST['farmId']) && isset($_POST['farmContactFN']) && isset($_POST['farmContactLN']) && isset($_POST['farmContactPN'])) {
+			$farmId = ($_POST['farmId']);
+			$farmContactFN = ($_POST['farmContactFN']);
+			$farmContactLN = ($_POST['farmContactLN']);
+			$farmContactPN = ($_POST['farmContactPN']);
+
+			// Create query
+			$query = "INSERT INTO `farm_contact` (farm_id, contact_first_name, contact_last_name, contact_phone) VALUES ('{$farmId}', '{$farmContactFN}',  '{$farmContactLN}', '{$farmContactPN}')";
+			if ($db->query($query) === TRUE) {
+				$db->close();
+				echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/farm/admin_farm_contact_list.php?id=' . $farmId . '");
+						</script>';	
+			}
+			else{			
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
+			}
+		}
+		
 		// get submit from add warehouse
 		else if (isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehouseProvince']) && isset($_POST['warehousePhoneNum'])) {
 			$farmId = $_GET["id"];

@@ -44,7 +44,7 @@ include($path.'/header.php');
                     </li>
 					<li><a href="<?php echo ROOT; ?>/admin/farm/admin_farm_list.php">Farms</a>
                     </li>
-                    <li class="active">Update Farm</li>
+                    <li class="active">Update Farm Contacts</li>
                 </ol>
             </div>
         </div>
@@ -52,55 +52,51 @@ include($path.'/header.php');
 		<?php
 			// If the user is logged in, display the add farm form
 			if ($loggedIn == true) {
-				// Get Farm Id
-				$farmId = $_GET["id"];	
+				// Get Farm contact Id
+				$contactId = $_GET["id"];	
 						// Create query
-				$query = "select `farm_name`, `farm_civic_address`, `farm_phone`, `farm_email`, `farm_contact_id` from `farm` where farm_id = {$farmId}";
+				$query = "select * from `farm_contact` where farm_contact_id = {$contactId}";
 					
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {
 					$queryValues = $result->fetch_assoc();
-					$farmName = $queryValues['farm_name'];
-					$farmCivAddress = $queryValues['farm_civic_address'];
-					$farmPhoneNum = $queryValues['farm_phone'];
-					$farmEmail = $queryValues['farm_email'];
+					$farmId = $queryValues['farm_id'];
+					$farmContactFN = $queryValues['contact_first_name'];
+					$farmContactLN = $queryValues['contact_last_name'];
+					$farmContactPN = $queryValues['contact_phone'];
 				
 			?>
 
 				<form class="form-horizontal" name="updateFarmForm" id="updateFarmForm" method="post" action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 					
+					<!--Farm contact Id-->
+					<input hidden type = "radio" name = "contactId" id = "contactId" value = "<?php echo $contactId; ?>" checked>
+					
 					<!--Farm Id-->
 					<input hidden type = "radio" name = "farmId" id = "farmId" value = "<?php echo $farmId; ?>" checked>
-					<!--Farm Name-->
+					
+					<!--Farm Contact First Name-->
 					<div class="form-group">
-						<label for="inputFarmName" class="control-label col-xs-2">Farm Name</label>
+						<label for="inputFarmContact" class="control-label col-xs-2">First Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmName" id="farmName" value="<?php echo $farmName; ?>"  required data-validation-required-message="Please enter the new name of the farm.">
+							<input type="text" class="form-control" name="farmContactFN" id="farmContactFN" value = "<?php echo $farmContactFN; ?>" required data-validation-required-message="Please enter the given name of the business contact at the new farm.">
 						</div>
 					</div>
 					
-					<!--Farm Civic Address-->
+					<!--Farm Contact Last Name-->
 					<div class="form-group">
-						<label for="inputFarmCivAddress" class="control-label col-xs-2">Farm Civic Address</label>
+						<label for="inputFarmContact" class="control-label col-xs-2">Last Name</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmCivAddress" id="farmCivAddress" value="<?php echo $farmCivAddress; ?>"  required data-validation-required-message="Please enter the new civic address of the farm.">
+							<input type="text" class="form-control" name="farmContactLN" id="farmContactLN" value = "<?php echo $farmContactLN; ?>" required data-validation-required-message="Please enter the surname of the business contact at the new farm.">
 						</div>
 					</div>
 					
-					<!--Farm Phone Number-->
+					<!--Farm Contact Phone #-->
 					<div class="form-group">
-						<label for="inputFarmPhoneNum" class="control-label col-xs-2">Farm Phone Number</label>
+						<label for="inputFarmContact" class="control-label col-xs-2">Phone #</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmPhoneNum" id="farmPhoneNum" placeholder="902#######" value="<?php echo $farmPhoneNum; ?>" required data-validation-required-message="Please enter the new Phone number of the farm.">
-						</div>
-					</div>
-					
-					<!--Farm email address-->
-					<div class="form-group">
-						<label for="inputFarmemail" class="control-label col-xs-2">Farm email Address</label>
-						<div class="col-xs-10">
-							<input type="text" class="form-control" name="farmEmail" id="farmEmail" value="<?php echo $farmEmail; ?>" required data-validation-required-message="Please enter the new email Address of the farm.">
+							<input type="text" class="form-control" name="farmContactPN" id="farmContactPN" placeholder="902#######" value = "<?php echo $farmContactPN; ?>" required data-validation-required-message="Please enter the phone number of the business contact at the new farm.">
 						</div>
 					</div>
 			
@@ -117,7 +113,6 @@ include($path.'/header.php');
 				else{
 					echo "failed query";
 				}
-				echo "<td><form action = '".ROOT."/admin/farm/admin_farm_contact_list.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $farmId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Modify contacts'></form></td>";
 
 			}
 

@@ -126,7 +126,7 @@ include($path.'/header.php');
 		}
 		
 		//farm update
-		else 	if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmEmail'])) {
+		else if (isset($_POST['farmId']) && isset($_POST['farmName']) && isset($_POST['farmCivAddress']) && isset($_POST['farmPhoneNum']) && isset($_POST['farmEmail'])) {
 			$farmId = ($_POST['farmId']);
 			$farmName = ($_POST['farmName']);
 			$farmCivAddress = ($_POST['farmCivAddress']);
@@ -139,6 +139,29 @@ include($path.'/header.php');
 				$db->close();
 				echo '<script type="text/javascript">
 						location.replace("'.ROOT.'/admin/farm/admin_farm_list.php");
+						</script>';			
+			}
+			else{
+				echo "Error: " . $query . "<br>" . $db->error;
+				$db->close();
+				exit;
+			}
+		}
+		
+		//farm contact update
+		else if (isset($_POST['contactId']) && isset($_POST['farmId']) && isset($_POST['farmContactFN']) && isset($_POST['farmContactLN']) && isset($_POST['farmContactPN'])) {
+			$contactId = ($_POST['contactId']);
+			$farmId = ($_POST['farmId']);
+			$farmContactFN = ($_POST['farmContactFN']);
+			$farmContactLN = ($_POST['farmContactLN']);
+			$farmContactPN = ($_POST['farmContactPN']);
+
+			// Create query
+			$query = "UPDATE `farm_contact` SET contact_first_name = '{$farmContactFN}', contact_last_name = '{$farmContactLN}', contact_phone = '{$farmContactPN}' WHERE farm_contact_id = '{$contactId}'";
+			if ($db->query($query) === TRUE) {
+				$db->close();
+				echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/farm/admin_farm_contact_list.php?id=' .$farmId. '");
 						</script>';			
 			}
 			else{
