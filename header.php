@@ -60,7 +60,7 @@
                                                 echo '<a href="'. ROOT . '/oil_and_fluids">Oil and Fluids</a>';
                                                 //echo '<a href="'. ROOT . '/equipment_inspection">Equipment Inspection</a>';
                                             } if ($employeeType == 3 || $employeeType == 2) { // Production manager or dispatcher
-                                                echo '<a href="'. ROOT . '/rejection">Rejection</a>';
+                                                //echo '<a href="'. ROOT . '/rejection">Rejection</a>';
                                                 echo '<a href="'. ROOT . '/byproduct_disposal">By-Product Disposal</a>';
                                             } if ($employeeType == 3) { // Production manager
                                                 echo '<a href="'. ROOT . '/change_farm">Change Farm</a>';
