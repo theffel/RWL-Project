@@ -52,7 +52,7 @@ include($path.'/header.php');
 		<?php
 			// If the user is logged in, display the add Processor form
 			if ($loggedIn == true) {
-				// Get Farm Id
+				// Get processor Id
 				$processorId = $_GET["id"];	
 						// Create query
 				$query = "select `processor_name`, `processor_address`, `processor_phone`, `processor_contact_name` from `processor` where processor_id = {$processorId}";
@@ -68,7 +68,7 @@ include($path.'/header.php');
 			?>
 				<form class='form-horizontal' name='updateProcessorForm' id='updateProcessorForm' method='post' action="<?php echo ROOT; ?>/admin/admin_update_database.php">
 			
-					<!--Farm Id-->
+					<!--processor Id-->
 					<input hidden type = "radio" name = "processorId" id = "processorId" value = "<?php echo $processorId; ?>" checked>
 					
 					<!--Processor Name-->

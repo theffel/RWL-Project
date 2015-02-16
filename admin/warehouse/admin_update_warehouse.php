@@ -64,9 +64,7 @@ include($path.'/header.php');
         <!-- /.row -->
 		<?php
 			// If the user is logged in, display the update warehouse form
-			if ($loggedIn == true) {			
 				if ($result->num_rows > 0) {
-					$queryValues = $result->fetch_assoc();
 					$warehouseName = $queryValues['warehouse_name'];
 					$warehouseCivAddress = $queryValues['warehouse_civic_address'];
 					$warehouseProvince = $queryValues['warehouse_prov'];
@@ -82,7 +80,7 @@ include($path.'/header.php');
 						
 						<!--warehouse Name-->
 						<div class="form-group">
-							<label for="inputwarehouseName" class="control-label col-xs-2">warehouse Name</label>
+							<label for="inputwarehouseName" class="control-label col-xs-2">Name</label>
 							<div class="col-xs-10">
 								<input type="text" class="form-control" name="warehouseName" id="warehouseName" value = "<?php echo $warehouseName; ?>" required data-validation-required-message="Please enter the name of the new warehouse.">
 							</div>
@@ -90,7 +88,7 @@ include($path.'/header.php');
 						
 						<!--warehouse Civic address-->
 						<div class="form-group">
-							<label for="inputwarehouseCivaddress" class="control-label col-xs-2">warehouse Civic address</label>
+							<label for="inputwarehouseCivaddress" class="control-label col-xs-2">Civic address</label>
 							<div class="col-xs-10">
 								<input type="text" class="form-control" name="warehouseCivAddress" id="warehouseCivAddress" value = "<?php echo $warehouseCivAddress; ?>" required data-validation-required-message="Please enter the civic address of the new warehouse.">
 							</div>
@@ -106,7 +104,7 @@ include($path.'/header.php');
 						
 						<!--warehouse Phone Number-->
 						<div class="form-group">
-							<label for="inputwarehousePhoneNum" class="control-label col-xs-2">warehouse Phone Number</label>
+							<label for="inputwarehousePhoneNum" class="control-label col-xs-2">Phone Number</label>
 							<div class="col-xs-10">
 								<input type="text" class="form-control" name="warehousePhoneNum" id="warehousePhoneNum" value = "<?php echo $warehousePhoneNum; ?>" placeholder="902#######" required data-validation-required-message="Please enter the Phone number of the new warehouse.">
 							</div>

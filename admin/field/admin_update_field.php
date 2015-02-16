@@ -52,7 +52,7 @@ include($path.'/header.php');
 				// Get Bin Id
 				$binQuery = "select * from `field` where field_id = '{$fieldId}'";
 				$binResult = $db->query($binQuery)->fetch_assoc();
-				$binId = $binResult['warehouse_id'];
+				$binId = $binResult['bin_id'];
 				// Get warehouse Id
 				$warehouseQuery = "select * FROM warehouse_bin WHERE bin_id = '{$binId}'";
 				$warehouseResult = $db->query($warehouseQuery)->fetch_assoc();
@@ -74,9 +74,8 @@ include($path.'/header.php');
         <!-- /.row -->
 		<?php
 			// Create query	
-			if ($binResult->num_rows > 0) {
-				$queryValues = $binResult->fetch_assoc();
-				$fieldLocation = $queryValues['field_location'];
+			if ($db->query($binQuery)->num_rows > 0) {
+				$fieldLocation = $binResult['field_location'];
 			}
 
 
@@ -85,6 +84,12 @@ include($path.'/header.php');
 
 				echo "<form class='form-horizontal' name='updateBinFieldForm' id='updateBinFieldForm' method='post' action=".ROOT."/admin/admin_update_database.php/?id=". $binId ."'>";
 			?>		
+					<!--bin Id-->
+					<input hidden type = "radio" name = "binId" id = "binId" value = "<?php echo $binId; ?>" checked>
+					
+					<!--field Id-->
+					<input hidden type = "radio" name = "fieldId" id = "fieldId" value = "<?php echo $fieldId; ?>" checked>
+					
 					<!--field Location-->
 					<div class="form-group">
 						<label for="inputfieldName" class="control-label col-xs-2">Field Location</label>

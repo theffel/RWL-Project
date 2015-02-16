@@ -194,20 +194,17 @@ include($path.'/header.php');
 		}
 		
 		//field update
-		else if (isset($_POST['warehouseId']) && isset($_POST['farmId']) && isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehousePhoneNum'])) {
-			$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+		else if (isset($_POST['fieldLocation']) && isset($_POST['fieldId']) && isset($_POST['binId'])) {
+			$fieldLocation = ($_POST['fieldLocation']);
+			$fieldId = ($_POST['fieldId']);
+			$binId = ($_POST['binId']);
 
 			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
+			$query = "UPDATE `field` SET field_location = '{$fieldLocation}' WHERE field_id = '{$fieldId}'";			
 			if ($db->query($query) === TRUE) {
 				$db->close();
 				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
+					location.replace("'.ROOT.'/admin/field/admin_field_list.php?id=' . $binId . '");
 					</script>';	
 			} 
 			else {
@@ -218,20 +215,19 @@ include($path.'/header.php');
 		}
 		
 		//processor update
-		else if (isset($_POST['warehouseId']) && isset($_POST['farmId']) && isset($_POST['warehouseName']) && isset($_POST['warehouseCivAddress']) && isset($_POST['warehousePhoneNum'])) {
-			$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+		else if (isset($_POST['processorId']) && isset($_POST['processorName']) && isset($_POST['processorAddress']) && isset($_POST['processorPhoneNum'])) {
+			$processorId = ($_POST['processorId']);
+			$processorName = ($_POST['processorName']);
+			$processorAddress = ($_POST['processorAddress']);
+			$processorContactName = ($_POST['processorContactName']);
+			$processorPhoneNum = ($_POST['processorPhoneNum']);
 
 			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
+			$query = "UPDATE `processor` SET processor_name = '{$processorName}', processor_address = '{$processorAddress}', processor_contact_name = '{$processorContactName}', processor_phone = '{$processorPhoneNum}' WHERE processor_Id = '{$processorId}'";			
 			if ($db->query($query) === TRUE) {
 				$db->close();
 				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
+					location.replace("'.ROOT.'/admin/processor/admin_processor_list.php");
 					</script>';	
 			} 
 			else {
@@ -243,200 +239,226 @@ include($path.'/header.php');
 		
 		//trailer
 		else if (isset($_POST['trailerId'])) {
-			//trailer update
-			if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
-
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
-			}
-		}
+			$trailerId = ($_POST['trailerId']);
 			
-			//Inspecttion update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			//trailer update
+			if (isset($_POST['trailerNum']) && isset($_POST['plateNum'])) {
+				$trailerNum = ($_POST['trailerNum']);
+				$plateNum = ($_POST['plateNum']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `trailer` SET trailer_num = '{$trailerNum}', plate_num = '{$plateNum}' WHERE trailer_Id = '{$trailerId}'";			
+				if ($db->query($query) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/trailer/admin_trailer_list.php");
+						</script>';	
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
+			
+			//Inspection update
+			else if (isset($_POST['inspectExpiry']) && isset($_POST['img_id']) && isset($_POST['inspectImg'])) {
+				$inspectExpiry = ($_POST['inspectExpiry']);
+				$img_id = ($_POST['img_id']);
+				$inspectImg = ($_POST['inspectImg']);
+
+				// Create query
+				$query = "UPDATE `inspection` SET inspect_expiry_date = '{$inspectExpiry}' WHERE trailer_id = '{$trailerId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$inspectImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/trailer/admin_trailer_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
+			}
 			
 			//Insurance update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			else if (isset($_POST['insExpiry']) && isset($_POST['img_id']) && isset($_POST['insImg'])) {
+				$insExpiry = ($_POST['insExpiry']);
+				$img_id = ($_POST['img_id']);
+				$insImg = ($_POST['insImg']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `insurance` SET ins_expiry_date = '{$insExpiry}' WHERE trailer_id = '{$trailerId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$insImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/trailer/admin_trailer_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
 			
 			//Report update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			else if (isset($_POST['regExpiry']) && isset($_POST['img_id']) && isset($_POST['regImg'])) {
+				$regExpiry = ($_POST['regExpiry']);
+				$img_id = ($_POST['img_id']);
+				$regImg = ($_POST['regImg']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `registration` SET reg_expiry_date = '{$regExpiry}' WHERE trailer_id = '{$trailerId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$regImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/trailer/admin_trailer_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
 		}
 		
 		//truck
-		else if (isset($_POST['trailerId'])) {
-			//truck update
-			if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
-
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
-			}
-		}
+		else if (isset($_POST['truckId'])) {
+			$truckId = ($_POST['truckId']);
 			
-			//Inspecttion update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			//truck update
+			if (isset($_POST['truckNum']) && isset($_POST['plateNum'])) {
+				$truckNum = ($_POST['truckNum']);
+				$plateNum = ($_POST['plateNum']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `truck` SET truck_num = '{$truckNum}', plate_num = '{$plateNum}' WHERE truck_Id = '{$truckId}'";			
+				if ($db->query($query) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/truck/admin_truck_list.php");
+						</script>';	
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
+			
+			//Inspection update
+			else if (isset($_POST['inspectExpiry']) && isset($_POST['img_id']) && isset($_POST['inspectImg'])) {
+				$inspectExpiry = ($_POST['inspectExpiry']);
+				$img_id = ($_POST['img_id']);
+				$inspectImg = ($_POST['inspectImg']);
+
+				// Create query
+				$query = "UPDATE `inspection` SET inspect_expiry_date = '{$inspectExpiry}' WHERE truck_id = '{$truckId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$inspectImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/truck/admin_truck_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
+			}
 			
 			//Insurance update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			else if (isset($_POST['insExpiry']) && isset($_POST['img_id']) && isset($_POST['insImg'])) {
+				$insExpiry = ($_POST['insExpiry']);
+				$img_id = ($_POST['img_id']);
+				$insImg = ($_POST['insImg']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `insurance` SET ins_expiry_date = '{$insExpiry}' WHERE truck_id = '{$truckId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$insImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/truck/admin_truck_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
 			
 			//Report update
-			else if (isset($_POST['trailerId'])) {
-				$warehouseId = ($_POST['warehouseId']);
-			$farmId = ($_POST['farmId']);
-			$warehouseName = ($_POST['warehouseName']);
-			$warehouseCivAddress = ($_POST['warehouseCivAddress']);
-			$warehouseProvince = ($_POST['warehouseProvince']);
-			$warehousePhoneNum = ($_POST['warehousePhoneNum']);
+			else if (isset($_POST['regExpiry']) && isset($_POST['img_id']) && isset($_POST['regImg'])) {
+				$regExpiry = ($_POST['regExpiry']);
+				$img_id = ($_POST['img_id']);
+				$regImg = ($_POST['regImg']);
 
-			// Create query
-			$query = "UPDATE `warehouse` SET warehouse_name = '{$warehouseName}', warehouse_civic_address = '{$warehouseCivAddress}', warehouse_prov = '{$warehouseProvince}', warehouse_phone = '{$warehousePhoneNum}' WHERE warehouse_id = '{$warehouseId}'";			
-			if ($db->query($query) === TRUE) {
-				$db->close();
-				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/warehouse/admin_warehouse_list.php?id=' . $farmId . '");
-					</script>';	
-			} 
-			else {
-				echo "Error: " . $query . "<br>" . $db->error;
-				$db->close();
-				exit;
+				// Create query
+				$query = "UPDATE `registration` SET reg_expiry_date = '{$regExpiry}' WHERE truck_id = '{$truckId}'";			
+				if ($db->query($query) === TRUE) {
+					$imgQuery = "UPDATE `images` SET img = '{$regImg}' WHERE img_id = '{$imgid}'";		
+					if ($db->query($imgQuery) === TRUE) {
+					$db->close();
+					echo '<script type="text/javascript">
+						location.replace("'.ROOT.'/admin/truck/admin_truck_list.php");
+						</script>';	
+					} 
+					else {
+						echo "Error: " . $query . "<br>" . $db->error;
+						$db->close();
+						exit;
+					}
+				} 
+				else {
+					echo "Error: " . $query . "<br>" . $db->error;
+					$db->close();
+					exit;
+				}
 			}
-		}
 		}
 				
 		//improper sending variable

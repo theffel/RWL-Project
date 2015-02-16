@@ -71,6 +71,9 @@ include($path.'/header.php');
 					<!--trailer Id-->
 					<input hidden type = "radio" name = "trailerId" id = "trailerId" value = "<?php echo $trailerId; ?>" checked>
 
+					<!--image Id-->
+					<input hidden type = "radio" name = "imgId" id = "imgId" value = "<?php echo $imgId; ?>" checked>
+
 				<!--Registration-->
 					<!--Registration expirey-->
 					<div class="form-group">

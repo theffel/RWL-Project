@@ -117,7 +117,7 @@ include($path.'/header.php');
 				else{
 					echo "failed query";
 				}
-				echo "<td><form action = '".ROOT."/admin/farm/admin_farm_contact.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $farmId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Modify contacts'></form></td>";
+				echo "<td><form action = '".ROOT."/admin/farm/admin_update_farm_contacts.php' method = 'get'> <input hidden type = 'radio' name = 'id' value = '" . $farmId . "' checked><input type = 'submit' class='btn btn-primary' value = 'Modify contacts'></form></td>";
 
 			}
 

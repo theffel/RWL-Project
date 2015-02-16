@@ -70,7 +70,7 @@ include($path.'/header.php');
 		<?php
 
 				// Create query
-				$query = "select * FROM field WHERE bin_id = '{$id}'";
+				$query = "select * FROM field WHERE bin_id = '{$binId}'";
 				$result = $db->query($query);
 				
 				if ($result->num_rows > 0) {

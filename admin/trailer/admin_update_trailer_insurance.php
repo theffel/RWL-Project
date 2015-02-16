@@ -71,7 +71,10 @@ include($path.'/header.php');
 					<!--trailer Id-->
 					<input hidden type = "radio" name = "trailerId" id = "trailerId" value = "<?php echo $trailerId; ?>" checked>
 
-				<!--insurance-->
+					<!--image Id-->
+					<input hidden type = "radio" name = "imgId" id = "imgId" value = "<?php echo $imgId; ?>" checked>
+
+					<!--insurance-->
 					<!--insurance expirey-->
 					<div class="form-group">
 						<label for="inputinsuranceExpiry" class="control-label col-xs-2">insurance Expirey</label>
