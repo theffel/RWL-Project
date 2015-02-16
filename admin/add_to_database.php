@@ -239,21 +239,21 @@ include($path.'/header.php');
 		}
 						
 		//add employee training certificate
-		else if (isset($_POST['employeeId']) && isset($_POST['TrainingStart']) && isset($_POST['TrainingEnd']) && isset($_POST['CompletionStat']) && isset($_POST['TrainingTypeId'])){
-			$employeeID = $_POST['employeeId'];
+		else if (isset($_POST['empId']) && isset($_POST['TrainingStart']) && isset($_POST['TrainingEnd']) && isset($_POST['completionStat']) && isset($_POST['TrainingTypeId'])){
+			$empId = $_POST['empId'];
 			$TrainingStart = $_POST['TrainingStart'];
 			$TrainingEnd = $_POST['TrainingEnd'];
-			$CompletionStat = $_POST['CompletionStat'];
+			$completionStat = $_POST['completionStat'];
 			$TrainingTypeId = $_POST['TrainingTypeId'];					
 
 			// Create query
-			$query = "INSERT INTO `employee_training_certificate` (emp_id, start_date, end_date, completed, training_type_id) VALUES ('{$employeeId}', '{$TrainingStart}', '{$TrainingEnd}', '{$CompletionStat}', '{$TrainingTypeId}')";
+			$query = "INSERT INTO `employee_training_certificate` (emp_id, start_date, end_date, completed, training_type_id) VALUES ('{$empId}', '{$TrainingStart}', '{$TrainingEnd}', '{$completionStat}', '{$TrainingTypeId}')";
 
 			if ($db->query($query) === TRUE) {
 				echo "New record created successfully";
 				$db->close();
 				echo '<script type="text/javascript">
-					location.replace("'.ROOT.'/admin/employee/admin_add_employee_training_certificate.php");
+					location.replace("'.ROOT.'/admin/employee/admin_employee_training_list.php?id='.$empId.'");
 					</script>';	
 			}
 			else {

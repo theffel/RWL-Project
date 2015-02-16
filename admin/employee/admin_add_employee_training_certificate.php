@@ -96,7 +96,18 @@ include($path.'/header.php');
 					<div class="form-group">
 						<label for="inputTrainingTypeId" class="control-label col-xs-2">Training Type ID</label>
 						<div class="col-xs-10">
-							<input type="text" class="form-control" name="TrainingTypeId" id="TrainingTypeId" placeholder="##" required data-validation-required-message="Please enter the designated Training Type ID.">
+							<select name="completionStat" id="TrainingTypeId" form="addemployeeTCForm">
+								<option value="1" selected>Truck Driver</option>
+								<option value="2">Dispatcher</option>
+								<option value="3">Production</option>
+								<option value="4">Sampler</option>
+								<option value="5">Line Worker</option>
+								<option value="6">Waterboy</option>
+								<option value="7">Maintenance</option>
+								<option value="8">Accounting</option>
+								<option value="9">Admin</option>
+								<option value="10">Fleet Management</option>
+							</select>
 						</div>
 					</div>
 			
