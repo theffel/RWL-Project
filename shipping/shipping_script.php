@@ -21,7 +21,7 @@ include('../database.php');
 include('../session_load.php');
 
 // Insert shipping
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submitBtn'])) {	
 	$rwlLoadBegin = $db->real_escape_string($_POST['rwlLoadBegin']);
 	$rwlLoadEnd = $db->real_escape_string($_POST['rwlLoadEnd']);
 	$rwlDepartureTime = $db->real_escape_string($_POST['rwlDepartureTime']);	
@@ -35,9 +35,9 @@ if (isset($_POST['submit'])) {
 	$destination = $db->real_escape_string($_POST['destination']);
 	
 
-	$query = "INSERT INTO shipping (load_begin, load_end, depart_rwl, potato_id, farm_id, truck_id, trailer_id, rwl_ticket_num, weight_shipped, washed, dest_id, emp_id)
+	$query = "INSERT INTO shipping (load_begin, load_end, depart_rwl, potato_id, farm_id, truck_id, trailer_id, rwl_ticket_num, weight_shipped, washed, dest_id, emp_id, delivery_accepted)
 								 
-		VALUES ('" . $rwlLoadBegin . "','" . $rwlLoadEnd . "','" . $rwlDepartureTime . "', " . $potato . ", " . $farm . "," . $truck . " ," . $trailer . "," . $rwlTicNum . "," . $weight . "," . $washed . "," . $destination . "," . $empId . ")";
+		VALUES ('" . $rwlLoadBegin . "','" . $rwlLoadEnd . "','" . $rwlDepartureTime . "', " . $potato . ", " . $farm . "," . $truck . " ," . $trailer . "," . $rwlTicNum . "," . $weight . "," . $washed . "," . $destination . "," . $empId . ", 1)";
 	$result = $db->query($query);
 
 }
@@ -102,7 +102,7 @@ if (!empty($result)) {
 }
 
 // Update shipping
-if (isset($_POST['update'])) {	
+if (isset($_POST['updateBtn'])) {	
 	$rwlLoadBegin = $db->real_escape_string($_POST['rwlLoadBegin']);
 	$rwlLoadEnd = $db->real_escape_string($_POST['rwlLoadEnd']);
 	$rwlDepartureTime = $db->real_escape_string($_POST['rwlDepartureTime']);	
@@ -117,12 +117,12 @@ if (isset($_POST['update'])) {
 
 	
 	$query = "UPDATE shipping SET load_begin = '" . $rwlLoadBegin . "', load_end = '" . $rwlLoadEnd . "', depart_rwl = '" . $rwlDepartureTime . "', rwl_ticket_num = " . $rwlTicNum . ", weight_shipped = " . $weight . ", 
-	washed = " . $washed . ", potato = " . $potato . ", farm = " . $farm . ", truck = " . $truck . ", trailer = " . $trailer . ", 
-	destination = " . $destination . " 
+	washed = " . $washed . ", potato_id = " . $potato . ", farm_id = " . $farm . ", truck_id = " . $truck . ", trailer_id = " . $trailer . ", 
+	dest_id = " . $destination . " 
 	 WHERE ship_id = " . $_SESSION['shipNum'];
 
 	$result = $db->query($query);
-	
+
 	// kill session var 'shipDetails'
 	unset($_SESSION['shipDetails']);
 	header("location:index.php");

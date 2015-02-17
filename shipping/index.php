@@ -95,7 +95,6 @@ include('shipping_script.php');
                 <label for="potato" class="control-label col-md-2">Potato</label>
                 <div class="col-md-10">
                     <select class="form-control" name="potato" id="potato">
-                        <option value="" disabled selected style="display:none;"></option>
                         <?php
                         for ($x = 0; $x < count($potatoes); $x++){
                             echo '<option value="' . $potatoes[$x][0] .'">' . $potatoes[$x][1] .'</option>';
@@ -107,9 +106,7 @@ include('shipping_script.php');
             <div class="form-group">
                 <label for="potProd" class="control-label col-md-2">Potato Producer</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="farm" name="farm" onchange="warehouseFunction(this.value)">
-                        <option value="" disabled selected style="display:none;"></option>
-                        <?php
+                    <select class="form-control" id="farm" name="farm" onchange="warehouseFunction(this.value)">                        <?php
                         for ($x = 0; $x < count($farms); $x++){
                             echo '<option value="' . $farms[$x][0] .'">' . $farms[$x][1] .'</option>';
                         }
@@ -175,19 +172,16 @@ include('shipping_script.php');
                     </select>
                 </div>
             </div>
-                        
-<!--            <div class="form-group">
-                <label for="truckCleaned" class="control-label col-md-2">Truck Cleaned Upon Return</label>
-                <div class="col-md-10">
-                    <ul class="list-inline">
-                        <li><input type="radio" name="truckCleaned" value="Yes"> Yes</li>
-                        <li><input type="radio" name="truckCleaned" value="No"> No</li>
-                    </ul>
-                </div>
-            </div> -->
+            <!-- #messages is where the messages are placed inside -->            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
+                </div>
+            </div> 
+            
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
                 </div>
             </div>
 <hr>
@@ -237,5 +231,8 @@ include('shipping_script.php');
     <script src="../js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="../js/custom_js.js"></script>
+    <!-- Validation JavaScript -->
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="shipping_validation.js"></script>
 </body>
 </html>
