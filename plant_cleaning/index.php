@@ -1,18 +1,18 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allow user to input plant cleaning data
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
+ * @category    Plant Cleaning
+ * @package     index.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     1.00
+ * @version     1.0
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-15
+ * @since       2015-01-21
  */
 
 // Start the session
@@ -56,6 +56,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <select class="form-control" name="equipment">
                         <?php
+						//show all equipment list from db
                         for ($x = 0; $x < count($equipment); $x++){
                             echo '<option value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                         }
@@ -76,6 +77,7 @@ include('../header.php');
                 <div class="col-md-10">
                     <select class="form-control" name="employees">
                         <?php
+						//show all employees name from db
                         for ($x = 0; $x < count($employee); $x++){
                             echo '<option value="' . $employee[$x][0] .'">' . $employee[$x][1] .'</option>';
                         }
@@ -97,10 +99,12 @@ include('../header.php');
             </div>
         <hr>
         </form>
+		<!-- For list view part -->
         <form class="form-horizontal" name="plantForm" id="plantForm" method="POST" action="index.php">
         <h2 class="page-header">Edit Plant Cleanings</h2>
             <?php
             if (!empty($plantCleaning)) {
+			//if something data in DB show them
                 echo '<table class="table">
                         <thead>
                            <tr>

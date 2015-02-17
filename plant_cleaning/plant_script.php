@@ -1,19 +1,18 @@
 <?php
 /**
- * This file provides the business functionality for the pickup index.php page.
+ * This file provides the business functionality for the plant cleaning of index.php page and edit_plant.php
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Plant Cleaning
+ * @package     plant_script.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     1.00
+ * @version     1.0
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-25
+ * @since       2015-01-21
  */
 
 // Include php files
@@ -83,6 +82,7 @@ for ($x = 0; $x < count($_SESSION['plantCleaning']); $x++){
 	}
 }
 }
+//for Update
 if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$cleaned = $db->real_escape_string($_POST['equipment']);

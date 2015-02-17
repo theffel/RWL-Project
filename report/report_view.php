@@ -1,14 +1,13 @@
 <?php
 /**
- * This page allows the user to enter their username and password to login to the system.
+ * This page show the report to user by selection from index.php
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Report
+ * @package     report_view.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.0

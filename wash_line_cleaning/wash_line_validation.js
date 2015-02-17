@@ -1,3 +1,4 @@
+<!-- for input validation-->
 $(document).ready(function() {
     $('#washForm').bootstrapValidator({
         container: '#messages',

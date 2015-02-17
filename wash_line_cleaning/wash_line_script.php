@@ -1,19 +1,18 @@
 <?php
 /**
- * This file provides the business functionality for the pickup index.php page.
+ * This file provides the business functionality for the wash line cleaning of index.php page and edit_wash_line.php
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Wash Line Cleaning
+ * @package     wash_line_script.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     1.00
+ * @version     1.0
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-25
+ * @since       2015-01-21
  */
 
 // Include php files
@@ -89,6 +88,7 @@ if (empty($lineCleaning)) {
 		}
 	}
 }
+//for update
 if (isset($_POST['updateBtn'])) {
 	$date = $db->real_escape_string($_POST['date']);
 	$cleaned = $db->real_escape_string($_POST['equipment']);

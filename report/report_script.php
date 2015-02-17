@@ -1,14 +1,13 @@
 <?php
 /**
- * This file provides the business functionality for the attendance index.php page.
+ * This file provides the business functionality for the report index.php page.
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Report
+ * @package     report_script.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
  * @version     1.00
@@ -43,7 +42,7 @@ if (isset($_POST['Attendance'])) {
 			$empID = $row['emp_id'];
 	
 			//create associative array to hold attendance details - key by empID ex. 1 or 2 or 3
-			// add all details
+			//add all details
 			$attendance[$empID] = array("name" => $empFName ." ". $empLName,
 									"id" => $empID,
 									"timeIn" => $timeIn,

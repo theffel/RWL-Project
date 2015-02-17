@@ -1,19 +1,18 @@
 <?php
-/**
- * Description for file goes here.
+/** 
+ * This page allow user to edit previous data
  *
  * PHP version 5
  *
  *
- * @category    CategoryName
- * @package     PackageName
- * @author      Zachary Theriault
- * @author      Trevor Heffel
+ * @category    Plant Cleaning
+ * @package     edit_plant.php
+ * @author      KangHyeok Lee
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     1.00
+ * @version     1.0
  * @link        http://pear.php.net/package/PackageName
- * @since       2015-01-23
+ * @since       2015-01-21
  */
 
 // Start the session
@@ -58,8 +57,10 @@ include('../header.php');
                 <div class="col-md-10">
                         <select class="form-control" name="equipment">
                             <?php
+							//show all equipment list from db
                             for ($x = 0; $x < count($equipment); $x++){
                                 if (strcmp($equipment[$x][1], $_SESSION['editPlantCleaning'][0][1]) == 0) {
+									//when meet user selected data, show to page
                                     echo '<option selected value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
                                 } else {
                                     echo '<option value="' . $equipment[$x][0] .'">' . $equipment[$x][1] .'</option>';
@@ -80,8 +81,10 @@ include('../header.php');
                 <div class="col-md-10">
                     <select class="form-control" name="employees">
                         <?php
+						//show all employees name
                         for ($x = 0; $x < count($employee); $x++){
                             if (strcmp($employee[$x][1], $_SESSION['editPlantCleaning'][0][3]) == 0) {
+								//When meet the user selected name, display it
                                 echo '<option selected value="' . $employee[$x][0] . '">' . $employee[$x][1] . '</option>';
                             } else {
                                 echo '<option value="' . $employee[$x][0] . '">' . $employee[$x][1] . '</option>';
