@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the daily mileage index.php page.
+ * This file provides the business functionality for the daily mileage pages.
  *
  * PHP version 5
  *

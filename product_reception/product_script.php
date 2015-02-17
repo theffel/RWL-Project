@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the product reception index.php page.
+ * This file provides the business functionality for the product reception pages.
  *
  * PHP version 5
  *

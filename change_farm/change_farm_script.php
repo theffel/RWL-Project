@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the change farm index.php page.
+ * This file provides the business functionality for the change farm pages.
  *
  * PHP version 5
  *

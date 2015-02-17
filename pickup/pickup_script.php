@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the pickup index.php page.
+ * This file provides the business functionality for the pickup pages.
  *
  * PHP version 5
  *

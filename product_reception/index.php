@@ -1,6 +1,6 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allows the user to add a product reception.
  *
  * PHP version 5
  *
@@ -167,7 +167,7 @@ include('product_script.php');
                 <div class="col-md-offset-2 col-md-10">
                     <div id="messages"></div>
                 </div>
-            </div>            
+            </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>

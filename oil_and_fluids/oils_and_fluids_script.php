@@ -1,6 +1,6 @@
 <?php
 /**
- * This file provides the business functionality for the oils and fluids index.php page.
+ * This file provides the business functionality for the oils and fluids pages.
  *
  * PHP version 5
  *

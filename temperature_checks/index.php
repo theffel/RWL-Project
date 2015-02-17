@@ -1,6 +1,6 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allows the user to add a temperature check.
  *
  * PHP version 5
  *
@@ -10,7 +10,7 @@
  * @author      Zachary Theriault
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-01-15
  */
@@ -49,7 +49,7 @@ include('temperature_checks_script.php');
             <div class="form-group">
                 <label for="date" class="control-label col-md-2">Date</label>
                 <div class="col-md-10">
-                   <input type="text" class="form-control" name= "date" value="<?php echo $dateTime; ?>">                  
+                   <input type="text" class="form-control" name= "date" value="<?php echo $dateTime; ?>">
                 </div>
             </div>
             <div class="form-group">

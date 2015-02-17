@@ -1,6 +1,6 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allows the user to enter a byproduct disposal.
  *
  * PHP version 5
  *

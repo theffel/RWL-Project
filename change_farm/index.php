@@ -1,6 +1,6 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allows the user to change the farm.
  *
  * PHP version 5
  *
@@ -10,7 +10,7 @@
  * @author      Zachary Theriault
  * @copyright   2015 sCIS
  * @license     http://php.net/license/3_01.txt  PHP License 3.01
- * @version     x.xx
+ * @version     1.00
  * @link        http://pear.php.net/package/PackageName
  * @since       2015-02-10
  */
@@ -86,7 +86,7 @@ include('change_farm_script.php');
                 <div class="col-md-offset-2 col-md-10">
                     <div id="messages"></div>
                 </div>
-            </div>            
+            </div>
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
                     <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
@@ -137,6 +137,6 @@ include('change_farm_script.php');
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
-    <script type="text/javascript" src="change_farm_validation.js"></script> 
+    <script type="text/javascript" src="change_farm_validation.js"></script>
 </body>
 </html>

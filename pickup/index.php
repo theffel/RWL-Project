@@ -1,6 +1,6 @@
 <?php
 /**
- * Description for file goes here.
+ * This page allows the user to add a pickup.
  *
  * PHP version 5
  *
@@ -331,6 +331,6 @@ include('../header.php');
     <!-- Custom JavaScript -->
     <script src="../js/custom_js.js"></script>
     <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
-    <script type="text/javascript" src="pickup_validation.js"></script>  
+    <script type="text/javascript" src="pickup_validation.js"></script>
 </body>
 </html>
