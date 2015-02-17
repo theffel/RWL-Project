@@ -43,7 +43,6 @@ include('delivery_script.php');
         $potatoes = (!empty($_SESSION['potatoes'])) ? $_SESSION['potatoes'] : "";
         $farms = (!empty($_SESSION['farms'])) ? $_SESSION['farms'] : "";
         $destination = (!empty($_SESSION['destinations'])) ? $_SESSION['destinations'] : "";
-        $deliveryDetails = (!empty($_SESSION['deliveryDetails'])) ? $_SESSION['deliveryDetails'] : "";
         $shipDetails = (!empty($_SESSION['shipDetails'])) ? $_SESSION['shipDetails'] : "";
 
         // If the user is logged in with the correct employee permissions
@@ -142,9 +141,16 @@ include('delivery_script.php');
                     </ul>
                 </div>
             </div> -->
+            <!-- #messages is where the messages are placed inside -->            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit"/>
+                    <div id="messages"></div>
+                </div>
+            </div>
+                        
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" name="submitBtn" value="Submit"/>
                 </div>
             </div>
 <hr>
@@ -161,7 +167,6 @@ include('delivery_script.php');
                                 <th>Processor Ticket Number</th>
                                 <th>Gross Weight</th> 
                                 <th>Tare Weight</th>
-                                <th>Rejected</th>
                             </tr>
                         </thead>
                         <tbody>';
@@ -174,7 +179,6 @@ include('delivery_script.php');
                         <td>'. $deliveryDetails[$x][5].'</td>
                         <td>'. $deliveryDetails[$x][6].'</td>
                         <td>'. $deliveryDetails[$x][7].'</td>
-                        <td>'. $deliveryDetails[$x][8].'</td>
                         <td><input type="submit" class="btn btn-primary" name="'. $deliveryDetails[$x][0].'" value="Edit"/></td>
                     </tr>';
                 }
@@ -196,5 +200,8 @@ include('delivery_script.php');
     <script src="../js/bootstrap.min.js"></script>
     <!-- Custom JavaScript -->
     <script src="../js/custom_js.js"></script>
+    <!-- Validation JavaScript -->
+    <script type="text/javascript" src="../js/bootstrapValidator.min.js"> </script>
+    <script type="text/javascript" src="delivery_validation.js"></script>
 </body>
 </html>

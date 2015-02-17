@@ -24,7 +24,7 @@ include('../session_load.php');
 
 
 // Insert delivery
-if (isset($_POST['submit'])) {	
+if (isset($_POST['submitBtn'])) {	
 	$procArrivalTime = $db->real_escape_string($_POST['procArrivalTime']);
 	$procUnloadBegin = $db->real_escape_string($_POST['procUnloadBegin']);
 	$procUnloadEnd = $db->real_escape_string($_POST['procUnloadEnd']);
@@ -39,18 +39,12 @@ if (isset($_POST['submit'])) {
 		
 	$result = $db->query($query);
 
-if($rejected == 0){
-	header('location: ../rejection');
-}
 
 }
 
 // Load array with delivery info for day by employee
 $query = "SELECT record_id, arrival, unload_begin, unload_end, depart_processor, proc_ticket_num, gross_weight, tare_weight, rejected  
-			FROM delivery_record INNER JOIN potato ON delivery_record.potato_id = potato.potato_id 
-						INNER JOIN trailer ON delivery_record.trailer_id = trailer.trailer_id
-						INNER JOIN farm ON delivery_record.farm_id = farm.farm_id
-						INNER JOIN destination ON delivery_record.dest_id = destination.dest_id
+			FROM delivery_record 
 			WHERE arrival LIKE '" . $currentDate . "%' AND emp_id = " . $empId .  " ORDER BY arrival DESC";
 
 $result = $db->query($query);
@@ -76,10 +70,7 @@ if (!empty($result)) {
 		if (isset($_POST[$deliveryDetails[$x][0]])) {
 			$_SESSION['recordNum'] = $deliveryDetails[$x][0];
 			$query = "SELECT arrival, unload_begin, unload_end, depart_processor, proc_ticket_num, gross_weight, tare_weight, rejected
-			FROM delivery_record /*INNER JOIN potato ON shipping.potato_id = potato.potato_id 
-						INNER JOIN trailer ON shipping.trailer_id = trailer.trailer_id
-						INNER JOIN farm ON shipping.farm_id = farm.farm_id
-						INNER JOIN destination ON shipping.dest_id = destination.dest_id*/
+			FROM delivery_record
 			WHERE record_id = " . $_SESSION['recordNum'];
 
 			$result = $db->query($query);
@@ -104,7 +95,7 @@ if (!empty($result)) {
 }
 
 // Update delivery
-if (isset($_POST['update'])) {		
+if (isset($_POST['updateBtn'])) {		
 	//$potato = $db->real_escape_string($_POST['potato']);
 	//$farm = $db->real_escape_string($_POST['farm']);
 	//$truck = $db->real_escape_string($_POST['truck']);
@@ -121,25 +112,6 @@ if (isset($_POST['update'])) {
 	$tareWeight = $db->real_escape_string($_POST['tareWeight']);
 	$rejected = $db->real_escape_string($_POST['rejected']);
 	
-	/*$query = "SELECT trailer_id FROM trailer WHERE trailer_num = '" . $trailer . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$trailerId = $row['trailer_id'];
-
-	$query = "SELECT farm_id FROM farm WHERE farm_name = '" . $farm . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$farmId = $row['farm_id'];
-
-	$query = "SELECT potato_id FROM potato WHERE potato_name = '" . $potato . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$potatoId = $row['potato_id'];
-
-	$query = "SELECT dest_id FROM destination WHERE dest_name = '" . $destination . "'";
-	$result = $db->query($query);
-	$row = $result->fetch_assoc();
-	$destId = $row['dest_id'];*/
 
 	
 	$query = "UPDATE delivery_record SET  arrival = '" . $procArrivalTime . "', unload_begin = '" . $procUnloadBegin . "', unload_end = '" . $procUnloadEnd . "', depart_processor = '" . $procDepartureTime . "', 

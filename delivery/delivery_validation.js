@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#mileageForm').bootstrapValidator({
+    $('#deliveryForm').bootstrapValidator({
         container: '#messages',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -7,86 +7,73 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            date:  {
-                validators: {
-                    date: {
-                        format: 'YYYY-MM-DD H:m:s',
-                        message:  'Date must follow format of YYYY-MM-DD HH:MM:SS.'
-                    }
-                }
-            },
-            startKmTruck: {
+            procArrivalTime: {
                 validators: {
                     notEmpty: {
-                        message: 'Starting Kms is required and cannot be empty.'
-                    },
-                    numeric: {
-                        message: 'Starting Kms must be a number.'
-                    },
-                    stringLength: {
-                        max: 8,
-                        message: 'Starting Kms cannot exceed eight numbers.'
+                        message: 'Arrival time is required and cannot be empty.'
                     }
                 }
             },
-            peiKm: {
-                validators: {
-                    numeric: {
-                        message: 'PEI Kms must be a number.'
-                    },
-                    stringLength: {
-                        max: 8,
-                        message: 'PEI Kms cannot exceed eight numbers.'
-                    }
-                }
-            },
-            nbKM: {
-                validators: {
-                    numeric: {
-                        message: 'NB Kms must be a number.'
-                    },
-                    stringLength: {
-                        max: 8,
-                        message: 'NB Kms cannot exceed eight numbers.'
-                    }
-                }
-            },
-            nsKm: {
-                validators: {
-                    numeric: {
-                        message: 'NS Kms must be a number.'
-                    },
-                    stringLength: {
-                        max: 8,
-                        message: 'NS Kms cannot exceed eight numbers.'
-                    }
-                }
-            },
-            litresFuelTank: {
+            procUnloadBegin: {
                 validators: {
                     notEmpty: {
-                        message: 'Liters in fuel tank is required and cannot be empty.'
+                        message: 'Load time begin is required and cannot be empty.'
+                    }
+                }
+            },
+            procUnloadEnd: {
+                validators: {
+                    notEmpty: {
+                        message: 'Load time end is required and cannot be empty.'
+                    }
+                }
+            },
+            procDepartureTime: {
+                validators: {
+                    notEmpty: {
+                        message: 'Depature time is required and cannot be empty.'
+                    }
+                }
+            },                                        
+            procTicNum: {
+                validators: {
+                    notEmpty: {
+                        message: 'Producer ticket number is required and cannot be empty.'
                     },
                     numeric: {
-                        message: 'Liters in fuel tank must be a number.'
+                        message: 'Producer ticket number must be a number.'
                     },
                     stringLength: {
                         max: 6,
-                        message: 'Liters in fuel tank cannot exceed six numbers.'
+                        message: 'Producer ticket number cannot exceed eight numbers.'
                     }
                 }
             },
-            finishKm: {
+            grossWeight: {
                 validators: {
                     notEmpty: {
-                        message: 'Finish Kms is required and cannot be empty.'
+                        message: 'Gross weight is required and cannot be empty.'
                     },
                     numeric: {
-                        message: 'Finish Kms must be a number.'
+                        message: 'Gross weight must be a number.'
                     },
                     stringLength: {
-                        max: 8,
-                        message: 'Finish Kms cannot exceed eight numbers.'
+                        max: 6,
+                        message: 'Gross weight cannot exceed six numbers.'
+                    }
+                }
+            },
+            tareWeight: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tare Weight is required and cannot be empty.'
+                    },
+                    numeric: {
+                        message: 'Tare Weight must be a number.'
+                    },
+                    stringLength: {
+                        max: 6,
+                        message: 'Tare Weight cannot exceed six numbers.'
                     }
                 }
             },

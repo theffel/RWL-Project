@@ -27,7 +27,7 @@ $query = "SELECT ship_id, load_begin, potato_name, farm_name, truck_num, trailer
 						INNER JOIN farm ON shipping.farm_id = farm.farm_id
 						INNER JOIN destination ON shipping.dest_id = destination.dest_id
 						INNER JOIN truck ON shipping.truck_id = truck.truck_id
-			WHERE load_begin LIKE '" . $currentDate . "%' ORDER BY load_begin DESC";			
+			WHERE delivery_accepted = 1 AND load_begin LIKE '" . $currentDate . "%' ORDER BY load_begin DESC";			
 
 $result = $db->query($query);
 
@@ -50,7 +50,11 @@ if (!empty($result)) {
 for ($x = 0; $x < count($_SESSION['shipDisplayedDetails']); $x++) {
 		if (isset($_POST[$shipDisplayedDetails[$x][0]])) {
 			$_SESSION['shipNum'] = $shipDisplayedDetails[$x][0];
-			echo "string";
+			
+$query = "UPDATE shipping SET delivery_accepted = 0 WHERE ship_id = " . $_SESSION['shipNum'];		 
+		
+	$result = $db->query($query);
+
 			header("location:delivery.php?id=" . $_SESSION['shipNum'] );
 		}
 	}
